@@ -20,14 +20,15 @@ namespace Computer_Shop_Management_System.View
 
         public void count()
         {
-            /*lblTongSanPham.Text = Computer.Computer.cout("SELECT count(*) from Sản Phẩm;").ToString();*/
+           lblTongSanPham.Text= Computer.
+
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+       
+        private void UserControlDashboard_Load(object sender, EventArgs e)
         {
-            // chưa code ok
-            // chạy  để im thử
+
         }
     }
 }

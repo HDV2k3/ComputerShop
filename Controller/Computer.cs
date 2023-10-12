@@ -13,7 +13,7 @@ namespace Computer_Shop_Management_System.Controller
     public class Computer
     {
        
-
+        HutechDBBase db= new HutechDBBase();
         public static bool IsvalidNamePass(string username, string password)
         {
             using (var dbContext = new HutechDBBase())

@@ -42,43 +42,54 @@ namespace Computer_Shop_Management_System.View
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             MovePanel(btnDashboard);
-            userControlOrders1.Visible = true;
+           
+            userControlOrders1.Visible= false;
             
+
+            
+            userControlDashboard1.Visible= true;
         }
 
         private void btnThuongHieu_Click(object sender, EventArgs e)
         {
             MovePanel(btnThuongHieu);
+            userControlDashboard1.Visible = false;
             userControlOrders1.Visible = false;
         }
 
         private void btnLoai_Click(object sender, EventArgs e)
         {
             MovePanel(btnLoai);
+            userControlDashboard1.Visible = false;
             userControlOrders1.Visible = false;
         }
 
         private void btnSanPham_Click(object sender, EventArgs e)
         {
             MovePanel(btnSanPham);
+            userControlDashboard1.Visible = false;
             userControlOrders1.Visible = false;
         }
 
         private void btnDatHang_Click(object sender, EventArgs e)
         {
             MovePanel(btnDatHang);
+            userControlDashboard1.Visible = false;
+
             userControlOrders1.Visible = true;
         }
 
         private void btnBaoCao_Click(object sender, EventArgs e)
         {
             MovePanel(btnBaoCao);
+            userControlDashboard1.Visible = false;
             userControlOrders1.Visible = false;
         }
 
         private void btnNguoiDung_Click(object sender, EventArgs e)
         {
             MovePanel(btnNguoiDung);
+            userControlDashboard1.Visible = false;
             userControlOrders1.Visible = false;
         }
 
