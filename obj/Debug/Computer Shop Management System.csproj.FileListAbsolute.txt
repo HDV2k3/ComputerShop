@@ -1,0 +1,21 @@
+D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer Shop Management System.csproj.AssemblyReference.cache
+D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.FormForgotPass.resources
+D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.PAL.FormLogin.resources
+D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.Properties.Resources.resources
+D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.MainForm.resources
+D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlOrders.resources
+D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer Shop Management System.csproj.GenerateResource.cache
+D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer Shop Management System.csproj.CoreCompileInputs.cache
+D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\bin\Debug\Computer Shop Management System.exe.config
+D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\bin\Debug\Computer Shop Management System.exe
+D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\bin\Debug\Computer Shop Management System.pdb
+D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\bin\Debug\EntityFramework.dll
+D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\bin\Debug\EntityFramework.SqlServer.dll
+D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\bin\Debug\Guna.UI2.dll
+D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\bin\Debug\Microsoft.Web.Mvc.dll
+D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\bin\Debug\EntityFramework.xml
+D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\bin\Debug\EntityFramework.SqlServer.xml
+D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer Shop Management System.csproj.CopyComplete
+D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer Shop Management System.exe
+D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer Shop Management System.pdb
+D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlDashboard.resources

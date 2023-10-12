@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HutechDBBaseModelStoreContainer" CdmEntityContainer="HutechDBBase">
+    <EntitySetMapping Name="Brands">
+      <EntityTypeMapping TypeName="HutechDBBaseModel.Brand">
+        <MappingFragment StoreEntitySet="Brand">
+          <ScalarProperty Name="Brand_Id" ColumnName="Brand_Id" />
+          <ScalarProperty Name="Brand_Name" ColumnName="Brand_Name" />
+          <ScalarProperty Name="Brand_Status" ColumnName="Brand_Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="HutechDBBaseModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+          <ScalarProperty Name="Category_Name" ColumnName="Category_Name" />
+          <ScalarProperty Name="Category_Status" ColumnName="Category_Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="HutechDBBaseModel.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="Orders_Id" ColumnName="Orders_Id" />
+          <ScalarProperty Name="Order_Date" ColumnName="Order_Date" />
+          <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
+          <ScalarProperty Name="Customer_Number" ColumnName="Customer_Number" />
+          <ScalarProperty Name="Total_Amout" ColumnName="Total_Amout" />
+          <ScalarProperty Name="Paid_Amout" ColumnName="Paid_Amout" />
+          <ScalarProperty Name="Due_Amout" ColumnName="Due_Amout" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Grand_Total" ColumnName="Grand_Total" />
+          <ScalarProperty Name="Pament_Status" ColumnName="Pament_Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="HutechDBBaseModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+          <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+          <ScalarProperty Name="Product_Image" ColumnName="Product_Image" />
+          <ScalarProperty Name="Product_Rate" ColumnName="Product_Rate" />
+          <ScalarProperty Name="Product_Quantity" ColumnName="Product_Quantity" />
+          <ScalarProperty Name="Product_Brand" ColumnName="Product_Brand" />
+          <ScalarProperty Name="Product_Category" ColumnName="Product_Category" />
+          <ScalarProperty Name="Product_Stastus" ColumnName="Product_Stastus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="HutechDBBaseModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="HutechDBBaseModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Users_Id" ColumnName="Users_Id" />
+          <ScalarProperty Name="Users_Name" ColumnName="Users_Name" />
+          <ScalarProperty Name="Users_Password" ColumnName="Users_Password" />
+          <ScalarProperty Name="Users_Email" ColumnName="Users_Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

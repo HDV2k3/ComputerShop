@@ -1,0 +1,69 @@
+﻿using Computer_Shop_Management_System.Controller;
+using Computer_Shop_Management_System.Model;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Computer_Shop_Management_System.View
+{
+    public partial class FormForgotPass : Form
+    {
+        public FormForgotPass()
+        {
+            InitializeComponent();
+        }
+
+        private void picClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnResetpw_Click(object sender, EventArgs e)
+        {
+            if (txtUsername.Text.Trim() == string.Empty)
+            {
+                MessageBox.Show("Vui Long Nhap UserName.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (txtEmail.Text.Trim() == string.Empty)
+            {
+                MessageBox.Show("Vui Long Nhap Email.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+                string password = ForgotPassword(txtUsername.Text.Trim(), txtEmail.Text.Trim());
+                if (!string.IsNullOrEmpty(password))
+                {
+                    MessageBox.Show($"Mật khẩu của bạn là: {password}", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Sai Tên Người Dùng hoặc Email.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+        private string ForgotPassword(string username, string email)
+        {
+            // Tạo đối tượng DbContext từ kết nối Code First của bạn
+            HutechDBBase dbContext = new HutechDBBase();
+
+            // Tìm người dùng trong cơ sở dữ liệu
+            User user = dbContext.Users.FirstOrDefault(u => u.Users_Name == username && u.Users_Email == email);
+
+            if (user != null)
+            {
+                return user.Users_Password;
+            }
+
+            return null;
+        }
+
+    }
+}
