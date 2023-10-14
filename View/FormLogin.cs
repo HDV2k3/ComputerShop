@@ -15,7 +15,7 @@ namespace Computer_Shop_Management_System.PAL
 {
     public partial class FormLogin : Form
     {
-        HutechDBBase db = new HutechDBBase();
+        DataBase db = new DataBase();
         public FormLogin()
         {
             InitializeComponent();
@@ -23,7 +23,7 @@ namespace Computer_Shop_Management_System.PAL
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
-            HutechDBBase db = new HutechDBBase();
+            DataBase db = new DataBase();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

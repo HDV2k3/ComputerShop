@@ -19,3 +19,63 @@ D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\obj\De
 D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer Shop Management System.exe
 D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer Shop Management System.pdb
 D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlDashboard.resources
+D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlBrand.resources
+D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlCategory.resources
+D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlProduct.resources
+D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.Report.resources
+D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlReport.resources
+D:\DA_WinformC#\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlUser.resources
+F:\clone\HutechShop\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer Shop Management System.csproj.AssemblyReference.cache
+F:\clone\HutechShop\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.FormForgotPass.resources
+F:\clone\HutechShop\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.PAL.FormLogin.resources
+F:\clone\HutechShop\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.Properties.Resources.resources
+F:\clone\HutechShop\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.Report.resources
+F:\clone\HutechShop\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.MainForm.resources
+F:\clone\HutechShop\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlBrand.resources
+F:\clone\HutechShop\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlCategory.resources
+F:\clone\HutechShop\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlDashboard.resources
+F:\clone\HutechShop\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlOrders.resources
+F:\clone\HutechShop\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlProduct.resources
+F:\clone\HutechShop\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlReport.resources
+F:\clone\HutechShop\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlUser.resources
+F:\clone\HutechShop\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer Shop Management System.csproj.GenerateResource.cache
+F:\clone\HutechShop\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer Shop Management System.csproj.CoreCompileInputs.cache
+F:\clone\HutechShop\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer Shop Management System.exe
+F:\clone\HutechShop\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer Shop Management System.pdb
+F:\clone\HutechShop\ComputerShopHutech-master\Computer Shop Management System\bin\Debug\Computer Shop Management System.exe.config
+F:\clone\HutechShop\ComputerShopHutech-master\Computer Shop Management System\bin\Debug\Computer Shop Management System.exe
+F:\clone\HutechShop\ComputerShopHutech-master\Computer Shop Management System\bin\Debug\Computer Shop Management System.pdb
+F:\clone\HutechShop\ComputerShopHutech-master\Computer Shop Management System\bin\Debug\EntityFramework.dll
+F:\clone\HutechShop\ComputerShopHutech-master\Computer Shop Management System\bin\Debug\EntityFramework.SqlServer.dll
+F:\clone\HutechShop\ComputerShopHutech-master\Computer Shop Management System\bin\Debug\Guna.UI2.dll
+F:\clone\HutechShop\ComputerShopHutech-master\Computer Shop Management System\bin\Debug\Microsoft.Web.Mvc.dll
+F:\clone\HutechShop\ComputerShopHutech-master\Computer Shop Management System\bin\Debug\EntityFramework.xml
+F:\clone\HutechShop\ComputerShopHutech-master\Computer Shop Management System\bin\Debug\EntityFramework.SqlServer.xml
+F:\clone\HutechShop\ComputerShopHutech-master\Computer Shop Management System\obj\Debug\Computer Shop Management System.csproj.CopyComplete
+C:\Users\DELL\Desktop\V_GUI\Computer Shop Management System\bin\Debug\Computer Shop Management System.exe.config
+C:\Users\DELL\Desktop\V_GUI\Computer Shop Management System\bin\Debug\Computer Shop Management System.exe
+C:\Users\DELL\Desktop\V_GUI\Computer Shop Management System\bin\Debug\Computer Shop Management System.pdb
+C:\Users\DELL\Desktop\V_GUI\Computer Shop Management System\bin\Debug\EntityFramework.dll
+C:\Users\DELL\Desktop\V_GUI\Computer Shop Management System\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\DELL\Desktop\V_GUI\Computer Shop Management System\bin\Debug\Guna.UI2.dll
+C:\Users\DELL\Desktop\V_GUI\Computer Shop Management System\bin\Debug\Microsoft.Web.Mvc.dll
+C:\Users\DELL\Desktop\V_GUI\Computer Shop Management System\bin\Debug\EntityFramework.xml
+C:\Users\DELL\Desktop\V_GUI\Computer Shop Management System\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\DELL\Desktop\V_GUI\Computer Shop Management System\obj\Debug\Computer Shop Management System.csproj.AssemblyReference.cache
+C:\Users\DELL\Desktop\V_GUI\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.FormForgotPass.resources
+C:\Users\DELL\Desktop\V_GUI\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.PAL.FormLogin.resources
+C:\Users\DELL\Desktop\V_GUI\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.Properties.Resources.resources
+C:\Users\DELL\Desktop\V_GUI\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.Report.resources
+C:\Users\DELL\Desktop\V_GUI\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.MainForm.resources
+C:\Users\DELL\Desktop\V_GUI\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlBrand.resources
+C:\Users\DELL\Desktop\V_GUI\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlCategory.resources
+C:\Users\DELL\Desktop\V_GUI\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlDashboard.resources
+C:\Users\DELL\Desktop\V_GUI\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlOrders.resources
+C:\Users\DELL\Desktop\V_GUI\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlProduct.resources
+C:\Users\DELL\Desktop\V_GUI\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlReport.resources
+C:\Users\DELL\Desktop\V_GUI\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlUser.resources
+C:\Users\DELL\Desktop\V_GUI\Computer Shop Management System\obj\Debug\Computer Shop Management System.csproj.GenerateResource.cache
+C:\Users\DELL\Desktop\V_GUI\Computer Shop Management System\obj\Debug\Computer Shop Management System.csproj.CoreCompileInputs.cache
+C:\Users\DELL\Desktop\V_GUI\Computer Shop Management System\obj\Debug\Computer Shop Management System.csproj.CopyComplete
+C:\Users\DELL\Desktop\V_GUI\Computer Shop Management System\obj\Debug\Computer Shop Management System.exe
+C:\Users\DELL\Desktop\V_GUI\Computer Shop Management System\obj\Debug\Computer Shop Management System.pdb

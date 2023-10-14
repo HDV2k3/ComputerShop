@@ -52,10 +52,10 @@ namespace Computer_Shop_Management_System.View
         private string ForgotPassword(string username, string email)
         {
             // Tạo đối tượng DbContext từ kết nối Code First của bạn
-            HutechDBBase dbContext = new HutechDBBase();
+            DataBase dbContext = new DataBase();
 
             // Tìm người dùng trong cơ sở dữ liệu
-            User user = dbContext.Users.FirstOrDefault(u => u.Users_Name == username && u.Users_Email == email);
+            User user = dbContext.User.FirstOrDefault(u => u.Users_Name == username && u.Users_Email == email);
 
             if (user != null)
             {

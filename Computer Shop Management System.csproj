@@ -65,39 +65,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\Computer.cs" />
-    <Compile Include="Model\Brand.cs">
-      <DependentUpon>HutechDBBase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Category.cs">
-      <DependentUpon>HutechDBBase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\HutechDBBase.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HutechDBBase.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\HutechDBBase.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HutechDBBase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\HutechDBBase.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HutechDBBase.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Order.cs">
-      <DependentUpon>HutechDBBase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Product.cs">
-      <DependentUpon>HutechDBBase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\sysdiagram.cs">
-      <DependentUpon>HutechDBBase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\User.cs">
-      <DependentUpon>HutechDBBase.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Model\Brand.cs" />
+    <Compile Include="Model\Category.cs" />
+    <Compile Include="Model\DataBase.cs" />
+    <Compile Include="Model\DataProvider.cs" />
+    <Compile Include="Model\OrderDetails.cs" />
+    <Compile Include="Model\Orders.cs" />
+    <Compile Include="Model\Product.cs" />
+    <Compile Include="Model\ProductOrder.cs" />
+    <Compile Include="Model\sysdiagrams.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="View\FormForgotPass.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,11 +89,29 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\FormReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormReport.Designer.cs">
+      <DependentUpon>FormReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControlBrand.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UserControlBrand.Designer.cs">
+      <DependentUpon>UserControlBrand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControlCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UserControlCategory.Designer.cs">
+      <DependentUpon>UserControlCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="View\UserControlDashboard.cs">
       <SubType>UserControl</SubType>
@@ -130,6 +125,25 @@
     <Compile Include="View\UserControlOrders.Designer.cs">
       <DependentUpon>UserControlOrders.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControlProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UserControlProduct.Designer.cs">
+      <DependentUpon>UserControlProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControlReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UserControlReport.Designer.cs">
+      <DependentUpon>UserControlReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControlUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UserControlUser.Designer.cs">
+      <DependentUpon>UserControlUser.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Report.rdlc" />
     <EmbeddedResource Include="View\FormForgotPass.resx">
       <DependentUpon>FormForgotPass.cs</DependentUpon>
     </EmbeddedResource>
@@ -146,8 +160,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\FormReport.resx">
+      <DependentUpon>FormReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserControlBrand.resx">
+      <DependentUpon>UserControlBrand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserControlCategory.resx">
+      <DependentUpon>UserControlCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UserControlDashboard.resx">
       <DependentUpon>UserControlDashboard.cs</DependentUpon>
@@ -155,13 +178,15 @@
     <EmbeddedResource Include="View\UserControlOrders.resx">
       <DependentUpon>UserControlOrders.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="Model\HutechDBBase.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HutechDBBase.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Model\HutechDBBase.edmx.diagram">
-      <DependentUpon>HutechDBBase.edmx</DependentUpon>
-    </None>
+    <EmbeddedResource Include="View\UserControlProduct.resx">
+      <DependentUpon>UserControlProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserControlReport.resx">
+      <DependentUpon>UserControlReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserControlUser.resx">
+      <DependentUpon>UserControlUser.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -223,16 +248,12 @@
     <None Include="Images\Sell_stock.png" />
     <None Include="Images\replication.png" />
     <None Include="Images\Product.png" />
-    <Content Include="Model\HutechDBBase.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HutechDBBase.edmx</DependentUpon>
-      <LastGenOutput>HutechDBBase.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model\HutechDBBase.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HutechDBBase.edmx</DependentUpon>
-      <LastGenOutput>HutechDBBase.cs</LastGenOutput>
-    </Content>
+    <None Include="Images\Search1.png" />
+    <None Include="Images\folder.png" />
+    <None Include="Images\floder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\stock.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
