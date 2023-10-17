@@ -18,6 +18,7 @@ namespace Computer_Shop_Management_System.View
 {
     public partial class UserControlOrders : UserControl
     {
+        private const string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay thế bằng chuỗi kết nối của bạn
         DataBase db = new DataBase();
         int otong = 0;
         public UserControlOrders()
@@ -60,7 +61,7 @@ namespace Computer_Shop_Management_System.View
 
         private void tpthemhoadon_Click(object sender, EventArgs e)
         {
-
+            LoadOrdersData();
         }
 
         private void txttenkhachhang_TextChanged(object sender, EventArgs e)
@@ -75,30 +76,53 @@ namespace Computer_Shop_Management_System.View
 
         private void tpluachon_Click(object sender, EventArgs e)
         {
-
+            LoadOrdersData();
         }
+        private void LoadOrdersData()
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
 
-        private void UserControlOrders_Load(object sender, EventArgs e)
+                    string query = "SELECT * FROM Orders";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    dtgvQL.DataSource = dataTable;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
+            }
+        }
+    
+    private void UserControlOrders_Load(object sender, EventArgs e)
         {
             txtMaHoaDon.Text = "BILL" + DateTime.Now.ToString("yyMMddhhmmss");
             LoadProductsToComboBox();
-          /*  // Kết nối và truy vấn cơ sở dữ liệu để lấy danh sách sản phẩm
-            string connectionString = "your_connection_string_here";
-            string query = "SELECT ProductName FROM Products";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            cmbsanpham.Items.Add(reader["ProductName"].ToString());
-                        }
-                    }
-                }
-            }*/
+            /*  // Kết nối và truy vấn cơ sở dữ liệu để lấy danh sách sản phẩm
+              string connectionString = "your_connection_string_here";
+              string query = "SELECT ProductName FROM Products";
+              using (SqlConnection connection = new SqlConnection(connectionString))
+              {
+                  connection.Open();
+                  using (SqlCommand command = new SqlCommand(query, connection))
+                  {
+                      using (SqlDataReader reader = command.ExecuteReader())
+                      {
+                          while (reader.Read())
+                          {
+                              cmbsanpham.Items.Add(reader["ProductName"].ToString());
+                          }
+                      }
+                  }
+              }*/
+            LoadOrdersData();
         }
 
         private void LoadProductsToComboBox()
@@ -119,11 +143,45 @@ namespace Computer_Shop_Management_System.View
         {
 
         }
+        private DateTime GetDateTimeValue(object value)
+        {
+            if (value != null && value != DBNull.Value)
+            {
+                return Convert.ToDateTime(value);
+            }
+            else
+            {
+                return DateTime.MinValue; // Giá trị mặc định khi giá trị là DBNull hoặc null
+            }
+        }
 
-        private void dtgvOrder_CellClick(object sender, DataGridViewCellEventArgs e)
+        private string GetStringCellValue(object value)
+        {
+            if (value != null && value != DBNull.Value)
+            {
+                return value.ToString();
+            }
+            else
+            {
+                return string.Empty; // Giá trị mặc định khi giá trị là DBNull hoặc null
+            }
+        }
+
+        private int GetIntValue(object value)
+        {
+            if (value != null && value != DBNull.Value)
+            {
+                return Convert.ToInt32(value);
+            }
+            else
+            {
+                return 0; // Giá trị mặc định khi giá trị là DBNull hoặc null
+            }
+        }
+            private void dtgvOrder_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            if (e.ColumnIndex == 4)
+            /*if (e.ColumnIndex == 4)
             {
                 int rowIndex = dtgvOrder.CurrentCell.RowIndex;
 
@@ -150,7 +208,8 @@ namespace Computer_Shop_Management_System.View
                         otong = 0;
                     }
                 }
-            }
+            }*/
+            
         }
         private void AddClear()
         {
@@ -654,6 +713,63 @@ namespace Computer_Shop_Management_System.View
             e.Graphics.DrawString(richTextBox.Text, new Font("Segoe UI", 6, FontStyle.Regular), Brushes.Black, new Point(10, 10));
         }
 
-        
+        private void btnxoa_Click(object sender, EventArgs e)
+        {
+           
+            {
+                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa hóa Đơn này?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    string orderid = txtMaHoaDon.Text;
+
+                    OderController oderController = new OderController();
+                    bool result = oderController.DeleteOrder(orderid);
+
+                    if (result)
+                    {
+                        MessageBox.Show("Xóa thương hiệu thành công.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        dtgvOrder.Refresh();
+                        EmtyBox1();
+                    }
+                }
+            }
+        }
+
+        private void dtgvQL_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dtgvOrder.Rows[e.RowIndex];
+
+                // Đổ dữ liệu từ DataGridViewRow vào các điều khiển tương ứng
+                dtpDate.Value = GetDateTimeValue(row.Cells["Order_Date"].Value);
+                txttenkhachhang.Text = GetStringCellValue(row.Cells["Customer_Name"].Value);
+                txtmakhachhang.Text = GetStringCellValue(row.Cells["Customer_Number"].Value);
+                txtMaHoaDon.Text = GetStringCellValue(row.Cells["Orders_Id"].Value);
+                txttongtien.Text = GetIntValue(row.Cells["Total_Amout"].Value).ToString();
+                txtTienThua.Text = GetIntValue(row.Cells["Paid_Amout"].Value).ToString();
+                txttienphaitra.Text = GetIntValue(row.Cells["Due_Amout"].Value).ToString();
+                txtGiamGia.Text = GetIntValue(row.Cells["Discount"].Value).ToString();
+                txttongcong.Text = GetIntValue(row.Cells["Grand_Total"].Value).ToString();
+                cmbtttt.SelectedItem = GetStringCellValue(row.Cells["StatusPayment"].Value);
+                tabControl1.SelectedTab = tpluachon;
+            }
+        }
+
+        private void tabControl1_Click(object sender, EventArgs e)
+        {
+            LoadOrdersData();
+        }
+
+        private void tpquanlyhoadon_Click(object sender, EventArgs e)
+        {
+            LoadOrdersData();
+        }
+
+        private void dtgvQL_Click(object sender, EventArgs e)
+        {
+            LoadOrdersData();
+        }
     }
 }
