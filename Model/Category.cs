@@ -10,7 +10,8 @@ namespace Computer_Shop_Management_System.Model
     public partial class Category
     {
         [Key]
-        public int Category_Id { get; set; }
+        [StringLength(50)]
+        public string Category_Id { get; set; }
 
         [Required]
         [StringLength(150)]

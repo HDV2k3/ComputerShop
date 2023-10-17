@@ -8,7 +8,7 @@ namespace Computer_Shop_Management_System.Model
     public partial class DataBase : DbContext
     {
         public DataBase()
-            : base("name=DataBase")
+            : base("name=DataBase1")
         {
         }
 
@@ -16,7 +16,6 @@ namespace Computer_Shop_Management_System.Model
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<Product> Product { get; set; }
-        public virtual DbSet<ProductOrder> ProductOrder { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<OrderDetails> OrderDetails { get; set; }
@@ -25,6 +24,10 @@ namespace Computer_Shop_Management_System.Model
         {
             modelBuilder.Entity<Brand>()
                 .Property(e => e.Brand_Id)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Category>()
+                .Property(e => e.Category_Id)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Orders>()
@@ -44,11 +47,6 @@ namespace Computer_Shop_Management_System.Model
                 .HasMany(e => e.OrderDetails)
                 .WithRequired(e => e.Product)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<ProductOrder>()
-                .HasMany(e => e.Product)
-                .WithOptional(e => e.ProductOrder1)
-                .HasForeignKey(e => e.ProductOrder);
 
             modelBuilder.Entity<User>()
                 .Property(e => e.Users_Name)

@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -21,82 +22,20 @@ namespace Computer_Shop_Management_System.View
             InitializeComponent();
         }
 
-        /*  public void EmptyBox()
-        {
-            txtbrandname.Clear();
-            cmbstatus.SelectedIndex = 0;
-
-        }*/
-        public void EmtyBox1()
-        {
-            txtTenThuongHieu.Clear();
-            cmbTrangThai.SelectedIndex = 0;
-
-        }
+      
             
 
         private void UserControlBrand_Load(object sender, EventArgs e)
         {
             txtMaThuongHieu.Text = "TH" + DateTime.Now.ToString("yyMMddhhmmss");
+            lblTotal.Text = dgvThuongHieu.Rows.Count.ToString();
         }
-
-    
-
-        private void picTimKiem_MouseHover(object sender, EventArgs e)
-        {
-            toolTip1.SetToolTip(picTimKiem, "Search");
-        }
-
-      
-
-        private void btnThem_Click(object sender, EventArgs e)
-        {
-            if (txtTenThuongHieu.Text.TrimStart() == string.Empty)
-            {
-                MessageBox.Show("Please enter brand name. ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (cmbTrangThai.SelectedIndex == 0)
-            {
-                MessageBox.Show("Please select status ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else
-            {
-                string brandId = txtMaThuongHieu.Text;
-                string brandName = txtTenThuongHieu.Text;
-                string brandStatus = cmbTrangThai.SelectedItem.ToString();
-
-                string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
-
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-
-                    string query = "INSERT INTO Brand (Brand_Id, Brand_Name, Brand_Status) VALUES (@BrandId, @BrandName, @BrandStatus)";
-
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@BrandId", brandId);
-                        command.Parameters.AddWithValue("@BrandName", brandName);
-                        command.Parameters.AddWithValue("@BrandStatus", brandStatus);
-
-                        command.ExecuteNonQuery();
-                    }
-                }
-
-                MessageBox.Show("Thêm Thương Hiệu Thành Công.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-    
-
         private void tpThemThuongThieu_Enter(object sender, EventArgs e)
         {
-            txtTimKiemThuongHieu.Clear();
-            dgvThuongHieu.Columns[0].Visible = false;
+            txtTimKiemThuongThieu.Clear();
+            /**//*dgvThuongHieu.Columns[0].Visible = true;*/
             // Kết nối đến cơ sở dữ liệu
-            using (SqlConnection connection = new SqlConnection("data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
+            using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
             {
                 // Mở kết nối
                 connection.Open();
@@ -113,7 +52,9 @@ namespace Computer_Shop_Management_System.View
                 DataTable dataTable = GetDataFromDatabase();
 
                 // Gán datatable làm nguồn dữ liệu cho DataGridView
+
                 dgvThuongHieu.DataSource = dataTable;
+
             }
             lblTotal.Text = dgvThuongHieu.Rows.Count.ToString();
         }
@@ -140,48 +81,124 @@ namespace Computer_Shop_Management_System.View
 
             return dataTable;
         }
-
-        private void txtTimKiemThuongThieu_TextChanged(object sender, EventArgs e)
-        {
-            string searchKeyword = txtTimKiemThuongHieu.Text;
-
-            // Kết nối đến cơ sở dữ liệu
-            using (SqlConnection connection = new SqlConnection("data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
-            {
-                // Mở kết nối
-                connection.Open();
-
-                // Câu truy vấn SELECT để lấy các brand thỏa mãn điều kiện
-                string query = "SELECT * FROM Brand WHERE Brand_Name LIKE @SearchKeyword";
-
-                // Thực hiện truy vấn
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@SearchKeyword", "%" + searchKeyword + "%");
-                SqlDataReader reader = command.ExecuteReader();
-
-                // Tạo DataTable để lưu dữ liệu từ truy vấn
-                DataTable dataTable = new DataTable();
-                dataTable.Load(reader);
-
-                // Gán DataTable làm nguồn dữ liệu cho DataGridView
-                dgvThuongHieu.DataSource = dataTable;
-            }
-            lblTotal.Text = dgvThuongHieu.Rows.Count.ToString();
-        }
-
         private void dgvThuongHieu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex != -1)
+            if (e.RowIndex != -1 && e.RowIndex < dgvThuongHieu.Rows.Count)
             {
                 DataGridViewRow row = dgvThuongHieu.Rows[e.RowIndex];
-                txtMaThuongHieu.Text = row.Cells[0].Value.ToString();
-                txtTenThuongHieu.Text = row.Cells[1].Value.ToString();
-                cmbTrangThai.SelectedItem = row.Cells[2].Value.ToString();
 
-                tpThemThuongThieu.SelectedTab = tpLuaChon;
+                if (row.Cells[0].Value != null)
+                    txtMaThuongHieu.Text = row.Cells[0].Value.ToString();
+
+                if (row.Cells[1].Value != null)
+                    txtTenThuongHieu.Text = row.Cells[1].Value.ToString();
+
+                if (row.Cells[2].Value != null)
+                    cmbTrangThai.SelectedItem = row.Cells[2].Value.ToString();
             }
         }
+        public void EmptyBox()
+        {
+            txtTenThuongHieu.Clear();
+            cmbTrangThai.SelectedIndex = 0;
 
+        }
+        public void EmtyBox1()
+        {
+            txtTenThuongHieu1.Clear();
+            cmbTRangThai1.SelectedIndex = 0;
+
+        }
+        private bool IsDuplicateBrand(string brandId, string brandName)
+        {
+            string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT COUNT(*) FROM Brand WHERE Brand_Id = @BrandId OR Brand_Name = @BrandName";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@BrandId", brandId);
+                    command.Parameters.AddWithValue("@BrandName", brandName);
+
+                    int count = (int)command.ExecuteScalar();
+
+                    if (count > 0)
+                    {
+                        return true; // Trùng lặp mã thương hiệu hoặc tên thương hiệu
+                    }
+                }
+            }
+
+            return false; // Không có trùng lặp
+        }
+        private bool ValidateBrandName(string brandName)
+        {
+            // Biểu thức chính quy để kiểm tra chuỗi không chứa ký tự đặc biệt và số
+            string pattern = @"^[a-zA-Z\s]+$";
+
+            Regex regex = new Regex(pattern);
+
+            return regex.IsMatch(brandName);
+        }
+
+    
+      
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            if (txtMaThuongHieu.Text.Trim() == string.Empty)
+            {
+                MessageBox.Show("Vui lòng nhập mã thương hiệu.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (txtTenThuongHieu.Text.Trim() == string.Empty)
+            {
+                MessageBox.Show("Vui lòng nhập tên thương hiệu.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (!ValidateBrandName(txtTenThuongHieu.Text.Trim()))
+            {
+                MessageBox.Show("Tên thương hiệu không được chứa ký tự đặc biệt và số.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (cmbTrangThai.SelectedIndex == -1)
+            {
+                MessageBox.Show("Vui lòng chọn trạng thái.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+                string brandId = txtMaThuongHieu.Text;
+                string brandName = txtTenThuongHieu.Text;
+                string brandStatus = cmbTrangThai.SelectedItem.ToString();
+
+                // Kiểm tra trùng lặp mã thương hiệu hoặc tên thương hiệu
+                if (IsDuplicateBrand(brandId, brandName))
+                {
+                    MessageBox.Show("Mã thương hiệu hoặc tên thương hiệu đã tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Tiếp tục thêm thương hiệu mới
+                BrandController brandController = new BrandController();
+                bool result = brandController.AddBrand(brandId, brandName, brandStatus);
+
+                if (result)
+                {
+                    MessageBox.Show("Thêm Thương Hiệu Thành Công.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                    dgvThuongHieu.DataSource = brandController;
+
+                    dgvThuongHieu.Refresh();
+                    EmptyBox();
+                }
+            }
+        }
         private void btnThayDoi_Click(object sender, EventArgs e)
         {
             if (txtMaThuongHieu.Text.Trim() == string.Empty)
@@ -201,28 +218,23 @@ namespace Computer_Shop_Management_System.View
             }
             else
             {
-                string str = "INSERT INTO Brand(Brand_Id,Brand_Name,Brand_Status)  VALUES ( '" + txtMaThuongHieu.Text + "','" + txtTenThuongHieu1.Text + "','" + cmbTRangThai1.Text + "')";
-                DataProvider.ExecuteNonQuery(str);
+                string brandName = txtTenThuongHieu1.Text;
+                string brandStatus = cmbTRangThai1.Text;
 
-                foreach (DataGridViewRow rows in dgvThuongHieu.Rows)
+                BrandController brandController = new BrandController();
+                bool result = brandController.ChangedBrand(brandName, brandStatus);
+
+                if (result)
                 {
-                    string a = "SELECT * FROM Product WHERE Product_Name = N'" + rows.Cells[0].Value.ToString() + "' ";
-                    DataTable dt = new DataTable();
-                    dt = DataProvider.GetData(a);
+                    MessageBox.Show("Thêm Thương Hiệu Thành Công.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    dgvThuongHieu.Refresh();
 
-                    /* int Product_Id = Convert.ToInt32(dt.Rows[0][0].ToString());
-
-                     int Amout = Convert.ToInt32(rows.Cells[2].Value.ToString());
-                     int Product_Rate = Convert.ToInt32(rows.Cells[1].Value.ToString());
-                     int Total = Convert.ToInt32(rows.Cells[3].Value.ToString());
-                     string str2 = "INSERT INTO OrderDetails(Orders_Id,Product_Id,Amout,Product_Rate,Total)  VALUES ( '" + txtOrders_Id.Text + "'," + Product_Id + "," + Amout + "," + Product_Rate + "," + Total + ")";
-                     DataProvider.ExecuteNonQuery(str2);*/
+                    EmtyBox1();
                 }
-                tpThemThuongThieu.SelectedTab = tpQuanLyThuongHieu;
-                EmtyBox1();
             }
         }
+
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
@@ -248,33 +260,62 @@ namespace Computer_Shop_Management_System.View
                 {
                     string brandName = txtTenThuongHieu1.Text;
 
-                    // Kết nối đến cơ sở dữ liệu
-                    using (SqlConnection connection = new SqlConnection("data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
+                    BrandController brandController = new BrandController();
+                    bool result = brandController.DeleteBrand(brandName);
+
+                    if (result)
                     {
-                        // Mở kết nối
-                        connection.Open();
+                        MessageBox.Show("Xóa thương hiệu thành công.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        // Câu truy vấn DELETE để xóa thương hiệu
-                        string query = "DELETE FROM Brand WHERE Brand_Name = @BrandName";
-
-                        // Thực hiện truy vấn
-                        SqlCommand command = new SqlCommand(query, connection);
-                        command.Parameters.AddWithValue("@BrandName", brandName);
-                        int rowsAffected = command.ExecuteNonQuery();
-
-                        if (rowsAffected > 0)
-                        {
-                            MessageBox.Show("Xóa thương hiệu thành công.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            // Thực hiện làm mới DataGridView hoặc các hoạt động cần thiết khác
-                        }
-                        else
-                        {
-                            MessageBox.Show("Không tìm thấy thương hiệu để xóa.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        dgvThuongHieu.Refresh();
+                        EmtyBox1();
                     }
                 }
             }
         }
+        private void txtLoadData_Click(object sender, EventArgs e)
+        {
+           
+            /**//*dgvThuongHieu.Columns[0].Visible = true;*/
+            // Kết nối đến cơ sở dữ liệu
+            using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
+            {
+                // Mở kết nối
+                connection.Open();
+
+                // Câu truy vấn SELECT để lấy dữ liệu từ bảng Brand
+                string query = "SELECT * FROM Brand";
+
+                // Thực hiện truy vấn
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataReader reader = command.ExecuteReader();
+
+
+                // Lấy dữ liệu từ cơ sở dữ liệu và lưu vào datatable
+                DataTable dataTable = GetDataFromDatabase();
+
+                // Gán datatable làm nguồn dữ liệu cho DataGridView
+
+                dgvThuongHieu.DataSource = dataTable;
+
+            }
+            lblTotal.Text = dgvThuongHieu.Rows.Count.ToString();
+        }
+        private void picTimKiem_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.SetToolTip(pictureBox1, "Search");
+        }
+
+        private void txtTimKiemThuongThieu_TextChanged(object sender, EventArgs e)
+        {
+            string searchKeyword = txtTimKiemThuongThieu.Text.Trim();
+            BrandController brandController = new BrandController();
+            List<Brand> searchResults = brandController.SearchBrands(searchKeyword);
+            // Cập nhật DataGridView với kết quả tìm kiếm
+            dgvThuongHieu.DataSource = searchResults;
+            lblTotal.Text = dgvThuongHieu.Rows.Count.ToString();
+        }
+
 
         private void tpLuaChon_Enter(object sender, EventArgs e)
         {
@@ -287,6 +328,50 @@ namespace Computer_Shop_Management_System.View
         private void tpLuaChon_Leave(object sender, EventArgs e)
         {
             EmtyBox1();
+        }
+
+        private void tpThemThuongHieu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tpQuanLyThuongHieu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTimKiemThuongHieu_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tpThemThuongThieu_Click(object sender, EventArgs e)
+        {
+            txtTimKiemThuongThieu.Clear();
+            /**//*dgvThuongHieu.Columns[0].Visible = true;*/
+            // Kết nối đến cơ sở dữ liệu
+            using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
+            {
+                // Mở kết nối
+                connection.Open();
+
+                // Câu truy vấn SELECT để lấy dữ liệu từ bảng Brand
+                string query = "SELECT * FROM Brand";
+
+                // Thực hiện truy vấn
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataReader reader = command.ExecuteReader();
+
+
+                // Lấy dữ liệu từ cơ sở dữ liệu và lưu vào datatable
+                DataTable dataTable = GetDataFromDatabase();
+
+                // Gán datatable làm nguồn dữ liệu cho DataGridView
+
+                dgvThuongHieu.DataSource = dataTable;
+
+            }
+            lblTotal.Text = dgvThuongHieu.Rows.Count.ToString();
         }
     }
 }

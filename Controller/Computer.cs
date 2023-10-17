@@ -34,7 +34,7 @@ namespace Computer_Shop_Management_System.Controller
         }
         // query sản phẩm
 
-        public static void BrandCategoryProduct(string query, System.Windows.Forms.ComboBox cb)
+        public static void BrandCategoryProduct(string productName, System.Windows.Forms.ComboBox cb)
         {
             using (var dbContext = new DataBase())
             {
@@ -46,7 +46,7 @@ namespace Computer_Shop_Management_System.Controller
 
                 Computer computer = new Computer();
 
-                foreach (var productName in products)
+                foreach (var TenSanPham in products)
                 {
                     computer.AddProductToComboBox(productName, cb);  // Gọi phương thức từ đối tượng Computer
                 }
