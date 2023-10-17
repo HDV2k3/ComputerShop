@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,7 +16,7 @@ namespace Computer_Shop_Management_System.Controller
     {
         public static void BrandCategoryProduct(string query, ComboBox cb)
         {
-            string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+            string connectionString = @"data source=.\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -25,7 +26,7 @@ namespace Computer_Shop_Management_System.Controller
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        cb.Items.Clear(); // Xóa tất cả các mục hiện có trong ComboBox
+                        //cb.Items.Clear(); // Xóa tất cả các mục hiện có trong ComboBox
 
                         while (reader.Read())
                         {
@@ -40,7 +41,7 @@ namespace Computer_Shop_Management_System.Controller
         public static void DisplayAndSearch(string query, DataGridView dgv)
         {
             // Thay đổi chuỗi kết nối của bạn tới cơ sở dữ liệu của bạn
-            string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+            string connectionString = @"data source=.\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -59,7 +60,30 @@ namespace Computer_Shop_Management_System.Controller
                 }
             }
         }
-      
+
+        public static void RemoveProduct1(string productName)
+        {
+            using (var context = new DataBase()) // Thay YourDbContext bằng tên DbContext của bạn
+            {
+                // Tìm sản phẩm theo tên sản phẩm
+                var productToRemove = context.Product.FirstOrDefault(p => p.Product_Name == productName);
+
+                if (productToRemove != null)
+                {
+                    // Xóa sản phẩm nếu tồn tại
+                    context.Product.Remove(productToRemove);
+
+                    // Lưu các thay đổi vào cơ sở dữ liệu
+                    context.SaveChanges();
+                }
+                else
+                {
+                    Console.WriteLine($"Không tìm thấy sản phẩm với tên '{productName}' trong cơ sở dữ liệu.");
+                }
+            }
+        }
+
+
 
         public static void RemoveProduct(string id)
         {
@@ -101,7 +125,7 @@ namespace Computer_Shop_Management_System.Controller
                     }
                     else
                     {
-                        Console.WriteLine("Sản phẩm đã tồn tại trong cơ sở dữ liệu.");
+                        MessageBox.Show("Sản phẩm đã tồn tại trong cơ sở dữ liệu.");
                         // Thực hiện các hành động khác khi sản phẩm đã tồn tại
                     }
                 }
@@ -114,6 +138,30 @@ namespace Computer_Shop_Management_System.Controller
                     {
                         Console.WriteLine($"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
                     }
+                }
+            }
+        }
+        internal static void UpdateProduct(Product product)
+        {
+            string connectionString = @"data source=.\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay thế bằng chuỗi kết nối đến cơ sở dữ liệu của bạn
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "UPDATE Product SET Product_Name = @Name, Product_Image = @Image, Product_Rate = @Price, Product_Quantity = @Quantity, Product_Brand = @Brand, Product_Category = @Category, Product_Status = @Status WHERE Id = @Id";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Name", product.Product_Name);
+                    command.Parameters.AddWithValue("@Image", product.Product_Image);
+                    command.Parameters.AddWithValue("@Price", product.Product_Rate);
+                    command.Parameters.AddWithValue("@Quantity", product.Product_Quantity);
+                    command.Parameters.AddWithValue("@Brand", product.Product_Brand);
+                    command.Parameters.AddWithValue("@Category", product.Product_Category);
+                    command.Parameters.AddWithValue("@Status", product.Product_Stastus);
+                    command.Parameters.AddWithValue("@Id", product.Product_Id); // Thay thế bằng tham số định danh sản phẩm của bạn
+                    command.ExecuteNonQuery();
                 }
             }
         }

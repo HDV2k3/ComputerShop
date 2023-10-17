@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tpProduct = new System.Windows.Forms.TabControl();
             this.tpThemSanPham = new System.Windows.Forms.TabPage();
             this.nudSoLuong = new System.Windows.Forms.NumericUpDown();
@@ -106,7 +106,7 @@
             this.tpProduct.Controls.Add(this.tpLuaChon);
             this.tpProduct.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tpProduct.Location = new System.Drawing.Point(0, 2);
-            this.tpProduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpProduct.Margin = new System.Windows.Forms.Padding(2);
             this.tpProduct.Name = "tpProduct";
             this.tpProduct.SelectedIndex = 0;
             this.tpProduct.Size = new System.Drawing.Size(983, 554);
@@ -135,9 +135,9 @@
             this.tpThemSanPham.Controls.Add(this.label5);
             this.tpThemSanPham.Controls.Add(this.label6);
             this.tpThemSanPham.Location = new System.Drawing.Point(4, 4);
-            this.tpThemSanPham.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpThemSanPham.Margin = new System.Windows.Forms.Padding(2);
             this.tpThemSanPham.Name = "tpThemSanPham";
-            this.tpThemSanPham.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpThemSanPham.Padding = new System.Windows.Forms.Padding(2);
             this.tpThemSanPham.Size = new System.Drawing.Size(975, 524);
             this.tpThemSanPham.TabIndex = 0;
             this.tpThemSanPham.Text = "Thêm Sản Phẩm";
@@ -148,7 +148,7 @@
             // nudSoLuong
             // 
             this.nudSoLuong.Location = new System.Drawing.Point(241, 117);
-            this.nudSoLuong.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nudSoLuong.Margin = new System.Windows.Forms.Padding(2);
             this.nudSoLuong.Name = "nudSoLuong";
             this.nudSoLuong.Size = new System.Drawing.Size(155, 25);
             this.nudSoLuong.TabIndex = 17;
@@ -157,7 +157,7 @@
             // txtGiaTien
             // 
             this.txtGiaTien.Location = new System.Drawing.Point(53, 117);
-            this.txtGiaTien.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtGiaTien.Margin = new System.Windows.Forms.Padding(2);
             this.txtGiaTien.Name = "txtGiaTien";
             this.txtGiaTien.Size = new System.Drawing.Size(151, 25);
             this.txtGiaTien.TabIndex = 16;
@@ -171,7 +171,7 @@
             "Có sẵn",
             "Không có sẵn"});
             this.cmbTrangThai.Location = new System.Drawing.Point(53, 339);
-            this.cmbTrangThai.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbTrangThai.Margin = new System.Windows.Forms.Padding(2);
             this.cmbTrangThai.Name = "cmbTrangThai";
             this.cmbTrangThai.Size = new System.Drawing.Size(279, 25);
             this.cmbTrangThai.TabIndex = 6;
@@ -181,7 +181,7 @@
             // 
             this.cmbLoai.FormattingEnabled = true;
             this.cmbLoai.Location = new System.Drawing.Point(53, 248);
-            this.cmbLoai.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbLoai.Margin = new System.Windows.Forms.Padding(2);
             this.cmbLoai.Name = "cmbLoai";
             this.cmbLoai.Size = new System.Drawing.Size(279, 25);
             this.cmbLoai.TabIndex = 5;
@@ -191,7 +191,7 @@
             // 
             this.cmbThuongHieu.FormattingEnabled = true;
             this.cmbThuongHieu.Location = new System.Drawing.Point(53, 181);
-            this.cmbThuongHieu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbThuongHieu.Margin = new System.Windows.Forms.Padding(2);
             this.cmbThuongHieu.Name = "cmbThuongHieu";
             this.cmbThuongHieu.Size = new System.Drawing.Size(279, 25);
             this.cmbThuongHieu.TabIndex = 4;
@@ -202,7 +202,7 @@
             this.picPhoto.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.picPhoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picPhoto.Location = new System.Drawing.Point(508, 48);
-            this.picPhoto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.picPhoto.Margin = new System.Windows.Forms.Padding(2);
             this.picPhoto.Name = "picPhoto";
             this.picPhoto.Size = new System.Drawing.Size(222, 231);
             this.picPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -221,7 +221,7 @@
             this.btnDuyetSanPham.Image = global::Computer_Shop_Management_System.Properties.Resources.floder;
             this.btnDuyetSanPham.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDuyetSanPham.Location = new System.Drawing.Point(508, 297);
-            this.btnDuyetSanPham.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDuyetSanPham.Margin = new System.Windows.Forms.Padding(2);
             this.btnDuyetSanPham.Name = "btnDuyetSanPham";
             this.btnDuyetSanPham.Size = new System.Drawing.Size(221, 57);
             this.btnDuyetSanPham.TabIndex = 8;
@@ -239,7 +239,7 @@
             this.btnThem.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThem.ForeColor = System.Drawing.Color.White;
             this.btnThem.Location = new System.Drawing.Point(53, 383);
-            this.btnThem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(107, 34);
             this.btnThem.TabIndex = 7;
@@ -298,7 +298,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.txtTenSanPham.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTenSanPham.Location = new System.Drawing.Point(53, 57);
-            this.txtTenSanPham.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTenSanPham.Margin = new System.Windows.Forms.Padding(2);
             this.txtTenSanPham.Name = "txtTenSanPham";
             this.txtTenSanPham.Size = new System.Drawing.Size(349, 25);
             this.txtTenSanPham.TabIndex = 1;
@@ -373,9 +373,9 @@
             this.tpQuanLySanPham.Controls.Add(this.label10);
             this.tpQuanLySanPham.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tpQuanLySanPham.Location = new System.Drawing.Point(4, 4);
-            this.tpQuanLySanPham.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpQuanLySanPham.Margin = new System.Windows.Forms.Padding(2);
             this.tpQuanLySanPham.Name = "tpQuanLySanPham";
-            this.tpQuanLySanPham.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpQuanLySanPham.Padding = new System.Windows.Forms.Padding(2);
             this.tpQuanLySanPham.Size = new System.Drawing.Size(975, 524);
             this.tpQuanLySanPham.TabIndex = 1;
             this.tpQuanLySanPham.Text = "Quản Lý Sản Phẩm";
@@ -390,7 +390,7 @@
             this.picTimKiem.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picTimKiem.Image = global::Computer_Shop_Management_System.Properties.Resources.Search1;
             this.picTimKiem.Location = new System.Drawing.Point(460, 35);
-            this.picTimKiem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.picTimKiem.Margin = new System.Windows.Forms.Padding(2);
             this.picTimKiem.Name = "picTimKiem";
             this.picTimKiem.Size = new System.Drawing.Size(27, 23);
             this.picTimKiem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -409,27 +409,27 @@
             this.dgvSanPham.BackgroundColor = System.Drawing.Color.White;
             this.dgvSanPham.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvSanPham.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSanPham.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSanPham.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSanPham.ColumnHeadersHeight = 34;
             this.dgvSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(151)))), ((int)(((byte)(196)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSanPham.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(151)))), ((int)(((byte)(196)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSanPham.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvSanPham.EnableHeadersVisualStyles = false;
             this.dgvSanPham.Location = new System.Drawing.Point(98, 64);
-            this.dgvSanPham.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvSanPham.Margin = new System.Windows.Forms.Padding(2);
             this.dgvSanPham.Name = "dgvSanPham";
             this.dgvSanPham.ReadOnly = true;
             this.dgvSanPham.RowHeadersWidth = 62;
@@ -437,13 +437,14 @@
             this.dgvSanPham.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSanPham.Size = new System.Drawing.Size(707, 295);
             this.dgvSanPham.TabIndex = 0;
+            this.dgvSanPham.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSanPham_CellClick);
             this.dgvSanPham.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSanPham_CellContentClick);
             // 
             // txtTimKiemSanPham
             // 
             this.txtTimKiemSanPham.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtTimKiemSanPham.Location = new System.Drawing.Point(190, 35);
-            this.txtTimKiemSanPham.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTimKiemSanPham.Margin = new System.Windows.Forms.Padding(2);
             this.txtTimKiemSanPham.Name = "txtTimKiemSanPham";
             this.txtTimKiemSanPham.Size = new System.Drawing.Size(247, 25);
             this.txtTimKiemSanPham.TabIndex = 1;
@@ -524,9 +525,9 @@
             this.tpLuaChon.Controls.Add(this.label16);
             this.tpLuaChon.Controls.Add(this.label17);
             this.tpLuaChon.Location = new System.Drawing.Point(4, 4);
-            this.tpLuaChon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpLuaChon.Margin = new System.Windows.Forms.Padding(2);
             this.tpLuaChon.Name = "tpLuaChon";
-            this.tpLuaChon.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpLuaChon.Padding = new System.Windows.Forms.Padding(2);
             this.tpLuaChon.Size = new System.Drawing.Size(975, 524);
             this.tpLuaChon.TabIndex = 2;
             this.tpLuaChon.Text = "Lựa Chọn";
@@ -536,7 +537,7 @@
             // nudSoLuong1
             // 
             this.nudSoLuong1.Location = new System.Drawing.Point(241, 135);
-            this.nudSoLuong1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nudSoLuong1.Margin = new System.Windows.Forms.Padding(2);
             this.nudSoLuong1.Name = "nudSoLuong1";
             this.nudSoLuong1.Size = new System.Drawing.Size(141, 25);
             this.nudSoLuong1.TabIndex = 32;
@@ -545,7 +546,7 @@
             // txtGiaTien1
             // 
             this.txtGiaTien1.Location = new System.Drawing.Point(42, 135);
-            this.txtGiaTien1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtGiaTien1.Margin = new System.Windows.Forms.Padding(2);
             this.txtGiaTien1.Name = "txtGiaTien1";
             this.txtGiaTien1.Size = new System.Drawing.Size(147, 25);
             this.txtGiaTien1.TabIndex = 31;
@@ -559,7 +560,7 @@
             "Có sẵn",
             "Không có sẵn"});
             this.cmbTrangThai1.Location = new System.Drawing.Point(42, 323);
-            this.cmbTrangThai1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbTrangThai1.Margin = new System.Windows.Forms.Padding(2);
             this.cmbTrangThai1.Name = "cmbTrangThai1";
             this.cmbTrangThai1.Size = new System.Drawing.Size(148, 25);
             this.cmbTrangThai1.TabIndex = 6;
@@ -569,7 +570,7 @@
             // 
             this.cmbLoai1.FormattingEnabled = true;
             this.cmbLoai1.Location = new System.Drawing.Point(43, 249);
-            this.cmbLoai1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbLoai1.Margin = new System.Windows.Forms.Padding(2);
             this.cmbLoai1.Name = "cmbLoai1";
             this.cmbLoai1.Size = new System.Drawing.Size(147, 25);
             this.cmbLoai1.TabIndex = 5;
@@ -579,7 +580,7 @@
             // 
             this.cmbThuongHieu1.FormattingEnabled = true;
             this.cmbThuongHieu1.Location = new System.Drawing.Point(42, 187);
-            this.cmbThuongHieu1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbThuongHieu1.Margin = new System.Windows.Forms.Padding(2);
             this.cmbThuongHieu1.Name = "cmbThuongHieu1";
             this.cmbThuongHieu1.Size = new System.Drawing.Size(148, 25);
             this.cmbThuongHieu1.TabIndex = 4;
@@ -594,7 +595,7 @@
             this.btnXoa.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoa.ForeColor = System.Drawing.Color.White;
             this.btnXoa.Location = new System.Drawing.Point(185, 356);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(106, 34);
             this.btnXoa.TabIndex = 8;
@@ -607,7 +608,7 @@
             this.picPhoto1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.picPhoto1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picPhoto1.Location = new System.Drawing.Point(474, 41);
-            this.picPhoto1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.picPhoto1.Margin = new System.Windows.Forms.Padding(2);
             this.picPhoto1.Name = "picPhoto1";
             this.picPhoto1.Size = new System.Drawing.Size(187, 190);
             this.picPhoto1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -626,7 +627,7 @@
             this.btnDuyetSanPham1.Image = global::Computer_Shop_Management_System.Properties.Resources.floder;
             this.btnDuyetSanPham1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDuyetSanPham1.Location = new System.Drawing.Point(474, 252);
-            this.btnDuyetSanPham1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDuyetSanPham1.Margin = new System.Windows.Forms.Padding(2);
             this.btnDuyetSanPham1.Name = "btnDuyetSanPham1";
             this.btnDuyetSanPham1.Size = new System.Drawing.Size(186, 54);
             this.btnDuyetSanPham1.TabIndex = 9;
@@ -644,7 +645,7 @@
             this.btnThayDoi.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThayDoi.ForeColor = System.Drawing.Color.White;
             this.btnThayDoi.Location = new System.Drawing.Point(41, 356);
-            this.btnThayDoi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThayDoi.Margin = new System.Windows.Forms.Padding(2);
             this.btnThayDoi.Name = "btnThayDoi";
             this.btnThayDoi.Size = new System.Drawing.Size(107, 34);
             this.btnThayDoi.TabIndex = 7;
@@ -703,7 +704,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.txtTenSanPham1.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTenSanPham1.Location = new System.Drawing.Point(43, 66);
-            this.txtTenSanPham1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTenSanPham1.Margin = new System.Windows.Forms.Padding(2);
             this.txtTenSanPham1.Name = "txtTenSanPham1";
             this.txtTenSanPham1.Size = new System.Drawing.Size(359, 25);
             this.txtTenSanPham1.TabIndex = 1;
@@ -802,7 +803,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.tpProduct);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UserControlProduct";
             this.Size = new System.Drawing.Size(985, 558);
             this.Load += new System.EventHandler(this.UserControlProduct_Load);

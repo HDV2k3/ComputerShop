@@ -24,14 +24,17 @@ namespace Computer_Shop_Management_System.View
         #region Method
         public void EmtyBox()
         {
+            txtMaLoai.Text = "L" + DateTime.Now.ToString("yyMMddhhmmss");
             txtTenLoai.Clear();
             cmbTrangThai.SelectedIndex = 0;
+
         }
         public void EmtyBox1()
         {
+            txtMaLoai1.Text = string.Empty;
             txtTenLoai1.Clear();
-            cmbTRangThai1.SelectedIndex = 0;
-
+            cmbTrangThai1.SelectedIndex = 0;
+            
         }
         #endregion
 
@@ -54,7 +57,10 @@ namespace Computer_Shop_Management_System.View
         {
             txtMaLoai.Text = "L" + DateTime.Now.ToString("yyMMddhhmmss");
             lblTotal.Text = dgvLoai.Rows.Count.ToString();
-
+            txtMaLoai.ReadOnly = true;
+            txtMaLoai.Enabled = false;
+            txtMaLoai1.ReadOnly = true;
+            txtMaLoai1.Enabled = false;
         }
 
         private void txtTenLoai_TextChanged(object sender, EventArgs e)
@@ -120,18 +126,18 @@ namespace Computer_Shop_Management_System.View
         }
         private void dgvLoai_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex != -1 && e.RowIndex < dgvLoai.Rows.Count)
+            if (e.RowIndex >= 0 && e.RowIndex < dgvLoai.RowCount)
             {
                 DataGridViewRow row = dgvLoai.Rows[e.RowIndex];
 
-                if (row.Cells[0].Value != null)
-                    txtMaLoai.Text = row.Cells[0].Value.ToString();
-
-                if (row.Cells[1].Value != null)
-                    txtTenLoai.Text = row.Cells[1].Value.ToString();
-
-                if (row.Cells[2].Value != null)
-                    cmbTrangThai.SelectedItem = row.Cells[2].Value.ToString();
+                if (row.Cells.Count > 2) // Kiểm tra có đủ cột dữ liệu trong dòng hay không
+                {
+                    // Đổ dữ liệu vào các controls
+                    txtMaLoai1.Text = row.Cells[0].Value.ToString();
+                    txtTenLoai1.Text = row.Cells[1].Value.ToString();
+                    cmbTrangThai1.SelectedItem = row.Cells[2].Value.ToString();
+                    tpThemLoai.SelectedTab = tpLuaChon;
+                }
             }
         }
         private void tcThemLoai_Enter(object sender, EventArgs e)
@@ -191,7 +197,7 @@ namespace Computer_Shop_Management_System.View
         private bool ValidateCategoryName(string CategoryName)
         {
             // Biểu thức chính quy để kiểm tra chuỗi không chứa ký tự đặc biệt và số
-            string pattern = @"^[a-zA-Z\s]+$";
+            string pattern = @"^[\p{L}\s]+$";
 
             Regex regex = new Regex(pattern);
 
@@ -262,30 +268,20 @@ namespace Computer_Shop_Management_System.View
                 MessageBox.Show("Vui Lòng Nhập Tên Loại .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            else if (cmbTRangThai1.SelectedIndex == 0)
+            else if (cmbTrangThai1.SelectedIndex == 0)
             {
                 MessageBox.Show(" Vui lòng chọn trạng thái .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else
             {
-                string CategoryName = txtTenLoai1.Text;
-                string CategoryStatus = cmbTRangThai1.Text;
-
-                CategoryController CategoryController = new CategoryController();
-                bool result = CategoryController.ChangedCategory(CategoryName, CategoryStatus);
-
-                if (result)
-                {
-                    MessageBox.Show("Thêm Loai Thành Công.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    dgvLoai.Refresh();
-
-                    EmtyBox1();
-                }
+                Category category = new Category(txtMaLoai1.Text,txtTenLoai1.Text, cmbTrangThai1.SelectedItem.ToString());
+                CategoryController.ChangedCategory(category);
+                MessageBox.Show("Thay Đổi Thành Công");
+                EmtyBox1();
             }
         }
-
+       
         private void btnXoa_Click(object sender, EventArgs e)
         {
             if (txtMaLoai.Text.Trim() == string.Empty)
@@ -298,7 +294,7 @@ namespace Computer_Shop_Management_System.View
                 MessageBox.Show("Vui Lòng Nhập Tên Loại .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            else if (cmbTRangThai1.SelectedIndex == 0)
+            else if (cmbTrangThai1.SelectedIndex == 0)
             {
                 MessageBox.Show(" Vui lòng chọn trạng thái .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -320,17 +316,17 @@ namespace Computer_Shop_Management_System.View
                         dgvLoai.Refresh();
                         EmtyBox1();
                     }
+                    else
+                    {
+                        MessageBox.Show("Lỗi");
+                    }    
                 }
             }
         }
 
         private void txtTimKiemLoai_TextChanged(object sender, EventArgs e)
         {
-            string searchKeyword = txtTimKiemLoai.Text.Trim();
-            CategoryController categoryController = new CategoryController();
-            List<Category> searchResults = categoryController.SearchCategorys(searchKeyword);
-            // Cập nhật DataGridView với kết quả tìm kiếm
-            dgvLoai.DataSource = searchResults;
+            CategoryController.SearchCategorys("SELECT Category_Name,Category_Id,Category_Status FROM Category WHERE Category_Name LIKE '%" + txtTimKiemLoai.Text + "%';", dgvLoai);
             lblTotal.Text = dgvLoai.Rows.Count.ToString();
         }
 
@@ -378,18 +374,18 @@ namespace Computer_Shop_Management_System.View
 
         private void dgvLoai_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex != -1 && e.RowIndex < dgvLoai.Rows.Count)
+            if (e.RowIndex >= 0 && e.RowIndex < dgvLoai.RowCount)
             {
                 DataGridViewRow row = dgvLoai.Rows[e.RowIndex];
 
-                if (row.Cells[0].Value != null)
-                    txtMaLoai.Text = row.Cells[0].Value.ToString();
-
-                if (row.Cells[1].Value != null)
-                    txtTenLoai.Text = row.Cells[1].Value.ToString();
-
-                if (row.Cells[2].Value != null)
-                    cmbTrangThai.SelectedItem = row.Cells[2].Value.ToString();
+                if (row.Cells.Count > 2) // Kiểm tra có đủ cột dữ liệu trong dòng hay không
+                {
+                    // Đổ dữ liệu vào các controls
+                    txtMaLoai1.Text = row.Cells[0].Value.ToString();
+                    txtTenLoai1.Text = row.Cells[1].Value.ToString();
+                    cmbTrangThai1.SelectedItem = row.Cells[2].Value.ToString();
+                    tpThemLoai.SelectedTab = tpLuaChon;
+                }
             }
         }
 

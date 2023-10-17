@@ -44,44 +44,30 @@ namespace Computer_Shop_Management_System.Controller
             }
         }
         // tìm kiếm
-        public List<Category> SearchCategorys(string keyword)
+       public static void SearchCategorys(string query, DataGridView dgv)
         {
-            List<Category> searchResults = new List<Category> ();
+            // Thay đổi chuỗi kết nối của bạn tới cơ sở dữ liệu của bạn
+            string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
 
-
-            try
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DataBase"].ConnectionString);
+                connection.Open();
 
-                if (connection.State == ConnectionState.Closed)
-                    connection.Open();
-
-                string searchQuery = "SELECT * FROM Category WHERE Category_Name LIKE '%' + @Keyword + '%'";
-                SqlCommand command = new SqlCommand(searchQuery, connection);
-                command.Parameters.AddWithValue("@Keyword", keyword);
-
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
-                DataTable table = new DataTable();
-                adapter.Fill(table);
-
-                foreach (DataRow row in table.Rows)
+                using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
-                    Category Category = new Category();
-                    Category.Category_Id = row[0].ToString();
-                    Category.Category_Name = row[1].ToString();
-                    Category.Category_Status = row[2].ToString();
-                    searchResults.Add(Category);
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        // Đặt dữ liệu vào DataGridView
+                        dgv.DataSource = dataTable;
+                    }
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            return searchResults;
         }
         // thay đổi 
-        public bool ChangedCategory(string CategoryName, string CategoryStatus)
+        internal static void ChangedCategory(Category category)
         {
             try
             {
@@ -91,22 +77,23 @@ namespace Computer_Shop_Management_System.Controller
                 {
                     connection.Open();
 
-                    string query = "INSERT INTO Category (Category_Name, Category_Status) VALUES (@CategoryName, @CategoryStatus)";
+                    string query = "UPDATE Category SET Category_Name =@CategoryName, Category_Status =@CategoryStatus WHERE Category_Id = @CategoryId";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@CategoryName", CategoryName);
-                        command.Parameters.AddWithValue("@CategoryStatus", CategoryStatus);
+                        command.Parameters.AddWithValue("@CategoryName", category.Category_Name);
+                        command.Parameters.AddWithValue("@CategoryStatus", category.Category_Status);
+                        command.Parameters.AddWithValue("@CategoryId", category.Category_Id);
                         command.ExecuteNonQuery();
                     }
                 }
 
-                return true;
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+             
             }
         }
         // xóa

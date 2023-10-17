@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -29,6 +30,10 @@ namespace Computer_Shop_Management_System.View
         {
             txtMaThuongHieu.Text = "TH" + DateTime.Now.ToString("yyMMddhhmmss");
             lblTotal.Text = dgvThuongHieu.Rows.Count.ToString();
+            txtMaThuongHieu.ReadOnly = true;
+            txtMaThuongHieu.Enabled = false;
+            txtMaThuongHieu1.ReadOnly = true;
+            txtMaThuongHieu1.Enabled = false;
         }
         private void tpThemThuongThieu_Enter(object sender, EventArgs e)
         {
@@ -83,24 +88,25 @@ namespace Computer_Shop_Management_System.View
         }
         private void dgvThuongHieu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex != -1 && e.RowIndex < dgvThuongHieu.Rows.Count)
+            if (e.RowIndex >= 0 && e.RowIndex < dgvThuongHieu.RowCount)
             {
                 DataGridViewRow row = dgvThuongHieu.Rows[e.RowIndex];
 
-                if (row.Cells[0].Value != null)
-                    txtMaThuongHieu.Text = row.Cells[0].Value.ToString();
-
-                if (row.Cells[1].Value != null)
-                    txtTenThuongHieu.Text = row.Cells[1].Value.ToString();
-
-                if (row.Cells[2].Value != null)
-                    cmbTrangThai.SelectedItem = row.Cells[2].Value.ToString();
+                if (row.Cells.Count > 2) // Kiểm tra có đủ cột dữ liệu trong dòng hay không
+                {
+                    // Đổ dữ liệu vào các controls
+                    txtMaThuongHieu1.Text = row.Cells[0].Value.ToString();
+                    txtTenThuongHieu1.Text = row.Cells[1].Value.ToString();
+                    cmbTRangThai1.SelectedItem = row.Cells[2].Value.ToString();
+                    tpThuongHieu.SelectedTab = tpLuaChon;
+                }
             }
         }
         public void EmptyBox()
         {
             txtTenThuongHieu.Clear();
             cmbTrangThai.SelectedIndex = 0;
+            txtMaThuongHieu.Text = "TH" + DateTime.Now.ToString("yyMMddhhmmss");
 
         }
         public void EmtyBox1()
@@ -138,7 +144,7 @@ namespace Computer_Shop_Management_System.View
         private bool ValidateBrandName(string brandName)
         {
             // Biểu thức chính quy để kiểm tra chuỗi không chứa ký tự đặc biệt và số
-            string pattern = @"^[a-zA-Z\s]+$";
+            string pattern = @"^[\p{L}\s]+$";
 
             Regex regex = new Regex(pattern);
 
@@ -218,23 +224,18 @@ namespace Computer_Shop_Management_System.View
             }
             else
             {
-                string brandName = txtTenThuongHieu1.Text;
-                string brandStatus = cmbTRangThai1.Text;
-
-                BrandController brandController = new BrandController();
-                bool result = brandController.ChangedBrand(brandName, brandStatus);
-
-                if (result)
-                {
-                    MessageBox.Show("Thêm Thương Hiệu Thành Công.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    dgvThuongHieu.Refresh();
-
-                    EmtyBox1();
-                }
+                Brand brand = new Brand(txtMaThuongHieu1.Text,txtTenThuongHieu1.Text.Trim(),cmbTRangThai1.SelectedItem.ToString());
+                BrandController.ChangedBrand(brand);
+                MessageBox.Show("Thay Đổi Thành Công");
+                EmptyBox1();
             }
         }
-
+        private void EmptyBox1()
+        {
+            txtMaThuongHieu1.Text = string.Empty;
+            txtTenThuongHieu1.Text = string.Empty;
+            cmbTRangThai1.SelectedIndex = 0;
+        }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
@@ -308,11 +309,7 @@ namespace Computer_Shop_Management_System.View
 
         private void txtTimKiemThuongThieu_TextChanged(object sender, EventArgs e)
         {
-            string searchKeyword = txtTimKiemThuongThieu.Text.Trim();
-            BrandController brandController = new BrandController();
-            List<Brand> searchResults = brandController.SearchBrands(searchKeyword);
-            // Cập nhật DataGridView với kết quả tìm kiếm
-            dgvThuongHieu.DataSource = searchResults;
+            BrandController.SearchBrands("SELECT Brand_Id,Brand_Name,Brand_Status FROM Brand WHERE Brand_Name LIKE '%" + txtTimKiemThuongThieu.Text + "%';", dgvThuongHieu);
             lblTotal.Text = dgvThuongHieu.Rows.Count.ToString();
         }
 
@@ -321,7 +318,7 @@ namespace Computer_Shop_Management_System.View
         {
             if (txtMaThuongHieu.Text.Trim() == string.Empty)
             {
-                tpThemThuongThieu.SelectedTab = tpQuanLyThuongHieu;
+                tpThuongHieu.SelectedTab = tpQuanLyThuongHieu;
             }
         }
 
@@ -372,6 +369,28 @@ namespace Computer_Shop_Management_System.View
 
             }
             lblTotal.Text = dgvThuongHieu.Rows.Count.ToString();
+        }
+
+        private void txtMaThuongHieu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void dgvThuongHieu_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dgvThuongHieu.RowCount)
+            {
+                DataGridViewRow row = dgvThuongHieu.Rows[e.RowIndex];
+
+                if (row.Cells.Count > 2) // Kiểm tra có đủ cột dữ liệu trong dòng hay không
+                {
+                    // Đổ dữ liệu vào các controls
+                    txtMaThuongHieu1.Text = row.Cells[0].Value.ToString();
+                    txtTenThuongHieu1.Text = row.Cells[1].Value.ToString();
+                    cmbTRangThai1.SelectedItem = row.Cells[2].Value.ToString();
+                    tpThuongHieu.SelectedTab = tpLuaChon;
+                }
+            }
         }
     }
 }

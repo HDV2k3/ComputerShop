@@ -4,8 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,7 +52,10 @@ namespace Computer_Shop_Management_System.View
 
         private void btninhoadon_Click(object sender, EventArgs e)
         {
-
+            Receipt();
+            printPreviewDialog1.Document = printDocument1;
+            printDocument2.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("pprnm", 285, 600);
+            printPreviewDialog1.ShowDialog();
         }
 
         private void tpthemhoadon_Click(object sender, EventArgs e)
@@ -215,6 +221,77 @@ namespace Computer_Shop_Management_System.View
             return Total;
         }
 
+        /* private void btnLuu_Click(object sender, EventArgs e)
+         {
+             if (txttenkhachhang.Text.Trim() == string.Empty)
+             {
+                 MessageBox.Show("Vui lòng nhập tên", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                 return;
+             }
+             else if (txtmakhachhang.Text == string.Empty)
+             {
+                 MessageBox.Show("Vui lòng nhập mã khách hàng", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                 return;
+             }
+             else if (txttongtien.Text.Trim() == string.Empty)
+             {
+                 MessageBox.Show("Vui lòng nhập số tiền hóa đơn của khách hàng", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                 return;
+             }
+             else if (txttienphaitra.Text.Trim() == string.Empty)
+             {
+                 MessageBox.Show("Vui lòng nhập số tiền nhận được từ khách hàng", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                 return;
+             }
+             else if (nudsoluong.Value == 0)
+             {
+                 MessageBox.Show("Vui lòng nhập số lượng", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                 return;
+             }
+             else
+             {
+
+
+                 string str = "INSERT INTO Orders(Orders_Id,Order_Date,Customer_Name,Customer_Number,Total_Amout,Paid_Amout,Due_Amout,Discount,Grand_Total,StatusPayment)  VALUES ( '" + txtMaHoaDon.Text + "','" + dtpDate.Value.ToString("yyyy/MM/dd") + "',N'" + txttenkhachhang.Text + "','" + txtmakhachhang.Text + "'," + Convert.ToInt32(txttongtien.Text.Trim()) + "," + Convert.ToInt32(txttienphaitra.Text.Trim()) + "," + Convert.ToInt32(txtGiamGia.Text.Trim()) + "," + Convert.ToInt32(txtTienThua.Text.Trim()) + "," + Convert.ToInt32(txttongcong.Text.Trim()) + ",'" + cmbtttt.SelectedItem.ToString() + "')";
+                 DataProvider.ExecuteNonQuery(str);
+
+                 foreach (DataGridViewRow rows in dtgvOrder.Rows)
+                 {
+                     if (rows.Cells[0].Value != null)
+                     {
+                         string productName = rows.Cells[0].Value.ToString();
+
+                         string a = "SELECT * FROM Product WHERE Product_Name = N'" + productName + "'";
+                         DataTable dt = new DataTable();
+                         dt = DataProvider.GetData(a);
+
+                         string checkQuery = "SELECT COUNT(*) FROM Orders WHERE BillCode = '" + billCode + "'";
+                         int count = 0;
+
+                         // Tiếp tục xử lý dữ liệu
+                         int Product_Id = Convert.ToInt32(dt.Rows[0][0].ToString());
+
+                         int Amout = Convert.ToInt32(rows.Cells[2].Value.ToString());
+                         int Product_Rate = Convert.ToInt32(rows.Cells[1].Value.ToString());
+                         int Total = Convert.ToInt32(rows.Cells[3].Value.ToString());
+                         string str2 = "INSERT INTO OrderDetails(Orders_Id,Product_Id,Amout,Product_Rate,Total)  VALUES ( '" + txtMaHoaDon.Text + "'," + Product_Id + "," + Amout + "," + Product_Rate + "," + Total + ")";
+                         DataProvider.ExecuteNonQuery(str2);
+                     }
+
+                     else
+                     {
+                         MessageBox.Show("Lỗi");  
+                     }    
+
+
+
+                 }
+
+                 EmtyBox();
+             }
+
+         }*/
+     
         private void btnLuu_Click(object sender, EventArgs e)
         {
             if (txttenkhachhang.Text.Trim() == string.Empty)
@@ -244,29 +321,83 @@ namespace Computer_Shop_Management_System.View
             }
             else
             {
-                
-                string str = "INSERT INTO Orders(Orders_Id,Order_Date,Customer_Name,Customer_Number,Total_Amout,Paid_Amout,Due_Amout,Discount,Grand_Total,StatusPayment)  VALUES ( '" + txtMaHoaDon.Text + "','" + dtpDate.Value.ToString("yyyy/MM/dd") + "',N'" + txttenkhachhang.Text + "','" + txtmakhachhang.Text + "'," + Convert.ToInt32(txttongtien.Text.Trim()) + "," + Convert.ToInt32(txttienphaitra.Text.Trim()) + "," + Convert.ToInt32(txtGiamGia.Text.Trim()) + "," + Convert.ToInt32(txtTienThua.Text.Trim()) + "," + Convert.ToInt32(txttongcong.Text.Trim()) + ",'" + cmbtttt.SelectedItem.ToString() + "')";
-                DataProvider.ExecuteNonQuery(str);
+                string billCode = txtMaHoaDon.Text.Trim();
+
+                // Kiểm tra mã hóa đơn đã tồn tại trong Orders hay chưa
+                string checkQuery = "SELECT COUNT(*) FROM Orders WHERE Orders_Id = '" + billCode + "'";
+                int count = 0;
+                string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    SqlCommand checkCmd = new SqlCommand(checkQuery, connection);
+                    count = (int)checkCmd.ExecuteScalar();
+
+                    connection.Close();
+                }
+
+                if (count > 0)
+                {
+                    MessageBox.Show("Mã hóa đơn đã tồn tại. Vui lòng chọn mã hóa đơn khác.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // Tiếp tục lưu hóa đơn và chi tiết hóa đơn
+                string orderQuery = "INSERT INTO Orders(Orders_Id, Order_Date, Customer_Name, Customer_Number, Total_Amout, Paid_Amout, Due_Amout, Discount, Grand_Total, StatusPayment)  VALUES ('" + billCode + "','" + dtpDate.Value.ToString("yyyy/MM/dd") + "',N'" + txttenkhachhang.Text + "','" + txtmakhachhang.Text + "'," + Convert.ToInt32(txttongtien.Text.Trim()) + "," + Convert.ToInt32(txttienphaitra.Text.Trim()) + "," + Convert.ToInt32(txtGiamGia.Text.Trim()) + "," + Convert.ToInt32(txtTienThua.Text.Trim()) + "," + Convert.ToInt32(txttongcong.Text.Trim()) + ",'" + cmbtttt.SelectedItem.ToString() + "')";
+                DataProvider.ExecuteNonQuery(orderQuery);
 
                 foreach (DataGridViewRow rows in dtgvOrder.Rows)
                 {
-                    string a = "SELECT * FROM Product WHERE Product_Name = N'" + rows.Cells[0].Value.ToString() + "' ";
-                    DataTable dt = new DataTable();
-                    dt = DataProvider.GetData(a);
+                    if (rows.Cells[0].Value != null)
+                    {
+                        string productName = rows.Cells[0].Value.ToString();
 
+                        // Kiểm tra tên sản phẩm đã tồn tại trong Product hay không
+                        string productQuery = "SELECT COUNT(*) FROM Product WHERE Product_Name = N'" + productName + "'";
+                        int productCount = 0;
 
-                    int Product_Id = Convert.ToInt32(dt.Rows[0][0].ToString());
+                        using (SqlConnection connection = new SqlConnection(connectionString))
+                        {
+                            connection.Open();
 
-                    int Amout = Convert.ToInt32(rows.Cells[2].Value.ToString());
-                    int Product_Rate = Convert.ToInt32(rows.Cells[1].Value.ToString());
-                    int Total = Convert.ToInt32(rows.Cells[3].Value.ToString());
-                    string str2 = "INSERT INTO OrderDetails(Orders_Id,Product_Id,Amout,Product_Rate,Total)  VALUES ( '" + txtMaHoaDon.Text + "'," + Product_Id + "," + Amout + "," + Product_Rate + "," + Total + ")";
-                    DataProvider.ExecuteNonQuery(str2);
+                            SqlCommand productCmd = new SqlCommand(productQuery, connection);
+                            productCount = (int)productCmd.ExecuteScalar();
+
+                            connection.Close();
+                        }
+
+                        if (productCount > 0)
+                        {
+                            // Lấy thông tin sản phẩm
+                            string getProductQuery = "SELECT * FROM Product WHERE Product_Name = N'" + productName + "'";
+                            DataTable productDt = new DataTable();
+                            productDt = DataProvider.GetData(getProductQuery);
+
+                            int productId = Convert.ToInt32(productDt.Rows[0][0].ToString());
+                            int amount = Convert.ToInt32(rows.Cells[2].Value.ToString());
+                            int productRate = Convert.ToInt32(rows.Cells[1].Value.ToString());
+                            int total = Convert.ToInt32(rows.Cells[3].Value.ToString());
+
+                            // Lưu chi tiết hóa đơn
+                            string orderDetailQuery = "INSERT INTO OrderDetails(Orders_Id, Product_Id, Amout, Product_Rate, Total) VALUES ('" + billCode + "'," + productId + "," + amount + "," + productRate + "," + total + ")";
+                            DataProvider.ExecuteNonQuery(orderDetailQuery);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Sản phẩm không tồn tại trong cơ sở dữ liệu.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lưu Hóa Đơn Thành Công");
+                        return;
+                    }
                 }
 
                 EmtyBox();
             }
-
         }
         public void EmtyBox()
         {
@@ -305,12 +436,12 @@ namespace Computer_Shop_Management_System.View
         {
             richTextBox.Clear();
             richTextBox.Text += "\t              Computer Shop Management System\n";
-            richTextBox.Text += "***********************************************************************\n\n";
+            richTextBox.Text += "**********************************************************************************************\n\n";
             richTextBox.Text += "   Ngày Mua:" + dtpDate.Text + "\n";
             richTextBox.Text += "   Tên Khách Hàng:" + txttenkhachhang.Text.Trim() + "\n";
             richTextBox.Text += "   Mã Khách Hàng:" + txtmakhachhang.Text.Trim() + "\n\n";
-            richTextBox.Text += "***********************************************************************\n\n";
-            richTextBox.Text += "   Tên Khách Hàng\t\tGiá\t\tSố Lượng\t\tTổng Tiền\n";
+            richTextBox.Text += "***********************************************************************************************\n\n";
+            richTextBox.Text += "Tên Sản Phẩm\t\tGiá\t\t      Số Lượng\t\t\tTổng Tiền\n";
             for (int i = 0; i < dtgvOrder.Rows.Count; i++)
             {
                 for (int j = 0; j < dtgvOrder.Columns.Count; j++)
@@ -318,22 +449,23 @@ namespace Computer_Shop_Management_System.View
                     var cellValue = dtgvOrder.Rows[i].Cells[j].Value;
                     if (cellValue != null)
                     {
-                        richTextBox.Text += cellValue.ToString() + "\t\t";
+                        richTextBox.Text += cellValue.ToString() + "    \t\t\t";
                     }
                     else
                     {
                         richTextBox.Text += "\t\t"; // Ô trống
                     }
-                    richTextBox.Text += "\n";
+                   /* richTextBox.Text += "";*/
                 }
             }
 
-            richTextBox.Text += "******** \n\n";
-            richTextBox.Text += "\t\t\t\t\tTổng Tiền: $ " + txttongtien.Text + "\n";
-            richTextBox.Text += "\t\t\t\t\tSố Tiền Đã Nhận: $" + txttiennhankhachhang.Text + "\n";
-            richTextBox.Text += "\t\t\t\t\tGiảm Giá: $ " + txtGiamGia.Text + "\n";
-            richTextBox.Text += "\t\t\t\t\tTiền Thừa: $ " + txtTienThua.Text + "\n";
-            richTextBox.Text += "\t\t\t\t\tTổng Cộng: $ " + txttongcong.Text + "\n";
+            richTextBox.Text += "*********************\n\n ";
+            richTextBox.Text += "\t\t\t\t\t\t\t\tTổng Tiền: $ " + txttongtien.Text + "\n\n";
+            richTextBox.Text += "\t\t\t\t\t\t\t\tSố Tiền Đã Nhận: $" + txttienphaitra.Text + "\n\n";
+            richTextBox.Text += "\t\t\t\t\t\t\t\tGiảm Giá: $ " + txtGiamGia.Text + "\n\n";
+            richTextBox.Text += "\t\t\t\t\t\t\t\tTiền Thừa: $ " + txtTienThua.Text + "\n\n";
+            richTextBox.Text += "\t\t\t\t\t\t\t\t*********************\n\n ";
+            richTextBox.Text += "\t\t\t\t\t\t\t\tTổng Cộng: $ " + txttongcong.Text + "\n\n";
         }
         private void CalculateChange()
         {

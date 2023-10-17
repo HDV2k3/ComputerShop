@@ -44,44 +44,30 @@ namespace Computer_Shop_Management_System.Controller
             }
         }
         // tìm kiếm
-        public List<Brand> SearchBrands(string keyword)
+        public static void SearchBrands(string query, DataGridView dgv)
         {
-            List<Brand> searchResults = new List<Brand>();
+            // Thay đổi chuỗi kết nối của bạn tới cơ sở dữ liệu của bạn
+            string connectionString = @"data source=.\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
 
-
-            try
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DataBase"].ConnectionString);
+                connection.Open();
 
-                if (connection.State == ConnectionState.Closed)
-                    connection.Open();
-
-                string searchQuery = "SELECT * FROM Brand WHERE Brand_Name LIKE '%' + @Keyword + '%'";
-                SqlCommand command = new SqlCommand(searchQuery, connection);
-                command.Parameters.AddWithValue("@Keyword", keyword);
-
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
-                DataTable table = new DataTable();
-                adapter.Fill(table);
-
-                foreach (DataRow row in table.Rows)
+                using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
-                    Brand brand = new Brand();
-                    brand.Brand_Id = row[0].ToString();
-                    brand.Brand_Name = row[1].ToString();
-                    brand.Brand_Status = row[2].ToString();
-                    searchResults.Add(brand);
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        // Đặt dữ liệu vào DataGridView
+                        dgv.DataSource = dataTable;
+                    }
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            return searchResults;
         }
         // thay đổi 
-        public bool ChangedBrand(string brandName, string brandStatus)
+        internal static void ChangedBrand(Brand brand)
         {
             try
             {
@@ -91,22 +77,23 @@ namespace Computer_Shop_Management_System.Controller
                 {
                     connection.Open();
 
-                    string query = "INSERT INTO Brand (Brand_Name, Brand_Status) VALUES (@BrandName, @BrandStatus)";
+                    string query = "UPDATE Brand SET Brand_Name = @BrandName, Brand_Status = @BrandStatus WHERE Brand_Id = @brandId";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@BrandName", brandName);
-                        command.Parameters.AddWithValue("@BrandStatus", brandStatus);
+                        command.Parameters.AddWithValue("@BrandName", brand.Brand_Name);
+                        command.Parameters.AddWithValue("@BrandStatus", brand.Brand_Status);
+                        command.Parameters.AddWithValue("@brandId", brand.Brand_Id);
                         command.ExecuteNonQuery();
                     }
                 }
 
-                return true;
+               
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+               
             }
         }
         // xóa
