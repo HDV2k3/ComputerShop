@@ -306,11 +306,36 @@ namespace Computer_Shop_Management_System.View
         {
             toolTip1.SetToolTip(pictureBox1, "Search");
         }
+        private const string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay thế bằng chuỗi kết nối của bạn
+        private void SearchBrand(string searchName)
+        {
+            string query = "SELECT Brand_Id,Brand_Name,Brand_Status FROM Brand WHERE Brand_Name LIKE @SearchName;";
 
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@SearchName", "%" + searchName + "%");
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        dgvThuongHieu.DataSource = dataTable;
+
+                        lblTotal.Text = dataTable.Rows.Count.ToString();
+                    }
+                }
+            }
+        }
         private void txtTimKiemThuongThieu_TextChanged(object sender, EventArgs e)
         {
-            BrandController.SearchBrands("SELECT Brand_Id,Brand_Name,Brand_Status FROM Brand WHERE Brand_Name LIKE '%" + txtTimKiemThuongThieu.Text + "%';", dgvThuongHieu);
-            lblTotal.Text = dgvThuongHieu.Rows.Count.ToString();
+            string searchName = txtTimKiemThuongThieu.Text;
+            SearchBrand(searchName);
+
+           
         }
 
 

@@ -290,11 +290,34 @@ namespace Computer_Shop_Management_System.View
         {
             toolTip1.SetToolTip(picTimKiem, "Tim Kiem");
         }
+        private const string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay thế bằng chuỗi kết nối của bạn
+        private void SearchProduct(string searchName)
+        {
+            string query = "SELECT Product_Name,Product_Image,Product_Rate,Product_Quantity,Product_Brand,Product_Category,Product_Status FROM WHERE Product_Name LIKE  LIKE @SearchName;";
 
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@SearchName", "%" + searchName + "%");
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        dgvSanPham.DataSource = dataTable;
+
+                        lblTotal.Text = dataTable.Rows.Count.ToString();
+                    }
+                }
+            }
+        }
         private void txtTimKiemSanPham_TextChanged(object sender, EventArgs e)
         {
-            ProductController.DisplayAndSearch("SELECT Product_Name FROM WHERE Product_Name LIKE '%" + txtTimKiemSanPham.Text + "%';", dgvSanPham);
-            lblTotal.Text = dgvSanPham.Rows.Count.ToString();
+            string searchName = txtTimKiemSanPham.Text;
+            SearchProduct(searchName);
         }
 
         private void lblTotal_Click(object sender, EventArgs e)

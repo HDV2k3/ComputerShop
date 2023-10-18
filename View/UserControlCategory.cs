@@ -323,11 +323,34 @@ namespace Computer_Shop_Management_System.View
                 }
             }
         }
+        private const string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay thế bằng chuỗi kết nối của bạn
+        private void SearchCategory(string searchName)
+        {
+            string query = "SELECT Category_Name,Category_Id,Category_Status FROM Category WHERE Category_Name LIKE @SearchName;";
 
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@SearchName", "%" + searchName + "%");
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        dgvLoai.DataSource = dataTable;
+
+                        lblTotal.Text = dataTable.Rows.Count.ToString();
+                    }
+                }
+            }
+        }
         private void txtTimKiemLoai_TextChanged(object sender, EventArgs e)
         {
-            CategoryController.SearchCategorys("SELECT Category_Name,Category_Id,Category_Status FROM Category WHERE Category_Name LIKE '%" + txtTimKiemLoai.Text + "%';", dgvLoai);
-            lblTotal.Text = dgvLoai.Rows.Count.ToString();
+            string searchName = txtTimKiemLoai.Text;
+            SearchCategory(searchName);
         }
 
         private void tpLuaChon_Enter(object sender, EventArgs e)
