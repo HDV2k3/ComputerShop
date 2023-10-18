@@ -61,7 +61,7 @@ namespace Computer_Shop_Management_System.View
 
         private void tpthemhoadon_Click(object sender, EventArgs e)
         {
-            LoadOrdersData();
+           
         }
 
         private void txttenkhachhang_TextChanged(object sender, EventArgs e)
@@ -76,7 +76,7 @@ namespace Computer_Shop_Management_System.View
 
         private void tpluachon_Click(object sender, EventArgs e)
         {
-            LoadOrdersData();
+           
         }
         private void LoadOrdersData()
         {
