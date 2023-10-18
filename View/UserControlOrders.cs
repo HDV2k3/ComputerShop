@@ -21,6 +21,7 @@ namespace Computer_Shop_Management_System.View
         private const string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay thế bằng chuỗi kết nối của bạn
         DataBase db = new DataBase();
         int otong = 0;
+        decimal tongSoTien = 0;
         public UserControlOrders()
         {
             InitializeComponent();
@@ -93,12 +94,25 @@ namespace Computer_Shop_Management_System.View
                     adapter.Fill(dataTable);
 
                     dtgvQL.DataSource = dataTable;
+                    decimal tongTien = 0;
+                    foreach (DataGridViewRow row in dtgvQL.Rows)
+                    {
+                        decimal soTien;
+                        if (row.Cells["Grand_Total"].Value != null && decimal.TryParse(row.Cells["Grand_Total"].Value.ToString(), out soTien))
+                        {
+                            tongTien += soTien;
+                        }
+                        lbltongsotien.Text = tongTien.ToString();
+
+                    }
+
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
             }
+          
         }
     
     private void UserControlOrders_Load(object sender, EventArgs e)
@@ -123,8 +137,28 @@ namespace Computer_Shop_Management_System.View
                   }
               }*/
             LoadOrdersData();
-        }
+         
 
+
+
+        }
+  /*      private string TinhTongTienTrenMotHoaDon()
+        {
+            int tongsotien = 0;
+            if(dtgvQL.Rows.Count < 0)
+            {
+                lbltongsotien.Text = string.Empty;
+            }
+            int tien = dtgvQL.Rows.Count;
+            int thanhtien = 0;
+            for(int i = 0;i<tien; i++)
+            {
+                thanhtien += int.Parse(dtgvQL.Rows[i].Cells["Grand_Total"].Value.ToString());
+            }
+            tongsotien = thanhtien;
+            return tongsotien.ToString();
+
+        }*/
         private void LoadProductsToComboBox()
         {
             using (var context = new DataBase())
@@ -403,7 +437,7 @@ namespace Computer_Shop_Management_System.View
                 }
 
                 // Tiếp tục lưu hóa đơn và chi tiết hóa đơn
-                string orderQuery = "INSERT INTO Orders(Orders_Id, Order_Date, Customer_Name, Customer_Number, Total_Amout, Paid_Amout, Due_Amout, Discount, Grand_Total, StatusPayment)  VALUES ('" + billCode + "','" + dtpDate.Value.ToString("yyyy/MM/dd") + "',N'" + txttenkhachhang.Text + "','" + txtmakhachhang.Text + "'," + Convert.ToInt32(txttongtien.Text.Trim()) + "," + Convert.ToInt32(txttienphaitra.Text.Trim()) + "," + Convert.ToInt32(txtGiamGia.Text.Trim()) + "," + Convert.ToInt32(txtTienThua.Text.Trim()) + "," + Convert.ToInt32(txttongcong.Text.Trim()) + ",'" + cmbtttt.SelectedItem.ToString() + "')";
+                string orderQuery = "INSERT INTO Orders(Orders_Id, Order_Date, Customer_Name, Customer_Number, Total_Amout, Paid_Amout,Discount, Due_Amout, Grand_Total, StatusPayment)  VALUES ('" + billCode + "','" + dtpDate.Value.ToString("yyyy/MM/dd") + "',N'" + txttenkhachhang.Text + "','" + txtmakhachhang.Text + "'," + Convert.ToInt32(txttongtien.Text.Trim()) + "," + Convert.ToInt32(txttienphaitra.Text.Trim()) + "," + Convert.ToInt32(txtGiamGia.Text.Trim()) + "," + Convert.ToInt32(txtTienThua.Text.Trim()) + "," + Convert.ToInt32(txttongcong.Text.Trim()) + ",'" + cmbtttt.SelectedItem.ToString() + "')";
                 DataProvider.ExecuteNonQuery(orderQuery);
 
                 foreach (DataGridViewRow rows in dtgvOrder.Rows)
@@ -526,7 +560,7 @@ namespace Computer_Shop_Management_System.View
             richTextBox.Text += "\t\t\t\t\t\t\t\t*********************\n\n ";
             richTextBox.Text += "\t\t\t\t\t\t\t\tTổng Cộng: $ " + txttongcong.Text + "\n\n";
         }
-        private void CalculateChange()
+      /*  private void CalculateChange()
         {
             // Kiểm tra và chuyển đổi giá trị từ textbox thành kiểu int
             if ((!string.IsNullOrEmpty(txttongtien.Text) && int.TryParse(txttongtien.Text, out int total)) &&
@@ -568,7 +602,7 @@ namespace Computer_Shop_Management_System.View
                 txttongcong.Text = "";
                 txtTienThua.Text = "";
             }
-        }
+        }*/
 
         private void txtTienThua_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -743,14 +777,14 @@ namespace Computer_Shop_Management_System.View
                 DataGridViewRow row = dtgvOrder.Rows[e.RowIndex];
 
                 // Đổ dữ liệu từ DataGridViewRow vào các điều khiển tương ứng
+                txtMaHoaDon.Text = GetStringCellValue(row.Cells["Orders_Id"].Value);
                 dtpDate.Value = GetDateTimeValue(row.Cells["Order_Date"].Value);
                 txttenkhachhang.Text = GetStringCellValue(row.Cells["Customer_Name"].Value);
                 txtmakhachhang.Text = GetStringCellValue(row.Cells["Customer_Number"].Value);
-                txtMaHoaDon.Text = GetStringCellValue(row.Cells["Orders_Id"].Value);
                 txttongtien.Text = GetIntValue(row.Cells["Total_Amout"].Value).ToString();
                 txtTienThua.Text = GetIntValue(row.Cells["Paid_Amout"].Value).ToString();
-                txttienphaitra.Text = GetIntValue(row.Cells["Due_Amout"].Value).ToString();
                 txtGiamGia.Text = GetIntValue(row.Cells["Discount"].Value).ToString();
+                txttienphaitra.Text = GetIntValue(row.Cells["Due_Amout"].Value).ToString();
                 txttongcong.Text = GetIntValue(row.Cells["Grand_Total"].Value).ToString();
                 cmbtttt.SelectedItem = GetStringCellValue(row.Cells["StatusPayment"].Value);
                 tabControl1.SelectedTab = tpluachon;
@@ -760,16 +794,25 @@ namespace Computer_Shop_Management_System.View
         private void tabControl1_Click(object sender, EventArgs e)
         {
             LoadOrdersData();
+          
+         
         }
 
         private void tpquanlyhoadon_Click(object sender, EventArgs e)
         {
             LoadOrdersData();
+           
         }
-
         private void dtgvQL_Click(object sender, EventArgs e)
         {
             LoadOrdersData();
+        
+        }
+
+        private void txtTienThua_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            // chặn ký tự nhập vào
+            e.Handled = true;
         }
     }
 }
