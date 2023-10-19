@@ -20,7 +20,7 @@ namespace Computer_Shop_Management_System.Model
         [Required]
         [StringLength(50)]
         public string Category_Status { get; set; }
-        public Category(string idca,string nameca,string statusca)
+        public Category(string idca, string nameca, string statusca)
         {
             this.Category_Id = idca;
             this.Category_Name = nameca;

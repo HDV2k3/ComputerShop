@@ -191,35 +191,8 @@ namespace Computer_Shop_Management_System.View
         private void dtgvOrder_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            /*if (e.ColumnIndex == 4)
-            {
-                int rowIndex = dtgvOrder.CurrentCell.RowIndex;
+           
 
-                // Kiểm tra xem dòng hiện tại có phải là dòng mới chưa được commit hay không
-                if (rowIndex >= 0 && rowIndex < dtgvOrder.Rows.Count && !dtgvOrder.Rows[rowIndex].IsNewRow)
-                {
-                    dtgvOrder.Rows.RemoveAt(rowIndex);
-
-                    if (dtgvOrder.Rows.Count != 0)
-                    {
-                        int otong = 0;
-                        foreach (DataGridViewRow row in dtgvOrder.Rows)
-                        {
-                            if (row.Cells[3].Value != null)
-                            {
-                                otong += Convert.ToInt32(row.Cells[3].Value.ToString());
-                            }
-                        }
-                        txttongtien.Text = otong.ToString();
-                    }
-                    else
-                    {
-                        txttongtien.Text = "0";
-                        otong = 0;
-                    }
-                }
-            }*/
-            
         }
         private void AddClear()
         {
@@ -428,6 +401,7 @@ namespace Computer_Shop_Management_System.View
 
             return regex.IsMatch(CategoryName);
         }
+
         private void btnLuu_Click(object sender, EventArgs e)
         {
             // Kiểm tra các điều kiện nhập liệu trước khi lưu
@@ -790,31 +764,24 @@ namespace Computer_Shop_Management_System.View
 
         private void dtgvQL_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.RowIndex < dtgvQL.RowCount)
-            {
-             
-                DataGridViewRow row = dtgvQL.Rows[e.RowIndex];
+            DataGridViewRow row = dtgvQL.Rows[e.RowIndex];
 
-                if (row.Cells.Count != null)
-                {
-
-                    txttenkhachhangop.Text = row.Cells[2].Value.ToString();
-                    txtMaKH.Text = row.Cells[3].Value.ToString();
-                    txttongtienop.Text = row.Cells[4].Value.ToString();
-                    txttiennhankhachhang.Text = row.Cells[5].Value.ToString();
-                    txtGiamGiaLC.Text = row.Cells[7].Value.ToString();
-                    txtTienThuaLC.Text = row.Cells[6].Value.ToString();
-                    txttongcongop.Text = row.Cells[8].Value.ToString();
-                    cmbtrangthaiop.Text = row.Cells[9].Value.ToString();
-                    tpOders.SelectedTab = tpluachon;
-                }
-               
-            }
+            tpOders.SelectedTab = tpluachon;
+            txtMaHoaDon1.Text = row.Cells[0].Value.ToString();
+            dtp2.Value = Convert.ToDateTime(row.Cells[1].Value);
+            txttenkhachhangop.Text = row.Cells[2].Value.ToString();
+            txtMaKH.Text = row.Cells[3].Value.ToString();
+            txttongtienop.Text = row.Cells[4].Value.ToString();
+            txttiennhankhachhang.Text = row.Cells[5].Value.ToString();
+            txtGiamGiaLC.Text = row.Cells[7].Value.ToString();
+            txtTienThuaLC.Text = row.Cells[6].Value.ToString();
+            txttongcongop.Text = row.Cells[8].Value.ToString();
+            cmbtrangthaiop.Text = row.Cells[9].Value.ToString();
         }
 
         private void tabControl1_Click(object sender, EventArgs e)
         {
-            LoadOrdersData();
+           
           
          
         }
@@ -826,7 +793,7 @@ namespace Computer_Shop_Management_System.View
         }
         private void dtgvQL_Click(object sender, EventArgs e)
         {
-            LoadOrdersData();
+      
         
         }
 
@@ -874,12 +841,12 @@ namespace Computer_Shop_Management_System.View
 
         private void dtgvQL_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.RowIndex < dtgvQL.RowCount)
+           /* if (e.RowIndex >= 0 && e.RowIndex < dtgvQL.RowCount)
             {
 
                 DataGridViewRow row = dtgvQL.Rows[e.RowIndex];
 
-                if (row.Cells.Count != null)
+                if (row.Cells.Count >0)
                 {
 
                     txttenkhachhangop.Text = row.Cells[2].Value.ToString();
@@ -893,7 +860,7 @@ namespace Computer_Shop_Management_System.View
                     tpOders.SelectedTab = tpluachon;
                 }
 
-            }
+            }*/
         }
 
         private void dtgvOrder_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)

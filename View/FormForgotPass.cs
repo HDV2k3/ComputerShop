@@ -59,7 +59,7 @@ namespace Computer_Shop_Management_System.View
 
             if (user != null)
             {
-                return user.Users_Password;
+                return user.users_Password;
             }
 
             return null;

@@ -20,8 +20,7 @@ namespace Computer_Shop_Management_System.Model
         [Required]
         [StringLength(50)]
         public string Brand_Status { get; set; }
-       
-        public Brand(string brandid,string brandname, string brandstatus)
+        public Brand(string brandid, string brandname, string brandstatus)
         {
             this.Brand_Id = brandid;
             this.Brand_Name = brandname;

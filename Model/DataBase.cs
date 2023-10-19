@@ -8,7 +8,7 @@ namespace Computer_Shop_Management_System.Model
     public partial class DataBase : DbContext
     {
         public DataBase()
-            : base("name=DataBase1")
+            : base("name=DataBase")
         {
         }
 
@@ -18,6 +18,7 @@ namespace Computer_Shop_Management_System.Model
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<UsersCategory> UsersCategory { get; set; }
         public virtual DbSet<OrderDetails> OrderDetails { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -49,16 +50,29 @@ namespace Computer_Shop_Management_System.Model
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<User>()
+                .Property(e => e.Users_Category_Id)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<User>()
                 .Property(e => e.Users_Name)
                 .IsUnicode(false);
 
             modelBuilder.Entity<User>()
-                .Property(e => e.Users_Password)
+                .Property(e => e.users_Password)
                 .IsUnicode(false);
 
             modelBuilder.Entity<User>()
                 .Property(e => e.Users_Email)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<UsersCategory>()
+                .Property(e => e.Users_Category_Id)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<UsersCategory>()
+                .HasMany(e => e.User)
+                .WithRequired(e => e.UsersCategory)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<OrderDetails>()
                 .Property(e => e.Orders_Id)

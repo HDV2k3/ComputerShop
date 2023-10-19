@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Computer_Shop_Management_System.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,8 +14,16 @@ namespace Computer_Shop_Management_System.View
     public partial class MainForm : Form
     {
         public string name = "?";
+
+        public static User user = new User();
         public MainForm()
         {
+            InitializeComponent();
+        }
+
+        public MainForm(User u)
+        {
+            user = u;
             InitializeComponent();
         }
         private void MovePanel(Control btn)
@@ -41,86 +50,144 @@ namespace Computer_Shop_Management_System.View
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            MovePanel(btnDashboard);
-            userControlDashboard1.Visible = true;
-            userControlBrand1.Visible = false;
-            userControlCategory1.Visible = false;
-            userControlProduct1.Visible = false;
-            userControlOrders1.Visible = false;
-            userControlReport1.Visible = false;
-            userControlUser1.Visible = false;
+            if(user.Users_Category_Id == "US08022003")
+            {
+                MovePanel(btnDashboard);
+                userControlDashboard1.Visible = true;
+                userControlBrand1.Visible = false;
+                userControlCategory1.Visible = false;
+                userControlProduct1.Visible = false;
+                userControlOrders1.Visible = false;
+                userControlReport1.Visible = false;
+                userControlUser1.Visible = false;
+            }   
+            else
+            {
+                MessageBox.Show("Bạn Cần Cấp Quyền Cao Hơn Để Truy Cập");
+            }    
+           
             
         }
         private void btnThuongHieu_Click(object sender, EventArgs e)
         {
-            MovePanel(btnThuongHieu);
-            userControlDashboard1.Visible = false;
-            userControlCategory1.Visible = false;
-            userControlProduct1.Visible = false;
-            userControlOrders1.Visible = false;
-            userControlReport1.Visible = false;
-            userControlUser1.Visible = false;
-            userControlBrand1.Visible = true;
+            if(user.Users_Category_Id == "US08022003")
+            {
+                MovePanel(btnThuongHieu);
+                userControlDashboard1.Visible = false;
+                userControlCategory1.Visible = false;
+                userControlProduct1.Visible = false;
+                userControlOrders1.Visible = false;
+                userControlReport1.Visible = false;
+                userControlUser1.Visible = false;
+                userControlBrand1.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("Bạn Cần Cấp Quyền Cao Hơn Để Truy Cập");
+            }    
+           
         }
         private void btnLoai_Click(object sender, EventArgs e)
         {
-            MovePanel(btnLoai);
-            userControlDashboard1.Visible = false;
-            userControlBrand1.Visible = false;
-            userControlCategory1.Visible = true;
-            userControlProduct1.Visible = false;
-            userControlOrders1.Visible = false;
-            userControlReport1.Visible = false;
-            userControlUser1.Visible = false;
+            if(user.Users_Category_Id == "US08022003")
+            {
+                MovePanel(btnLoai);
+                userControlDashboard1.Visible = false;
+                userControlBrand1.Visible = false;
+                userControlCategory1.Visible = true;
+                userControlProduct1.Visible = false;
+                userControlOrders1.Visible = false;
+                userControlReport1.Visible = false;
+                userControlUser1.Visible = false;
+            }    
+            else
+            {
+                MessageBox.Show("Bạn Cần Cấp Quyền Cao Hơn Để Truy Cập");
+            }    
+           
         }
 
         private void btnSanPham_Click(object sender, EventArgs e)
         {
-            MovePanel(btnSanPham);
-            userControlDashboard1.Visible = true;
-            userControlBrand1.Visible = false;
-            userControlCategory1.Visible = false;
-            userControlProduct1.Visible = true;
-            userControlOrders1.Visible = false;
-            userControlReport1.Visible = false;
-            userControlUser1.Visible = false;
+            if(user.Users_Category_Id == "US08022003")
+            {
+                MovePanel(btnSanPham);
+                userControlDashboard1.Visible = true;
+                userControlBrand1.Visible = false;
+                userControlCategory1.Visible = false;
+                userControlProduct1.Visible = true;
+                userControlOrders1.Visible = false;
+                userControlReport1.Visible = false;
+                userControlUser1.Visible = false;
+            }  
+            else
+            {
+                MessageBox.Show("Bạn Cần Cấp Quyền Cao Hơn Để Truy Cập");
+            }    
+           
         }
 
         private void btnDatHang_Click(object sender, EventArgs e)
         {
-            MovePanel(btnDatHang);
-            userControlDashboard1.Visible = false;
-            userControlBrand1.Visible = false;
-            userControlCategory1.Visible = false;
-            userControlProduct1.Visible = false;
-            userControlOrders1.Visible = true;
-            userControlReport1.Visible = false;
-            userControlUser1.Visible = false;
+            if(user.Users_Category_Id == "US08022003")
+            {
+                MovePanel(btnDatHang);
+                userControlDashboard1.Visible = false;
+                userControlBrand1.Visible = false;
+                userControlCategory1.Visible = false;
+                userControlProduct1.Visible = false;
+                userControlOrders1.Visible = true;
+                userControlReport1.Visible = false;
+                userControlUser1.Visible = false;
+            }    
+            else
+            {
+                userControlOrders1.Visible = true;
+               
+            }    
+           
         }
 
         private void btnBaoCao_Click(object sender, EventArgs e)
         {
-            MovePanel(btnBaoCao);
-            userControlDashboard1.Visible = false;
-            userControlBrand1.Visible = false;
-            userControlCategory1.Visible = false;
-            userControlProduct1.Visible = false;
-            userControlOrders1.Visible = false;
-            userControlReport1.Visible = true;
-            userControlUser1.Visible = false;
+            if(user.Users_Category_Id == "US08022003")
+            {
+                MovePanel(btnBaoCao);
+                userControlDashboard1.Visible = false;
+                userControlBrand1.Visible = false;
+                userControlCategory1.Visible = false;
+                userControlProduct1.Visible = false;
+                userControlOrders1.Visible = false;
+                userControlReport1.Visible = true;
+                userControlUser1.Visible = false;
+            }  
+            else
+            {
+                userControlReport1.Visible = true;
+                
+            }    
+         
 
         }
 
         private void btnNguoiDung_Click(object sender, EventArgs e)
         {
-            MovePanel(btnNguoiDung);
-            userControlUser1.Visible = true;
-            userControlDashboard1.Visible = false;
-            userControlBrand1.Visible = false;
-            userControlCategory1.Visible = false;
-            userControlProduct1.Visible = false;
-            userControlOrders1.Visible = false;
-            userControlReport1.Visible = false;
+            if(user.Users_Category_Id == "US08022003")
+            {
+                MovePanel(btnNguoiDung);
+                userControlUser1.Visible = true;
+                userControlDashboard1.Visible = false;
+                userControlBrand1.Visible = false;
+                userControlCategory1.Visible = false;
+                userControlProduct1.Visible = false;
+                userControlOrders1.Visible = false;
+                userControlReport1.Visible = false;
+            }   
+            else
+            {
+                MessageBox.Show("Bạn Cần Cấp Quyền Cao Hơn Để Truy Cập");
+            }    
+          
             
         }
 

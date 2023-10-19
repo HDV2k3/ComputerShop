@@ -14,16 +14,6 @@ namespace Computer_Shop_Management_System.Model
         {
             OrderDetails = new HashSet<OrderDetails>();
         }
-        public Product(string v1, byte[] bytes, int v2, int v3, string v4, string v5, string v6)
-        {
-            this.Product_Name = v1;
-            this.Product_Image = bytes;
-            this.Product_Rate = v2;
-            this.Product_Quantity = v3;
-            this.Product_Brand = v4;
-            this.Product_Category = v5;
-            this.Product_Stastus = v6;
-        }
 
         [Key]
         public int Product_Id { get; set; }
@@ -53,5 +43,15 @@ namespace Computer_Shop_Management_System.Model
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetails> OrderDetails { get; set; }
+        public Product(string v1, byte[] bytes, int v2, int v3, string v4, string v5, string v6)
+        {
+            this.Product_Name = v1;
+            this.Product_Image = bytes;
+            this.Product_Rate = v2;
+            this.Product_Quantity = v3;
+            this.Product_Brand = v4;
+            this.Product_Category = v5;
+            this.Product_Stastus = v6;
+        }
     }
 }

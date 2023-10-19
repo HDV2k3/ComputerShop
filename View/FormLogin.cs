@@ -40,10 +40,10 @@ namespace Computer_Shop_Management_System.PAL
             }
             else
             {
-                bool check = Computer.IsvalidNamePass(txtUsername.Text.Trim() ,txtUserpassword.Text.Trim());
-                if(check)
+                User check = Computer.IsvalidNamePass(txtUsername.Text.Trim() ,txtUserpassword.Text.Trim());
+                if(check!=null)
                 {
-                    MainForm frm = new MainForm();
+                    MainForm frm = new MainForm(check);
                     frm.name = txtUsername.Text;
                     frm.ShowDialog();
                     Clear();

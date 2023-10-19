@@ -16,19 +16,23 @@ namespace Computer_Shop_Management_System.Controller
 
         // query users
 
-        public static bool IsvalidNamePass(string username, string password)
+        //public static User users = new User();
+
+        public static User IsvalidNamePass(string username, string password)
         {
             using (var dbContext = new DataBase())
             {
                 // Kiểm tra tính hợp lệ của tên người dùng và mật khẩu
-                var user = dbContext.User.FirstOrDefault(u => u.Users_Name == username && u.Users_Password == password);
+                var user = dbContext.User.FirstOrDefault(u => u.Users_Name == username && u.users_Password == password);
                 if (user != null)
                 {
-                    return true; // Tên người dùng và mật khẩu hợp lệ
+                   
+                    return user; // Tên người dùng và mật khẩu hợp lệ
                 }
                 else
                 {
-                    return false; // Tên người dùng hoặc mật khẩu không hợp lệ
+                    
+                    return null; // Tên người dùng hoặc mật khẩu không hợp lệ
                 }
             }
         }

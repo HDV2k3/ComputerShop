@@ -80,6 +80,7 @@
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\sysdiagrams.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UsersCategory.cs" />
     <Compile Include="View\FormForgotPass.cs">
       <SubType>Form</SubType>
     </Compile>
