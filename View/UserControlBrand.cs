@@ -111,6 +111,7 @@ namespace Computer_Shop_Management_System.View
         }
         public void EmtyBox1()
         {
+            txtMaThuongHieu1.Text = string.Empty;
             txtTenThuongHieu1.Clear();
             cmbTRangThai1.SelectedIndex = 0;
 

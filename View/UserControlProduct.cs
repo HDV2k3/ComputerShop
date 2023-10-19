@@ -94,7 +94,7 @@ namespace Computer_Shop_Management_System.View
         private void dgvSanPham_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            if (e.RowIndex != -1)
+           /* if (e.RowIndex != -1)
             {
                 DataGridViewRow row = dgvSanPham.Rows[e.RowIndex];
                 // Đổ dữ liệu vào các controls
@@ -115,7 +115,7 @@ namespace Computer_Shop_Management_System.View
                 }
 
                 tpProduct.SelectedTab = tpLuaChon;
-            }
+            }*/
         }
 
         private void UserControlProduct_Load(object sender, EventArgs e)
@@ -367,7 +367,7 @@ namespace Computer_Shop_Management_System.View
 
         private void cmbThuongHieu1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -413,7 +413,34 @@ namespace Computer_Shop_Management_System.View
         {
 
         }
+        public void LoadDgvSanPham()
+        {
+            txtTimKiemSanPham.Clear();
+            /**//*dgvLoai.Columns[0].Visible = true;*/
+            // Kết nối đến cơ sở dữ liệu
+            using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
+            {
+                // Mở kết nối
+                connection.Open();
 
+                // Câu truy vấn SELECT để lấy dữ liệu từ bảng Category
+                string query = "SELECT * FROM Product";
+
+                // Thực hiện truy vấn
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataReader reader = command.ExecuteReader();
+
+
+                // Lấy dữ liệu từ cơ sở dữ liệu và lưu vào datatable
+                DataTable dataTable = GetDataFromDatabase();
+
+                // Gán datatable làm nguồn dữ liệu cho DataGridView
+
+                dgvSanPham.DataSource = dataTable;
+
+            }
+            lblTotal.Text = dgvSanPham.Rows.Count.ToString();
+        }
         private void btnThayDoi_Click(object sender, EventArgs e)
         {
             if (txtTenSanPham1.Text.Trim() == string.Empty)
@@ -453,9 +480,34 @@ namespace Computer_Shop_Management_System.View
             }
             else
             {
-                Product product = new Product(txtTenSanPham1.Text.Trim(), (byte[])imageConverter.ConvertTo(picPhoto1.Image, typeof(byte[])), Convert.ToInt32(txtGiaTien1.Text), Convert.ToInt32(nudSoLuong1.Text), cmbThuongHieu1.SelectedItem.ToString(), cmbLoai1.SelectedItem.ToString(), cmbTrangThai1.SelectedItem.ToString());
-                ProductController.UpdateProduct(product);
-                EmptyBox1();
+                using (var context = new DataBase())
+                {
+                    var productToUpdate = context.Product.FirstOrDefault(p => p.Product_Name.Equals(txtTenSanPham1.Text)); // Thay id bằng giá trị tương ứng
+
+
+                    if (CheckTen(productToUpdate.Product_Name))
+                    {
+                        // Cập nhật các thuộc tính của đối tượng với giá trị từ controls
+                        txtTenSanPham1.Enabled = false;
+                        productToUpdate.Product_Name = txtTenSanPham1.Text;
+                        productToUpdate.Product_Rate = int.Parse(txtGiaTien1.Text);
+                        productToUpdate.Product_Quantity = int.Parse(nudSoLuong1.Value.ToString());
+                        productToUpdate.Product_Brand = cmbThuongHieu1.SelectedItem.ToString();
+                        productToUpdate.Product_Category = cmbLoai1.SelectedItem.ToString();
+                        productToUpdate.Product_Stastus = cmbTrangThai1.SelectedItem.ToString();
+
+                        // Lưu các thay đổi vào cơ sở dữ liệu
+                        context.SaveChanges();
+                        txtTenSanPham1.Enabled = true;
+                        EmptyBox1();
+                        MessageBox.Show("Cập nhật sản phẩm thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadDgvSanPham();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy sản phẩm trong dữ liệu .", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
             }
         }
     
@@ -588,11 +640,9 @@ namespace Computer_Shop_Management_System.View
 
         private void dgvSanPham_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.RowIndex < dgvSanPham.RowCount)
-            {
-                DataGridViewRow row = dgvSanPham.Rows[e.RowIndex];
-                if(row.Cells.Count > 2)
-                {
+                    tpProduct.SelectedTab = tpLuaChon;
+                    DataGridViewRow row = dgvSanPham.Rows[e.RowIndex];
+                
                     // Đổ dữ liệu vào các controls
                     txtTenSanPham1.Text = row.Cells[1].Value.ToString();
                     txtGiaTien1.Text = row.Cells[3].Value.ToString();
@@ -616,10 +666,8 @@ namespace Computer_Shop_Management_System.View
                         picPhoto1.Image = Properties.Resources.plus;
                     }
 
-                    tpProduct.SelectedTab = tpLuaChon;
-                }    
-               
-            }
-        }
+                  
+                }   
+        
     }
 }

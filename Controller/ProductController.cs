@@ -141,7 +141,7 @@ namespace Computer_Shop_Management_System.Controller
                 }
             }
         }
-        internal static void UpdateProduct(Product product)
+        /*internal static void UpdateProduct(Product product)
         {
             string connectionString = @"data source=.\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay thế bằng chuỗi kết nối đến cơ sở dữ liệu của bạn
 
@@ -164,6 +164,6 @@ namespace Computer_Shop_Management_System.Controller
                     command.ExecuteNonQuery();
                 }
             }
-        }
+        }*/
     }
 }

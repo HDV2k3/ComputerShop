@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Printing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -19,6 +20,7 @@ namespace Computer_Shop_Management_System.View
 {
     public partial class UserControlOrders : UserControl
     {
+        public static List<DataGridViewRow> selectedRows = new List<DataGridViewRow>();
         private const string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay thế bằng chuỗi kết nối của bạn
         DataBase db = new DataBase();
         int otong = 0;
@@ -63,7 +65,7 @@ namespace Computer_Shop_Management_System.View
 
         private void tpthemhoadon_Click(object sender, EventArgs e)
         {
-           
+            LoadOrdersData();
         }
 
         private void txttenkhachhang_TextChanged(object sender, EventArgs e)
@@ -78,7 +80,7 @@ namespace Computer_Shop_Management_System.View
 
         private void tpluachon_Click(object sender, EventArgs e)
         {
-           
+            LoadOrdersData();
         }
         private void LoadOrdersData()
         {
@@ -113,7 +115,6 @@ namespace Computer_Shop_Management_System.View
             dtpDate.Value = DateTime.Now;
             LoadProductsToComboBox();
             LoadOrdersData();
-         
 
 
 
@@ -194,6 +195,36 @@ namespace Computer_Shop_Management_System.View
            
 
         }
+        private void ClearData()
+        {
+            // Lưu hóa đơn vào cơ sở dữ liệu
+
+            // Xóa tất cả dữ liệu trong DataGridView
+            dtgvOrder.Rows.Clear();
+            Computer.BrandCategoryProduct("SELECT Product_Name FROM Product WHERE Product_Status ='Thanh Toán Thành Công' ORDER BY Product_Name;", cmbsanpham);
+
+            // Lấy danh sách các dòng được chọn
+
+
+
+
+            dtgvOrder.DataSource = null;
+
+            txttenkhachhang.Text = string.Empty;
+            dtpDate.Value = DateTime.Now;
+            cmbsanpham.SelectedItem = "--SELECT--";
+            cmbtttt.SelectedItem = "--SELECT--";
+            txtGiaTien.Text = string.Empty;
+            nudsoluong.Value = 0;
+            txtthanhtien.Text = string.Empty;
+            txttongtien.Text = "";
+            txttienphaitra.Text = "";
+            txtGiamGia.Text = "";
+            txttongcong.Text = "";
+            txtTienThua.Text = "";
+            txtMaHoaDon.Text = "BILL" + DateTime.Now.ToString("yyMMddhhmmss");
+            txtmakhachhang.Text = "KH " + DateTime.Now.ToString("yyMMddhhmmss");
+        }
         private void AddClear()
         {
             
@@ -201,20 +232,11 @@ namespace Computer_Shop_Management_System.View
             Computer.BrandCategoryProduct("SELECT Product_Name FROM Product WHERE Product_Status ='Thanh Toán Thành Công' ORDER BY Product_Name;", cmbsanpham);
 
             // Lấy danh sách các dòng được chọn
-            List<DataGridViewRow> selectedRows = new List<DataGridViewRow>();
-            foreach (DataGridViewRow row in dtgvOrder.SelectedRows)
-            {
-                selectedRows.Add(row);
-            }
+           
 
-            foreach (DataGridViewRow row in selectedRows)
-            {
-                // Kiểm tra nếu hàng đó không phải là hàng mới (đã được commit)
-                if (!row.IsNewRow)
-                {
-                    dtgvOrder.Rows.Remove(row);
-                }
-            }
+
+
+
             txttenkhachhang.Text = string.Empty;
             dtpDate.Value = DateTime.Now;
             cmbsanpham.SelectedItem = "--SELECT--";
@@ -244,7 +266,7 @@ namespace Computer_Shop_Management_System.View
                 {
                     command.Parameters.AddWithValue("@ProductName", productName);
                     var result = command.ExecuteScalar();
-                    if (result != DBNull.Value)
+                    if (result != null && result != DBNull.Value)
                     {
                         availableQuantity = (int)result;
                     }
@@ -276,7 +298,8 @@ namespace Computer_Shop_Management_System.View
             if (requestedQuantity > availableQuantity)
             {
                 MessageBox.Show("Số lượng sản phẩm mua vượt quá số lượng có sẵn. Số lượng có sẵn: " + availableQuantity, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                EmtyBox();
+
             }
 
             int gia, tongtien;
@@ -509,8 +532,7 @@ namespace Computer_Shop_Management_System.View
                     }
                 }
                 MessageBox.Show("Lưu Hóa Đơn Thành Công");
-
-                AddClear();
+                ClearData();
             }
         }
         public void EmtyBox()
@@ -534,8 +556,6 @@ namespace Computer_Shop_Management_System.View
             dtp2.Value = DateTime.Now;
             txttenkhachhangop.Clear();
             txttenkhachhangop.Clear();
-            AddClear();
-            dtgvOrder.Rows.Clear();
             txttongtienop.Text = "0";
             txtTienThuaLC.Text = "0";
             txttiennhankhachhang.Text = "0";
@@ -739,51 +759,74 @@ namespace Computer_Shop_Management_System.View
             e.Graphics.DrawString(richTextBox.Text, new Font("Segoe UI", 6, FontStyle.Regular), Brushes.Black, new Point(10, 10));
         }
 
-        private void btnxoa_Click(object sender, EventArgs e)
+        public void XoaHoaDon(string maHoaDon)
         {
-           
+            string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa hóa Đơn này?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dialogResult == DialogResult.Yes)
+                connection.Open();
+
+                // Xóa các bản ghi liên quan trong bảng OrderDetails trước
+                string deleteOrderDetailsQuery = "DELETE FROM OrderDetails WHERE Orders_Id = @MaHoaDon";
+                using (SqlCommand deleteOrderDetailsCommand = new SqlCommand(deleteOrderDetailsQuery, connection))
                 {
-                    string customerid = txtMaKH.Text;
+                    deleteOrderDetailsCommand.Parameters.AddWithValue("@MaHoaDon", maHoaDon);
+                    deleteOrderDetailsCommand.ExecuteNonQuery();
+                }
 
-                    OderController oderController = new OderController();
-                    bool result = oderController.DeleteOrder(customerid);
-
-                    if (result)
+                // Tiếp tục xóa hóa đơn
+                string deleteOrderQuery = "DELETE FROM Orders WHERE Orders_Id = @MaHoaDon";
+                using (SqlCommand deleteOrderCommand = new SqlCommand(deleteOrderQuery, connection))
+                {
+                    deleteOrderCommand.Parameters.AddWithValue("@MaHoaDon", maHoaDon);
+                    int rowsAffected = deleteOrderCommand.ExecuteNonQuery();
+                    if (rowsAffected > 0)
                     {
-                        MessageBox.Show("Xóa Hóa đơn thành công.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        dtgvOrder.Refresh();
+                        MessageBox.Show("Hóa đơn đã được xóa thành công.");
                         EmtyBox1();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy hóa đơn có mã: " + maHoaDon);
                     }
                 }
             }
         }
+        private void btnxoa_Click(object sender, EventArgs e)
+        {
+            XoaHoaDon(txtMaHoaDon1.Text.Trim());
+        }
 
         private void dtgvQL_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow row = dtgvQL.Rows[e.RowIndex];
+            if (e.RowIndex >= 0 && e.RowIndex < dtgvQL.Rows.Count)
+            {
+                DataGridViewRow row = dtgvQL.Rows[e.RowIndex];
 
-            tpOders.SelectedTab = tpluachon;
-            txtMaHoaDon1.Text = row.Cells[0].Value.ToString();
-            dtp2.Value = Convert.ToDateTime(row.Cells[1].Value);
-            txttenkhachhangop.Text = row.Cells[2].Value.ToString();
-            txtMaKH.Text = row.Cells[3].Value.ToString();
-            txttongtienop.Text = row.Cells[4].Value.ToString();
-            txttiennhankhachhang.Text = row.Cells[5].Value.ToString();
-            txtGiamGiaLC.Text = row.Cells[7].Value.ToString();
-            txtTienThuaLC.Text = row.Cells[6].Value.ToString();
-            txttongcongop.Text = row.Cells[8].Value.ToString();
-            cmbtrangthaiop.Text = row.Cells[9].Value.ToString();
+                // Kiểm tra chỉ số cột hợp lệ trước khi truy cập vào Cells
+                if (e.ColumnIndex >= 0 && e.ColumnIndex < row.Cells.Count)
+                {
+                    tpOders.SelectedTab = tpluachon;
+                    txtMaHoaDon1.Text = row.Cells[0].Value.ToString();
+                    dtp2.Value = Convert.ToDateTime(row.Cells[1].Value);
+                    txttenkhachhangop.Text = row.Cells[2].Value.ToString();
+                    txtMaKH.Text = row.Cells[3].Value.ToString();
+                    txttongtienop.Text = row.Cells[4].Value.ToString();
+                    txttiennhankhachhang.Text = row.Cells[5].Value.ToString();
+                    txtGiamGiaLC.Text = row.Cells[7].Value.ToString();
+                    txtTienThuaLC.Text = row.Cells[6].Value.ToString();
+                    txttongcongop.Text = row.Cells[8].Value.ToString();
+                    cmbtrangthaiop.Text = row.Cells[9].Value.ToString();
+                }
+            }
         }
 
         private void tabControl1_Click(object sender, EventArgs e)
         {
-           
-          
-         
+
+            LoadOrdersData();
+
+
         }
 
         private void tpquanlyhoadon_Click(object sender, EventArgs e)
@@ -874,8 +917,16 @@ namespace Computer_Shop_Management_System.View
                     // Xử lý việc xóa dòng dữ liệu tại e.RowIndex
 
                     // Ví dụ: Xóa dòng dữ liệu
-                    dtgvOrder.Rows.RemoveAt(e.RowIndex);
-                    CalculateTotal();
+                    if(!dtgvOrder.Rows[e.RowIndex].IsNewRow)
+                    {
+                        dtgvOrder.Rows.RemoveAt(e.RowIndex);
+                        CalculateTotal();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không có dữ liệu để xóa");
+                    }
+                   
                 }
             }
         }
@@ -892,6 +943,75 @@ namespace Computer_Shop_Management_System.View
 
         private void cmbtrangthaiop_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnthaydoi_Click(object sender, EventArgs e)
+        {
+
+            // Lấy dữ liệu từ các TextBox
+            string orderId = txtMaHoaDon1.Text; // Giá trị Orders_Id không thay đổi
+            string orderDateText = dtp2.Text;
+            DateTime orderDate;
+            if (DateTime.TryParseExact(orderDateText, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out orderDate))
+            {
+                // Giá trị ngày tháng hợp lệ, tiếp tục xử lý
+                string customerName = txttenkhachhangop.Text;
+                string customerNumber = txtMaKH.Text;
+                decimal totalAmount = decimal.Parse(txttongtienop.Text);
+                decimal paidAmount = decimal.Parse(txttiennhankhachhang.Text);
+                decimal dueAmount = decimal.Parse(txtTienThuaLC.Text);
+                decimal discount = decimal.Parse(txtGiamGiaLC.Text);
+                decimal grandTotal = decimal.Parse(txttongcongop.Text);
+                string statusPayment = cmbtrangthaiop.SelectedIndex.ToString();
+                string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Tạo câu lệnh SQL để cập nhật thông tin hóa đơn
+                    string sqlQuery = "UPDATE Orders SET Order_Date = @OrderDate, Customer_Name = @CustomerName, Customer_Number = @CustomerNumber, " +
+                        "Total_Amout = @TotalAmount, Paid_Amout = @PaidAmount, Due_Amout = @DueAmount, Discount = @Discount, " +
+                        "Grand_Total = @GrandTotal, StatusPayment = @StatusPayment WHERE Orders_Id = @OrderId";
+
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        // Thiết lập giá trị cho các tham số
+                        command.Parameters.AddWithValue("@OrderDate", orderDate);
+                        command.Parameters.AddWithValue("@CustomerName", customerName);
+                        command.Parameters.AddWithValue("@CustomerNumber", customerNumber);
+                        command.Parameters.AddWithValue("@TotalAmount", totalAmount);
+                        command.Parameters.AddWithValue("@PaidAmount", paidAmount);
+                        command.Parameters.AddWithValue("@DueAmount", dueAmount);
+                        command.Parameters.AddWithValue("@Discount", discount);
+                        command.Parameters.AddWithValue("@GrandTotal", grandTotal);
+                        command.Parameters.AddWithValue("@StatusPayment", statusPayment);
+                        command.Parameters.AddWithValue("@OrderId", orderId); // orderId là giá trị Orders_Id của hóa đơn cần cập nhật
+
+                        // Thực thi câu lệnh SQL
+                        int rowsAffected = command.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Thông tin hóa đơn đã được cập nhật thành công.");
+                            EmtyBox1();
+                            LoadOrdersData();
+                            
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cập nhật thông tin hóa đơn không thành công.");
+                            EmtyBox1();
+                        }
+                    }
+                }
+            }
+            else
+            {
+                // Giá trị ngày tháng không hợp lệ, hiển thị thông báo lỗi
+                MessageBox.Show("Giá trị ngày tháng không hợp lệ.");
+                EmtyBox1();
+            }
+
 
         }
     }

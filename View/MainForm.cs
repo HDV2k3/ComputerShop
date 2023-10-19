@@ -104,7 +104,7 @@ namespace Computer_Shop_Management_System.View
             {
                 MessageBox.Show("Bạn Cần Cấp Quyền Cao Hơn Để Truy Cập");
             }    
-           
+           //jhihi
         }
 
         private void btnSanPham_Click(object sender, EventArgs e)

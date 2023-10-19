@@ -40,15 +40,15 @@
             this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2HtmlToolTip1 = new Guna.UI2.WinForms.Guna2HtmlToolTip();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.picShowPass = new System.Windows.Forms.PictureBox();
             this.picHidePass = new System.Windows.Forms.PictureBox();
             this.picClose = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picShowPass)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picHidePass)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,7 +100,7 @@
             this.txtUserpassword.Name = "txtUserpassword";
             this.txtUserpassword.Size = new System.Drawing.Size(242, 20);
             this.txtUserpassword.TabIndex = 2;
-            this.txtUserpassword.Text = "12345678";
+            this.txtUserpassword.Text = "Viethuynh@#!2003";
             this.txtUserpassword.UseSystemPasswordChar = true;
             this.txtUserpassword.TextChanged += new System.EventHandler(this.txtUserpassword_TextChanged);
             this.txtUserpassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUserpassword_KeyPress);
@@ -126,7 +126,7 @@
             this.btnLogin.Location = new System.Drawing.Point(145, 445);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(242, 38);
-            this.btnLogin.TabIndex = 4;
+            this.btnLogin.TabIndex = 0;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -149,17 +149,6 @@
             // 
             this.guna2HtmlToolTip1.AllowLinksHandling = true;
             this.guna2HtmlToolTip1.MaximumSize = new System.Drawing.Size(0, 0);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::Computer_Shop_Management_System.Properties.Resources.laptop__1_;
-            this.pictureBox3.Location = new System.Drawing.Point(186, 30);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(200, 200);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // picShowPass
             // 
@@ -200,6 +189,17 @@
             this.guna2HtmlToolTip1.SetToolTip(this.picClose, "Close");
             this.picClose.Click += new System.EventHandler(this.picClose_Click);
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::Computer_Shop_Management_System.Properties.Resources.laptop__1_;
+            this.pictureBox3.Location = new System.Drawing.Point(186, 30);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(200, 200);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 0;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Computer_Shop_Management_System.Properties.Resources.laptop;
@@ -234,10 +234,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Computer Shop Management System | Login";
             this.Load += new System.EventHandler(this.FormLogin_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picShowPass)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picHidePass)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

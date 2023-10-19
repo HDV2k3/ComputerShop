@@ -200,6 +200,7 @@ namespace Computer_Shop_Management_System.View
             string pattern = @"^[\p{L}\s]+$";
 
             Regex regex = new Regex(pattern);
+            //uguyiy
 
             return regex.IsMatch(CategoryName);
         }

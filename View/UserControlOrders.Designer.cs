@@ -85,6 +85,8 @@
             this.guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btntimtenkhachhang = new Guna.UI2.WinForms.Guna2Button();
             this.tpluachon = new System.Windows.Forms.TabPage();
+            this.cmbtrangthaiop = new System.Windows.Forms.ComboBox();
+            this.txtMaHoaDon1 = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtMaKH = new System.Windows.Forms.TextBox();
             this.txtTienThuaLC = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtGiamGiaLC = new Guna.UI2.WinForms.Guna2TextBox();
@@ -102,6 +104,7 @@
             this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel9 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2HtmlLabel29 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -116,9 +119,6 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDocument2 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.txtMaHoaDon1 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2HtmlLabel29 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.cmbtrangthaiop = new System.Windows.Forms.ComboBox();
             this.tpOders.SuspendLayout();
             this.tpthemhoadon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudsoluong)).BeginInit();
@@ -964,6 +964,34 @@
             this.tpluachon.Text = "Lựa Chọn";
             this.tpluachon.Click += new System.EventHandler(this.tpluachon_Click);
             // 
+            // cmbtrangthaiop
+            // 
+            this.cmbtrangthaiop.FormattingEnabled = true;
+            this.cmbtrangthaiop.Location = new System.Drawing.Point(358, 335);
+            this.cmbtrangthaiop.Name = "cmbtrangthaiop";
+            this.cmbtrangthaiop.Size = new System.Drawing.Size(379, 25);
+            this.cmbtrangthaiop.TabIndex = 15;
+            // 
+            // txtMaHoaDon1
+            // 
+            this.txtMaHoaDon1.BorderColor = System.Drawing.Color.Black;
+            this.txtMaHoaDon1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtMaHoaDon1.DefaultText = "";
+            this.txtMaHoaDon1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtMaHoaDon1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtMaHoaDon1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtMaHoaDon1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtMaHoaDon1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtMaHoaDon1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtMaHoaDon1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtMaHoaDon1.Location = new System.Drawing.Point(358, 159);
+            this.txtMaHoaDon1.Name = "txtMaHoaDon1";
+            this.txtMaHoaDon1.PasswordChar = '\0';
+            this.txtMaHoaDon1.PlaceholderText = "";
+            this.txtMaHoaDon1.SelectedText = "";
+            this.txtMaHoaDon1.Size = new System.Drawing.Size(379, 25);
+            this.txtMaHoaDon1.TabIndex = 14;
+            // 
             // txtMaKH
             // 
             this.txtMaKH.Location = new System.Drawing.Point(10, 159);
@@ -1046,6 +1074,7 @@
             this.btnthaydoi.Size = new System.Drawing.Size(109, 45);
             this.btnthaydoi.TabIndex = 10;
             this.btnthaydoi.Text = "Thay Đổi";
+            this.btnthaydoi.Click += new System.EventHandler(this.btnthaydoi_Click);
             // 
             // txttongcongop
             // 
@@ -1144,7 +1173,7 @@
             this.dtp2.Checked = true;
             this.dtp2.FillColor = System.Drawing.Color.White;
             this.dtp2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dtp2.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtp2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtp2.Location = new System.Drawing.Point(10, 79);
             this.dtp2.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtp2.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
@@ -1230,6 +1259,16 @@
             this.guna2HtmlLabel4.Text = "Mã KH:";
             this.guna2HtmlLabel4.Click += new System.EventHandler(this.guna2HtmlLabel4_Click);
             // 
+            // guna2HtmlLabel29
+            // 
+            this.guna2HtmlLabel29.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel29.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.guna2HtmlLabel29.Location = new System.Drawing.Point(358, 130);
+            this.guna2HtmlLabel29.Name = "guna2HtmlLabel29";
+            this.guna2HtmlLabel29.Size = new System.Drawing.Size(83, 19);
+            this.guna2HtmlLabel29.TabIndex = 1;
+            this.guna2HtmlLabel29.Text = "Mã Hóa Đơn:";
+            // 
             // guna2HtmlLabel3
             // 
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
@@ -1313,44 +1352,6 @@
             this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
-            // 
-            // txtMaHoaDon1
-            // 
-            this.txtMaHoaDon1.BorderColor = System.Drawing.Color.Black;
-            this.txtMaHoaDon1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtMaHoaDon1.DefaultText = "";
-            this.txtMaHoaDon1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtMaHoaDon1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtMaHoaDon1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtMaHoaDon1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtMaHoaDon1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaHoaDon1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtMaHoaDon1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaHoaDon1.Location = new System.Drawing.Point(358, 159);
-            this.txtMaHoaDon1.Name = "txtMaHoaDon1";
-            this.txtMaHoaDon1.PasswordChar = '\0';
-            this.txtMaHoaDon1.PlaceholderText = "";
-            this.txtMaHoaDon1.SelectedText = "";
-            this.txtMaHoaDon1.Size = new System.Drawing.Size(379, 25);
-            this.txtMaHoaDon1.TabIndex = 14;
-            // 
-            // guna2HtmlLabel29
-            // 
-            this.guna2HtmlLabel29.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel29.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.guna2HtmlLabel29.Location = new System.Drawing.Point(358, 130);
-            this.guna2HtmlLabel29.Name = "guna2HtmlLabel29";
-            this.guna2HtmlLabel29.Size = new System.Drawing.Size(83, 19);
-            this.guna2HtmlLabel29.TabIndex = 1;
-            this.guna2HtmlLabel29.Text = "Mã Hóa Đơn:";
-            // 
-            // cmbtrangthaiop
-            // 
-            this.cmbtrangthaiop.FormattingEnabled = true;
-            this.cmbtrangthaiop.Location = new System.Drawing.Point(358, 335);
-            this.cmbtrangthaiop.Name = "cmbtrangthaiop";
-            this.cmbtrangthaiop.Size = new System.Drawing.Size(379, 25);
-            this.cmbtrangthaiop.TabIndex = 15;
             // 
             // UserControlOrders
             // 

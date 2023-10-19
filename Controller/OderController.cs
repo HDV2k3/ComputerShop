@@ -11,7 +11,7 @@ namespace Computer_Shop_Management_System.Controller
 {
     public class OderController
     {
-        public bool DeleteOrder(string customerid)
+        public bool DeleteOrder(string orderid)
         {
             try
             {
@@ -21,11 +21,11 @@ namespace Computer_Shop_Management_System.Controller
                 {
                     connection.Open();
 
-                    string query = "DELETE FROM Orders WHERE Customer_Number = @CustomerID";
+                    string query = "DELETE FROM Orders WHERE Orders_Id = @CustomerID";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@CustomerID", customerid);
+                        command.Parameters.AddWithValue("@CustomerID", orderid);
                         int rowsAffected = command.ExecuteNonQuery();
 
                         if (rowsAffected > 0)

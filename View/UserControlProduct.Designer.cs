@@ -61,8 +61,6 @@
             this.nudSoLuong1 = new System.Windows.Forms.NumericUpDown();
             this.txtGiaTien1 = new System.Windows.Forms.TextBox();
             this.cmbTrangThai1 = new System.Windows.Forms.ComboBox();
-            this.cmbLoai1 = new System.Windows.Forms.ComboBox();
-            this.cmbThuongHieu1 = new System.Windows.Forms.ComboBox();
             this.btnXoa = new System.Windows.Forms.Button();
             this.picPhoto1 = new System.Windows.Forms.PictureBox();
             this.btnDuyetSanPham1 = new System.Windows.Forms.Button();
@@ -83,6 +81,8 @@
             this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
+            this.cmbThuongHieu1 = new System.Windows.Forms.ComboBox();
+            this.cmbLoai1 = new System.Windows.Forms.ComboBox();
             this.tpProduct.SuspendLayout();
             this.tpThemSanPham.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSoLuong)).BeginInit();
@@ -507,11 +507,11 @@
             // 
             // tpLuaChon
             // 
+            this.tpLuaChon.Controls.Add(this.cmbLoai1);
+            this.tpLuaChon.Controls.Add(this.cmbThuongHieu1);
             this.tpLuaChon.Controls.Add(this.nudSoLuong1);
             this.tpLuaChon.Controls.Add(this.txtGiaTien1);
             this.tpLuaChon.Controls.Add(this.cmbTrangThai1);
-            this.tpLuaChon.Controls.Add(this.cmbLoai1);
-            this.tpLuaChon.Controls.Add(this.cmbThuongHieu1);
             this.tpLuaChon.Controls.Add(this.btnXoa);
             this.tpLuaChon.Controls.Add(this.picPhoto1);
             this.tpLuaChon.Controls.Add(this.btnDuyetSanPham1);
@@ -565,26 +565,6 @@
             this.cmbTrangThai1.Size = new System.Drawing.Size(148, 25);
             this.cmbTrangThai1.TabIndex = 6;
             this.cmbTrangThai1.SelectedIndexChanged += new System.EventHandler(this.cmbTrangThai1_SelectedIndexChanged);
-            // 
-            // cmbLoai1
-            // 
-            this.cmbLoai1.FormattingEnabled = true;
-            this.cmbLoai1.Location = new System.Drawing.Point(43, 249);
-            this.cmbLoai1.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbLoai1.Name = "cmbLoai1";
-            this.cmbLoai1.Size = new System.Drawing.Size(147, 25);
-            this.cmbLoai1.TabIndex = 5;
-            this.cmbLoai1.SelectedIndexChanged += new System.EventHandler(this.cmbLoai1_SelectedIndexChanged);
-            // 
-            // cmbThuongHieu1
-            // 
-            this.cmbThuongHieu1.FormattingEnabled = true;
-            this.cmbThuongHieu1.Location = new System.Drawing.Point(42, 187);
-            this.cmbThuongHieu1.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbThuongHieu1.Name = "cmbThuongHieu1";
-            this.cmbThuongHieu1.Size = new System.Drawing.Size(148, 25);
-            this.cmbThuongHieu1.TabIndex = 4;
-            this.cmbThuongHieu1.SelectedIndexChanged += new System.EventHandler(this.cmbThuongHieu1_SelectedIndexChanged);
             // 
             // btnXoa
             // 
@@ -797,6 +777,22 @@
             this.openFileDialog.Filter = "JPG|*.ipg|JPEG|*.jpeg|PNG|*.png";
             this.openFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog_FileOk);
             // 
+            // cmbThuongHieu1
+            // 
+            this.cmbThuongHieu1.FormattingEnabled = true;
+            this.cmbThuongHieu1.Location = new System.Drawing.Point(43, 193);
+            this.cmbThuongHieu1.Name = "cmbThuongHieu1";
+            this.cmbThuongHieu1.Size = new System.Drawing.Size(147, 25);
+            this.cmbThuongHieu1.TabIndex = 33;
+            // 
+            // cmbLoai1
+            // 
+            this.cmbLoai1.FormattingEnabled = true;
+            this.cmbLoai1.Location = new System.Drawing.Point(43, 252);
+            this.cmbLoai1.Name = "cmbLoai1";
+            this.cmbLoai1.Size = new System.Drawing.Size(146, 25);
+            this.cmbLoai1.TabIndex = 34;
+            // 
             // UserControlProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -871,12 +867,12 @@
         private System.Windows.Forms.ComboBox cmbLoai;
         private System.Windows.Forms.ComboBox cmbThuongHieu;
         private System.Windows.Forms.ComboBox cmbTrangThai1;
-        private System.Windows.Forms.ComboBox cmbLoai1;
-        private System.Windows.Forms.ComboBox cmbThuongHieu1;
         private System.Windows.Forms.NumericUpDown nudSoLuong;
         private System.Windows.Forms.TextBox txtGiaTien;
         private System.Windows.Forms.TextBox txtGiaTien1;
         private System.Windows.Forms.NumericUpDown nudSoLuong1;
         private Guna.UI2.WinForms.Guna2AnimateWindow guna2AnimateWindow1;
+        private System.Windows.Forms.ComboBox cmbThuongHieu1;
+        private System.Windows.Forms.ComboBox cmbLoai1;
     }
 }
