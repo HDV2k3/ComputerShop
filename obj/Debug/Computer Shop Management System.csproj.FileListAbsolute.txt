@@ -177,3 +177,4 @@ C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\bin\Debug\Mic
 C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\bin\Debug\EntityFramework.xml
 C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\obj\Debug\Computer Shop Management System.csproj.CopyComplete
+C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlBrandStaff.resources

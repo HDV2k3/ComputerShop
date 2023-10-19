@@ -57,6 +57,7 @@
             this.userControlCategory1 = new Computer_Shop_Management_System.View.UserControlCategory();
             this.userControlBrand1 = new Computer_Shop_Management_System.View.UserControlBrand();
             this.userControlDashboard1 = new Computer_Shop_Management_System.View.UserControlDashboard();
+            this.userControlBrandStaff1 = new Computer_Shop_Management_System.View.UserControlBrandStaff();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -393,10 +394,20 @@
             this.userControlDashboard1.BackColor = System.Drawing.Color.White;
             this.userControlDashboard1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.userControlDashboard1.Location = new System.Drawing.Point(242, 53);
-            this.userControlDashboard1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.userControlDashboard1.Margin = new System.Windows.Forms.Padding(2);
             this.userControlDashboard1.Name = "userControlDashboard1";
             this.userControlDashboard1.Size = new System.Drawing.Size(1029, 528);
             this.userControlDashboard1.TabIndex = 0;
+            // 
+            // userControlBrandStaff1
+            // 
+            this.userControlBrandStaff1.BackColor = System.Drawing.Color.White;
+            this.userControlBrandStaff1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControlBrandStaff1.Location = new System.Drawing.Point(242, 53);
+            this.userControlBrandStaff1.Name = "userControlBrandStaff1";
+            this.userControlBrandStaff1.Size = new System.Drawing.Size(1029, 528);
+            this.userControlBrandStaff1.TabIndex = 8;
+            this.userControlBrandStaff1.Visible = false;
             // 
             // MainForm
             // 
@@ -404,6 +415,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1271, 612);
+            this.Controls.Add(this.userControlBrandStaff1);
             this.Controls.Add(this.userControlUser1);
             this.Controls.Add(this.userControlReport1);
             this.Controls.Add(this.userControlOrders1);
@@ -463,5 +475,6 @@
         private UserControlOrders userControlOrders1;
         private UserControlReport userControlReport1;
         private UserControlUser userControlUser1;
+        private UserControlBrandStaff userControlBrandStaff1;
     }
 }

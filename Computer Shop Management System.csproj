@@ -113,6 +113,12 @@
     <Compile Include="View\UserControlBrand.Designer.cs">
       <DependentUpon>UserControlBrand.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControlBrandStaff.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UserControlBrandStaff.Designer.cs">
+      <DependentUpon>UserControlBrandStaff.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControlCategory.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -174,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\UserControlBrand.resx">
       <DependentUpon>UserControlBrand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserControlBrandStaff.resx">
+      <DependentUpon>UserControlBrandStaff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UserControlCategory.resx">
       <DependentUpon>UserControlCategory.cs</DependentUpon>

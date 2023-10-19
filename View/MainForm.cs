@@ -83,7 +83,16 @@ namespace Computer_Shop_Management_System.View
             }
             else
             {
-                MessageBox.Show("Bạn Cần Cấp Quyền Cao Hơn Để Truy Cập");
+                MovePanel(btnThuongHieu);
+                MessageBox.Show("Bạn Cần Cấp Quyền Cao Hơn Để Truy Cập Các Chức Năng Cao Hơn");
+                userControlBrandStaff1.Visible = true;
+                userControlDashboard1.Visible = false;
+                userControlCategory1.Visible = false;
+                userControlProduct1.Visible = false;
+                userControlOrders1.Visible = false;
+                userControlReport1.Visible = false;
+                userControlUser1.Visible = false;
+                userControlBrand1.Visible = false;
             }    
            
         }
