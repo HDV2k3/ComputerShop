@@ -8,12 +8,13 @@ namespace Computer_Shop_Management_System.Model
     public partial class DataBase : DbContext
     {
         public DataBase()
-            : base("name=DataBase")
+            : base("name=DataBase1")
         {
         }
 
         public virtual DbSet<Brand> Brand { get; set; }
         public virtual DbSet<Category> Category { get; set; }
+        public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
@@ -30,6 +31,19 @@ namespace Computer_Shop_Management_System.Model
             modelBuilder.Entity<Category>()
                 .Property(e => e.Category_Id)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Customer>()
+                .Property(e => e.Customer_Number)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Customer>()
+                .Property(e => e.Phone_Number)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Customer>()
+                .HasMany(e => e.Orders)
+                .WithRequired(e => e.Customer)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Orders>()
                 .Property(e => e.Orders_Id)
@@ -58,7 +72,7 @@ namespace Computer_Shop_Management_System.Model
                 .IsUnicode(false);
 
             modelBuilder.Entity<User>()
-                .Property(e => e.users_Password)
+                .Property(e => e.Users_Password)
                 .IsUnicode(false);
 
             modelBuilder.Entity<User>()

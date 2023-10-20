@@ -47,7 +47,7 @@ namespace Computer_Shop_Management_System.View
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                if(rdoTongDoanhThu.Checked==true)
+                if (rdoTongDoanhThu.Checked == true)
                 {
                     // Tạo và cấu hình SqlCommand để gọi stored procedure
                     using (SqlCommand command = new SqlCommand("CalculateTotalRevenue", connection))
@@ -64,14 +64,14 @@ namespace Computer_Shop_Management_System.View
 
                         // Hiển thị kết quả trên DataGridView
                         dgvAnalys.DataSource = dataTable;
-                    
+
 
                     }
-                } 
-                else if (rdoSLSPDaBan.Checked ==true)
+                }
+                else if (rdoSLSPDaBan.Checked == true)
                 {
                     // Tạo và cấu hình SqlCommand để gọi stored procedure
-                    using (SqlCommand command = new SqlCommand("CalculateSoldProductCount", connection))
+                    using (SqlCommand command = new SqlCommand("CalculateSoldProductCount1", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@startDate", startDate);
@@ -84,11 +84,104 @@ namespace Computer_Shop_Management_System.View
 
                         // Hiển thị kết quả trên DataGridView
                         dgvAnalys.DataSource = dataTable;
-                      
+
                     }
-                }    
-              
+                }
+                else if (rdoDoanhThuTheoSP.Checked == true)
+                {
+                    // Tạo và cấu hình SqlCommand để gọi stored procedure
+                    using (SqlCommand command = new SqlCommand("CalculateRevenueByProduct", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@startDate", startDate);
+                        command.Parameters.AddWithValue("@endDate", endDate);
+
+                        // Tạo SqlDataAdapter và DataTable để lấy kết quả từ stored procedure
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        // Hiển thị kết quả trên DataGridView
+                        dgvAnalys.DataSource = dataTable;
+
+                    }
+                }
+                else if (rdoDoanhThuTheoKH.Checked == true)
+                {
+                    // Tạo và cấu hình SqlCommand để gọi stored procedure
+                    using (SqlCommand command = new SqlCommand("CalculateRevenueByCustomer", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@startDate", startDate);
+                        command.Parameters.AddWithValue("@endDate", endDate);
+
+                        // Tạo SqlDataAdapter và DataTable để lấy kết quả từ stored procedure
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        // Hiển thị kết quả trên DataGridView
+                        dgvAnalys.DataSource = dataTable;
+                    }
+                }
+                else if (rdoLoiNhuan.Checked == true)
+                {
+                    // Tạo và cấu hình SqlCommand để gọi stored procedure
+                    using (SqlCommand command = new SqlCommand("CalculateProfit", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@startDate", startDate);
+                        command.Parameters.AddWithValue("@endDate", endDate);
+
+                        // Tạo SqlDataAdapter và DataTable để lấy kết quả từ stored procedure
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        // Hiển thị kết quả trên DataGridView
+                        dgvAnalys.DataSource = dataTable;
+                    }
+                }
+                else if (rdoSLDonHang.Checked == true)
+                {
+                    // Tạo và cấu hình SqlCommand để gọi stored procedure
+                    using (SqlCommand command = new SqlCommand("CalculateOrderCount", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@startDate", startDate);
+                        command.Parameters.AddWithValue("@endDate", endDate);
+
+                        // Tạo SqlDataAdapter và DataTable để lấy kết quả từ stored procedure
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        // Hiển thị kết quả trên DataGridView
+                        dgvAnalys.DataSource = dataTable;
+                    }
+                }
+                else if (rdoSLKHangMoi.Checked == true)
+                {
+                    // Tạo và cấu hình SqlCommand để gọi stored procedure
+                    using (SqlCommand command = new SqlCommand("CalculateNewCustomerCount", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@startDate", startDate);
+                        command.Parameters.AddWithValue("@endDate", endDate);
+
+                        // Tạo SqlDataAdapter và DataTable để lấy kết quả từ stored procedure
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        // Hiển thị kết quả trên DataGridView
+                        dgvAnalys.DataSource = dataTable;
+                    }
+                }
+               
+                    
             }
+
         }
    
         private void UserControlReport_Load(object sender, EventArgs e)
@@ -98,7 +191,16 @@ namespace Computer_Shop_Management_System.View
 
         private void rdoLoiNhuan_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (rdoLoiNhuan.Checked)
+            {
+                // Kích hoạt nút tìm kiếm
+                btnTaoBaoCao.Enabled = true;
+            }
+            else
+            {
+                // Vô hiệu hóa nút tìm kiếm
+                btnTaoBaoCao.Enabled = false;
+            }
         }
 
         private void rdoTongDoanhThu_CheckedChanged(object sender, EventArgs e)
@@ -134,5 +236,69 @@ namespace Computer_Shop_Management_System.View
                 btnTaoBaoCao.Enabled = false;
             }
         }
+
+        private void dgvAnalys_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+
+        }
+
+        private void rdoDoanhThuTheoSP_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdoDoanhThuTheoSP.Checked)
+            {
+                // Kích hoạt nút tìm kiếm
+                btnTaoBaoCao.Enabled = true;
+            }
+            else
+            {
+                // Vô hiệu hóa nút tìm kiếm
+                btnTaoBaoCao.Enabled = false;
+            }
+
+        }
+
+        private void rdoDoanhThuTheoKH_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdoDoanhThuTheoKH.Checked)
+            {
+                // Kích hoạt nút tìm kiếm
+                btnTaoBaoCao.Enabled = true;
+            }
+            else
+            {
+                // Vô hiệu hóa nút tìm kiếm
+                btnTaoBaoCao.Enabled = false;
+            }
+        }
+
+        private void rdoSLDonHang_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdoSLDonHang.Checked)
+            {
+                // Kích hoạt nút tìm kiếm
+                btnTaoBaoCao.Enabled = true;
+            }
+            else
+            {
+                // Vô hiệu hóa nút tìm kiếm
+                btnTaoBaoCao.Enabled = false;
+            }
+        }
+
+        private void rdoSLKHangMoi_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdoSLKHangMoi.Checked)
+            {
+                // Kích hoạt nút tìm kiếm
+                btnTaoBaoCao.Enabled = true;
+            }
+            else
+            {
+                // Vô hiệu hóa nút tìm kiếm
+                btnTaoBaoCao.Enabled = false;
+            }
+        }
+
+      
     }
 }

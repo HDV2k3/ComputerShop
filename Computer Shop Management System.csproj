@@ -71,8 +71,10 @@
     <Compile Include="Controller\Computer.cs" />
     <Compile Include="Controller\OderController.cs" />
     <Compile Include="Controller\ProductController.cs" />
+    <Compile Include="Controller\UserController.cs" />
     <Compile Include="Model\Brand.cs" />
     <Compile Include="Model\Category.cs" />
+    <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\DataBase.cs" />
     <Compile Include="Model\DataProvider.cs" />
     <Compile Include="Model\OrderDetails.cs" />

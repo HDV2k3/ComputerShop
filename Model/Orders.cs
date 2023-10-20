@@ -41,6 +41,8 @@ namespace Computer_Shop_Management_System.Model
         [StringLength(128)]
         public string StatusPayment { get; set; }
 
+        public virtual Customer Customer { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetails> OrderDetails { get; set; }
     }

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tpProduct = new System.Windows.Forms.TabControl();
             this.tpThemSanPham = new System.Windows.Forms.TabPage();
             this.nudSoLuong = new System.Windows.Forms.NumericUpDown();
@@ -58,6 +58,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.tpLuaChon = new System.Windows.Forms.TabPage();
+            this.cmbLoai1 = new System.Windows.Forms.ComboBox();
+            this.cmbThuongHieu1 = new System.Windows.Forms.ComboBox();
             this.nudSoLuong1 = new System.Windows.Forms.NumericUpDown();
             this.txtGiaTien1 = new System.Windows.Forms.TextBox();
             this.cmbTrangThai1 = new System.Windows.Forms.ComboBox();
@@ -81,8 +83,6 @@
             this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
-            this.cmbThuongHieu1 = new System.Windows.Forms.ComboBox();
-            this.cmbLoai1 = new System.Windows.Forms.ComboBox();
             this.tpProduct.SuspendLayout();
             this.tpThemSanPham.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSoLuong)).BeginInit();
@@ -409,24 +409,24 @@
             this.dgvSanPham.BackgroundColor = System.Drawing.Color.White;
             this.dgvSanPham.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvSanPham.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSanPham.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSanPham.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvSanPham.ColumnHeadersHeight = 34;
             this.dgvSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(151)))), ((int)(((byte)(196)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSanPham.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(151)))), ((int)(((byte)(196)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSanPham.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvSanPham.EnableHeadersVisualStyles = false;
             this.dgvSanPham.Location = new System.Drawing.Point(98, 64);
             this.dgvSanPham.Margin = new System.Windows.Forms.Padding(2);
@@ -533,6 +533,24 @@
             this.tpLuaChon.Text = "Lựa Chọn";
             this.tpLuaChon.UseVisualStyleBackColor = true;
             this.tpLuaChon.Click += new System.EventHandler(this.tpLuaChon_Click);
+            // 
+            // cmbLoai1
+            // 
+            this.cmbLoai1.FormattingEnabled = true;
+            this.cmbLoai1.Location = new System.Drawing.Point(43, 252);
+            this.cmbLoai1.Name = "cmbLoai1";
+            this.cmbLoai1.Size = new System.Drawing.Size(146, 25);
+            this.cmbLoai1.TabIndex = 34;
+            this.cmbLoai1.SelectedIndexChanged += new System.EventHandler(this.cmbLoai1_SelectedIndexChanged_1);
+            // 
+            // cmbThuongHieu1
+            // 
+            this.cmbThuongHieu1.FormattingEnabled = true;
+            this.cmbThuongHieu1.Location = new System.Drawing.Point(43, 193);
+            this.cmbThuongHieu1.Name = "cmbThuongHieu1";
+            this.cmbThuongHieu1.Size = new System.Drawing.Size(147, 25);
+            this.cmbThuongHieu1.TabIndex = 33;
+            this.cmbThuongHieu1.SelectedIndexChanged += new System.EventHandler(this.cmbThuongHieu1_SelectedIndexChanged_1);
             // 
             // nudSoLuong1
             // 
@@ -776,22 +794,6 @@
             this.openFileDialog.FileName = "Upload Image";
             this.openFileDialog.Filter = "JPG|*.ipg|JPEG|*.jpeg|PNG|*.png";
             this.openFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog_FileOk);
-            // 
-            // cmbThuongHieu1
-            // 
-            this.cmbThuongHieu1.FormattingEnabled = true;
-            this.cmbThuongHieu1.Location = new System.Drawing.Point(43, 193);
-            this.cmbThuongHieu1.Name = "cmbThuongHieu1";
-            this.cmbThuongHieu1.Size = new System.Drawing.Size(147, 25);
-            this.cmbThuongHieu1.TabIndex = 33;
-            // 
-            // cmbLoai1
-            // 
-            this.cmbLoai1.FormattingEnabled = true;
-            this.cmbLoai1.Location = new System.Drawing.Point(43, 252);
-            this.cmbLoai1.Name = "cmbLoai1";
-            this.cmbLoai1.Size = new System.Drawing.Size(146, 25);
-            this.cmbLoai1.TabIndex = 34;
             // 
             // UserControlProduct
             // 

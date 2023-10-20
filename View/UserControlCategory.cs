@@ -56,11 +56,37 @@ namespace Computer_Shop_Management_System.View
         private void UserControlCategory_Load(object sender, EventArgs e)
         {
             txtMaLoai.Text = "L" + DateTime.Now.ToString("yyMMddhhmmss");
-            lblTotal.Text = dgvLoai.Rows.Count.ToString();
+        
             txtMaLoai.ReadOnly = true;
             txtMaLoai.Enabled = false;
             txtMaLoai1.ReadOnly = true;
             txtMaLoai1.Enabled = false;
+            using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
+            {
+                // Mở kết nối
+                connection.Open();
+
+                // Câu truy vấn SELECT để lấy dữ liệu từ bảng Category
+                string query = "SELECT * FROM Category";
+
+                // Thực hiện truy vấn
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataReader reader = command.ExecuteReader();
+
+
+                // Lấy dữ liệu từ cơ sở dữ liệu và lưu vào datatable
+                DataTable dataTable = GetDataFromDatabase();
+
+                // Gán datatable làm nguồn dữ liệu cho DataGridView
+
+                dgvLoai.DataSource = dataTable;
+                dgvLoai.Columns["Category_Id"].HeaderText = "Mã Loại";
+                dgvLoai.Columns["Category_Name"].HeaderText = "Tên Loại";
+                dgvLoai.Columns["Category_Status"].HeaderText = "Trạng Thái";
+
+
+            }
+            lblTotal.Text = dgvLoai.Rows.Count.ToString();
         }
 
         private void txtTenLoai_TextChanged(object sender, EventArgs e)
@@ -92,6 +118,10 @@ namespace Computer_Shop_Management_System.View
                 // Gán datatable làm nguồn dữ liệu cho DataGridView
 
                 dgvLoai.DataSource = dataTable;
+                dgvLoai.Columns["Category_Id"].HeaderText = "Mã Loại";
+                dgvLoai.Columns["Category_Name"].HeaderText = "Tên Loại";
+                dgvLoai.Columns["Category_Status"].HeaderText = "Trạng Thái";
+
 
             }
             lblTotal.Text = dgvLoai.Rows.Count.ToString();

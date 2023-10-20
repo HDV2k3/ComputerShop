@@ -59,6 +59,10 @@ namespace Computer_Shop_Management_System.View
                 // Gán datatable làm nguồn dữ liệu cho DataGridView
 
                 dgvThuongHieu.DataSource = dataTable;
+                // Đổi tên cột hiển thị trên DataGridView
+                dgvThuongHieu.Columns["Brand_Id"].HeaderText = "Mã Thương Hiệu";
+                dgvThuongHieu.Columns["Brand_Name"].HeaderText = "Tên Thương Hiệu";
+                dgvThuongHieu.Columns["Brand_Status"].HeaderText = "Trạng Thái";
 
             }
             lblTotal.Text = dgvThuongHieu.Rows.Count.ToString();
@@ -94,10 +98,19 @@ namespace Computer_Shop_Management_System.View
 
                 if (row.Cells.Count > 2) // Kiểm tra có đủ cột dữ liệu trong dòng hay không
                 {
-                    // Đổ dữ liệu vào các controls
-                    txtMaThuongHieu1.Text = row.Cells[0].Value.ToString();
-                    txtTenThuongHieu1.Text = row.Cells[1].Value.ToString();
-                    cmbTRangThai1.SelectedItem = row.Cells[2].Value.ToString();
+                    // Đảm bảo chỉ số cột hợp lệ
+                    if (row.Cells[0].Value != null)
+                    {
+                        txtMaThuongHieu1.Text = row.Cells[0].Value.ToString();
+                    }
+                    if (row.Cells[1].Value != null)
+                    {
+                        txtTenThuongHieu1.Text = row.Cells[1].Value.ToString();
+                    }
+                    if (row.Cells[2].Value != null)
+                    {
+                        cmbTRangThai1.SelectedItem = row.Cells[2].Value.ToString();
+                    }
                     tpThuongHieu.SelectedTab = tpLuaChon;
                 }
             }

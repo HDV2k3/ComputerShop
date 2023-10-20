@@ -29,13 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpBaoCao = new System.Windows.Forms.TabPage();
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.rdoNhanVienMoi = new Guna.UI2.WinForms.Guna2RadioButton();
             this.rdoSLKHangMoi = new Guna.UI2.WinForms.Guna2RadioButton();
             this.rdoSLDonHang = new Guna.UI2.WinForms.Guna2RadioButton();
             this.rdoLoiNhuan = new Guna.UI2.WinForms.Guna2RadioButton();
@@ -43,7 +39,6 @@
             this.rdoDoanhThuTheoSP = new Guna.UI2.WinForms.Guna2RadioButton();
             this.rdoSLSPDaBan = new Guna.UI2.WinForms.Guna2RadioButton();
             this.rdoTongDoanhThu = new Guna.UI2.WinForms.Guna2RadioButton();
-            this.dgvAnalys = new Guna.UI2.WinForms.Guna2DataGridView();
             this.btnTaoBaoCao = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpEndDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
@@ -51,6 +46,7 @@
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel28 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.dgvAnalys = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tpBaoCao.SuspendLayout();
             this.guna2CustomGradientPanel1.SuspendLayout();
@@ -71,8 +67,8 @@
             // 
             // tpBaoCao
             // 
-            this.tpBaoCao.Controls.Add(this.guna2CustomGradientPanel1);
             this.tpBaoCao.Controls.Add(this.dgvAnalys);
+            this.tpBaoCao.Controls.Add(this.guna2CustomGradientPanel1);
             this.tpBaoCao.Controls.Add(this.btnTaoBaoCao);
             this.tpBaoCao.Controls.Add(this.label1);
             this.tpBaoCao.Controls.Add(this.dtpEndDate);
@@ -92,7 +88,6 @@
             // 
             // guna2CustomGradientPanel1
             // 
-            this.guna2CustomGradientPanel1.Controls.Add(this.rdoNhanVienMoi);
             this.guna2CustomGradientPanel1.Controls.Add(this.rdoSLKHangMoi);
             this.guna2CustomGradientPanel1.Controls.Add(this.rdoSLDonHang);
             this.guna2CustomGradientPanel1.Controls.Add(this.rdoLoiNhuan);
@@ -105,24 +100,6 @@
             this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(265, 294);
             this.guna2CustomGradientPanel1.TabIndex = 5;
             // 
-            // rdoNhanVienMoi
-            // 
-            this.rdoNhanVienMoi.AutoSize = true;
-            this.rdoNhanVienMoi.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoNhanVienMoi.CheckedState.BorderThickness = 0;
-            this.rdoNhanVienMoi.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoNhanVienMoi.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.rdoNhanVienMoi.CheckedState.InnerOffset = -4;
-            this.rdoNhanVienMoi.Location = new System.Drawing.Point(4, 255);
-            this.rdoNhanVienMoi.Name = "rdoNhanVienMoi";
-            this.rdoNhanVienMoi.Size = new System.Drawing.Size(105, 19);
-            this.rdoNhanVienMoi.TabIndex = 2;
-            this.rdoNhanVienMoi.Text = "Nhân Viên Mới";
-            this.rdoNhanVienMoi.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.rdoNhanVienMoi.UncheckedState.BorderThickness = 2;
-            this.rdoNhanVienMoi.UncheckedState.FillColor = System.Drawing.Color.Transparent;
-            this.rdoNhanVienMoi.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
-            // 
             // rdoSLKHangMoi
             // 
             this.rdoSLKHangMoi.AutoSize = true;
@@ -131,7 +108,7 @@
             this.rdoSLKHangMoi.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.rdoSLKHangMoi.CheckedState.InnerColor = System.Drawing.Color.White;
             this.rdoSLKHangMoi.CheckedState.InnerOffset = -4;
-            this.rdoSLKHangMoi.Location = new System.Drawing.Point(4, 214);
+            this.rdoSLKHangMoi.Location = new System.Drawing.Point(4, 233);
             this.rdoSLKHangMoi.Name = "rdoSLKHangMoi";
             this.rdoSLKHangMoi.Size = new System.Drawing.Size(168, 19);
             this.rdoSLKHangMoi.TabIndex = 2;
@@ -140,6 +117,7 @@
             this.rdoSLKHangMoi.UncheckedState.BorderThickness = 2;
             this.rdoSLKHangMoi.UncheckedState.FillColor = System.Drawing.Color.Transparent;
             this.rdoSLKHangMoi.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            this.rdoSLKHangMoi.CheckedChanged += new System.EventHandler(this.rdoSLKHangMoi_CheckedChanged);
             // 
             // rdoSLDonHang
             // 
@@ -149,7 +127,7 @@
             this.rdoSLDonHang.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.rdoSLDonHang.CheckedState.InnerColor = System.Drawing.Color.White;
             this.rdoSLDonHang.CheckedState.InnerOffset = -4;
-            this.rdoSLDonHang.Location = new System.Drawing.Point(4, 176);
+            this.rdoSLDonHang.Location = new System.Drawing.Point(3, 190);
             this.rdoSLDonHang.Name = "rdoSLDonHang";
             this.rdoSLDonHang.Size = new System.Drawing.Size(134, 19);
             this.rdoSLDonHang.TabIndex = 2;
@@ -158,6 +136,7 @@
             this.rdoSLDonHang.UncheckedState.BorderThickness = 2;
             this.rdoSLDonHang.UncheckedState.FillColor = System.Drawing.Color.Transparent;
             this.rdoSLDonHang.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            this.rdoSLDonHang.CheckedChanged += new System.EventHandler(this.rdoSLDonHang_CheckedChanged);
             // 
             // rdoLoiNhuan
             // 
@@ -167,7 +146,7 @@
             this.rdoLoiNhuan.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.rdoLoiNhuan.CheckedState.InnerColor = System.Drawing.Color.White;
             this.rdoLoiNhuan.CheckedState.InnerOffset = -4;
-            this.rdoLoiNhuan.Location = new System.Drawing.Point(4, 142);
+            this.rdoLoiNhuan.Location = new System.Drawing.Point(0, 154);
             this.rdoLoiNhuan.Name = "rdoLoiNhuan";
             this.rdoLoiNhuan.Size = new System.Drawing.Size(81, 19);
             this.rdoLoiNhuan.TabIndex = 2;
@@ -186,7 +165,7 @@
             this.rdoDoanhThuTheoKH.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.rdoDoanhThuTheoKH.CheckedState.InnerColor = System.Drawing.Color.White;
             this.rdoDoanhThuTheoKH.CheckedState.InnerOffset = -4;
-            this.rdoDoanhThuTheoKH.Location = new System.Drawing.Point(3, 108);
+            this.rdoDoanhThuTheoKH.Location = new System.Drawing.Point(4, 114);
             this.rdoDoanhThuTheoKH.Name = "rdoDoanhThuTheoKH";
             this.rdoDoanhThuTheoKH.Size = new System.Drawing.Size(186, 19);
             this.rdoDoanhThuTheoKH.TabIndex = 2;
@@ -195,6 +174,7 @@
             this.rdoDoanhThuTheoKH.UncheckedState.BorderThickness = 2;
             this.rdoDoanhThuTheoKH.UncheckedState.FillColor = System.Drawing.Color.Transparent;
             this.rdoDoanhThuTheoKH.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            this.rdoDoanhThuTheoKH.CheckedChanged += new System.EventHandler(this.rdoDoanhThuTheoKH_CheckedChanged);
             // 
             // rdoDoanhThuTheoSP
             // 
@@ -213,6 +193,7 @@
             this.rdoDoanhThuTheoSP.UncheckedState.BorderThickness = 2;
             this.rdoDoanhThuTheoSP.UncheckedState.FillColor = System.Drawing.Color.Transparent;
             this.rdoDoanhThuTheoSP.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            this.rdoDoanhThuTheoSP.CheckedChanged += new System.EventHandler(this.rdoDoanhThuTheoSP_CheckedChanged);
             // 
             // rdoSLSPDaBan
             // 
@@ -251,58 +232,6 @@
             this.rdoTongDoanhThu.UncheckedState.FillColor = System.Drawing.Color.Transparent;
             this.rdoTongDoanhThu.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
             this.rdoTongDoanhThu.CheckedChanged += new System.EventHandler(this.rdoTongDoanhThu_CheckedChanged);
-            // 
-            // dgvAnalys
-            // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgvAnalys.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvAnalys.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAnalys.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvAnalys.ColumnHeadersHeight = 4;
-            this.dgvAnalys.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAnalys.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvAnalys.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvAnalys.Location = new System.Drawing.Point(268, 88);
-            this.dgvAnalys.Name = "dgvAnalys";
-            this.dgvAnalys.RowHeadersVisible = false;
-            this.dgvAnalys.Size = new System.Drawing.Size(722, 294);
-            this.dgvAnalys.TabIndex = 4;
-            this.dgvAnalys.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvAnalys.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.dgvAnalys.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.dgvAnalys.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.dgvAnalys.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.dgvAnalys.ThemeStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.dgvAnalys.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvAnalys.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.dgvAnalys.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvAnalys.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvAnalys.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.dgvAnalys.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgvAnalys.ThemeStyle.HeaderStyle.Height = 4;
-            this.dgvAnalys.ThemeStyle.ReadOnly = false;
-            this.dgvAnalys.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvAnalys.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvAnalys.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvAnalys.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvAnalys.ThemeStyle.RowsStyle.Height = 22;
-            this.dgvAnalys.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvAnalys.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvAnalys.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAnalys_CellClick);
             // 
             // btnTaoBaoCao
             // 
@@ -389,6 +318,16 @@
             // 
             this.guna2Elipse1.TargetControl = this.btnTaoBaoCao;
             // 
+            // dgvAnalys
+            // 
+            this.dgvAnalys.BackgroundColor = System.Drawing.Color.White;
+            this.dgvAnalys.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAnalys.Location = new System.Drawing.Point(268, 88);
+            this.dgvAnalys.Name = "dgvAnalys";
+            this.dgvAnalys.Size = new System.Drawing.Size(726, 294);
+            this.dgvAnalys.TabIndex = 6;
+            this.dgvAnalys.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvAnalys_CellFormatting);
+            // 
             // UserControlReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -420,9 +359,7 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private System.Windows.Forms.Button btnTaoBaoCao;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
-        private Guna.UI2.WinForms.Guna2DataGridView dgvAnalys;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel1;
-        private Guna.UI2.WinForms.Guna2RadioButton rdoNhanVienMoi;
         private Guna.UI2.WinForms.Guna2RadioButton rdoSLKHangMoi;
         private Guna.UI2.WinForms.Guna2RadioButton rdoSLDonHang;
         private Guna.UI2.WinForms.Guna2RadioButton rdoLoiNhuan;
@@ -430,5 +367,6 @@
         private Guna.UI2.WinForms.Guna2RadioButton rdoDoanhThuTheoSP;
         private Guna.UI2.WinForms.Guna2RadioButton rdoSLSPDaBan;
         private Guna.UI2.WinForms.Guna2RadioButton rdoTongDoanhThu;
+        private System.Windows.Forms.DataGridView dgvAnalys;
     }
 }

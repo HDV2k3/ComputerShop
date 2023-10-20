@@ -27,14 +27,49 @@ namespace Computer_Shop_Management_System.View
             imageConverter = new ImageConverter();
 
         }
+    /*    void GetFile()
+        {
+            System.Windows.Forms.OpenFileDialog openImage = new OpenFileDialog();
+            openImage.Title = "Select your image";
+            openImage.InitialDirectory = "C:";
+            openImage.Filter = "Image Only(.jpg; *.jpeg; *.gif; *.bmp; *.png)|.jpg; *.jpeg; *.gif; *.bmp; *.png";
+            openImage.AutoUpgradeEnabled = true;
+            if (openImage.ShowDialog() == DialogResult.OK)
+            {
+                String Chosen_File = openImage.FileName;
 
+                string filename = System.IO.Path.GetFileName(Chosen_File);
+                String inputExt = (Path.GetExtension(filename).ToLower());
+                try
+                {
+                    System.IO.File.Copy(Chosen_File, @"..\..Computer Shop Management System\Images" + filename);
+                }
+                catch
+                {
+                }
+                Invoke((MethodInvoker)delegate
+                {
+
+                    picPhoto.Image = new Bitmap(Chosen_File);
+                    picPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
+                });
+            }
+        }*/
         private void ImageUpLoad(PictureBox picture)
         {
             try
             {
+                System.Windows.Forms.OpenFileDialog openImage = new OpenFileDialog();
+                openImage.Filter = "Image Only(.jpg; *.jpeg; *.gif; *.bmp; *.png)|.jpg; *.jpeg; *.gif; *.bmp; *.png";
+                openImage.AutoUpgradeEnabled = true;
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
+                    String Chosen_File = openImage.FileName;
+
+                    string filename = System.IO.Path.GetFileName(Chosen_File);
+                    String inputExt = (Path.GetExtension(filename).ToLower());
                     picture.Image = Image.FromFile(openFileDialog.FileName);
+
                 }
             }
             catch (Exception )
@@ -84,11 +119,13 @@ namespace Computer_Shop_Management_System.View
         private void btnDuyetSanPham_Click(object sender, EventArgs e)
         {
             ImageUpLoad(picPhoto);
+           /* GetFile();*/
         }
 
         private void btnDuyetSanPham1_Click(object sender, EventArgs e)
         {
             ImageUpLoad(picPhoto1);
+      /*      GetFile();*/
         }
 
         private void dgvSanPham_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -185,42 +222,70 @@ namespace Computer_Shop_Management_System.View
         {
 
         }
+        private void LoadProductsToComboBoxThuongHieu()
+        {
+            using (var context = new DataBase())
+            {
+                var products = context.Product.ToList();
 
+                // Lấy danh sách tên sản phẩm
+                var productNames = products.Select(product => product.Product_Name).ToArray();
+
+                // Thêm danh sách sản phẩm vào combobox
+                
+                cmbThuongHieu1.Items.AddRange(productNames);
+            }
+        }
+        private void LoadProductsToComboBoxLoai()
+        {
+            using (var context = new DataBase())
+            {
+                var products = context.Product.ToList();
+
+                // Lấy danh sách tên sản phẩm
+                var productNames = products.Select(product => product.Product_Name).ToArray();
+
+                // Thêm danh sách sản phẩm vào combobox
+                cmbLoai1.Items.AddRange(productNames);
+
+              
+            }
+        }
         private void btnThem_Click(object sender, EventArgs e)
         {
             if (txtTenSanPham.Text.Trim() == string.Empty)
             {
-                MessageBox.Show("Please enter product name.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Hãy nhập tên sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            else if (picPhoto.Image == null)
+            else if (picPhoto.Image == null) // Kiểm tra hình ảnh
             {
-                MessageBox.Show("Please select Image.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Hãy chọn hình ảnh sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            else if (txtGiaTien.Text.Trim() == string.Empty)
+            else if (txtGiaTien.Text.Trim() == string.Empty || Convert.ToInt32(txtGiaTien.Text) == 0)
             {
-                MessageBox.Show("Please enter rate.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Hãy nhập giá sản phẩm(Giá sản phẩm không thể bằng 0!).", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            else if (nudSoLuong.Text.Trim() == string.Empty)
+            else if (nudSoLuong.Text.Trim() == string.Empty || nudSoLuong.Value == 0)
             {
-                MessageBox.Show("Please enter quantity.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Hãy nhập số lượng sản phẩm(Số lượng sản phẩm không thể bằng 0!).", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else if (cmbThuongHieu.SelectedIndex == 0)
             {
-                MessageBox.Show("Please select brand.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Hãy nhập thương hiệu sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else if (cmbLoai.SelectedIndex == 0)
             {
-                MessageBox.Show("Please select category.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Hãy nhập loại sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else if (cmbTrangThai.SelectedIndex == 0)
             {
-                MessageBox.Show("Please select status.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Hãy nhập trạng thái sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else
@@ -237,6 +302,7 @@ namespace Computer_Shop_Management_System.View
                     ProductController.AddProduct(product);
                     EmptyBox();
                     MessageBox.Show("Thêm thành công", "Thông báo");
+                    LoadDgvSanPham();
                 }
             }
         }
@@ -342,7 +408,7 @@ namespace Computer_Shop_Management_System.View
 
         private void tpLuaChon_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void nudSoLuong1_ValueChanged(object sender, EventArgs e)
@@ -374,36 +440,37 @@ namespace Computer_Shop_Management_System.View
         {
             if (string.IsNullOrWhiteSpace(txtTenSanPham1.Text))
             {
-                MessageBox.Show("Please enter product name.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Hãy nhập tên sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (string.IsNullOrWhiteSpace(txtGiaTien1.Text))
             {
-                MessageBox.Show("Please enter rate.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Hãy nhập giá tiền sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (string.IsNullOrWhiteSpace(nudSoLuong1.Text))
             {
-                MessageBox.Show("Please enter quantity.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Hãy nhập số lượng sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (cmbThuongHieu1.SelectedIndex <= 0)
             {
-                MessageBox.Show("Please select brand.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Hãy nhập thương hiệu sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (cmbLoai1.SelectedIndex <= 0)
             {
-                MessageBox.Show("Please select category.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Hãy nhập loại sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (cmbTrangThai1.SelectedIndex <= 0)
             {
-                MessageBox.Show("Please select status.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Hãy nhập trạng thái sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this product?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa chứ!", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
                     ProductController.RemoveProduct1(txtTenSanPham1.Text);
-                    EmptyBox(); // Đặt các controls về giá trị mặc định
+                    EmptyBox1(); // Đặt các controls về giá trị mặc định
                     tpProduct.SelectedTab = tpQuanLySanPham;
+                    LoadDgvSanPham();
 
                 }
             }
@@ -440,42 +507,38 @@ namespace Computer_Shop_Management_System.View
 
             }
             lblTotal.Text = dgvSanPham.Rows.Count.ToString();
+        
         }
         private void btnThayDoi_Click(object sender, EventArgs e)
         {
             if (txtTenSanPham1.Text.Trim() == string.Empty)
             {
-                MessageBox.Show("Please enter product name.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Hãy nhập tên sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            else if (picPhoto.Image == null)
+            else if (txtGiaTien.Text.Trim() == string.Empty || Convert.ToInt32(txtGiaTien1.Text) == 0)
             {
-                MessageBox.Show("Please select Image.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Hãy nhập giá sản phẩm(Giá sản phẩm không thể bằng 0!).", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            else if (txtGiaTien1.Text.Trim() == string.Empty)
+            else if (nudSoLuong.Text.Trim() == string.Empty || nudSoLuong1.Value == 0)
             {
-                MessageBox.Show("Please enter rate.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (nudSoLuong1.Text.Trim() == string.Empty)
-            {
-                MessageBox.Show("Please enter quantity.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Hãy nhập số lượng sản phẩm(Số lượng sản phẩm không thể bằng 0!).", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else if (cmbThuongHieu1.SelectedIndex == 0)
             {
-                MessageBox.Show("Please select brand.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Hãy nhập thương hiệu sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else if (cmbLoai1.SelectedIndex == 0)
             {
-                MessageBox.Show("Please select category.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Hãy nhập loại sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else if (cmbTrangThai1.SelectedIndex == 0)
             {
-                MessageBox.Show("Please select status.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Hãy nhập trạng thái sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else
@@ -485,10 +548,9 @@ namespace Computer_Shop_Management_System.View
                     var productToUpdate = context.Product.FirstOrDefault(p => p.Product_Name.Equals(txtTenSanPham1.Text)); // Thay id bằng giá trị tương ứng
 
 
-                    if (CheckTen(productToUpdate.Product_Name))
+                    if (CheckTen(productToUpdate.Product_Name) == true)
                     {
                         // Cập nhật các thuộc tính của đối tượng với giá trị từ controls
-                        txtTenSanPham1.Enabled = false;
                         productToUpdate.Product_Name = txtTenSanPham1.Text;
                         productToUpdate.Product_Rate = int.Parse(txtGiaTien1.Text);
                         productToUpdate.Product_Quantity = int.Parse(nudSoLuong1.Value.ToString());
@@ -502,12 +564,14 @@ namespace Computer_Shop_Management_System.View
                         EmptyBox1();
                         MessageBox.Show("Cập nhật sản phẩm thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadDgvSanPham();
+                        tpProduct.SelectedTab = tpQuanLySanPham;
                     }
                     else
                     {
                         MessageBox.Show("Không tìm thấy sản phẩm trong dữ liệu .", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
+               
             }
         }
     
@@ -529,7 +593,39 @@ namespace Computer_Shop_Management_System.View
 
         private void txtTenSanPham1_TextChanged(object sender, EventArgs e)
         {
+            LoadProductsToComboBoxLoai();
+            LoadProductsToComboBoxThuongHieu();
+            if (txtTenSanPham1.Text.Trim() != null)
+            {
+                string tensanpham = txtTenSanPham1.Text.Trim();
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string checkcmbquery = "SELECT * FROM Product WHERE Product_Name = @name";
+                    using (SqlCommand command = new SqlCommand(checkcmbquery, connection))
+                    {
+                        command.Parameters.AddWithValue("@name", tensanpham);
+                        // Thực thi câu lệnh SQL
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                
 
+                                string cmbloai = reader["Product_Category"].ToString();
+                                string cmbthuonghieu = reader["Product_Brand"].ToString();
+
+                                cmbLoai1.Text = cmbloai;
+                                cmbThuongHieu1.Text = cmbthuonghieu;
+                            }
+                            else
+                            {
+                                
+                            }
+                        }
+                    }
+                }
+            }    
         }
 
         private void label14_Click(object sender, EventArgs e)
@@ -631,8 +727,16 @@ namespace Computer_Shop_Management_System.View
                 DataTable dataTable = GetDataFromDatabase();
 
                 // Gán datatable làm nguồn dữ liệu cho DataGridView
-
+               
                 dgvSanPham.DataSource = dataTable;
+                dgvSanPham.Columns["Product_Id"].HeaderText = "Mã Sản Phẩm";
+                dgvSanPham.Columns["Product_Name"].HeaderText = "Tên Sản Phẩm";
+                dgvSanPham.Columns["Product_Image"].HeaderText = "Ảnh Sản Phẩm";
+                dgvSanPham.Columns["Product_Rate"].HeaderText = "Giá Tiền";
+                dgvSanPham.Columns["Product_Quantity"].HeaderText = "Số Lượng";
+                dgvSanPham.Columns["Product_Brand"].HeaderText = "Thương Hiệu";
+                dgvSanPham.Columns["Product_Category"].HeaderText = "Loại";
+                dgvSanPham.Columns["Product_Stastus"].HeaderText = "Trạng Thái";
 
             }
             lblTotal.Text = dgvSanPham.Rows.Count.ToString();
@@ -640,34 +744,90 @@ namespace Computer_Shop_Management_System.View
 
         private void dgvSanPham_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-                    tpProduct.SelectedTab = tpLuaChon;
-                    DataGridViewRow row = dgvSanPham.Rows[e.RowIndex];
-                
+            /*   tpProduct.SelectedTab = tpLuaChon;
+               DataGridViewRow row = dgvSanPham.Rows[e.RowIndex];
+
+               // Đổ dữ liệu vào các controls
+               txtTenSanPham1.Text = row.Cells[1].Value.ToString();
+               txtGiaTien1.Text = row.Cells[3].Value.ToString();
+               nudSoLuong1.Value = Convert.ToDecimal(row.Cells[4].Value);
+               cmbThuongHieu1.SelectedItem = row.Cells[5].Value.ToString();
+               cmbLoai1.SelectedItem = row.Cells[6].Value.ToString();
+               cmbTrangThai1.SelectedItem = row.Cells[7].Value.ToString();
+
+               // Kiểm tra và hiển thị hình ảnh từ cột "2"
+               if (row.Cells.Count > 2 && row.Cells[2].Value != DBNull.Value)
+               {
+                   byte[] imageData = (byte[])row.Cells[2].Value;
+                   using (MemoryStream memoryStream = new MemoryStream(imageData))
+                   {
+                       picPhoto1.Image = Image.FromStream(memoryStream);
+                   }
+               }
+               else
+               {
+                   // Nếu cột 2 không có giá trị, hiển thị hình ảnh mặc định
+                   picPhoto1.Image = Properties.Resources.plus;
+               }
+*/
+            if (e.RowIndex >= 0 && e.RowIndex < dgvSanPham.Rows.Count)
+            {
+                tpProduct.SelectedTab = tpLuaChon;
+                DataGridViewRow row = dgvSanPham.Rows[e.RowIndex];
+
+                // Đảm bảo chỉ số cột hợp lệ
+                if (row.Cells.Count > 1)
+                {
                     // Đổ dữ liệu vào các controls
-                    txtTenSanPham1.Text = row.Cells[1].Value.ToString();
-                    txtGiaTien1.Text = row.Cells[3].Value.ToString();
+                    txtTenSanPham1.Text = row.Cells[1].Value?.ToString();
+                }
+                if (row.Cells.Count > 3)
+                {
+                    txtGiaTien1.Text = row.Cells[3].Value?.ToString();
+                }
+                if (row.Cells.Count > 4)
+                {
                     nudSoLuong1.Value = Convert.ToDecimal(row.Cells[4].Value);
-                    cmbThuongHieu1.SelectedItem = row.Cells[5].Value.ToString();
-                    cmbLoai1.SelectedItem = row.Cells[6].Value.ToString();
-                    cmbTrangThai1.SelectedItem = row.Cells[7].Value.ToString();
+                }
+                if (row.Cells.Count > 5)
+                {
+                    cmbThuongHieu1.SelectedItem = row.Cells[5].Value?.ToString();
+                }
+                if (row.Cells.Count > 6)
+                {
+                    cmbLoai1.SelectedItem = row.Cells[6].Value?.ToString();
+                }
+                if (row.Cells.Count > 7)
+                {
+                    cmbTrangThai1.SelectedItem = row.Cells[7].Value?.ToString();
+                }
 
-                    // Kiểm tra và hiển thị hình ảnh từ cột "2"
-                    if (row.Cells.Count > 2 && row.Cells[2].Value != DBNull.Value)
+                // Kiểm tra và hiển thị hình ảnh từ cột "2"
+                if (row.Cells.Count > 2 && row.Cells[2].Value != DBNull.Value)
+                {
+                    byte[] imageData = (byte[])row.Cells[2].Value;
+                    using (MemoryStream memoryStream = new MemoryStream(imageData))
                     {
-                        byte[] imageData = (byte[])row.Cells[2].Value;
-                        using (MemoryStream memoryStream = new MemoryStream(imageData))
-                        {
-                            picPhoto1.Image = Image.FromStream(memoryStream);
-                        }
+                        picPhoto1.Image = Image.FromStream(memoryStream);
                     }
-                    else
-                    {
-                        // Nếu cột 2 không có giá trị, hiển thị hình ảnh mặc định
-                        picPhoto1.Image = Properties.Resources.plus;
-                    }
+                }
+                else
+                {
+                    // Nếu cột 2 không có giá trị, hiển thị hình ảnh mặc định
+                    picPhoto1.Image = Properties.Resources.plus;
+                }
+            }
 
-                  
-                }   
-        
+        }
+
+        private void cmbThuongHieu1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void cmbLoai1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+          
+        }
     }
 }

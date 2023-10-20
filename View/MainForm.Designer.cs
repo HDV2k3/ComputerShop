@@ -50,14 +50,14 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.NgayVaGio = new System.Windows.Forms.Timer(this.components);
-            this.userControlUser1 = new Computer_Shop_Management_System.View.UserControlUser();
-            this.userControlReport1 = new Computer_Shop_Management_System.View.UserControlReport();
-            this.userControlOrders1 = new Computer_Shop_Management_System.View.UserControlOrders();
-            this.userControlProduct1 = new Computer_Shop_Management_System.View.UserControlProduct();
-            this.userControlCategory1 = new Computer_Shop_Management_System.View.UserControlCategory();
-            this.userControlBrand1 = new Computer_Shop_Management_System.View.UserControlBrand();
-            this.userControlDashboard1 = new Computer_Shop_Management_System.View.UserControlDashboard();
-            this.userControlBrandStaff1 = new Computer_Shop_Management_System.View.UserControlBrandStaff();
+            this.UserControlUser1 = new Computer_Shop_Management_System.View.UserControlUser();
+            this.UserControlReport1 = new Computer_Shop_Management_System.View.UserControlReport();
+            this.UserControlOrders1 = new Computer_Shop_Management_System.View.UserControlOrders();
+            this.UserControlProduct1 = new Computer_Shop_Management_System.View.UserControlProduct();
+            this.UserControlCategory1 = new Computer_Shop_Management_System.View.UserControlCategory();
+            this.UserControlBrand1 = new Computer_Shop_Management_System.View.UserControlBrand();
+            this.UserControlDashboard1 = new Computer_Shop_Management_System.View.UserControlDashboard();
+            this.UserControlBrandStaff1 = new Computer_Shop_Management_System.View.UserControlBrandStaff();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -116,7 +116,7 @@
             this.btnNguoiDung.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNguoiDung.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNguoiDung.ForeColor = System.Drawing.Color.White;
-            this.btnNguoiDung.Image = global::Computer_Shop_Management_System.Properties.Resources.icons8_user_50;
+            this.btnNguoiDung.Image = global::Computer_Shop_Management_System.Properties.Resources.icons8_User_50;
             this.btnNguoiDung.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNguoiDung.Location = new System.Drawing.Point(8, 447);
             this.btnNguoiDung.Name = "btnNguoiDung";
@@ -322,92 +322,92 @@
             // 
             this.NgayVaGio.Tick += new System.EventHandler(this.NgayVaGio_Tick);
             // 
-            // userControlUser1
+            // UserControlUser1
             // 
-            this.userControlUser1.BackColor = System.Drawing.Color.White;
-            this.userControlUser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControlUser1.Location = new System.Drawing.Point(242, 53);
-            this.userControlUser1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.userControlUser1.Name = "userControlUser1";
-            this.userControlUser1.Size = new System.Drawing.Size(1029, 528);
-            this.userControlUser1.TabIndex = 7;
-            this.userControlUser1.Visible = false;
+            this.UserControlUser1.BackColor = System.Drawing.Color.White;
+            this.UserControlUser1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UserControlUser1.Location = new System.Drawing.Point(242, 53);
+            this.UserControlUser1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.UserControlUser1.Name = "UserControlUser1";
+            this.UserControlUser1.Size = new System.Drawing.Size(1029, 528);
+            this.UserControlUser1.TabIndex = 7;
+            this.UserControlUser1.Visible = false;
             // 
-            // userControlReport1
+            // UserControlReport1
             // 
-            this.userControlReport1.BackColor = System.Drawing.Color.White;
-            this.userControlReport1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControlReport1.Location = new System.Drawing.Point(242, 53);
-            this.userControlReport1.Margin = new System.Windows.Forms.Padding(2);
-            this.userControlReport1.Name = "userControlReport1";
-            this.userControlReport1.Size = new System.Drawing.Size(1029, 528);
-            this.userControlReport1.TabIndex = 6;
-            this.userControlReport1.Visible = false;
+            this.UserControlReport1.BackColor = System.Drawing.Color.White;
+            this.UserControlReport1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UserControlReport1.Location = new System.Drawing.Point(242, 53);
+            this.UserControlReport1.Margin = new System.Windows.Forms.Padding(2);
+            this.UserControlReport1.Name = "UserControlReport1";
+            this.UserControlReport1.Size = new System.Drawing.Size(1029, 528);
+            this.UserControlReport1.TabIndex = 6;
+            this.UserControlReport1.Visible = false;
             // 
-            // userControlOrders1
+            // UserControlOrders1
             // 
-            this.userControlOrders1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControlOrders1.Location = new System.Drawing.Point(242, 53);
-            this.userControlOrders1.Name = "userControlOrders1";
-            this.userControlOrders1.Size = new System.Drawing.Size(1029, 528);
-            this.userControlOrders1.TabIndex = 5;
-            this.userControlOrders1.Visible = false;
-            this.userControlOrders1.Load += new System.EventHandler(this.userControlOrders1_Load);
+            this.UserControlOrders1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UserControlOrders1.Location = new System.Drawing.Point(242, 53);
+            this.UserControlOrders1.Name = "UserControlOrders1";
+            this.UserControlOrders1.Size = new System.Drawing.Size(1029, 528);
+            this.UserControlOrders1.TabIndex = 5;
+            this.UserControlOrders1.Visible = false;
+            this.UserControlOrders1.Load += new System.EventHandler(this.UserControlOrders1_Load);
             // 
-            // userControlProduct1
+            // UserControlProduct1
             // 
-            this.userControlProduct1.BackColor = System.Drawing.Color.White;
-            this.userControlProduct1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControlProduct1.Location = new System.Drawing.Point(242, 53);
-            this.userControlProduct1.Margin = new System.Windows.Forms.Padding(2);
-            this.userControlProduct1.Name = "userControlProduct1";
-            this.userControlProduct1.Size = new System.Drawing.Size(1029, 528);
-            this.userControlProduct1.TabIndex = 4;
-            this.userControlProduct1.Visible = false;
+            this.UserControlProduct1.BackColor = System.Drawing.Color.White;
+            this.UserControlProduct1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UserControlProduct1.Location = new System.Drawing.Point(242, 53);
+            this.UserControlProduct1.Margin = new System.Windows.Forms.Padding(2);
+            this.UserControlProduct1.Name = "UserControlProduct1";
+            this.UserControlProduct1.Size = new System.Drawing.Size(1029, 528);
+            this.UserControlProduct1.TabIndex = 4;
+            this.UserControlProduct1.Visible = false;
             // 
-            // userControlCategory1
+            // UserControlCategory1
             // 
-            this.userControlCategory1.AutoSize = true;
-            this.userControlCategory1.BackColor = System.Drawing.Color.White;
-            this.userControlCategory1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControlCategory1.Location = new System.Drawing.Point(242, 53);
-            this.userControlCategory1.Margin = new System.Windows.Forms.Padding(2);
-            this.userControlCategory1.Name = "userControlCategory1";
-            this.userControlCategory1.Size = new System.Drawing.Size(1029, 528);
-            this.userControlCategory1.TabIndex = 3;
-            this.userControlCategory1.Visible = false;
+            this.UserControlCategory1.AutoSize = true;
+            this.UserControlCategory1.BackColor = System.Drawing.Color.White;
+            this.UserControlCategory1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UserControlCategory1.Location = new System.Drawing.Point(242, 53);
+            this.UserControlCategory1.Margin = new System.Windows.Forms.Padding(2);
+            this.UserControlCategory1.Name = "UserControlCategory1";
+            this.UserControlCategory1.Size = new System.Drawing.Size(1029, 528);
+            this.UserControlCategory1.TabIndex = 3;
+            this.UserControlCategory1.Visible = false;
             // 
-            // userControlBrand1
+            // UserControlBrand1
             // 
-            this.userControlBrand1.BackColor = System.Drawing.Color.White;
-            this.userControlBrand1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControlBrand1.Location = new System.Drawing.Point(242, 53);
-            this.userControlBrand1.Margin = new System.Windows.Forms.Padding(2);
-            this.userControlBrand1.Name = "userControlBrand1";
-            this.userControlBrand1.Size = new System.Drawing.Size(1029, 528);
-            this.userControlBrand1.TabIndex = 2;
-            this.userControlBrand1.Visible = false;
+            this.UserControlBrand1.BackColor = System.Drawing.Color.White;
+            this.UserControlBrand1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UserControlBrand1.Location = new System.Drawing.Point(242, 53);
+            this.UserControlBrand1.Margin = new System.Windows.Forms.Padding(2);
+            this.UserControlBrand1.Name = "UserControlBrand1";
+            this.UserControlBrand1.Size = new System.Drawing.Size(1029, 528);
+            this.UserControlBrand1.TabIndex = 2;
+            this.UserControlBrand1.Visible = false;
             // 
-            // userControlDashboard1
+            // UserControlDashboard1
             // 
-            this.userControlDashboard1.AutoScroll = true;
-            this.userControlDashboard1.BackColor = System.Drawing.Color.White;
-            this.userControlDashboard1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControlDashboard1.Location = new System.Drawing.Point(242, 53);
-            this.userControlDashboard1.Margin = new System.Windows.Forms.Padding(2);
-            this.userControlDashboard1.Name = "userControlDashboard1";
-            this.userControlDashboard1.Size = new System.Drawing.Size(1029, 528);
-            this.userControlDashboard1.TabIndex = 0;
+            this.UserControlDashboard1.AutoScroll = true;
+            this.UserControlDashboard1.BackColor = System.Drawing.Color.White;
+            this.UserControlDashboard1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UserControlDashboard1.Location = new System.Drawing.Point(242, 53);
+            this.UserControlDashboard1.Margin = new System.Windows.Forms.Padding(2);
+            this.UserControlDashboard1.Name = "UserControlDashboard1";
+            this.UserControlDashboard1.Size = new System.Drawing.Size(1029, 528);
+            this.UserControlDashboard1.TabIndex = 0;
             // 
-            // userControlBrandStaff1
+            // UserControlBrandStaff1
             // 
-            this.userControlBrandStaff1.BackColor = System.Drawing.Color.White;
-            this.userControlBrandStaff1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControlBrandStaff1.Location = new System.Drawing.Point(242, 53);
-            this.userControlBrandStaff1.Name = "userControlBrandStaff1";
-            this.userControlBrandStaff1.Size = new System.Drawing.Size(1029, 528);
-            this.userControlBrandStaff1.TabIndex = 8;
-            this.userControlBrandStaff1.Visible = false;
+            this.UserControlBrandStaff1.BackColor = System.Drawing.Color.White;
+            this.UserControlBrandStaff1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UserControlBrandStaff1.Location = new System.Drawing.Point(242, 53);
+            this.UserControlBrandStaff1.Name = "UserControlBrandStaff1";
+            this.UserControlBrandStaff1.Size = new System.Drawing.Size(1029, 528);
+            this.UserControlBrandStaff1.TabIndex = 8;
+            this.UserControlBrandStaff1.Visible = false;
             // 
             // MainForm
             // 
@@ -415,14 +415,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1271, 612);
-            this.Controls.Add(this.userControlBrandStaff1);
-            this.Controls.Add(this.userControlUser1);
-            this.Controls.Add(this.userControlReport1);
-            this.Controls.Add(this.userControlOrders1);
-            this.Controls.Add(this.userControlProduct1);
-            this.Controls.Add(this.userControlCategory1);
-            this.Controls.Add(this.userControlBrand1);
-            this.Controls.Add(this.userControlDashboard1);
+            this.Controls.Add(this.UserControlBrandStaff1);
+            this.Controls.Add(this.UserControlUser1);
+            this.Controls.Add(this.UserControlReport1);
+            this.Controls.Add(this.UserControlOrders1);
+            this.Controls.Add(this.UserControlProduct1);
+            this.Controls.Add(this.UserControlCategory1);
+            this.Controls.Add(this.UserControlBrand1);
+            this.Controls.Add(this.UserControlDashboard1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -468,13 +468,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel pnlDiChuyen;
         private System.Windows.Forms.Timer NgayVaGio;
-        private UserControlDashboard userControlDashboard1;
-        private UserControlBrand userControlBrand1;
-        private UserControlCategory userControlCategory1;
-        private UserControlProduct userControlProduct1;
-        private UserControlOrders userControlOrders1;
-        private UserControlReport userControlReport1;
-        private UserControlUser userControlUser1;
-        private UserControlBrandStaff userControlBrandStaff1;
+        private UserControlDashboard UserControlDashboard1;
+        private UserControlBrand UserControlBrand1;
+        private UserControlCategory UserControlCategory1;
+        private UserControlProduct UserControlProduct1;
+        private UserControlOrders UserControlOrders1;
+        private UserControlReport UserControlReport1;
+        private UserControlUser UserControlUser1;
+        private UserControlBrandStaff UserControlBrandStaff1;
     }
 }

@@ -22,12 +22,24 @@ namespace Computer_Shop_Management_System.Model
 
         [Required]
         [StringLength(50)]
-        public string users_Password { get; set; }
+        public string Users_Password { get; set; }
 
         [Required]
         [StringLength(50)]
         public string Users_Email { get; set; }
 
         public virtual UsersCategory UsersCategory { get; set; }
+        public User(string Usercategoryid,string Username,string password,string email)
+        {
+            this.Users_Category_Id = Usercategoryid;
+            this.Users_Name = Username;
+            this.Users_Password = password;
+            this.Users_Email= email;
+
+        }
+
+        public User()
+        {
+        }
     }
 }

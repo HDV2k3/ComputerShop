@@ -15,7 +15,7 @@ namespace Computer_Shop_Management_System.View
     {
         public string name = "?";
 
-        public static User user = new User();
+        public static User User = new User();
         public MainForm()
         {
             InitializeComponent();
@@ -23,7 +23,7 @@ namespace Computer_Shop_Management_System.View
 
         public MainForm(User u)
         {
-            user = u;
+            User = u;
             InitializeComponent();
         }
         private void MovePanel(Control btn)
@@ -50,16 +50,16 @@ namespace Computer_Shop_Management_System.View
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            if(user.Users_Category_Id == "US08022003")
+            if(User.Users_Category_Id == "US08022003")
             {
                 MovePanel(btnDashboard);
-                userControlDashboard1.Visible = true;
-                userControlBrand1.Visible = false;
-                userControlCategory1.Visible = false;
-                userControlProduct1.Visible = false;
-                userControlOrders1.Visible = false;
-                userControlReport1.Visible = false;
-                userControlUser1.Visible = false;
+                UserControlDashboard1.Visible = true;
+                UserControlBrand1.Visible = false;
+                UserControlCategory1.Visible = false;
+                UserControlProduct1.Visible = false;
+                UserControlOrders1.Visible = false;
+                UserControlReport1.Visible = false;
+                UserControlUser1.Visible = false;
             }   
             else
             {
@@ -70,44 +70,44 @@ namespace Computer_Shop_Management_System.View
         }
         private void btnThuongHieu_Click(object sender, EventArgs e)
         {
-            if(user.Users_Category_Id == "US08022003")
+            if(User.Users_Category_Id == "US08022003")
             {
                 MovePanel(btnThuongHieu);
-                userControlDashboard1.Visible = false;
-                userControlCategory1.Visible = false;
-                userControlProduct1.Visible = false;
-                userControlOrders1.Visible = false;
-                userControlReport1.Visible = false;
-                userControlUser1.Visible = false;
-                userControlBrand1.Visible = true;
+                UserControlDashboard1.Visible = false;
+                UserControlCategory1.Visible = false;
+                UserControlProduct1.Visible = false;
+                UserControlOrders1.Visible = false;
+                UserControlReport1.Visible = false;
+                UserControlUser1.Visible = false;
+                UserControlBrand1.Visible = true;
             }
             else
             {
                 MovePanel(btnThuongHieu);
                 MessageBox.Show("Bạn Cần Cấp Quyền Cao Hơn Để Truy Cập Các Chức Năng Cao Hơn");
-                userControlBrandStaff1.Visible = true;
-                userControlDashboard1.Visible = false;
-                userControlCategory1.Visible = false;
-                userControlProduct1.Visible = false;
-                userControlOrders1.Visible = false;
-                userControlReport1.Visible = false;
-                userControlUser1.Visible = false;
-                userControlBrand1.Visible = false;
+                UserControlBrandStaff1.Visible = true;
+                UserControlDashboard1.Visible = false;
+                UserControlCategory1.Visible = false;
+                UserControlProduct1.Visible = false;
+                UserControlOrders1.Visible = false;
+                UserControlReport1.Visible = false;
+                UserControlUser1.Visible = false;
+                UserControlBrand1.Visible = false;
             }    
            
         }
         private void btnLoai_Click(object sender, EventArgs e)
         {
-            if(user.Users_Category_Id == "US08022003")
+            if(User.Users_Category_Id == "US08022003")
             {
                 MovePanel(btnLoai);
-                userControlDashboard1.Visible = false;
-                userControlBrand1.Visible = false;
-                userControlCategory1.Visible = true;
-                userControlProduct1.Visible = false;
-                userControlOrders1.Visible = false;
-                userControlReport1.Visible = false;
-                userControlUser1.Visible = false;
+                UserControlDashboard1.Visible = false;
+                UserControlBrand1.Visible = false;
+                UserControlCategory1.Visible = true;
+                UserControlProduct1.Visible = false;
+                UserControlOrders1.Visible = false;
+                UserControlReport1.Visible = false;
+                UserControlUser1.Visible = false;
             }    
             else
             {
@@ -118,16 +118,16 @@ namespace Computer_Shop_Management_System.View
 
         private void btnSanPham_Click(object sender, EventArgs e)
         {
-            if(user.Users_Category_Id == "US08022003")
+            if(User.Users_Category_Id == "US08022003")
             {
                 MovePanel(btnSanPham);
-                userControlDashboard1.Visible = true;
-                userControlBrand1.Visible = false;
-                userControlCategory1.Visible = false;
-                userControlProduct1.Visible = true;
-                userControlOrders1.Visible = false;
-                userControlReport1.Visible = false;
-                userControlUser1.Visible = false;
+                UserControlDashboard1.Visible = true;
+                UserControlBrand1.Visible = false;
+                UserControlCategory1.Visible = false;
+                UserControlProduct1.Visible = true;
+                UserControlOrders1.Visible = false;
+                UserControlReport1.Visible = false;
+                UserControlUser1.Visible = false;
             }  
             else
             {
@@ -138,20 +138,20 @@ namespace Computer_Shop_Management_System.View
 
         private void btnDatHang_Click(object sender, EventArgs e)
         {
-            if(user.Users_Category_Id == "US08022003")
+            if(User.Users_Category_Id == "US08022003")
             {
                 MovePanel(btnDatHang);
-                userControlDashboard1.Visible = false;
-                userControlBrand1.Visible = false;
-                userControlCategory1.Visible = false;
-                userControlProduct1.Visible = false;
-                userControlOrders1.Visible = true;
-                userControlReport1.Visible = false;
-                userControlUser1.Visible = false;
+                UserControlDashboard1.Visible = false;
+                UserControlBrand1.Visible = false;
+                UserControlCategory1.Visible = false;
+                UserControlProduct1.Visible = false;
+                UserControlOrders1.Visible = true;
+                UserControlReport1.Visible = false;
+                UserControlUser1.Visible = false;
             }    
             else
             {
-                userControlOrders1.Visible = true;
+                UserControlOrders1.Visible = true;
                
             }    
            
@@ -159,20 +159,20 @@ namespace Computer_Shop_Management_System.View
 
         private void btnBaoCao_Click(object sender, EventArgs e)
         {
-            if(user.Users_Category_Id == "US08022003")
+            if(User.Users_Category_Id == "US08022003")
             {
                 MovePanel(btnBaoCao);
-                userControlDashboard1.Visible = false;
-                userControlBrand1.Visible = false;
-                userControlCategory1.Visible = false;
-                userControlProduct1.Visible = false;
-                userControlOrders1.Visible = false;
-                userControlReport1.Visible = true;
-                userControlUser1.Visible = false;
+                UserControlDashboard1.Visible = false;
+                UserControlBrand1.Visible = false;
+                UserControlCategory1.Visible = false;
+                UserControlProduct1.Visible = false;
+                UserControlOrders1.Visible = false;
+                UserControlReport1.Visible = true;
+                UserControlUser1.Visible = false;
             }  
             else
             {
-                userControlReport1.Visible = true;
+                UserControlReport1.Visible = true;
                 
             }    
          
@@ -181,16 +181,16 @@ namespace Computer_Shop_Management_System.View
 
         private void btnNguoiDung_Click(object sender, EventArgs e)
         {
-            if(user.Users_Category_Id == "US08022003")
+            if(User.Users_Category_Id == "US08022003")
             {
                 MovePanel(btnNguoiDung);
-                userControlUser1.Visible = true;
-                userControlDashboard1.Visible = false;
-                userControlBrand1.Visible = false;
-                userControlCategory1.Visible = false;
-                userControlProduct1.Visible = false;
-                userControlOrders1.Visible = false;
-                userControlReport1.Visible = false;
+                UserControlUser1.Visible = true;
+                UserControlDashboard1.Visible = false;
+                UserControlBrand1.Visible = false;
+                UserControlCategory1.Visible = false;
+                UserControlProduct1.Visible = false;
+                UserControlOrders1.Visible = false;
+                UserControlReport1.Visible = false;
             }   
             else
             {
@@ -205,47 +205,47 @@ namespace Computer_Shop_Management_System.View
             lblNgayVaGio.Text = DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss tt");
         }
 
-        private void userControlDashboard1_Load(object sender, EventArgs e)
+        private void UserControlDashboard1_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void userControlBrand1_Load(object sender, EventArgs e)
+        private void UserControlBrand1_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void userControlProduct1_Load(object sender, EventArgs e)
+        private void UserControlProduct1_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void userControlCategory1_Load(object sender, EventArgs e)
+        private void UserControlCategory1_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void userControlCategory1_Load_1(object sender, EventArgs e)
+        private void UserControlCategory1_Load_1(object sender, EventArgs e)
         {
 
         }
 
-        private void userControlBrand1_Load_1(object sender, EventArgs e)
+        private void UserControlBrand1_Load_1(object sender, EventArgs e)
         {
 
         }
 
-        private void userControlCategory1_Load_2(object sender, EventArgs e)
+        private void UserControlCategory1_Load_2(object sender, EventArgs e)
         {
 
         }
 
-        private void userControlProduct1_Load_1(object sender, EventArgs e)
+        private void UserControlProduct1_Load_1(object sender, EventArgs e)
         {
 
         }
 
-        private void userControlOrders1_Load(object sender, EventArgs e)
+        private void UserControlOrders1_Load(object sender, EventArgs e)
         {
 
         }
