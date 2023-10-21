@@ -157,7 +157,6 @@
     <Compile Include="View\UserControlUser.Designer.cs">
       <DependentUpon>UserControlUser.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Report.rdlc" />
     <EmbeddedResource Include="View\FormForgotPass.resx">
       <DependentUpon>FormForgotPass.cs</DependentUpon>
     </EmbeddedResource>

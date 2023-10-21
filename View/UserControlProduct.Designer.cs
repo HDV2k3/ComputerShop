@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tpProduct = new System.Windows.Forms.TabControl();
             this.tpThemSanPham = new System.Windows.Forms.TabPage();
             this.nudSoLuong = new System.Windows.Forms.NumericUpDown();
@@ -38,8 +38,6 @@
             this.cmbTrangThai = new System.Windows.Forms.ComboBox();
             this.cmbLoai = new System.Windows.Forms.ComboBox();
             this.cmbThuongHieu = new System.Windows.Forms.ComboBox();
-            this.picPhoto = new System.Windows.Forms.PictureBox();
-            this.btnDuyetSanPham = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,7 +48,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.tpQuanLySanPham = new System.Windows.Forms.TabPage();
-            this.picTimKiem = new System.Windows.Forms.PictureBox();
             this.dgvSanPham = new System.Windows.Forms.DataGridView();
             this.txtTimKiemSanPham = new System.Windows.Forms.TextBox();
             this.lblTotal = new System.Windows.Forms.Label();
@@ -64,8 +61,6 @@
             this.txtGiaTien1 = new System.Windows.Forms.TextBox();
             this.cmbTrangThai1 = new System.Windows.Forms.ComboBox();
             this.btnXoa = new System.Windows.Forms.Button();
-            this.picPhoto1 = new System.Windows.Forms.PictureBox();
-            this.btnDuyetSanPham1 = new System.Windows.Forms.Button();
             this.btnThayDoi = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -83,15 +78,20 @@
             this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
+            this.picPhoto = new System.Windows.Forms.PictureBox();
+            this.btnDuyetSanPham = new System.Windows.Forms.Button();
+            this.picTimKiem = new System.Windows.Forms.PictureBox();
+            this.picPhoto1 = new System.Windows.Forms.PictureBox();
+            this.btnDuyetSanPham1 = new System.Windows.Forms.Button();
             this.tpProduct.SuspendLayout();
             this.tpThemSanPham.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSoLuong)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picPhoto)).BeginInit();
             this.tpQuanLySanPham.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picTimKiem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSanPham)).BeginInit();
             this.tpLuaChon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSoLuong1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPhoto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picTimKiem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPhoto1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -196,39 +196,6 @@
             this.cmbThuongHieu.Size = new System.Drawing.Size(279, 25);
             this.cmbThuongHieu.TabIndex = 4;
             this.cmbThuongHieu.SelectedIndexChanged += new System.EventHandler(this.cmbThuongHieu_SelectedIndexChanged);
-            // 
-            // picPhoto
-            // 
-            this.picPhoto.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.picPhoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picPhoto.Location = new System.Drawing.Point(508, 48);
-            this.picPhoto.Margin = new System.Windows.Forms.Padding(2);
-            this.picPhoto.Name = "picPhoto";
-            this.picPhoto.Size = new System.Drawing.Size(222, 231);
-            this.picPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picPhoto.TabIndex = 14;
-            this.picPhoto.TabStop = false;
-            this.picPhoto.Click += new System.EventHandler(this.picPhoto_Click);
-            // 
-            // btnDuyetSanPham
-            // 
-            this.btnDuyetSanPham.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDuyetSanPham.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
-            this.btnDuyetSanPham.FlatAppearance.BorderSize = 0;
-            this.btnDuyetSanPham.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDuyetSanPham.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDuyetSanPham.ForeColor = System.Drawing.Color.White;
-            this.btnDuyetSanPham.Image = global::Computer_Shop_Management_System.Properties.Resources.floder;
-            this.btnDuyetSanPham.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDuyetSanPham.Location = new System.Drawing.Point(508, 297);
-            this.btnDuyetSanPham.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDuyetSanPham.Name = "btnDuyetSanPham";
-            this.btnDuyetSanPham.Size = new System.Drawing.Size(221, 57);
-            this.btnDuyetSanPham.TabIndex = 8;
-            this.btnDuyetSanPham.Text = "Duyệt Sản Phẩm";
-            this.btnDuyetSanPham.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDuyetSanPham.UseVisualStyleBackColor = false;
-            this.btnDuyetSanPham.Click += new System.EventHandler(this.btnDuyetSanPham_Click);
             // 
             // btnThem
             // 
@@ -383,21 +350,6 @@
             this.tpQuanLySanPham.Click += new System.EventHandler(this.tpQuanLySanPham_Click);
             this.tpQuanLySanPham.Enter += new System.EventHandler(this.tpQuanLySanPham_Enter);
             // 
-            // picTimKiem
-            // 
-            this.picTimKiem.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.picTimKiem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picTimKiem.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picTimKiem.Image = global::Computer_Shop_Management_System.Properties.Resources.Search1;
-            this.picTimKiem.Location = new System.Drawing.Point(460, 35);
-            this.picTimKiem.Margin = new System.Windows.Forms.Padding(2);
-            this.picTimKiem.Name = "picTimKiem";
-            this.picTimKiem.Size = new System.Drawing.Size(27, 23);
-            this.picTimKiem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picTimKiem.TabIndex = 10;
-            this.picTimKiem.TabStop = false;
-            this.picTimKiem.Click += new System.EventHandler(this.picTimKiem_Click);
-            // 
             // dgvSanPham
             // 
             this.dgvSanPham.AllowUserToAddRows = false;
@@ -409,33 +361,33 @@
             this.dgvSanPham.BackgroundColor = System.Drawing.Color.White;
             this.dgvSanPham.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvSanPham.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSanPham.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSanPham.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSanPham.ColumnHeadersHeight = 34;
             this.dgvSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(151)))), ((int)(((byte)(196)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSanPham.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(151)))), ((int)(((byte)(196)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSanPham.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvSanPham.EnableHeadersVisualStyles = false;
-            this.dgvSanPham.Location = new System.Drawing.Point(98, 64);
+            this.dgvSanPham.Location = new System.Drawing.Point(45, 98);
             this.dgvSanPham.Margin = new System.Windows.Forms.Padding(2);
             this.dgvSanPham.Name = "dgvSanPham";
             this.dgvSanPham.ReadOnly = true;
             this.dgvSanPham.RowHeadersWidth = 62;
             this.dgvSanPham.RowTemplate.Height = 28;
             this.dgvSanPham.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSanPham.Size = new System.Drawing.Size(707, 295);
+            this.dgvSanPham.Size = new System.Drawing.Size(849, 295);
             this.dgvSanPham.TabIndex = 0;
             this.dgvSanPham.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSanPham_CellClick);
             this.dgvSanPham.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSanPham_CellContentClick);
@@ -443,7 +395,7 @@
             // txtTimKiemSanPham
             // 
             this.txtTimKiemSanPham.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtTimKiemSanPham.Location = new System.Drawing.Point(190, 35);
+            this.txtTimKiemSanPham.Location = new System.Drawing.Point(209, 52);
             this.txtTimKiemSanPham.Margin = new System.Windows.Forms.Padding(2);
             this.txtTimKiemSanPham.Name = "txtTimKiemSanPham";
             this.txtTimKiemSanPham.Size = new System.Drawing.Size(247, 25);
@@ -456,7 +408,7 @@
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblTotal.Location = new System.Drawing.Point(92, 388);
+            this.lblTotal.Location = new System.Drawing.Point(186, 440);
             this.lblTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(25, 19);
@@ -470,7 +422,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label8.Location = new System.Drawing.Point(35, 388);
+            this.label8.Location = new System.Drawing.Point(92, 440);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(46, 19);
@@ -484,7 +436,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label9.Location = new System.Drawing.Point(187, 7);
+            this.label9.Location = new System.Drawing.Point(281, 17);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(106, 19);
@@ -513,8 +465,6 @@
             this.tpLuaChon.Controls.Add(this.txtGiaTien1);
             this.tpLuaChon.Controls.Add(this.cmbTrangThai1);
             this.tpLuaChon.Controls.Add(this.btnXoa);
-            this.tpLuaChon.Controls.Add(this.picPhoto1);
-            this.tpLuaChon.Controls.Add(this.btnDuyetSanPham1);
             this.tpLuaChon.Controls.Add(this.btnThayDoi);
             this.tpLuaChon.Controls.Add(this.label11);
             this.tpLuaChon.Controls.Add(this.label12);
@@ -524,6 +474,8 @@
             this.tpLuaChon.Controls.Add(this.label15);
             this.tpLuaChon.Controls.Add(this.label16);
             this.tpLuaChon.Controls.Add(this.label17);
+            this.tpLuaChon.Controls.Add(this.picPhoto1);
+            this.tpLuaChon.Controls.Add(this.btnDuyetSanPham1);
             this.tpLuaChon.Location = new System.Drawing.Point(4, 4);
             this.tpLuaChon.Margin = new System.Windows.Forms.Padding(2);
             this.tpLuaChon.Name = "tpLuaChon";
@@ -600,39 +552,6 @@
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = false;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
-            // picPhoto1
-            // 
-            this.picPhoto1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.picPhoto1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picPhoto1.Location = new System.Drawing.Point(474, 41);
-            this.picPhoto1.Margin = new System.Windows.Forms.Padding(2);
-            this.picPhoto1.Name = "picPhoto1";
-            this.picPhoto1.Size = new System.Drawing.Size(187, 190);
-            this.picPhoto1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picPhoto1.TabIndex = 30;
-            this.picPhoto1.TabStop = false;
-            this.picPhoto1.Click += new System.EventHandler(this.picPhoto1_Click);
-            // 
-            // btnDuyetSanPham1
-            // 
-            this.btnDuyetSanPham1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDuyetSanPham1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
-            this.btnDuyetSanPham1.FlatAppearance.BorderSize = 0;
-            this.btnDuyetSanPham1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDuyetSanPham1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDuyetSanPham1.ForeColor = System.Drawing.Color.White;
-            this.btnDuyetSanPham1.Image = global::Computer_Shop_Management_System.Properties.Resources.floder;
-            this.btnDuyetSanPham1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDuyetSanPham1.Location = new System.Drawing.Point(474, 252);
-            this.btnDuyetSanPham1.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDuyetSanPham1.Name = "btnDuyetSanPham1";
-            this.btnDuyetSanPham1.Size = new System.Drawing.Size(186, 54);
-            this.btnDuyetSanPham1.TabIndex = 9;
-            this.btnDuyetSanPham1.Text = "Duyệt Sản Phẩm";
-            this.btnDuyetSanPham1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDuyetSanPham1.UseVisualStyleBackColor = false;
-            this.btnDuyetSanPham1.Click += new System.EventHandler(this.btnDuyetSanPham1_Click);
             // 
             // btnThayDoi
             // 
@@ -795,6 +714,87 @@
             this.openFileDialog.Filter = "JPG|*.ipg|JPEG|*.jpeg|PNG|*.png";
             this.openFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog_FileOk);
             // 
+            // picPhoto
+            // 
+            this.picPhoto.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.picPhoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picPhoto.Location = new System.Drawing.Point(508, 48);
+            this.picPhoto.Margin = new System.Windows.Forms.Padding(2);
+            this.picPhoto.Name = "picPhoto";
+            this.picPhoto.Size = new System.Drawing.Size(222, 231);
+            this.picPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picPhoto.TabIndex = 14;
+            this.picPhoto.TabStop = false;
+            this.picPhoto.Click += new System.EventHandler(this.picPhoto_Click);
+            // 
+            // btnDuyetSanPham
+            // 
+            this.btnDuyetSanPham.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDuyetSanPham.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
+            this.btnDuyetSanPham.FlatAppearance.BorderSize = 0;
+            this.btnDuyetSanPham.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDuyetSanPham.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDuyetSanPham.ForeColor = System.Drawing.Color.White;
+            this.btnDuyetSanPham.Image = global::Computer_Shop_Management_System.Properties.Resources.floder;
+            this.btnDuyetSanPham.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDuyetSanPham.Location = new System.Drawing.Point(508, 297);
+            this.btnDuyetSanPham.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDuyetSanPham.Name = "btnDuyetSanPham";
+            this.btnDuyetSanPham.Size = new System.Drawing.Size(221, 57);
+            this.btnDuyetSanPham.TabIndex = 8;
+            this.btnDuyetSanPham.Text = "Duyệt Sản Phẩm";
+            this.btnDuyetSanPham.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDuyetSanPham.UseVisualStyleBackColor = false;
+            this.btnDuyetSanPham.Click += new System.EventHandler(this.btnDuyetSanPham_Click);
+            // 
+            // picTimKiem
+            // 
+            this.picTimKiem.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.picTimKiem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picTimKiem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picTimKiem.Image = global::Computer_Shop_Management_System.Properties.Resources.Search1;
+            this.picTimKiem.Location = new System.Drawing.Point(483, 52);
+            this.picTimKiem.Margin = new System.Windows.Forms.Padding(2);
+            this.picTimKiem.Name = "picTimKiem";
+            this.picTimKiem.Size = new System.Drawing.Size(27, 23);
+            this.picTimKiem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picTimKiem.TabIndex = 10;
+            this.picTimKiem.TabStop = false;
+            this.picTimKiem.Click += new System.EventHandler(this.picTimKiem_Click);
+            // 
+            // picPhoto1
+            // 
+            this.picPhoto1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.picPhoto1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picPhoto1.Location = new System.Drawing.Point(474, 41);
+            this.picPhoto1.Margin = new System.Windows.Forms.Padding(2);
+            this.picPhoto1.Name = "picPhoto1";
+            this.picPhoto1.Size = new System.Drawing.Size(187, 190);
+            this.picPhoto1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picPhoto1.TabIndex = 30;
+            this.picPhoto1.TabStop = false;
+            this.picPhoto1.Click += new System.EventHandler(this.picPhoto1_Click);
+            // 
+            // btnDuyetSanPham1
+            // 
+            this.btnDuyetSanPham1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDuyetSanPham1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
+            this.btnDuyetSanPham1.FlatAppearance.BorderSize = 0;
+            this.btnDuyetSanPham1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDuyetSanPham1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDuyetSanPham1.ForeColor = System.Drawing.Color.White;
+            this.btnDuyetSanPham1.Image = global::Computer_Shop_Management_System.Properties.Resources.floder;
+            this.btnDuyetSanPham1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDuyetSanPham1.Location = new System.Drawing.Point(474, 252);
+            this.btnDuyetSanPham1.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDuyetSanPham1.Name = "btnDuyetSanPham1";
+            this.btnDuyetSanPham1.Size = new System.Drawing.Size(186, 54);
+            this.btnDuyetSanPham1.TabIndex = 9;
+            this.btnDuyetSanPham1.Text = "Duyệt Sản Phẩm";
+            this.btnDuyetSanPham1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDuyetSanPham1.UseVisualStyleBackColor = false;
+            this.btnDuyetSanPham1.Click += new System.EventHandler(this.btnDuyetSanPham1_Click);
+            // 
             // UserControlProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -809,14 +809,14 @@
             this.tpThemSanPham.ResumeLayout(false);
             this.tpThemSanPham.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSoLuong)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picPhoto)).EndInit();
             this.tpQuanLySanPham.ResumeLayout(false);
             this.tpQuanLySanPham.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picTimKiem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSanPham)).EndInit();
             this.tpLuaChon.ResumeLayout(false);
             this.tpLuaChon.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSoLuong1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPhoto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picTimKiem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPhoto1)).EndInit();
             this.ResumeLayout(false);
 

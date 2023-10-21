@@ -91,7 +91,7 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(242, 20);
             this.txtUsername.TabIndex = 1;
-            this.txtUsername.Text = "HuynhDacViet";
+            this.txtUsername.Text = "VietHuynhHutech";
             this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // txtUserpassword

@@ -50,7 +50,7 @@ namespace Computer_Shop_Management_System.View
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            if(User.Users_Category_Id == "US08022003")
+            if(User.Users_Category_Id == "Admin")
             {
                 MovePanel(btnDashboard);
                 UserControlDashboard1.Visible = true;
@@ -70,7 +70,7 @@ namespace Computer_Shop_Management_System.View
         }
         private void btnThuongHieu_Click(object sender, EventArgs e)
         {
-            if(User.Users_Category_Id == "US08022003")
+            if(User.Users_Category_Id == "Admin")
             {
                 MovePanel(btnThuongHieu);
                 UserControlDashboard1.Visible = false;
@@ -98,7 +98,7 @@ namespace Computer_Shop_Management_System.View
         }
         private void btnLoai_Click(object sender, EventArgs e)
         {
-            if(User.Users_Category_Id == "US08022003")
+            if(User.Users_Category_Id == "Admin")
             {
                 MovePanel(btnLoai);
                 UserControlDashboard1.Visible = false;
@@ -118,7 +118,7 @@ namespace Computer_Shop_Management_System.View
 
         private void btnSanPham_Click(object sender, EventArgs e)
         {
-            if(User.Users_Category_Id == "US08022003")
+            if(User.Users_Category_Id == "Admin")
             {
                 MovePanel(btnSanPham);
                 UserControlDashboard1.Visible = true;
@@ -138,7 +138,7 @@ namespace Computer_Shop_Management_System.View
 
         private void btnDatHang_Click(object sender, EventArgs e)
         {
-            if(User.Users_Category_Id == "US08022003")
+            if(User.Users_Category_Id == "Admin")
             {
                 MovePanel(btnDatHang);
                 UserControlDashboard1.Visible = false;
@@ -159,7 +159,7 @@ namespace Computer_Shop_Management_System.View
 
         private void btnBaoCao_Click(object sender, EventArgs e)
         {
-            if(User.Users_Category_Id == "US08022003")
+            if(User.Users_Category_Id == "Admin")
             {
                 MovePanel(btnBaoCao);
                 UserControlDashboard1.Visible = false;
@@ -181,7 +181,7 @@ namespace Computer_Shop_Management_System.View
 
         private void btnNguoiDung_Click(object sender, EventArgs e)
         {
-            if(User.Users_Category_Id == "US08022003")
+            if(User.Users_Category_Id == "Admin")
             {
                 MovePanel(btnNguoiDung);
                 UserControlUser1.Visible = true;

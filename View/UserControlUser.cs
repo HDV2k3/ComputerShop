@@ -46,7 +46,7 @@ namespace Computer_Shop_Management_System.View
 
         private void tpQuanLyNguoiDung_Click(object sender, EventArgs e)
         {
-
+            LoadDataUser();
         }
 
         private void pictureBox1_MouseHover(object sender, EventArgs e)
@@ -225,7 +225,7 @@ namespace Computer_Shop_Management_System.View
             txtMatKhau1.Text = string.Empty;
             txtEmail1.Text = string.Empty;
             txtTenNguoiDung1.Text = string.Empty;
-            cmbLoaiTKlc.SelectedIndex = 0;
+            cmbLoaiTKlc.SelectedIndex = -1;
         }
         private void btnThayDoi_Click(object sender, EventArgs e)
         {
@@ -380,7 +380,7 @@ namespace Computer_Shop_Management_System.View
                     }
                 }
             }
-            LoadComboBoxLoaiTKLC();
+           
         }
 
         private void label12_Click(object sender, EventArgs e)

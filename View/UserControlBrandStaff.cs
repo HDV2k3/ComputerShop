@@ -37,8 +37,8 @@ namespace Computer_Shop_Management_System.View
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
 
-                    dgvBrandStaff.DataSource = dataTable;
-                    lblTongThuongHieuStaff.Text = dgvBrandStaff.Rows.Count.ToString();
+                    dgvThuongHieuStaff.DataSource = dataTable;
+                    lblTongThuongHieuStaff.Text = dgvThuongHieuStaff.Rows.Count.ToString();
 
                 }
             }
@@ -64,9 +64,9 @@ namespace Computer_Shop_Management_System.View
                     {
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
-                        dgvBrandStaff.DataSource = dataTable;
+                        dgvThuongHieuStaff.DataSource = dataTable;
 
-                        lblTongThuongHieuStaff.Text = dgvBrandStaff.Rows.Count.ToString();
+                        lblTongThuongHieuStaff.Text = dgvThuongHieuStaff.Rows.Count.ToString();
                     }
                 }
             }

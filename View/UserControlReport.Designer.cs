@@ -31,14 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpBaoCao = new System.Windows.Forms.TabPage();
-            this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.rdoSLKHangMoi = new Guna.UI2.WinForms.Guna2RadioButton();
-            this.rdoSLDonHang = new Guna.UI2.WinForms.Guna2RadioButton();
-            this.rdoLoiNhuan = new Guna.UI2.WinForms.Guna2RadioButton();
-            this.rdoDoanhThuTheoKH = new Guna.UI2.WinForms.Guna2RadioButton();
-            this.rdoDoanhThuTheoSP = new Guna.UI2.WinForms.Guna2RadioButton();
-            this.rdoSLSPDaBan = new Guna.UI2.WinForms.Guna2RadioButton();
-            this.rdoTongDoanhThu = new Guna.UI2.WinForms.Guna2RadioButton();
+            this.dgvAnalys = new System.Windows.Forms.DataGridView();
             this.btnTaoBaoCao = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpEndDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
@@ -46,11 +39,18 @@
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel28 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.dgvAnalys = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.ckbTongDoanhThu = new System.Windows.Forms.CheckBox();
+            this.ckbSLKhachHangMoi = new System.Windows.Forms.CheckBox();
+            this.ckbDoanhThuTheoSP = new System.Windows.Forms.CheckBox();
+            this.ckbDoanhThuTheoKH = new System.Windows.Forms.CheckBox();
+            this.ckbLoiNhuan = new System.Windows.Forms.CheckBox();
+            this.ckbSLDonHang = new System.Windows.Forms.CheckBox();
+            this.ckbSLSPDaBan = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tpBaoCao.SuspendLayout();
-            this.guna2CustomGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAnalys)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -62,13 +62,13 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(998, 523);
+            this.tabControl1.Size = new System.Drawing.Size(1113, 544);
             this.tabControl1.TabIndex = 0;
             // 
             // tpBaoCao
             // 
+            this.tpBaoCao.Controls.Add(this.panel1);
             this.tpBaoCao.Controls.Add(this.dgvAnalys);
-            this.tpBaoCao.Controls.Add(this.guna2CustomGradientPanel1);
             this.tpBaoCao.Controls.Add(this.btnTaoBaoCao);
             this.tpBaoCao.Controls.Add(this.label1);
             this.tpBaoCao.Controls.Add(this.dtpEndDate);
@@ -80,158 +80,21 @@
             this.tpBaoCao.Margin = new System.Windows.Forms.Padding(2);
             this.tpBaoCao.Name = "tpBaoCao";
             this.tpBaoCao.Padding = new System.Windows.Forms.Padding(2);
-            this.tpBaoCao.Size = new System.Drawing.Size(990, 493);
+            this.tpBaoCao.Size = new System.Drawing.Size(1105, 514);
             this.tpBaoCao.TabIndex = 0;
             this.tpBaoCao.Text = "Báo Cáo";
             this.tpBaoCao.UseVisualStyleBackColor = true;
             this.tpBaoCao.Click += new System.EventHandler(this.tpReport_Click);
             // 
-            // guna2CustomGradientPanel1
+            // dgvAnalys
             // 
-            this.guna2CustomGradientPanel1.Controls.Add(this.rdoSLKHangMoi);
-            this.guna2CustomGradientPanel1.Controls.Add(this.rdoSLDonHang);
-            this.guna2CustomGradientPanel1.Controls.Add(this.rdoLoiNhuan);
-            this.guna2CustomGradientPanel1.Controls.Add(this.rdoDoanhThuTheoKH);
-            this.guna2CustomGradientPanel1.Controls.Add(this.rdoDoanhThuTheoSP);
-            this.guna2CustomGradientPanel1.Controls.Add(this.rdoSLSPDaBan);
-            this.guna2CustomGradientPanel1.Controls.Add(this.rdoTongDoanhThu);
-            this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(6, 88);
-            this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
-            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(265, 294);
-            this.guna2CustomGradientPanel1.TabIndex = 5;
-            // 
-            // rdoSLKHangMoi
-            // 
-            this.rdoSLKHangMoi.AutoSize = true;
-            this.rdoSLKHangMoi.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoSLKHangMoi.CheckedState.BorderThickness = 0;
-            this.rdoSLKHangMoi.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoSLKHangMoi.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.rdoSLKHangMoi.CheckedState.InnerOffset = -4;
-            this.rdoSLKHangMoi.Location = new System.Drawing.Point(4, 233);
-            this.rdoSLKHangMoi.Name = "rdoSLKHangMoi";
-            this.rdoSLKHangMoi.Size = new System.Drawing.Size(168, 19);
-            this.rdoSLKHangMoi.TabIndex = 2;
-            this.rdoSLKHangMoi.Text = "Số Lượng Khách Hàng Mới";
-            this.rdoSLKHangMoi.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.rdoSLKHangMoi.UncheckedState.BorderThickness = 2;
-            this.rdoSLKHangMoi.UncheckedState.FillColor = System.Drawing.Color.Transparent;
-            this.rdoSLKHangMoi.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
-            this.rdoSLKHangMoi.CheckedChanged += new System.EventHandler(this.rdoSLKHangMoi_CheckedChanged);
-            // 
-            // rdoSLDonHang
-            // 
-            this.rdoSLDonHang.AutoSize = true;
-            this.rdoSLDonHang.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoSLDonHang.CheckedState.BorderThickness = 0;
-            this.rdoSLDonHang.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoSLDonHang.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.rdoSLDonHang.CheckedState.InnerOffset = -4;
-            this.rdoSLDonHang.Location = new System.Drawing.Point(3, 190);
-            this.rdoSLDonHang.Name = "rdoSLDonHang";
-            this.rdoSLDonHang.Size = new System.Drawing.Size(134, 19);
-            this.rdoSLDonHang.TabIndex = 2;
-            this.rdoSLDonHang.Text = "Số Lượng Đơn Hàng";
-            this.rdoSLDonHang.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.rdoSLDonHang.UncheckedState.BorderThickness = 2;
-            this.rdoSLDonHang.UncheckedState.FillColor = System.Drawing.Color.Transparent;
-            this.rdoSLDonHang.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
-            this.rdoSLDonHang.CheckedChanged += new System.EventHandler(this.rdoSLDonHang_CheckedChanged);
-            // 
-            // rdoLoiNhuan
-            // 
-            this.rdoLoiNhuan.AutoSize = true;
-            this.rdoLoiNhuan.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoLoiNhuan.CheckedState.BorderThickness = 0;
-            this.rdoLoiNhuan.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoLoiNhuan.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.rdoLoiNhuan.CheckedState.InnerOffset = -4;
-            this.rdoLoiNhuan.Location = new System.Drawing.Point(0, 154);
-            this.rdoLoiNhuan.Name = "rdoLoiNhuan";
-            this.rdoLoiNhuan.Size = new System.Drawing.Size(81, 19);
-            this.rdoLoiNhuan.TabIndex = 2;
-            this.rdoLoiNhuan.Text = "Lợi Nhuận";
-            this.rdoLoiNhuan.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.rdoLoiNhuan.UncheckedState.BorderThickness = 2;
-            this.rdoLoiNhuan.UncheckedState.FillColor = System.Drawing.Color.Transparent;
-            this.rdoLoiNhuan.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
-            this.rdoLoiNhuan.CheckedChanged += new System.EventHandler(this.rdoLoiNhuan_CheckedChanged);
-            // 
-            // rdoDoanhThuTheoKH
-            // 
-            this.rdoDoanhThuTheoKH.AutoSize = true;
-            this.rdoDoanhThuTheoKH.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoDoanhThuTheoKH.CheckedState.BorderThickness = 0;
-            this.rdoDoanhThuTheoKH.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoDoanhThuTheoKH.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.rdoDoanhThuTheoKH.CheckedState.InnerOffset = -4;
-            this.rdoDoanhThuTheoKH.Location = new System.Drawing.Point(4, 114);
-            this.rdoDoanhThuTheoKH.Name = "rdoDoanhThuTheoKH";
-            this.rdoDoanhThuTheoKH.Size = new System.Drawing.Size(186, 19);
-            this.rdoDoanhThuTheoKH.TabIndex = 2;
-            this.rdoDoanhThuTheoKH.Text = "Doanh Thu Theo Khách Hàng";
-            this.rdoDoanhThuTheoKH.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.rdoDoanhThuTheoKH.UncheckedState.BorderThickness = 2;
-            this.rdoDoanhThuTheoKH.UncheckedState.FillColor = System.Drawing.Color.Transparent;
-            this.rdoDoanhThuTheoKH.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
-            this.rdoDoanhThuTheoKH.CheckedChanged += new System.EventHandler(this.rdoDoanhThuTheoKH_CheckedChanged);
-            // 
-            // rdoDoanhThuTheoSP
-            // 
-            this.rdoDoanhThuTheoSP.AutoSize = true;
-            this.rdoDoanhThuTheoSP.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoDoanhThuTheoSP.CheckedState.BorderThickness = 0;
-            this.rdoDoanhThuTheoSP.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoDoanhThuTheoSP.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.rdoDoanhThuTheoSP.CheckedState.InnerOffset = -4;
-            this.rdoDoanhThuTheoSP.Location = new System.Drawing.Point(3, 73);
-            this.rdoDoanhThuTheoSP.Name = "rdoDoanhThuTheoSP";
-            this.rdoDoanhThuTheoSP.Size = new System.Drawing.Size(174, 19);
-            this.rdoDoanhThuTheoSP.TabIndex = 2;
-            this.rdoDoanhThuTheoSP.Text = "Doanh Thu Theo Sản Phẩm";
-            this.rdoDoanhThuTheoSP.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.rdoDoanhThuTheoSP.UncheckedState.BorderThickness = 2;
-            this.rdoDoanhThuTheoSP.UncheckedState.FillColor = System.Drawing.Color.Transparent;
-            this.rdoDoanhThuTheoSP.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
-            this.rdoDoanhThuTheoSP.CheckedChanged += new System.EventHandler(this.rdoDoanhThuTheoSP_CheckedChanged);
-            // 
-            // rdoSLSPDaBan
-            // 
-            this.rdoSLSPDaBan.AutoSize = true;
-            this.rdoSLSPDaBan.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoSLSPDaBan.CheckedState.BorderThickness = 0;
-            this.rdoSLSPDaBan.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoSLSPDaBan.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.rdoSLSPDaBan.CheckedState.InnerOffset = -4;
-            this.rdoSLSPDaBan.Location = new System.Drawing.Point(3, 35);
-            this.rdoSLSPDaBan.Name = "rdoSLSPDaBan";
-            this.rdoSLSPDaBan.Size = new System.Drawing.Size(172, 19);
-            this.rdoSLSPDaBan.TabIndex = 2;
-            this.rdoSLSPDaBan.Text = "Số Lượng Sản Phẩn Đã Bán";
-            this.rdoSLSPDaBan.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.rdoSLSPDaBan.UncheckedState.BorderThickness = 2;
-            this.rdoSLSPDaBan.UncheckedState.FillColor = System.Drawing.Color.Transparent;
-            this.rdoSLSPDaBan.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
-            this.rdoSLSPDaBan.CheckedChanged += new System.EventHandler(this.rdoSLSPDaBan_CheckedChanged);
-            // 
-            // rdoTongDoanhThu
-            // 
-            this.rdoTongDoanhThu.AutoSize = true;
-            this.rdoTongDoanhThu.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoTongDoanhThu.CheckedState.BorderThickness = 0;
-            this.rdoTongDoanhThu.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.rdoTongDoanhThu.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.rdoTongDoanhThu.CheckedState.InnerOffset = -4;
-            this.rdoTongDoanhThu.Location = new System.Drawing.Point(3, 3);
-            this.rdoTongDoanhThu.Name = "rdoTongDoanhThu";
-            this.rdoTongDoanhThu.Size = new System.Drawing.Size(117, 19);
-            this.rdoTongDoanhThu.TabIndex = 2;
-            this.rdoTongDoanhThu.Text = "Tổng Doanh Thu";
-            this.rdoTongDoanhThu.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.rdoTongDoanhThu.UncheckedState.BorderThickness = 2;
-            this.rdoTongDoanhThu.UncheckedState.FillColor = System.Drawing.Color.Transparent;
-            this.rdoTongDoanhThu.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
-            this.rdoTongDoanhThu.CheckedChanged += new System.EventHandler(this.rdoTongDoanhThu_CheckedChanged);
+            this.dgvAnalys.BackgroundColor = System.Drawing.Color.White;
+            this.dgvAnalys.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAnalys.Location = new System.Drawing.Point(268, 88);
+            this.dgvAnalys.Name = "dgvAnalys";
+            this.dgvAnalys.Size = new System.Drawing.Size(832, 294);
+            this.dgvAnalys.TabIndex = 6;
+            this.dgvAnalys.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvAnalys_CellFormatting);
             // 
             // btnTaoBaoCao
             // 
@@ -241,7 +104,7 @@
             this.btnTaoBaoCao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTaoBaoCao.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTaoBaoCao.ForeColor = System.Drawing.Color.White;
-            this.btnTaoBaoCao.Location = new System.Drawing.Point(398, 412);
+            this.btnTaoBaoCao.Location = new System.Drawing.Point(493, 426);
             this.btnTaoBaoCao.Margin = new System.Windows.Forms.Padding(2);
             this.btnTaoBaoCao.Name = "btnTaoBaoCao";
             this.btnTaoBaoCao.Size = new System.Drawing.Size(143, 39);
@@ -318,15 +181,89 @@
             // 
             this.guna2Elipse1.TargetControl = this.btnTaoBaoCao;
             // 
-            // dgvAnalys
+            // panel1
             // 
-            this.dgvAnalys.BackgroundColor = System.Drawing.Color.White;
-            this.dgvAnalys.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAnalys.Location = new System.Drawing.Point(268, 88);
-            this.dgvAnalys.Name = "dgvAnalys";
-            this.dgvAnalys.Size = new System.Drawing.Size(726, 294);
-            this.dgvAnalys.TabIndex = 6;
-            this.dgvAnalys.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvAnalys_CellFormatting);
+            this.panel1.Controls.Add(this.ckbLoiNhuan);
+            this.panel1.Controls.Add(this.ckbDoanhThuTheoKH);
+            this.panel1.Controls.Add(this.ckbDoanhThuTheoSP);
+            this.panel1.Controls.Add(this.ckbSLSPDaBan);
+            this.panel1.Controls.Add(this.ckbSLDonHang);
+            this.panel1.Controls.Add(this.ckbSLKhachHangMoi);
+            this.panel1.Controls.Add(this.ckbTongDoanhThu);
+            this.panel1.Location = new System.Drawing.Point(6, 88);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(265, 294);
+            this.panel1.TabIndex = 7;
+            // 
+            // ckbTongDoanhThu
+            // 
+            this.ckbTongDoanhThu.AutoSize = true;
+            this.ckbTongDoanhThu.Location = new System.Drawing.Point(5, 15);
+            this.ckbTongDoanhThu.Name = "ckbTongDoanhThu";
+            this.ckbTongDoanhThu.Size = new System.Drawing.Size(118, 19);
+            this.ckbTongDoanhThu.TabIndex = 0;
+            this.ckbTongDoanhThu.Text = "Tổng Doanh Thu";
+            this.ckbTongDoanhThu.UseVisualStyleBackColor = true;
+            // 
+            // ckbSLKhachHangMoi
+            // 
+            this.ckbSLKhachHangMoi.AutoSize = true;
+            this.ckbSLKhachHangMoi.Location = new System.Drawing.Point(5, 131);
+            this.ckbSLKhachHangMoi.Name = "ckbSLKhachHangMoi";
+            this.ckbSLKhachHangMoi.Size = new System.Drawing.Size(169, 19);
+            this.ckbSLKhachHangMoi.TabIndex = 1;
+            this.ckbSLKhachHangMoi.Text = "Số Lượng Khách Hàng Mới";
+            this.ckbSLKhachHangMoi.UseVisualStyleBackColor = true;
+            // 
+            // ckbDoanhThuTheoSP
+            // 
+            this.ckbDoanhThuTheoSP.AutoSize = true;
+            this.ckbDoanhThuTheoSP.Location = new System.Drawing.Point(5, 93);
+            this.ckbDoanhThuTheoSP.Name = "ckbDoanhThuTheoSP";
+            this.ckbDoanhThuTheoSP.Size = new System.Drawing.Size(175, 19);
+            this.ckbDoanhThuTheoSP.TabIndex = 1;
+            this.ckbDoanhThuTheoSP.Text = "Doanh Thu Theo Sản Phẩm";
+            this.ckbDoanhThuTheoSP.UseVisualStyleBackColor = true;
+            // 
+            // ckbDoanhThuTheoKH
+            // 
+            this.ckbDoanhThuTheoKH.AutoSize = true;
+            this.ckbDoanhThuTheoKH.Location = new System.Drawing.Point(5, 170);
+            this.ckbDoanhThuTheoKH.Name = "ckbDoanhThuTheoKH";
+            this.ckbDoanhThuTheoKH.Size = new System.Drawing.Size(187, 19);
+            this.ckbDoanhThuTheoKH.TabIndex = 1;
+            this.ckbDoanhThuTheoKH.Text = "Doanh Thu Theo Khách Hàng";
+            this.ckbDoanhThuTheoKH.UseVisualStyleBackColor = true;
+            // 
+            // ckbLoiNhuan
+            // 
+            this.ckbLoiNhuan.AutoSize = true;
+            this.ckbLoiNhuan.Location = new System.Drawing.Point(5, 213);
+            this.ckbLoiNhuan.Name = "ckbLoiNhuan";
+            this.ckbLoiNhuan.Size = new System.Drawing.Size(82, 19);
+            this.ckbLoiNhuan.TabIndex = 1;
+            this.ckbLoiNhuan.Text = "Lợi Nhuận";
+            this.ckbLoiNhuan.UseVisualStyleBackColor = true;
+            // 
+            // ckbSLDonHang
+            // 
+            this.ckbSLDonHang.AutoSize = true;
+            this.ckbSLDonHang.Location = new System.Drawing.Point(5, 255);
+            this.ckbSLDonHang.Name = "ckbSLDonHang";
+            this.ckbSLDonHang.Size = new System.Drawing.Size(135, 19);
+            this.ckbSLDonHang.TabIndex = 0;
+            this.ckbSLDonHang.Text = "Số Lượng Đơn Hàng";
+            this.ckbSLDonHang.UseVisualStyleBackColor = true;
+            // 
+            // ckbSLSPDaBan
+            // 
+            this.ckbSLSPDaBan.AutoSize = true;
+            this.ckbSLSPDaBan.Location = new System.Drawing.Point(5, 53);
+            this.ckbSLSPDaBan.Name = "ckbSLSPDaBan";
+            this.ckbSLSPDaBan.Size = new System.Drawing.Size(177, 19);
+            this.ckbSLSPDaBan.TabIndex = 1;
+            this.ckbSLSPDaBan.Text = "Số Lượng Sản Phẩm Đã Bán";
+            this.ckbSLSPDaBan.UseVisualStyleBackColor = true;
             // 
             // UserControlReport
             // 
@@ -336,14 +273,14 @@
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UserControlReport";
-            this.Size = new System.Drawing.Size(1013, 527);
+            this.Size = new System.Drawing.Size(1117, 548);
             this.Load += new System.EventHandler(this.UserControlReport_Load);
             this.tabControl1.ResumeLayout(false);
             this.tpBaoCao.ResumeLayout(false);
             this.tpBaoCao.PerformLayout();
-            this.guna2CustomGradientPanel1.ResumeLayout(false);
-            this.guna2CustomGradientPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAnalys)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -359,14 +296,14 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private System.Windows.Forms.Button btnTaoBaoCao;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
-        private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel1;
-        private Guna.UI2.WinForms.Guna2RadioButton rdoSLKHangMoi;
-        private Guna.UI2.WinForms.Guna2RadioButton rdoSLDonHang;
-        private Guna.UI2.WinForms.Guna2RadioButton rdoLoiNhuan;
-        private Guna.UI2.WinForms.Guna2RadioButton rdoDoanhThuTheoKH;
-        private Guna.UI2.WinForms.Guna2RadioButton rdoDoanhThuTheoSP;
-        private Guna.UI2.WinForms.Guna2RadioButton rdoSLSPDaBan;
-        private Guna.UI2.WinForms.Guna2RadioButton rdoTongDoanhThu;
         private System.Windows.Forms.DataGridView dgvAnalys;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.CheckBox ckbLoiNhuan;
+        private System.Windows.Forms.CheckBox ckbDoanhThuTheoKH;
+        private System.Windows.Forms.CheckBox ckbDoanhThuTheoSP;
+        private System.Windows.Forms.CheckBox ckbSLSPDaBan;
+        private System.Windows.Forms.CheckBox ckbSLDonHang;
+        private System.Windows.Forms.CheckBox ckbSLKhachHangMoi;
+        private System.Windows.Forms.CheckBox ckbTongDoanhThu;
     }
 }
