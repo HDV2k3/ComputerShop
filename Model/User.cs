@@ -9,8 +9,15 @@ namespace Computer_Shop_Management_System.Model
     [Table("User")]
     public partial class User
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User()
+        {
+            Orders = new HashSet<Orders>();
+        }
+
         [Key]
-        public int Users_Id { get; set; }
+        [StringLength(50)]
+        public string Users_Id { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -22,24 +29,25 @@ namespace Computer_Shop_Management_System.Model
 
         [Required]
         [StringLength(50)]
-        public string Users_Password { get; set; }
+        public string users_Password { get; set; }
 
         [Required]
         [StringLength(50)]
         public string Users_Email { get; set; }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Orders> Orders { get; set; }
+
         public virtual UsersCategory UsersCategory { get; set; }
-        public User(string Usercategoryid,string Username,string password,string email)
+       
+        public User(string Usercategoryid, string Username, string password, string email)
         {
             this.Users_Category_Id = Usercategoryid;
             this.Users_Name = Username;
-            this.Users_Password = password;
-            this.Users_Email= email;
+            this.users_Password = password;
+            this.Users_Email = email;
 
         }
 
-        public User()
-        {
-        }
     }
 }

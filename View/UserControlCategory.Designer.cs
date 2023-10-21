@@ -108,7 +108,7 @@
             this.tcThemLoai.TabIndex = 0;
             this.tcThemLoai.Text = "Thêm Loại";
             this.tcThemLoai.UseVisualStyleBackColor = true;
-            this.tcThemLoai.Click += new System.EventHandler(this.tcCategory_Click);
+         
             this.tcThemLoai.Enter += new System.EventHandler(this.tcThemLoai_Enter);
             // 
             // btnThem
@@ -134,7 +134,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.cmbTrangThai.FormattingEnabled = true;
             this.cmbTrangThai.Items.AddRange(new object[] {
-            "--SELECT--",
+            "--Chọn--",
             "Có sẵn",
             "Không có sẵn"});
             this.cmbTrangThai.Location = new System.Drawing.Point(583, 145);
@@ -152,7 +152,7 @@
             this.txtMaLoai.Name = "txtMaLoai";
             this.txtMaLoai.Size = new System.Drawing.Size(244, 20);
             this.txtMaLoai.TabIndex = 1;
-            this.txtMaLoai.TextChanged += new System.EventHandler(this.txtTenLoai_TextChanged);
+          
             // 
             // txtTenLoai
             // 
@@ -163,7 +163,7 @@
             this.txtTenLoai.Name = "txtTenLoai";
             this.txtTenLoai.Size = new System.Drawing.Size(244, 20);
             this.txtTenLoai.TabIndex = 1;
-            this.txtTenLoai.TextChanged += new System.EventHandler(this.txtTenLoai_TextChanged);
+
             // 
             // label3
             // 
@@ -309,12 +309,12 @@
             // 
             this.lblTotal.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblTotal.Location = new System.Drawing.Point(150, 422);
+            this.lblTotal.Location = new System.Drawing.Point(185, 422);
             this.lblTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(23, 19);
+            this.lblTotal.Size = new System.Drawing.Size(24, 17);
             this.lblTotal.TabIndex = 0;
             this.lblTotal.Text = "{?}";
             // 
@@ -324,12 +324,12 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(97, 422);
+            this.label6.Location = new System.Drawing.Point(60, 422);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 19);
+            this.label6.Size = new System.Drawing.Size(100, 19);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Total:";
+            this.label6.Text = "Tổng Số Loại:";
             // 
             // label5
             // 
@@ -447,7 +447,7 @@
             this.txtMaLoai1.Name = "txtMaLoai1";
             this.txtMaLoai1.Size = new System.Drawing.Size(239, 25);
             this.txtMaLoai1.TabIndex = 1;
-            this.txtMaLoai1.TextChanged += new System.EventHandler(this.txtLoai1_TextChanged);
+          
             // 
             // txtTenLoai1
             // 
@@ -457,7 +457,7 @@
             this.txtTenLoai1.Name = "txtTenLoai1";
             this.txtTenLoai1.Size = new System.Drawing.Size(239, 25);
             this.txtTenLoai1.TabIndex = 1;
-            this.txtTenLoai1.TextChanged += new System.EventHandler(this.txtLoai1_TextChanged);
+ 
             // 
             // label11
             // 
@@ -496,7 +496,7 @@
             this.label8.Size = new System.Drawing.Size(97, 21);
             this.label8.TabIndex = 0;
             this.label8.Text = ".../Lựa Chọn";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
+      
             // 
             // guna2Elipse1
             // 

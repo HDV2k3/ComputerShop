@@ -24,50 +24,14 @@ namespace Computer_Shop_Management_System.View
             InitializeComponent();
         }
 
-        private void txtTenNguoiDung_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tpThemNguoiDung_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void tpQuanLyNguoiDung_Click(object sender, EventArgs e)
         {
             LoadDataUser();
         }
 
-        private void pictureBox1_MouseHover(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtTimKiemThuongHieu_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
+       
         private void LoadComboBoxLoaiTK()
         {
          
@@ -301,51 +265,7 @@ namespace Computer_Shop_Management_System.View
             }
         }
 
-        private void tcUser_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cmbLoaiTK_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cmbLoaiTKlc_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtEmail1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtMatKhau1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+       
         private void txtTenNguoiDung1_TextChanged(object sender, EventArgs e)
         {
            
@@ -383,66 +303,13 @@ namespace Computer_Shop_Management_System.View
            
         }
 
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ptbTimKiem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dgvUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void lblTotal_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolTip1_Popup(object sender, PopupEventArgs e)
-        {
-
-        }
-
+       
         private void UserControlUser_Load(object sender, EventArgs e)
         {
             lblTotal.Text =dgvUsers.Rows.Count.ToString();
             LoadDataUser();
             LoadComboBoxLoaiTK();
+            cmbLoaiTK.SelectedIndex = 0;
            
         }
 

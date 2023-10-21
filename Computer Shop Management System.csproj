@@ -80,7 +80,6 @@
     <Compile Include="Model\OrderDetails.cs" />
     <Compile Include="Model\Orders.cs" />
     <Compile Include="Model\Product.cs" />
-    <Compile Include="Model\sysdiagrams.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UsersCategory.cs" />
     <Compile Include="View\FormForgotPass.cs">
@@ -127,6 +126,12 @@
     <Compile Include="View\UserControlCategory.Designer.cs">
       <DependentUpon>UserControlCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControlCategoryStaff.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UserControlCategoryStaff.Designer.cs">
+      <DependentUpon>UserControlCategoryStaff.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControlDashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -145,6 +150,12 @@
     <Compile Include="View\UserControlProduct.Designer.cs">
       <DependentUpon>UserControlProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControlProductStaff.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UserControlProductStaff.Designer.cs">
+      <DependentUpon>UserControlProductStaff.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControlReport.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -156,6 +167,12 @@
     </Compile>
     <Compile Include="View\UserControlUser.Designer.cs">
       <DependentUpon>UserControlUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControlUserStaff.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UserControlUserStaff.Designer.cs">
+      <DependentUpon>UserControlUserStaff.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="View\FormForgotPass.resx">
       <DependentUpon>FormForgotPass.cs</DependentUpon>
@@ -188,6 +205,9 @@
     <EmbeddedResource Include="View\UserControlCategory.resx">
       <DependentUpon>UserControlCategory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\UserControlCategoryStaff.resx">
+      <DependentUpon>UserControlCategoryStaff.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\UserControlDashboard.resx">
       <DependentUpon>UserControlDashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -197,11 +217,17 @@
     <EmbeddedResource Include="View\UserControlProduct.resx">
       <DependentUpon>UserControlProduct.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\UserControlProductStaff.resx">
+      <DependentUpon>UserControlProductStaff.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\UserControlReport.resx">
       <DependentUpon>UserControlReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UserControlUser.resx">
       <DependentUpon>UserControlUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserControlUserStaff.resx">
+      <DependentUpon>UserControlUserStaff.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

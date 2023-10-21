@@ -11,46 +11,40 @@ using System.Windows.Forms;
 
 namespace Computer_Shop_Management_System.View
 {
-    public partial class UserControlBrandStaff : UserControl
+    public partial class UserControlUserStaff : UserControl
     {
-        public UserControlBrandStaff()
+        public UserControlUserStaff()
         {
             InitializeComponent();
         }
-
-  
         private string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
-        private void LoadBrandData()
+        private void LoadUserData()
         {
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-
-                    string query = "SELECT * FROM Brand";
-
+                    string query = "SELECT Users_Id,Users_Category_Id,Users_Name,users_Email FROM dbo.[User]";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
-
-                    dgvThuongHieuStaff.DataSource = dataTable;
-                    dgvThuongHieuStaff.Columns["Brand_Id"].HeaderText = "Mã Thương Hiệu";
-                    dgvThuongHieuStaff.Columns["Brand_Name"].HeaderText = "Tên Thương Hiệu";
-                    dgvThuongHieuStaff.Columns["Brand_Status"].HeaderText = "Trạng Thái";
-                    lblTongThuongHieuStaff.Text = dgvThuongHieuStaff.Rows.Count.ToString();
-
+                    dgvUsersStaff.DataSource = dataTable;
+                    dgvUsersStaff.Columns["Users_Id"].HeaderText = "Mã Người Dùng";
+                    dgvUsersStaff.Columns["Users_Category_Id"].HeaderText = "Mã Loại Người Dùng";
+                    dgvUsersStaff.Columns["Users_Name"].HeaderText = "Tên Đăng Nhập";
+                    dgvUsersStaff.Columns["Users_Email"].HeaderText = "Email";
+                    lblTongNhanVienStaff.Text = dgvUsersStaff.Rows.Count.ToString();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
             }
-
         }
-        private void SearchBrand(string searchName)
+        private void SearchUser(string searchName)
         {
-            string query = "SELECT Brand_Id,Brand_Name,Brand_Status FROM Brand WHERE Brand_Name LIKE @SearchName;";
+            string query = "SELECT Users_Id,Users_Category_Id,Users_Name,users_Password FROM dbo.[User] WHERE Users_Name LIKE @SearchName;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -64,22 +58,23 @@ namespace Computer_Shop_Management_System.View
                     {
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
-                        dgvThuongHieuStaff.DataSource = dataTable;
+                        dgvUsersStaff.DataSource = dataTable;
 
-                        lblTongThuongHieuStaff.Text = dgvThuongHieuStaff.Rows.Count.ToString();
+                        lblTongNhanVienStaff.Text = dgvUsersStaff.Rows.Count.ToString();
                     }
                 }
             }
         }
-        private void UserControlBrandStaff_Load(object sender, EventArgs e)
+        private void UserControlUserStaff_Load(object sender, EventArgs e)
         {
-            LoadBrandData();
+            LoadUserData();
         }
 
-        private void txtTimkiemStaffBrand_TextChanged(object sender, EventArgs e)
+        private void txtTimKiemThuongHieuStaff_TextChanged(object sender, EventArgs e)
         {
-            string searchName = txtTimkiemStaffBrand.Text;
-            SearchBrand(searchName);
+            SearchUser(txtTimKiemThuongHieuStaff.Text.Trim());
         }
+
+       
     }
 }

@@ -11,6 +11,7 @@ namespace Computer_Shop_Management_System.Controller
 {
     public class UserController
     {
+        
         public bool AddUsers(string maloainguoidung, string tennguoidung, string matkhau,string email)
         {
             try
@@ -57,7 +58,7 @@ namespace Computer_Shop_Management_System.Controller
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@Username", User.Users_Name);
-                        command.Parameters.AddWithValue("@password", User.Users_Password);
+                        command.Parameters.AddWithValue("@password", User.users_Password);  
                         command.Parameters.AddWithValue("@Useremial", User.Users_Email);
                         command.ExecuteNonQuery();
                     }

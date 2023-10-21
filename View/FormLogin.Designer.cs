@@ -61,7 +61,7 @@
             this.label1.Size = new System.Drawing.Size(230, 15);
             this.label1.TabIndex = 1;
             this.label1.Text = "Computer Shop Manager System | Login";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+       
             // 
             // label2
             // 
@@ -72,7 +72,7 @@
             this.label2.Size = new System.Drawing.Size(62, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Username:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+      
             // 
             // label3
             // 
@@ -83,7 +83,7 @@
             this.label3.Size = new System.Drawing.Size(60, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Password:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+          
             // 
             // txtUsername
             // 
@@ -92,7 +92,7 @@
             this.txtUsername.Size = new System.Drawing.Size(242, 20);
             this.txtUsername.TabIndex = 1;
             this.txtUsername.Text = "VietHuynhHutech";
-            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
+        
             // 
             // txtUserpassword
             // 
@@ -102,7 +102,7 @@
             this.txtUserpassword.TabIndex = 2;
             this.txtUserpassword.Text = "Viethuynh@#!2003";
             this.txtUserpassword.UseSystemPasswordChar = true;
-            this.txtUserpassword.TextChanged += new System.EventHandler(this.txtUserpassword_TextChanged);
+  
             this.txtUserpassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUserpassword_KeyPress);
             // 
             // label4
@@ -198,7 +198,7 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+        
             // 
             // pictureBox1
             // 
@@ -209,7 +209,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+          
             // 
             // FormLogin
             // 

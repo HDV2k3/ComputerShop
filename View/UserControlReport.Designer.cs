@@ -31,6 +31,14 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpBaoCao = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.ckbLoiNhuan = new System.Windows.Forms.CheckBox();
+            this.ckbDoanhThuTheoKH = new System.Windows.Forms.CheckBox();
+            this.ckbDoanhThuTheoSP = new System.Windows.Forms.CheckBox();
+            this.ckbSLSPDaBan = new System.Windows.Forms.CheckBox();
+            this.ckbSLDonHang = new System.Windows.Forms.CheckBox();
+            this.ckbSLKhachHangMoi = new System.Windows.Forms.CheckBox();
+            this.ckbTongDoanhThu = new System.Windows.Forms.CheckBox();
             this.dgvAnalys = new System.Windows.Forms.DataGridView();
             this.btnTaoBaoCao = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,18 +47,12 @@
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel28 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.ckbTongDoanhThu = new System.Windows.Forms.CheckBox();
-            this.ckbSLKhachHangMoi = new System.Windows.Forms.CheckBox();
-            this.ckbDoanhThuTheoSP = new System.Windows.Forms.CheckBox();
-            this.ckbDoanhThuTheoKH = new System.Windows.Forms.CheckBox();
-            this.ckbLoiNhuan = new System.Windows.Forms.CheckBox();
-            this.ckbSLDonHang = new System.Windows.Forms.CheckBox();
-            this.ckbSLSPDaBan = new System.Windows.Forms.CheckBox();
+            this.ckbSanPhamSapHetHang = new System.Windows.Forms.CheckBox();
+            this.ckbsanphambanchaynhat = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tpBaoCao.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAnalys)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAnalys)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -84,17 +86,102 @@
             this.tpBaoCao.TabIndex = 0;
             this.tpBaoCao.Text = "Báo Cáo";
             this.tpBaoCao.UseVisualStyleBackColor = true;
-            this.tpBaoCao.Click += new System.EventHandler(this.tpReport_Click);
+  
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.ckbsanphambanchaynhat);
+            this.panel1.Controls.Add(this.ckbSanPhamSapHetHang);
+            this.panel1.Controls.Add(this.ckbLoiNhuan);
+            this.panel1.Controls.Add(this.ckbDoanhThuTheoKH);
+            this.panel1.Controls.Add(this.ckbDoanhThuTheoSP);
+            this.panel1.Controls.Add(this.ckbSLSPDaBan);
+            this.panel1.Controls.Add(this.ckbSLDonHang);
+            this.panel1.Controls.Add(this.ckbSLKhachHangMoi);
+            this.panel1.Controls.Add(this.ckbTongDoanhThu);
+            this.panel1.Location = new System.Drawing.Point(6, 88);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(265, 294);
+            this.panel1.TabIndex = 7;
+            // 
+            // ckbLoiNhuan
+            // 
+            this.ckbLoiNhuan.AutoSize = true;
+            this.ckbLoiNhuan.Location = new System.Drawing.Point(5, 140);
+            this.ckbLoiNhuan.Name = "ckbLoiNhuan";
+            this.ckbLoiNhuan.Size = new System.Drawing.Size(82, 19);
+            this.ckbLoiNhuan.TabIndex = 1;
+            this.ckbLoiNhuan.Text = "Lợi Nhuận";
+            this.ckbLoiNhuan.UseVisualStyleBackColor = true;
+            // 
+            // ckbDoanhThuTheoKH
+            // 
+            this.ckbDoanhThuTheoKH.AutoSize = true;
+            this.ckbDoanhThuTheoKH.Location = new System.Drawing.Point(5, 115);
+            this.ckbDoanhThuTheoKH.Name = "ckbDoanhThuTheoKH";
+            this.ckbDoanhThuTheoKH.Size = new System.Drawing.Size(187, 19);
+            this.ckbDoanhThuTheoKH.TabIndex = 1;
+            this.ckbDoanhThuTheoKH.Text = "Doanh Thu Theo Khách Hàng";
+            this.ckbDoanhThuTheoKH.UseVisualStyleBackColor = true;
+            // 
+            // ckbDoanhThuTheoSP
+            // 
+            this.ckbDoanhThuTheoSP.AutoSize = true;
+            this.ckbDoanhThuTheoSP.Location = new System.Drawing.Point(5, 65);
+            this.ckbDoanhThuTheoSP.Name = "ckbDoanhThuTheoSP";
+            this.ckbDoanhThuTheoSP.Size = new System.Drawing.Size(175, 19);
+            this.ckbDoanhThuTheoSP.TabIndex = 1;
+            this.ckbDoanhThuTheoSP.Text = "Doanh Thu Theo Sản Phẩm";
+            this.ckbDoanhThuTheoSP.UseVisualStyleBackColor = true;
+            // 
+            // ckbSLSPDaBan
+            // 
+            this.ckbSLSPDaBan.AutoSize = true;
+            this.ckbSLSPDaBan.Location = new System.Drawing.Point(5, 40);
+            this.ckbSLSPDaBan.Name = "ckbSLSPDaBan";
+            this.ckbSLSPDaBan.Size = new System.Drawing.Size(177, 19);
+            this.ckbSLSPDaBan.TabIndex = 1;
+            this.ckbSLSPDaBan.Text = "Số Lượng Sản Phẩm Đã Bán";
+            this.ckbSLSPDaBan.UseVisualStyleBackColor = true;
+            // 
+            // ckbSLDonHang
+            // 
+            this.ckbSLDonHang.AutoSize = true;
+            this.ckbSLDonHang.Location = new System.Drawing.Point(5, 165);
+            this.ckbSLDonHang.Name = "ckbSLDonHang";
+            this.ckbSLDonHang.Size = new System.Drawing.Size(135, 19);
+            this.ckbSLDonHang.TabIndex = 0;
+            this.ckbSLDonHang.Text = "Số Lượng Đơn Hàng";
+            this.ckbSLDonHang.UseVisualStyleBackColor = true;
+            // 
+            // ckbSLKhachHangMoi
+            // 
+            this.ckbSLKhachHangMoi.AutoSize = true;
+            this.ckbSLKhachHangMoi.Location = new System.Drawing.Point(5, 90);
+            this.ckbSLKhachHangMoi.Name = "ckbSLKhachHangMoi";
+            this.ckbSLKhachHangMoi.Size = new System.Drawing.Size(169, 19);
+            this.ckbSLKhachHangMoi.TabIndex = 1;
+            this.ckbSLKhachHangMoi.Text = "Số Lượng Khách Hàng Mới";
+            this.ckbSLKhachHangMoi.UseVisualStyleBackColor = true;
+            // 
+            // ckbTongDoanhThu
+            // 
+            this.ckbTongDoanhThu.AutoSize = true;
+            this.ckbTongDoanhThu.Location = new System.Drawing.Point(5, 15);
+            this.ckbTongDoanhThu.Name = "ckbTongDoanhThu";
+            this.ckbTongDoanhThu.Size = new System.Drawing.Size(118, 19);
+            this.ckbTongDoanhThu.TabIndex = 0;
+            this.ckbTongDoanhThu.Text = "Tổng Doanh Thu";
+            this.ckbTongDoanhThu.UseVisualStyleBackColor = true;
             // 
             // dgvAnalys
             // 
             this.dgvAnalys.BackgroundColor = System.Drawing.Color.White;
             this.dgvAnalys.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAnalys.Location = new System.Drawing.Point(268, 88);
+            this.dgvAnalys.Location = new System.Drawing.Point(273, 88);
             this.dgvAnalys.Name = "dgvAnalys";
             this.dgvAnalys.Size = new System.Drawing.Size(832, 294);
             this.dgvAnalys.TabIndex = 6;
-            this.dgvAnalys.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvAnalys_CellFormatting);
             // 
             // btnTaoBaoCao
             // 
@@ -138,7 +225,6 @@
             this.dtpEndDate.Size = new System.Drawing.Size(222, 26);
             this.dtpEndDate.TabIndex = 2;
             this.dtpEndDate.Value = new System.DateTime(2023, 10, 11, 16, 38, 26, 746);
-            this.dtpEndDate.ValueChanged += new System.EventHandler(this.dtpDate_ValueChanged);
             // 
             // dtpStartDate
             // 
@@ -153,7 +239,6 @@
             this.dtpStartDate.Size = new System.Drawing.Size(226, 24);
             this.dtpStartDate.TabIndex = 1;
             this.dtpStartDate.Value = new System.DateTime(2023, 10, 11, 16, 38, 26, 746);
-            this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpDate_ValueChanged);
             // 
             // guna2HtmlLabel1
             // 
@@ -164,7 +249,6 @@
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(97, 19);
             this.guna2HtmlLabel1.TabIndex = 0;
             this.guna2HtmlLabel1.Text = "Ngày Kết Thúc:";
-            this.guna2HtmlLabel1.Click += new System.EventHandler(this.guna2HtmlLabel28_Click);
             // 
             // guna2HtmlLabel28
             // 
@@ -175,95 +259,30 @@
             this.guna2HtmlLabel28.Size = new System.Drawing.Size(90, 19);
             this.guna2HtmlLabel28.TabIndex = 0;
             this.guna2HtmlLabel28.Text = "Ngày bắt đầu:";
-            this.guna2HtmlLabel28.Click += new System.EventHandler(this.guna2HtmlLabel28_Click);
             // 
             // guna2Elipse1
             // 
             this.guna2Elipse1.TargetControl = this.btnTaoBaoCao;
             // 
-            // panel1
+            // ckbSanPhamSapHetHang
             // 
-            this.panel1.Controls.Add(this.ckbLoiNhuan);
-            this.panel1.Controls.Add(this.ckbDoanhThuTheoKH);
-            this.panel1.Controls.Add(this.ckbDoanhThuTheoSP);
-            this.panel1.Controls.Add(this.ckbSLSPDaBan);
-            this.panel1.Controls.Add(this.ckbSLDonHang);
-            this.panel1.Controls.Add(this.ckbSLKhachHangMoi);
-            this.panel1.Controls.Add(this.ckbTongDoanhThu);
-            this.panel1.Location = new System.Drawing.Point(6, 88);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(265, 294);
-            this.panel1.TabIndex = 7;
+            this.ckbSanPhamSapHetHang.AutoSize = true;
+            this.ckbSanPhamSapHetHang.Location = new System.Drawing.Point(5, 190);
+            this.ckbSanPhamSapHetHang.Name = "ckbSanPhamSapHetHang";
+            this.ckbSanPhamSapHetHang.Size = new System.Drawing.Size(159, 19);
+            this.ckbSanPhamSapHetHang.TabIndex = 2;
+            this.ckbSanPhamSapHetHang.Text = "Sản Phẩm Sắp Hết Hàng";
+            this.ckbSanPhamSapHetHang.UseVisualStyleBackColor = true;
             // 
-            // ckbTongDoanhThu
+            // ckbsanphambanchaynhat
             // 
-            this.ckbTongDoanhThu.AutoSize = true;
-            this.ckbTongDoanhThu.Location = new System.Drawing.Point(5, 15);
-            this.ckbTongDoanhThu.Name = "ckbTongDoanhThu";
-            this.ckbTongDoanhThu.Size = new System.Drawing.Size(118, 19);
-            this.ckbTongDoanhThu.TabIndex = 0;
-            this.ckbTongDoanhThu.Text = "Tổng Doanh Thu";
-            this.ckbTongDoanhThu.UseVisualStyleBackColor = true;
-            // 
-            // ckbSLKhachHangMoi
-            // 
-            this.ckbSLKhachHangMoi.AutoSize = true;
-            this.ckbSLKhachHangMoi.Location = new System.Drawing.Point(5, 131);
-            this.ckbSLKhachHangMoi.Name = "ckbSLKhachHangMoi";
-            this.ckbSLKhachHangMoi.Size = new System.Drawing.Size(169, 19);
-            this.ckbSLKhachHangMoi.TabIndex = 1;
-            this.ckbSLKhachHangMoi.Text = "Số Lượng Khách Hàng Mới";
-            this.ckbSLKhachHangMoi.UseVisualStyleBackColor = true;
-            // 
-            // ckbDoanhThuTheoSP
-            // 
-            this.ckbDoanhThuTheoSP.AutoSize = true;
-            this.ckbDoanhThuTheoSP.Location = new System.Drawing.Point(5, 93);
-            this.ckbDoanhThuTheoSP.Name = "ckbDoanhThuTheoSP";
-            this.ckbDoanhThuTheoSP.Size = new System.Drawing.Size(175, 19);
-            this.ckbDoanhThuTheoSP.TabIndex = 1;
-            this.ckbDoanhThuTheoSP.Text = "Doanh Thu Theo Sản Phẩm";
-            this.ckbDoanhThuTheoSP.UseVisualStyleBackColor = true;
-            // 
-            // ckbDoanhThuTheoKH
-            // 
-            this.ckbDoanhThuTheoKH.AutoSize = true;
-            this.ckbDoanhThuTheoKH.Location = new System.Drawing.Point(5, 170);
-            this.ckbDoanhThuTheoKH.Name = "ckbDoanhThuTheoKH";
-            this.ckbDoanhThuTheoKH.Size = new System.Drawing.Size(187, 19);
-            this.ckbDoanhThuTheoKH.TabIndex = 1;
-            this.ckbDoanhThuTheoKH.Text = "Doanh Thu Theo Khách Hàng";
-            this.ckbDoanhThuTheoKH.UseVisualStyleBackColor = true;
-            // 
-            // ckbLoiNhuan
-            // 
-            this.ckbLoiNhuan.AutoSize = true;
-            this.ckbLoiNhuan.Location = new System.Drawing.Point(5, 213);
-            this.ckbLoiNhuan.Name = "ckbLoiNhuan";
-            this.ckbLoiNhuan.Size = new System.Drawing.Size(82, 19);
-            this.ckbLoiNhuan.TabIndex = 1;
-            this.ckbLoiNhuan.Text = "Lợi Nhuận";
-            this.ckbLoiNhuan.UseVisualStyleBackColor = true;
-            // 
-            // ckbSLDonHang
-            // 
-            this.ckbSLDonHang.AutoSize = true;
-            this.ckbSLDonHang.Location = new System.Drawing.Point(5, 255);
-            this.ckbSLDonHang.Name = "ckbSLDonHang";
-            this.ckbSLDonHang.Size = new System.Drawing.Size(135, 19);
-            this.ckbSLDonHang.TabIndex = 0;
-            this.ckbSLDonHang.Text = "Số Lượng Đơn Hàng";
-            this.ckbSLDonHang.UseVisualStyleBackColor = true;
-            // 
-            // ckbSLSPDaBan
-            // 
-            this.ckbSLSPDaBan.AutoSize = true;
-            this.ckbSLSPDaBan.Location = new System.Drawing.Point(5, 53);
-            this.ckbSLSPDaBan.Name = "ckbSLSPDaBan";
-            this.ckbSLSPDaBan.Size = new System.Drawing.Size(177, 19);
-            this.ckbSLSPDaBan.TabIndex = 1;
-            this.ckbSLSPDaBan.Text = "Số Lượng Sản Phẩm Đã Bán";
-            this.ckbSLSPDaBan.UseVisualStyleBackColor = true;
+            this.ckbsanphambanchaynhat.AutoSize = true;
+            this.ckbsanphambanchaynhat.Location = new System.Drawing.Point(5, 224);
+            this.ckbsanphambanchaynhat.Name = "ckbsanphambanchaynhat";
+            this.ckbsanphambanchaynhat.Size = new System.Drawing.Size(139, 19);
+            this.ckbsanphambanchaynhat.TabIndex = 2;
+            this.ckbsanphambanchaynhat.Text = "Sản Phẩm Bán Chạy ";
+            this.ckbsanphambanchaynhat.UseVisualStyleBackColor = true;
             // 
             // UserControlReport
             // 
@@ -274,13 +293,12 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UserControlReport";
             this.Size = new System.Drawing.Size(1117, 548);
-            this.Load += new System.EventHandler(this.UserControlReport_Load);
             this.tabControl1.ResumeLayout(false);
             this.tpBaoCao.ResumeLayout(false);
             this.tpBaoCao.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAnalys)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAnalys)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -305,5 +323,7 @@
         private System.Windows.Forms.CheckBox ckbSLDonHang;
         private System.Windows.Forms.CheckBox ckbSLKhachHangMoi;
         private System.Windows.Forms.CheckBox ckbTongDoanhThu;
+        private System.Windows.Forms.CheckBox ckbSanPhamSapHetHang;
+        private System.Windows.Forms.CheckBox ckbsanphambanchaynhat;
     }
 }

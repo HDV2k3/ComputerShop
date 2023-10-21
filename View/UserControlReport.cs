@@ -14,30 +14,87 @@ namespace Computer_Shop_Management_System.View
 {
     public partial class UserControlReport : UserControl
     {
+        private const string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
         public UserControlReport()
         {
             InitializeComponent();
         }
 
-        private void tpReport_Click(object sender, EventArgs e)
+       
+        private void HienThiSanPhamBanChay()
         {
+          
+            string storedProcedure = "GetBestSellingProducts";
 
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(storedProcedure, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            DataTable dataTable = new DataTable();
+                            adapter.Fill(dataTable);
+                            dgvAnalys.DataSource = dataTable;
+                           
+                           
+                            dgvAnalys.Columns["Product_Name"].HeaderText = "Tên Sản Phẩm";
+                          
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Xử lý các lỗi kết nối và truy vấn
+                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
+            }
         }
-
-        private void dtpDate_ValueChanged(object sender, EventArgs e)
+        private void HienThiSapHetHang()
         {
+            string query = "SELECT * FROM Product WHERE Product_Quantity < 10";
 
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    dgvAnalys.DataSource = dataTable;
+                    dgvAnalys.Columns["Product_Id"].HeaderText = "Mã Sản Phẩm";
+                    dgvAnalys.Columns["Product_Id"].HeaderText = "Mã Sản Phẩm";
+                    dgvAnalys.Columns["Product_Name"].HeaderText = "Tên Sản Phẩm";
+                    dgvAnalys.Columns["Product_Image"].HeaderText = "Ảnh Sản Phẩm";
+                    dgvAnalys.Columns["Product_Rate"].HeaderText = "Giá Tiền";
+                    dgvAnalys.Columns["Product_Quantity"].HeaderText = "Số Lượng";
+                    dgvAnalys.Columns["Product_Brand"].HeaderText = "Thương Hiệu";
+                    dgvAnalys.Columns["Product_Category"].HeaderText = "Loại";
+                    dgvAnalys.Columns["Product_Stastus"].HeaderText = "Trạng Thái";
+                }
+            }
+            catch (Exception ex)
+            {
+                // Xử lý các lỗi kết nối và truy vấn
+                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
+            }
         }
-
-        private void guna2HtmlLabel28_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnThem_Click(object sender, EventArgs e)
         {
-            
-        
+            if (ckbSanPhamSapHetHang.Checked)
+            {
+                HienThiSapHetHang();
+            }   
+            if(ckbsanphambanchaynhat.Checked)
+            {
+                HienThiSanPhamBanChay();
+            }    
 
             DateTime startDate = dtpStartDate.Value;
             DateTime endDate = dtpEndDate.Value;
@@ -66,7 +123,7 @@ namespace Computer_Shop_Management_System.View
             storedProcedureColors.Add(Color.Orange);
             if (ckbSLKhachHangMoi.Checked)
                 storedProcedures.Add("CalculateNewCustomerCount");
-           
+          
 
             // Kiểm tra xem có ít nhất một stored procedure được chọn hay không
             if (storedProcedures.Count > 0)
@@ -114,121 +171,6 @@ namespace Computer_Shop_Management_System.View
 
         }
    
-        private void UserControlReport_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rdoLoiNhuan_CheckedChanged(object sender, EventArgs e)
-        {
-           /* if (rdoLoiNhuan.Checked)
-            {
-                // Kích hoạt nút tìm kiếm
-                btnTaoBaoCao.Enabled = true;
-            }
-            else
-            {
-                // Vô hiệu hóa nút tìm kiếm
-                btnTaoBaoCao.Enabled = false;
-            }*/
-        }
-
-        private void rdoTongDoanhThu_CheckedChanged(object sender, EventArgs e)
-        {
-           /* if (rdoTongDoanhThu.Checked)
-            {
-                // Kích hoạt nút tìm kiếm
-                btnTaoBaoCao.Enabled = true;
-            }
-            else
-            {
-                // Vô hiệu hóa nút tìm kiếm
-                btnTaoBaoCao.Enabled = false;
-            }*/
-        }
-
-        private void dgvAnalys_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-
-        }
-
-        private void rdoSLSPDaBan_CheckedChanged(object sender, EventArgs e)
-        {
-         /*   if (rdoSLSPDaBan.Checked)
-            {
-                // Kích hoạt nút tìm kiếm
-                btnTaoBaoCao.Enabled = true;
-            }
-            else
-            {
-                // Vô hiệu hóa nút tìm kiếm
-                btnTaoBaoCao.Enabled = false;
-            }*/
-        }
-
-        private void dgvAnalys_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-
-        }
-
-        private void rdoDoanhThuTheoSP_CheckedChanged(object sender, EventArgs e)
-        {
-           /* if (rdoDoanhThuTheoSP.Checked)
-            {
-                // Kích hoạt nút tìm kiếm
-                btnTaoBaoCao.Enabled = true;
-            }
-            else
-            {
-                // Vô hiệu hóa nút tìm kiếm
-                btnTaoBaoCao.Enabled = false;
-            }*/
-
-        }
-
-        private void rdoDoanhThuTheoKH_CheckedChanged(object sender, EventArgs e)
-        {
-          /*  if (rdoDoanhThuTheoKH.Checked)
-            {
-                // Kích hoạt nút tìm kiếm
-                btnTaoBaoCao.Enabled = true;
-            }
-            else
-            {
-                // Vô hiệu hóa nút tìm kiếm
-                btnTaoBaoCao.Enabled = false;
-            }*/
-        }
-
-        private void rdoSLDonHang_CheckedChanged(object sender, EventArgs e)
-        {
-            /*if (rdoSLDonHang.Checked)
-            {
-                // Kích hoạt nút tìm kiếm
-                btnTaoBaoCao.Enabled = true;
-            }
-            else
-            {
-                // Vô hiệu hóa nút tìm kiếm
-                btnTaoBaoCao.Enabled = false;
-            }*/
-        }
-
-        private void rdoSLKHangMoi_CheckedChanged(object sender, EventArgs e)
-        {
-            /*if (rdoSLKHangMoi.Checked)
-            {
-                // Kích hoạt nút tìm kiếm
-                btnTaoBaoCao.Enabled = true;
-            }
-            else
-            {
-                // Vô hiệu hóa nút tìm kiếm
-                btnTaoBaoCao.Enabled = false;
-            }*/
-        }
-
-      
+       
     }
 }

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tcUser = new System.Windows.Forms.TabControl();
             this.tpThemNguoiDung = new System.Windows.Forms.TabPage();
             this.cmbLoaiTK = new System.Windows.Forms.ComboBox();
@@ -91,7 +91,6 @@
             this.tcUser.SelectedIndex = 0;
             this.tcUser.Size = new System.Drawing.Size(686, 469);
             this.tcUser.TabIndex = 0;
-            this.tcUser.SelectedIndexChanged += new System.EventHandler(this.tcUser_SelectedIndexChanged);
             // 
             // tpThemNguoiDung
             // 
@@ -113,7 +112,6 @@
             this.tpThemNguoiDung.TabIndex = 0;
             this.tpThemNguoiDung.Text = "Thêm Người Dùng";
             this.tpThemNguoiDung.UseVisualStyleBackColor = true;
-            this.tpThemNguoiDung.Click += new System.EventHandler(this.tpThemNguoiDung_Click);
             // 
             // cmbLoaiTK
             // 
@@ -124,7 +122,6 @@
             this.cmbLoaiTK.Name = "cmbLoaiTK";
             this.cmbLoaiTK.Size = new System.Drawing.Size(270, 25);
             this.cmbLoaiTK.TabIndex = 6;
-            this.cmbLoaiTK.SelectedIndexChanged += new System.EventHandler(this.cmbLoaiTK_SelectedIndexChanged);
             // 
             // guna2HtmlLabel1
             // 
@@ -132,10 +129,9 @@
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.Location = new System.Drawing.Point(328, 161);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(103, 19);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(99, 19);
             this.guna2HtmlLabel1.TabIndex = 5;
-            this.guna2HtmlLabel1.Text = "Loại Tài Khoảng";
-            this.guna2HtmlLabel1.Click += new System.EventHandler(this.guna2HtmlLabel1_Click);
+            this.guna2HtmlLabel1.Text = "Loại Tài Khoản:";
             // 
             // btnThem
             // 
@@ -163,7 +159,6 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(271, 25);
             this.txtEmail.TabIndex = 2;
-            this.txtEmail.TextChanged += new System.EventHandler(this.txtTenNguoiDung_TextChanged);
             // 
             // txtMatKhau
             // 
@@ -175,7 +170,6 @@
             this.txtMatKhau.Size = new System.Drawing.Size(239, 25);
             this.txtMatKhau.TabIndex = 3;
             this.txtMatKhau.UseSystemPasswordChar = true;
-            this.txtMatKhau.TextChanged += new System.EventHandler(this.txtTenNguoiDung_TextChanged);
             // 
             // txtTenNguoiDung
             // 
@@ -186,7 +180,6 @@
             this.txtTenNguoiDung.Name = "txtTenNguoiDung";
             this.txtTenNguoiDung.Size = new System.Drawing.Size(239, 25);
             this.txtTenNguoiDung.TabIndex = 1;
-            this.txtTenNguoiDung.TextChanged += new System.EventHandler(this.txtTenNguoiDung_TextChanged);
             // 
             // label3
             // 
@@ -201,7 +194,6 @@
             this.label3.Size = new System.Drawing.Size(76, 19);
             this.label3.TabIndex = 0;
             this.label3.Text = "Mật Khẩu:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label1
             // 
@@ -216,7 +208,6 @@
             this.label1.Size = new System.Drawing.Size(49, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "Email:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -231,7 +222,6 @@
             this.label2.Size = new System.Drawing.Size(120, 19);
             this.label2.TabIndex = 0;
             this.label2.Text = "Tên Người dùng:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label8
             // 
@@ -244,7 +234,6 @@
             this.label8.Size = new System.Drawing.Size(163, 21);
             this.label8.TabIndex = 0;
             this.label8.Text = ".../Thêm Người Dùng";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // tpLuaChon
             // 
@@ -267,7 +256,6 @@
             this.tpLuaChon.TabIndex = 2;
             this.tpLuaChon.Text = "Lựa Chọn";
             this.tpLuaChon.UseVisualStyleBackColor = true;
-            this.tpLuaChon.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // cmbLoaiTKlc
             // 
@@ -276,7 +264,6 @@
             this.cmbLoaiTKlc.Name = "cmbLoaiTKlc";
             this.cmbLoaiTKlc.Size = new System.Drawing.Size(271, 25);
             this.cmbLoaiTKlc.TabIndex = 7;
-            this.cmbLoaiTKlc.SelectedIndexChanged += new System.EventHandler(this.cmbLoaiTKlc_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -289,7 +276,6 @@
             this.label11.Size = new System.Drawing.Size(97, 21);
             this.label11.TabIndex = 0;
             this.label11.Text = ".../Lựa Chọn";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // btnThayDoi
             // 
@@ -317,7 +303,6 @@
             this.txtEmail1.Name = "txtEmail1";
             this.txtEmail1.Size = new System.Drawing.Size(271, 25);
             this.txtEmail1.TabIndex = 2;
-            this.txtEmail1.TextChanged += new System.EventHandler(this.txtEmail1_TextChanged);
             // 
             // txtMatKhau1
             // 
@@ -329,7 +314,6 @@
             this.txtMatKhau1.Size = new System.Drawing.Size(239, 25);
             this.txtMatKhau1.TabIndex = 3;
             this.txtMatKhau1.UseSystemPasswordChar = true;
-            this.txtMatKhau1.TextChanged += new System.EventHandler(this.txtMatKhau1_TextChanged);
             // 
             // txtTenNguoiDung1
             // 
@@ -352,10 +336,9 @@
             this.label12.Location = new System.Drawing.Point(347, 175);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(119, 19);
+            this.label12.Size = new System.Drawing.Size(110, 19);
             this.label12.TabIndex = 0;
-            this.label12.Text = "Loại Tài Khoảng:";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
+            this.label12.Text = "Loại Tài Khoản:";
             // 
             // label7
             // 
@@ -370,7 +353,6 @@
             this.label7.Size = new System.Drawing.Size(76, 19);
             this.label7.TabIndex = 0;
             this.label7.Text = "Mật Khẩu:";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label9
             // 
@@ -385,7 +367,6 @@
             this.label9.Size = new System.Drawing.Size(49, 19);
             this.label9.TabIndex = 0;
             this.label9.Text = "Email:";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label10
             // 
@@ -400,7 +381,6 @@
             this.label10.Size = new System.Drawing.Size(120, 19);
             this.label10.TabIndex = 0;
             this.label10.Text = "Tên Người dùng:";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // btnXoa
             // 
@@ -448,8 +428,6 @@
             this.ptbTimKiem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ptbTimKiem.TabIndex = 8;
             this.ptbTimKiem.TabStop = false;
-            this.ptbTimKiem.Click += new System.EventHandler(this.ptbTimKiem_Click);
-            this.ptbTimKiem.MouseHover += new System.EventHandler(this.pictureBox1_MouseHover);
             // 
             // dgvUsers
             // 
@@ -462,24 +440,24 @@
             this.dgvUsers.BackgroundColor = System.Drawing.Color.White;
             this.dgvUsers.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvUsers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvUsers.ColumnHeadersHeight = 34;
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(151)))), ((int)(((byte)(196)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvUsers.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(151)))), ((int)(((byte)(196)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvUsers.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvUsers.EnableHeadersVisualStyles = false;
             this.dgvUsers.Location = new System.Drawing.Point(24, 115);
             this.dgvUsers.Margin = new System.Windows.Forms.Padding(2);
@@ -491,7 +469,6 @@
             this.dgvUsers.Size = new System.Drawing.Size(636, 241);
             this.dgvUsers.TabIndex = 0;
             this.dgvUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellClick);
-            this.dgvUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellContentClick);
             // 
             // txtTimKiemThuongHieu
             // 
@@ -501,21 +478,19 @@
             this.txtTimKiemThuongHieu.Name = "txtTimKiemThuongHieu";
             this.txtTimKiemThuongHieu.Size = new System.Drawing.Size(246, 25);
             this.txtTimKiemThuongHieu.TabIndex = 1;
-            this.txtTimKiemThuongHieu.TextChanged += new System.EventHandler(this.txtTimKiemThuongHieu_TextChanged);
             // 
             // lblTotal
             // 
             this.lblTotal.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblTotal.Location = new System.Drawing.Point(75, 381);
+            this.lblTotal.Location = new System.Drawing.Point(159, 381);
             this.lblTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(23, 19);
+            this.lblTotal.Size = new System.Drawing.Size(24, 17);
             this.lblTotal.TabIndex = 0;
             this.lblTotal.Text = "{?}";
-            this.lblTotal.Click += new System.EventHandler(this.lblTotal_Click);
             // 
             // label6
             // 
@@ -523,13 +498,12 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(29, 381);
+            this.label6.Location = new System.Drawing.Point(20, 381);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 19);
+            this.label6.Size = new System.Drawing.Size(119, 19);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Total:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            this.label6.Text = "Tổng Nhân Viên:";
             // 
             // label5
             // 
@@ -543,7 +517,6 @@
             this.label5.Size = new System.Drawing.Size(104, 15);
             this.label5.TabIndex = 0;
             this.label5.Text = "Tên Người Dùng :";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4
             // 
@@ -556,7 +529,6 @@
             this.label4.Size = new System.Drawing.Size(183, 21);
             this.label4.TabIndex = 0;
             this.label4.Text = ".../ Quản Lý Người Dùng";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // guna2Elipse1
             // 
@@ -564,7 +536,6 @@
             // 
             // toolTip1
             // 
-            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
             // 
             // guna2Elipse2
             // 

@@ -18,6 +18,10 @@ namespace Computer_Shop_Management_System.Model
         [StringLength(32)]
         public string Orders_Id { get; set; }
 
+        [Required]
+        [StringLength(50)]
+        public string Users_Id { get; set; }
+
         public DateTime? Order_Date { get; set; }
 
         [Required]
@@ -45,5 +49,7 @@ namespace Computer_Shop_Management_System.Model
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetails> OrderDetails { get; set; }
+
+        public virtual User User { get; set; }
     }
 }

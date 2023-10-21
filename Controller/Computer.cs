@@ -23,7 +23,7 @@ namespace Computer_Shop_Management_System.Controller
             using (var dbContext = new DataBase())
             {
                 // Kiểm tra tính hợp lệ của tên người dùng và mật khẩu
-                var User = dbContext.User.FirstOrDefault(u => u.Users_Name == Username && u.Users_Password == password);
+                var User = dbContext.User.FirstOrDefault(u => u.Users_Name == Username && u.users_Password == password);
                 if (User != null)
                 {
                    

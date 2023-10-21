@@ -58,6 +58,9 @@
             this.UserControlBrand1 = new Computer_Shop_Management_System.View.UserControlBrand();
             this.UserControlDashboard1 = new Computer_Shop_Management_System.View.UserControlDashboard();
             this.UserControlBrandStaff1 = new Computer_Shop_Management_System.View.UserControlBrandStaff();
+            this.userControlCategoryStaff1 = new Computer_Shop_Management_System.View.UserControlCategoryStaff();
+            this.userControlProductStaff1 = new Computer_Shop_Management_System.View.UserControlProductStaff();
+            this.userControlUserStaff1 = new Computer_Shop_Management_System.View.UserControlUserStaff();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -327,7 +330,7 @@
             this.UserControlUser1.BackColor = System.Drawing.Color.White;
             this.UserControlUser1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UserControlUser1.Location = new System.Drawing.Point(242, 53);
-            this.UserControlUser1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.UserControlUser1.Margin = new System.Windows.Forms.Padding(2);
             this.UserControlUser1.Name = "UserControlUser1";
             this.UserControlUser1.Size = new System.Drawing.Size(1029, 528);
             this.UserControlUser1.TabIndex = 7;
@@ -352,7 +355,7 @@
             this.UserControlOrders1.Size = new System.Drawing.Size(1029, 528);
             this.UserControlOrders1.TabIndex = 5;
             this.UserControlOrders1.Visible = false;
-            this.UserControlOrders1.Load += new System.EventHandler(this.UserControlOrders1_Load);
+        
             // 
             // UserControlProduct1
             // 
@@ -409,12 +412,42 @@
             this.UserControlBrandStaff1.TabIndex = 8;
             this.UserControlBrandStaff1.Visible = false;
             // 
+            // userControlCategoryStaff1
+            // 
+            this.userControlCategoryStaff1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControlCategoryStaff1.Location = new System.Drawing.Point(242, 53);
+            this.userControlCategoryStaff1.Name = "userControlCategoryStaff1";
+            this.userControlCategoryStaff1.Size = new System.Drawing.Size(1029, 528);
+            this.userControlCategoryStaff1.TabIndex = 9;
+            this.userControlCategoryStaff1.Visible = false;
+            // 
+            // userControlProductStaff1
+            // 
+            this.userControlProductStaff1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControlProductStaff1.Location = new System.Drawing.Point(242, 53);
+            this.userControlProductStaff1.Name = "userControlProductStaff1";
+            this.userControlProductStaff1.Size = new System.Drawing.Size(1029, 528);
+            this.userControlProductStaff1.TabIndex = 10;
+            this.userControlProductStaff1.Visible = false;
+            // 
+            // userControlUserStaff1
+            // 
+            this.userControlUserStaff1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControlUserStaff1.Location = new System.Drawing.Point(242, 53);
+            this.userControlUserStaff1.Name = "userControlUserStaff1";
+            this.userControlUserStaff1.Size = new System.Drawing.Size(1029, 528);
+            this.userControlUserStaff1.TabIndex = 11;
+            this.userControlUserStaff1.Visible = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1271, 612);
+            this.Controls.Add(this.userControlUserStaff1);
+            this.Controls.Add(this.userControlProductStaff1);
+            this.Controls.Add(this.userControlCategoryStaff1);
             this.Controls.Add(this.UserControlBrandStaff1);
             this.Controls.Add(this.UserControlUser1);
             this.Controls.Add(this.UserControlReport1);
@@ -476,5 +509,8 @@
         private UserControlReport UserControlReport1;
         private UserControlUser UserControlUser1;
         private UserControlBrandStaff UserControlBrandStaff1;
+        private UserControlCategoryStaff userControlCategoryStaff1;
+        private UserControlProductStaff userControlProductStaff1;
+        private UserControlUserStaff userControlUserStaff1;
     }
 }

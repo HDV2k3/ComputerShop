@@ -59,11 +59,15 @@ namespace Computer_Shop_Management_System.View
 
             if (User != null)
             {
-                return User.Users_Password;
+                return User.users_Password; 
             }
 
             return null;
         }
 
+        private void FormForgotPass_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

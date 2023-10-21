@@ -53,5 +53,6 @@ namespace Computer_Shop_Management_System.Model
             this.Product_Category = v5;
             this.Product_Stastus = v6;
         }
+
     }
 }

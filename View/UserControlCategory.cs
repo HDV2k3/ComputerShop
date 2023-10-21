@@ -43,16 +43,7 @@ namespace Computer_Shop_Management_System.View
             toolTip1.SetToolTip(picTimKiem, "Search");
         }
 
-        private void tcCategory_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
+     
         private void UserControlCategory_Load(object sender, EventArgs e)
         {
             txtMaLoai.Text = "L" + DateTime.Now.ToString("yyMMddhhmmss");
@@ -61,6 +52,7 @@ namespace Computer_Shop_Management_System.View
             txtMaLoai.Enabled = false;
             txtMaLoai1.ReadOnly = true;
             txtMaLoai1.Enabled = false;
+            cmbTrangThai.SelectedIndex = 0;
             using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
             {
                 // Mở kết nối
@@ -89,10 +81,7 @@ namespace Computer_Shop_Management_System.View
             lblTotal.Text = dgvLoai.Rows.Count.ToString();
         }
 
-        private void txtTenLoai_TextChanged(object sender, EventArgs e)
-        {
 
-        }
 
         private void tpQuanLyLoai_Click(object sender, EventArgs e)
         {
@@ -127,10 +116,7 @@ namespace Computer_Shop_Management_System.View
             lblTotal.Text = dgvLoai.Rows.Count.ToString();
         }
 
-        private void txtLoai1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+       
         public DataTable GetDataFromDatabase()
         {
             string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay đổi chuỗi kết nối cho phù hợp

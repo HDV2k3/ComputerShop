@@ -8,7 +8,7 @@ namespace Computer_Shop_Management_System.Model
     public partial class DataBase : DbContext
     {
         public DataBase()
-            : base("name=DataBase1")
+            : base("name=DataBase")
         {
         }
 
@@ -17,7 +17,6 @@ namespace Computer_Shop_Management_System.Model
         public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<Product> Product { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<UsersCategory> UsersCategory { get; set; }
         public virtual DbSet<OrderDetails> OrderDetails { get; set; }
@@ -50,6 +49,10 @@ namespace Computer_Shop_Management_System.Model
                 .IsUnicode(false);
 
             modelBuilder.Entity<Orders>()
+                .Property(e => e.Users_Id)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Orders>()
                 .Property(e => e.Customer_Number)
                 .IsUnicode(false);
 
@@ -64,6 +67,10 @@ namespace Computer_Shop_Management_System.Model
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<User>()
+                .Property(e => e.Users_Id)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<User>()
                 .Property(e => e.Users_Category_Id)
                 .IsUnicode(false);
 
@@ -72,12 +79,17 @@ namespace Computer_Shop_Management_System.Model
                 .IsUnicode(false);
 
             modelBuilder.Entity<User>()
-                .Property(e => e.Users_Password)
+                .Property(e => e.users_Password)
                 .IsUnicode(false);
 
             modelBuilder.Entity<User>()
                 .Property(e => e.Users_Email)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.Orders)
+                .WithRequired(e => e.User)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<UsersCategory>()
                 .Property(e => e.Users_Category_Id)

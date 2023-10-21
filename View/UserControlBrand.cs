@@ -23,13 +23,11 @@ namespace Computer_Shop_Management_System.View
             InitializeComponent();
         }
 
-      
-            
-
         private void UserControlBrand_Load(object sender, EventArgs e)
         {
             txtMaThuongHieu.Text = "TH" + DateTime.Now.ToString("yyMMddhhmmss");
             lblTotal.Text = dgvThuongHieu.Rows.Count.ToString();
+            cmbTrangThai.SelectedIndex = 0;
             txtMaThuongHieu.ReadOnly = true;
             txtMaThuongHieu.Enabled = false;
             txtMaThuongHieu1.ReadOnly = true;
@@ -366,20 +364,7 @@ namespace Computer_Shop_Management_System.View
             EmtyBox1();
         }
 
-        private void tpThemThuongHieu_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tpQuanLyThuongHieu_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtTimKiemThuongHieu_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void tpThemThuongThieu_Click(object sender, EventArgs e)
         {
@@ -410,10 +395,7 @@ namespace Computer_Shop_Management_System.View
             lblTotal.Text = dgvThuongHieu.Rows.Count.ToString();
         }
 
-        private void txtMaThuongHieu_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
+     
 
         private void dgvThuongHieu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
