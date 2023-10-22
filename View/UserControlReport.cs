@@ -170,7 +170,11 @@ namespace Computer_Shop_Management_System.View
             }
 
         }
-   
-       
+
+        private void UserControlReport_Load(object sender, EventArgs e)
+        {
+            dtpEndDate.Value = DateTime.Now;
+            dtpEndDate.Value = DateTime.Now;
+        }
     }
 }

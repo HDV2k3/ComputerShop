@@ -79,7 +79,7 @@ namespace Computer_Shop_Management_System.View
         }
         public void EmptyBox()
         {
-            txtTenSanPham.Clear();
+            txttProductName.Clear();
             picPhoto.Image = null;
             txtGiaTien.Text = "0";
             nudSoLuong.Text = "0";
@@ -131,7 +131,7 @@ namespace Computer_Shop_Management_System.View
       
         private void UserControlProduct_Load(object sender, EventArgs e)
         {
-            txtTenSanPham.Clear();
+            txttProductName.Clear();
             picPhoto.Image = null;
             txtGiaTien.Text = "0";
             nudSoLuong.Text = "0";
@@ -189,7 +189,7 @@ namespace Computer_Shop_Management_System.View
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (txtTenSanPham.Text.Trim() == string.Empty)
+            if (txttProductName.Text.Trim() == string.Empty)
             {
                 MessageBox.Show("Hãy nhập tên sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -226,18 +226,18 @@ namespace Computer_Shop_Management_System.View
             }
             else
             {
-                if (CheckTen(txtTenSanPham.Text))
+                if (CheckTen(txttProductName.Text))
                 {
                     MessageBox.Show("Tên đã trùng, vui lòng nhập tên khác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtTenSanPham.Text = string.Empty;
+                    txttProductName.Text = string.Empty;
                     return;
                 }
                 else
                 {
-                    Product product = new Product(txtTenSanPham.Text.Trim(), (byte[])imageConverter.ConvertTo(picPhoto.Image, typeof(byte[])), Convert.ToInt32(txtGiaTien.Text), Convert.ToInt32(nudSoLuong.Text), cmbThuongHieu.SelectedItem.ToString(), cmbLoai.SelectedItem.ToString(), cmbTrangThai.SelectedItem.ToString());
+                    Product product = new Product(txttProductName.Text.Trim(), (byte[])imageConverter.ConvertTo(picPhoto.Image, typeof(byte[])), Convert.ToInt32(txtGiaTien.Text), Convert.ToInt32(nudSoLuong.Text), cmbThuongHieu.SelectedItem.ToString(), cmbLoai.SelectedItem.ToString(), cmbTrangThai.SelectedItem.ToString());
                     ProductController.AddProduct(product);
                     EmptyBox();
-                    MessageBox.Show("Thêm thành công", "Thông báo");
+                    MessageBox.Show("Thêm Sản Phẩm "+txttProductName.Text+" thành công", "Thông báo");
                     LoadDgvSanPham();
                 }
             }
@@ -308,10 +308,11 @@ namespace Computer_Shop_Management_System.View
             }
             else
             {
-                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa chứ!", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn Sản Phẩm "+txtTenSanPham1.Text+"!", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
                     ProductController.RemoveProduct1(txtTenSanPham1.Text);
+                    MessageBox.Show("Xóa Sản Phẩm " + txtTenSanPham1.Text + " Thành Công ");
                     EmptyBox1(); // Đặt các controls về giá trị mặc định
                     tpProduct.SelectedTab = tpQuanLySanPham;
                     LoadDgvSanPham();
@@ -480,7 +481,7 @@ namespace Computer_Shop_Management_System.View
 
         private void tpQuanLySanPham_Enter(object sender, EventArgs e)
         {
-            txtTenSanPham.Clear();
+            txttProductName.Clear();
             ProductController.DisplayAndSearch("SELECT * FROM Product;", dgvSanPham);
             lblTotal.Text = dgvSanPham.Rows.Count.ToString();
         }
@@ -601,7 +602,52 @@ namespace Computer_Shop_Management_System.View
             }
 
         }
+        // cho phép nhập chữ và dấu không cho phép nhập ký tự đặc biệt và số
+        private void txttProductName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != ' '  && e.KeyChar != '\b' && e.KeyChar != '̣' && e.KeyChar != '́' && e.KeyChar != '̀')
+            {
+                e.Handled = true; // Vô hiệu hóa ký tự số và ký tự đặc biệt không cho phép
+            }
+        }
+        // không cho phép copy paste
+        private void txttProductName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && (e.KeyCode == Keys.C || e.KeyCode == Keys.V))
+            {
+                e.Handled = true; // Vô hiệu hóa phím tắt copy và paste
+            }
+        }
 
-   
+        private void txtGiaTien_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
+            {
+                e.Handled = true; // Vô hiệu hóa tất cả các ký tự khác ngoài số và phím Backspace
+            }
+        }
+
+        private void txtGiaTien_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && (e.KeyCode == Keys.C || e.KeyCode == Keys.V))
+            {
+                e.Handled = true; // Vô hiệu hóa phím tắt copy và paste
+            }
+        }
+
+        private void cmbLoai_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cmbTrangThai_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cmbThuongHieu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

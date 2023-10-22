@@ -329,5 +329,26 @@ namespace Computer_Shop_Management_System.View
                 }
             }
         }
+
+        private void txtTenNguoiDung_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != ' ' && e.KeyChar != '\b' && e.KeyChar != '̣' && e.KeyChar != '́' && e.KeyChar != '̀')
+            {
+                e.Handled = true; // Vô hiệu hóa ký tự số và ký tự đặc biệt không cho phép
+            }
+        }
+
+        private void txtTenNguoiDung_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && (e.KeyCode == Keys.C || e.KeyCode == Keys.V))
+            {
+                e.Handled = true; // Vô hiệu hóa phím tắt copy và paste
+            }
+        }
+
+        private void cmbLoaiTK_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

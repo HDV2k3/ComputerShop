@@ -12,6 +12,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Computer_Shop_Management_System.View
 {
@@ -163,9 +164,6 @@ namespace Computer_Shop_Management_System.View
             return regex.IsMatch(brandName);
         }
 
-    
-      
-
         private void btnThem_Click(object sender, EventArgs e)
         {
             if (txtMaThuongHieu.Text.Trim() == string.Empty)
@@ -207,7 +205,7 @@ namespace Computer_Shop_Management_System.View
 
                 if (result)
                 {
-                    MessageBox.Show("Thêm Thương Hiệu Thành Công.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Thêm Thương Hiệu"+ txtTenThuongHieu.Text + "Thành Công.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
                     dgvThuongHieu.DataSource = brandController;
@@ -238,7 +236,7 @@ namespace Computer_Shop_Management_System.View
             {
                 Brand brand = new Brand(txtMaThuongHieu1.Text,txtTenThuongHieu1.Text.Trim(),cmbTRangThai1.SelectedItem.ToString());
                 BrandController.ChangedBrand(brand);
-                MessageBox.Show("Thay Đổi Thành Công");
+                MessageBox.Show("Thay Đổi Thành Công","Information",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 EmptyBox1();
             }
         }
@@ -268,7 +266,7 @@ namespace Computer_Shop_Management_System.View
             }
             else
             {
-                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa thương hiệu này?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa thương hiệu"+ txtTenThuongHieu1.Text + "?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
                     string brandName = txtTenThuongHieu1.Text;
@@ -278,7 +276,7 @@ namespace Computer_Shop_Management_System.View
 
                     if (result)
                     {
-                        MessageBox.Show("Xóa thương hiệu thành công.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Xóa thương hiệu "+ txtTenThuongHieu1.Text +" thành công.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         dgvThuongHieu.Refresh();
                         EmtyBox1();
@@ -411,6 +409,75 @@ namespace Computer_Shop_Management_System.View
                     cmbTRangThai1.SelectedItem = row.Cells[2].Value.ToString();
                     tpThuongHieu.SelectedTab = tpLuaChon;
                 }
+            }
+        }
+
+        private void txtTenThuongHieu_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.C)
+            {
+                e.Handled = true; // Vô hiệu hóa sự kiện Copy
+            }
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.Handled = true; // Vô hiệu hóa sự kiện Paste
+            }
+        }
+        // Phương thức kiểm tra ký tự đặc biệt
+        private bool IsSpecialCharacter(char c)
+        {
+            return !char.IsLetterOrDigit(c) && !char.IsWhiteSpace(c);
+        }
+        private void txtTenThuongHieu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar) || IsSpecialCharacter(e.KeyChar))
+            {
+                if (e.KeyChar != '\b') // Kiểm tra ký tự khác với phím Backspace
+                {
+                    e.Handled = true; // Vô hiệu hóa ký tự không hợp lệ
+                }
+            }
+        }
+        // Phương thức loại bỏ các ký tự không hợp lệ
+        private string RemoveInvalidCharacters(string input)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (char c in input)
+            {
+                if (char.IsLetter(c) || char.IsWhiteSpace(c) || char.IsPunctuation(c))
+                {
+                    sb.Append(c);
+                }
+            }
+            return sb.ToString();
+        }
+        // Phương thức kiểm tra ký tự đặc biệt
+        private void txtTenThuongHieu_TextChanged(object sender, EventArgs e)
+        {
+            string input = txtTenThuongHieu.Text;
+            string sanitizedInput = RemoveInvalidCharacters(input);
+            txtTenThuongHieu.Text = sanitizedInput;
+        }
+
+        private void cmbTrangThai_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true; // Vô hiệu hóa ký tự không hợp lệ
+        }
+
+        private void cmbTrangThai_DropDown(object sender, EventArgs e)
+        {
+            cmbTrangThai.DropDownStyle = ComboBoxStyle.DropDownList; // Chỉ cho phép chọn từ danh sách
+        }
+
+        private void cmbTrangThai_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.C)
+            {
+                e.Handled = true; // Vô hiệu hóa sự kiện Copy
+            }
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.Handled = true; // Vô hiệu hóa sự kiện Paste
             }
         }
     }

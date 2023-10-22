@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tpProduct = new System.Windows.Forms.TabControl();
             this.tpThemSanPham = new System.Windows.Forms.TabPage();
+            this.txttProductName = new System.Windows.Forms.TextBox();
             this.nudSoLuong = new System.Windows.Forms.NumericUpDown();
             this.txtGiaTien = new System.Windows.Forms.TextBox();
             this.cmbTrangThai = new System.Windows.Forms.ComboBox();
@@ -44,7 +45,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtTenSanPham = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -111,13 +111,13 @@
             this.tpProduct.SelectedIndex = 0;
             this.tpProduct.Size = new System.Drawing.Size(983, 554);
             this.tpProduct.TabIndex = 0;
-       
             this.tpProduct.Click += new System.EventHandler(this.tpProduct_Click);
             this.tpProduct.Enter += new System.EventHandler(this.tpProduct_Enter);
             this.tpProduct.Leave += new System.EventHandler(this.tpProduct_Leave);
             // 
             // tpThemSanPham
             // 
+            this.tpThemSanPham.Controls.Add(this.txttProductName);
             this.tpThemSanPham.Controls.Add(this.nudSoLuong);
             this.tpThemSanPham.Controls.Add(this.txtGiaTien);
             this.tpThemSanPham.Controls.Add(this.cmbTrangThai);
@@ -129,7 +129,6 @@
             this.tpThemSanPham.Controls.Add(this.label7);
             this.tpThemSanPham.Controls.Add(this.label2);
             this.tpThemSanPham.Controls.Add(this.label3);
-            this.tpThemSanPham.Controls.Add(this.txtTenSanPham);
             this.tpThemSanPham.Controls.Add(this.label1);
             this.tpThemSanPham.Controls.Add(this.label4);
             this.tpThemSanPham.Controls.Add(this.label5);
@@ -142,8 +141,16 @@
             this.tpThemSanPham.TabIndex = 0;
             this.tpThemSanPham.Text = "Thêm Sản Phẩm";
             this.tpThemSanPham.UseVisualStyleBackColor = true;
-
             this.tpThemSanPham.Enter += new System.EventHandler(this.tpThemSanPham_Enter);
+            // 
+            // txttProductName
+            // 
+            this.txttProductName.Location = new System.Drawing.Point(53, 58);
+            this.txttProductName.Name = "txttProductName";
+            this.txttProductName.Size = new System.Drawing.Size(151, 25);
+            this.txttProductName.TabIndex = 18;
+            this.txttProductName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txttProductName_KeyDown);
+            this.txttProductName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txttProductName_KeyPress);
             // 
             // nudSoLuong
             // 
@@ -152,7 +159,6 @@
             this.nudSoLuong.Name = "nudSoLuong";
             this.nudSoLuong.Size = new System.Drawing.Size(155, 25);
             this.nudSoLuong.TabIndex = 17;
-  
             // 
             // txtGiaTien
             // 
@@ -161,7 +167,8 @@
             this.txtGiaTien.Name = "txtGiaTien";
             this.txtGiaTien.Size = new System.Drawing.Size(151, 25);
             this.txtGiaTien.TabIndex = 16;
- 
+            this.txtGiaTien.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtGiaTien_KeyDown);
+            this.txtGiaTien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiaTien_KeyPress);
             // 
             // cmbTrangThai
             // 
@@ -175,7 +182,7 @@
             this.cmbTrangThai.Name = "cmbTrangThai";
             this.cmbTrangThai.Size = new System.Drawing.Size(279, 25);
             this.cmbTrangThai.TabIndex = 6;
-          
+            this.cmbTrangThai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbTrangThai_KeyPress);
             // 
             // cmbLoai
             // 
@@ -185,7 +192,7 @@
             this.cmbLoai.Name = "cmbLoai";
             this.cmbLoai.Size = new System.Drawing.Size(279, 25);
             this.cmbLoai.TabIndex = 5;
-        
+            this.cmbLoai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbLoai_KeyPress);
             // 
             // cmbThuongHieu
             // 
@@ -195,7 +202,7 @@
             this.cmbThuongHieu.Name = "cmbThuongHieu";
             this.cmbThuongHieu.Size = new System.Drawing.Size(279, 25);
             this.cmbThuongHieu.TabIndex = 4;
-
+            this.cmbThuongHieu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbThuongHieu_KeyPress);
             // 
             // picPhoto
             // 
@@ -208,7 +215,6 @@
             this.picPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picPhoto.TabIndex = 14;
             this.picPhoto.TabStop = false;
-            
             // 
             // btnDuyetSanPham
             // 
@@ -260,7 +266,6 @@
             this.label7.Size = new System.Drawing.Size(78, 19);
             this.label7.TabIndex = 0;
             this.label7.Text = "Trạng Thái:";
-
             // 
             // label2
             // 
@@ -275,7 +280,6 @@
             this.label2.Size = new System.Drawing.Size(38, 19);
             this.label2.TabIndex = 0;
             this.label2.Text = "Loại:";
-
             // 
             // label3
             // 
@@ -290,19 +294,6 @@
             this.label3.Size = new System.Drawing.Size(95, 19);
             this.label3.TabIndex = 0;
             this.label3.Text = "Thương Hiệu:";
-
-            // 
-            // txtTenSanPham
-            // 
-            this.txtTenSanPham.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtTenSanPham.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenSanPham.Location = new System.Drawing.Point(53, 57);
-            this.txtTenSanPham.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTenSanPham.Name = "txtTenSanPham";
-            this.txtTenSanPham.Size = new System.Drawing.Size(349, 25);
-            this.txtTenSanPham.TabIndex = 1;
-
             // 
             // label1
             // 
@@ -317,7 +308,6 @@
             this.label1.Size = new System.Drawing.Size(73, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "Số Lượng:";
-
             // 
             // label4
             // 
@@ -332,7 +322,6 @@
             this.label4.Size = new System.Drawing.Size(64, 19);
             this.label4.TabIndex = 0;
             this.label4.Text = "Giá Tiền:";
-      
             // 
             // label5
             // 
@@ -347,7 +336,6 @@
             this.label5.Size = new System.Drawing.Size(100, 19);
             this.label5.TabIndex = 0;
             this.label5.Text = "Tên Sản Phẩm:";
-
             // 
             // label6
             // 
@@ -360,7 +348,6 @@
             this.label6.Size = new System.Drawing.Size(207, 30);
             this.label6.TabIndex = 0;
             this.label6.Text = ".../Thêm Sản Phẩm";
-
             // 
             // tpQuanLySanPham
             // 
@@ -380,7 +367,6 @@
             this.tpQuanLySanPham.TabIndex = 1;
             this.tpQuanLySanPham.Text = "Quản Lý Sản Phẩm";
             this.tpQuanLySanPham.UseVisualStyleBackColor = true;
-  
             this.tpQuanLySanPham.Enter += new System.EventHandler(this.tpQuanLySanPham_Enter);
             // 
             // picTimKiem
@@ -409,24 +395,24 @@
             this.dgvSanPham.BackgroundColor = System.Drawing.Color.White;
             this.dgvSanPham.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvSanPham.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSanPham.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSanPham.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.dgvSanPham.ColumnHeadersHeight = 34;
             this.dgvSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(151)))), ((int)(((byte)(196)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSanPham.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(151)))), ((int)(((byte)(196)))));
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSanPham.DefaultCellStyle = dataGridViewCellStyle18;
             this.dgvSanPham.EnableHeadersVisualStyles = false;
             this.dgvSanPham.Location = new System.Drawing.Point(45, 98);
             this.dgvSanPham.Margin = new System.Windows.Forms.Padding(2);
@@ -438,7 +424,6 @@
             this.dgvSanPham.Size = new System.Drawing.Size(849, 295);
             this.dgvSanPham.TabIndex = 0;
             this.dgvSanPham.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSanPham_CellClick);
-
             // 
             // txtTimKiemSanPham
             // 
@@ -462,7 +447,6 @@
             this.lblTotal.Size = new System.Drawing.Size(25, 19);
             this.lblTotal.TabIndex = 0;
             this.lblTotal.Text = "{?}";
-
             // 
             // label8
             // 
@@ -476,7 +460,6 @@
             this.label8.Size = new System.Drawing.Size(117, 19);
             this.label8.TabIndex = 0;
             this.label8.Text = "Tổng Sản Phẩm:";
-
             // 
             // label9
             // 
@@ -490,7 +473,6 @@
             this.label9.Size = new System.Drawing.Size(106, 19);
             this.label9.TabIndex = 0;
             this.label9.Text = "Tên Sản Phẩm:";
-
             // 
             // label10
             // 
@@ -503,7 +485,6 @@
             this.label10.Size = new System.Drawing.Size(164, 21);
             this.label10.TabIndex = 0;
             this.label10.Text = ".../ Quản Lý Sản Phẩm";
-
             // 
             // tpLuaChon
             // 
@@ -532,7 +513,6 @@
             this.tpLuaChon.TabIndex = 2;
             this.tpLuaChon.Text = "Lựa Chọn";
             this.tpLuaChon.UseVisualStyleBackColor = true;
-
             // 
             // cmbLoai1
             // 
@@ -541,7 +521,6 @@
             this.cmbLoai1.Name = "cmbLoai1";
             this.cmbLoai1.Size = new System.Drawing.Size(146, 25);
             this.cmbLoai1.TabIndex = 34;
-
             // 
             // cmbThuongHieu1
             // 
@@ -550,7 +529,6 @@
             this.cmbThuongHieu1.Name = "cmbThuongHieu1";
             this.cmbThuongHieu1.Size = new System.Drawing.Size(147, 25);
             this.cmbThuongHieu1.TabIndex = 33;
-
             // 
             // nudSoLuong1
             // 
@@ -559,7 +537,6 @@
             this.nudSoLuong1.Name = "nudSoLuong1";
             this.nudSoLuong1.Size = new System.Drawing.Size(141, 25);
             this.nudSoLuong1.TabIndex = 32;
-
             // 
             // txtGiaTien1
             // 
@@ -568,7 +545,6 @@
             this.txtGiaTien1.Name = "txtGiaTien1";
             this.txtGiaTien1.Size = new System.Drawing.Size(147, 25);
             this.txtGiaTien1.TabIndex = 31;
-
             // 
             // cmbTrangThai1
             // 
@@ -582,7 +558,6 @@
             this.cmbTrangThai1.Name = "cmbTrangThai1";
             this.cmbTrangThai1.Size = new System.Drawing.Size(148, 25);
             this.cmbTrangThai1.TabIndex = 6;
-  
             // 
             // btnXoa
             // 
@@ -631,7 +606,6 @@
             this.label11.Size = new System.Drawing.Size(78, 19);
             this.label11.TabIndex = 0;
             this.label11.Text = "Trạng Thái:";
-         
             // 
             // label12
             // 
@@ -646,7 +620,6 @@
             this.label12.Size = new System.Drawing.Size(38, 19);
             this.label12.TabIndex = 0;
             this.label12.Text = "Loại:";
-     
             // 
             // label13
             // 
@@ -661,7 +634,6 @@
             this.label13.Size = new System.Drawing.Size(95, 19);
             this.label13.TabIndex = 0;
             this.label13.Text = "Thương Hiệu:";
-
             // 
             // txtTenSanPham1
             // 
@@ -688,7 +660,6 @@
             this.label14.Size = new System.Drawing.Size(73, 19);
             this.label14.TabIndex = 0;
             this.label14.Text = "Số Lượng:";
-
             // 
             // label15
             // 
@@ -702,7 +673,6 @@
             this.label15.Size = new System.Drawing.Size(64, 19);
             this.label15.TabIndex = 0;
             this.label15.Text = "Giá Tiền:";
-
             // 
             // label16
             // 
@@ -717,7 +687,6 @@
             this.label16.Size = new System.Drawing.Size(100, 19);
             this.label16.TabIndex = 0;
             this.label16.Text = "Tên Sản Phẩm:";
-
             // 
             // label17
             // 
@@ -730,7 +699,6 @@
             this.label17.Size = new System.Drawing.Size(138, 30);
             this.label17.TabIndex = 0;
             this.label17.Text = ".../Lựa Chọn";
-   
             // 
             // picPhoto1
             // 
@@ -743,7 +711,6 @@
             this.picPhoto1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picPhoto1.TabIndex = 30;
             this.picPhoto1.TabStop = false;
-
             // 
             // btnDuyetSanPham1
             // 
@@ -773,10 +740,6 @@
             // 
             this.guna2Elipse2.TargetControl = this.btnDuyetSanPham;
             // 
-            // toolTip1
-            // 
-
-            // 
             // guna2Elipse3
             // 
             this.guna2Elipse3.TargetControl = this.btnThayDoi;
@@ -793,7 +756,6 @@
             // 
             this.openFileDialog.FileName = "Upload Image";
             this.openFileDialog.Filter = "JPG|*.ipg|JPEG|*.jpeg|PNG|*.png";
- 
             // 
             // UserControlProduct
             // 
@@ -826,7 +788,6 @@
 
         private System.Windows.Forms.TabControl tpProduct;
         private System.Windows.Forms.TabPage tpThemSanPham;
-        private System.Windows.Forms.TextBox txtTenSanPham;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -876,5 +837,6 @@
         private Guna.UI2.WinForms.Guna2AnimateWindow guna2AnimateWindow1;
         private System.Windows.Forms.ComboBox cmbThuongHieu1;
         private System.Windows.Forms.ComboBox cmbLoai1;
+        private System.Windows.Forms.TextBox txttProductName;
     }
 }

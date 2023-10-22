@@ -141,10 +141,7 @@ namespace Computer_Shop_Management_System.View
             }
         }
 
-        private void dtgvOrder_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+   
         private DateTime GetDateTimeValue(object value)
         {
             if (value != null && value != DBNull.Value)
@@ -426,7 +423,7 @@ namespace Computer_Shop_Management_System.View
 
                 if (count > 0)
                 {
-                    MessageBox.Show("Mã hóa đơn đã tồn tại. Vui lòng chọn mã hóa đơn khác.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Mã hóa đơn "+txtMaHoaDon.Text+" đã tồn tại. Vui lòng chọn mã hóa đơn khác.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
                
@@ -481,7 +478,7 @@ namespace Computer_Shop_Management_System.View
                         }
                     }
                 }
-                MessageBox.Show("Lưu Hóa Đơn Thành Công");
+                MessageBox.Show("Lưu Hóa Đơn "+txtMaHoaDon.Text+" Thành Công");
                 ClearData();
                 txtSoDienThoai.Text = string.Empty;
                 cmbsanpham.Text = "---Chọn---";
@@ -697,7 +694,7 @@ namespace Computer_Shop_Management_System.View
                     int rowsAffected = deleteOrderCommand.ExecuteNonQuery();
                     if (rowsAffected > 0)
                     {
-                        MessageBox.Show("Hóa đơn đã được xóa thành công.");
+                        MessageBox.Show("Hóa đơn "+txtMaHoaDon1.Text+" đã được xóa thành công.");
                         EmtyBox1();
                     }
                     else
@@ -970,7 +967,129 @@ namespace Computer_Shop_Management_System.View
 
         private void txtMaNhanVien_KeyPress(object sender, KeyPressEventArgs e)
         {
+
+           
+                    e.Handled = true; // Vô hiệu hóa ký tự không hợp lệ
+                
+            
+        }
+   
+
+        private void txtMaNhanVien_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.C)
+            {
+                e.Handled = true; // Vô hiệu hóa sự kiện Copy
+            }
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.Handled = true; // Vô hiệu hóa sự kiện Paste
+            }
+        }
+
+        
+     
+      
+
+        private void txtmakhachhang_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.C)
+            {
+                e.Handled = true; // Vô hiệu hóa sự kiện Copy
+            }
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.Handled = true; // Vô hiệu hóa sự kiện Paste
+            }
+        }
+
+        private void cmbsanpham_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true; // Vô hiệu hóa ký tự không hợp lệ
+        }
+
+        private void cmbsanpham_DropDown(object sender, EventArgs e)
+        {
+            cmbsanpham.DropDownStyle = ComboBoxStyle.DropDownList; // Chỉ cho phép chọn từ danh sách
+        }
+
+        private void cmbsanpham_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.C)
+            {
+                e.Handled = true; // Vô hiệu hóa sự kiện Copy
+            }
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.Handled = true; // Vô hiệu hóa sự kiện Paste
+            }
+        }
+  
+        private void txtSoDienThoai_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (!string.IsNullOrEmpty(txtSoDienThoai.Text))
+            {
+                // Kiểm tra nếu có ký tự không phải số hoặc độ dài vượt quá 10
+                if (!IsNumeric(txtSoDienThoai.Text) || txtSoDienThoai.Text.Length > 10)
+                {
+                    // Xóa ký tự cuối cùng
+                    txtSoDienThoai.Text = txtSoDienThoai.Text.Remove(txtSoDienThoai.Text.Length - 1);
+                    // Di chuyển con trỏ về cuối TextBox
+                    txtSoDienThoai.SelectionStart = txtSoDienThoai.Text.Length;
+                }
+            }
+        }
+        // Kiểm tra xem một chuỗi có phải là số hay không
+        private bool IsNumeric(string text)
+        {
+            return long.TryParse(text, out _);
+        }
+        private void txtSoDienThoai_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.C)
+            {
+                e.Handled = true; // Vô hiệu hóa sự kiện Copy
+            }
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.Handled = true; // Vô hiệu hóa sự kiện Paste
+            }
+        }
+
+        private void txttenkhachhang_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != ' ' && e.KeyChar != '\b' && e.KeyChar != '̣' && e.KeyChar != '́' && e.KeyChar != '̀')
+            {
+                e.Handled = true; // Vô hiệu hóa ký tự số và ký tự đặc biệt không cho phép
+            }
+        }
+
+        private void txtGiaTien_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled= true;
+        }
+
+        private void txttongtien_KeyPress(object sender, KeyPressEventArgs e)
+        {
             e.Handled = true;
+        }
+
+        private void cmbtttt_Click(object sender, EventArgs e)
+        {
+            string successItem = "--Thanh Toán Thành Công--";
+            string failureItem = "--Thanh Toán Thất Bại--";
+            if (!cmbtttt.Items.Contains(successItem))
+            {
+                cmbtttt.Items.Add(successItem);
+            }
+
+            if (!cmbtttt.Items.Contains(failureItem))
+            {
+                cmbtttt.Items.Add(failureItem);
+            }
+
+            cmbtttt.SelectedIndex = 0;
         }
     }
 }

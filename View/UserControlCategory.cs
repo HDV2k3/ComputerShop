@@ -262,7 +262,7 @@ namespace Computer_Shop_Management_System.View
 
                 if (result)
                 {
-                    MessageBox.Show("Thêm Loại Thành Công.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Thêm Loại "+ txtTenLoai.Text +" Thành Công.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
                     dgvLoai.DataSource = CategoryController;
@@ -318,7 +318,7 @@ namespace Computer_Shop_Management_System.View
             }
             else
             {
-                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa Loại này?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa Loại "+ txtTenLoai1.Text.Trim() + " ?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
                     string CategoryName = txtTenLoai1.Text;
@@ -328,7 +328,7 @@ namespace Computer_Shop_Management_System.View
 
                     if (result)
                     {
-                        MessageBox.Show("Xóa Loại thành công.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Xóa Loại "+ txtTenLoai1.Text.Trim() + "  thành công.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         dgvLoai.Refresh();
                         EmtyBox1();
@@ -456,6 +456,76 @@ namespace Computer_Shop_Management_System.View
 
             }
             lblTotal.Text = dgvLoai.Rows.Count.ToString();
+        }
+
+        private void txtTenLoai_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.C)
+            {
+                e.Handled = true; // Vô hiệu hóa sự kiện Copy
+            }
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.Handled = true; // Vô hiệu hóa sự kiện Paste
+            }
+        }
+        // Phương thức kiểm tra ký tự đặc biệt
+        private bool IsSpecialCharacter(char c)
+        {
+            return !char.IsLetterOrDigit(c) && !char.IsWhiteSpace(c);
+        }
+
+        private void txtTenLoai_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar) || IsSpecialCharacter(e.KeyChar))
+            {
+                if (e.KeyChar != '\b') // Kiểm tra ký tự khác với phím Backspace
+                {
+                    e.Handled = true; // Vô hiệu hóa ký tự không hợp lệ
+                }
+            }
+        }
+        // Phương thức loại bỏ các ký tự không hợp lệ
+        private string RemoveInvalidCharacters(string input)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (char c in input)
+            {
+                if (char.IsLetter(c) || char.IsWhiteSpace(c) || char.IsPunctuation(c))
+                {
+                    sb.Append(c);
+                }
+            }
+            return sb.ToString();
+        }
+
+        private void txtTenLoai_TextChanged(object sender, EventArgs e)
+        {
+            string input = txtTenLoai.Text;
+            string sanitizedInput = RemoveInvalidCharacters(input);
+            txtTenLoai.Text = sanitizedInput;
+        }
+
+        private void cmbTrangThai_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true; // Vô hiệu hóa ký tự không hợp lệ
+        }
+
+        private void cmbTrangThai_DropDown(object sender, EventArgs e)
+        {
+            cmbTrangThai.DropDownStyle = ComboBoxStyle.DropDownList; // Chỉ cho phép chọn từ danh sách
+        }
+
+        private void cmbTrangThai_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.C)
+            {
+                e.Handled = true; // Vô hiệu hóa sự kiện Copy
+            }
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                e.Handled = true; // Vô hiệu hóa sự kiện Paste
+            }
         }
     }
 }

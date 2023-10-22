@@ -32,6 +32,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpBaoCao = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ckbsanphambanchaynhat = new System.Windows.Forms.CheckBox();
+            this.ckbSanPhamSapHetHang = new System.Windows.Forms.CheckBox();
             this.ckbLoiNhuan = new System.Windows.Forms.CheckBox();
             this.ckbDoanhThuTheoKH = new System.Windows.Forms.CheckBox();
             this.ckbDoanhThuTheoSP = new System.Windows.Forms.CheckBox();
@@ -47,8 +49,6 @@
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel28 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.ckbSanPhamSapHetHang = new System.Windows.Forms.CheckBox();
-            this.ckbsanphambanchaynhat = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tpBaoCao.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -64,7 +64,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1113, 544);
+            this.tabControl1.Size = new System.Drawing.Size(1115, 544);
             this.tabControl1.TabIndex = 0;
             // 
             // tpBaoCao
@@ -82,11 +82,10 @@
             this.tpBaoCao.Margin = new System.Windows.Forms.Padding(2);
             this.tpBaoCao.Name = "tpBaoCao";
             this.tpBaoCao.Padding = new System.Windows.Forms.Padding(2);
-            this.tpBaoCao.Size = new System.Drawing.Size(1105, 514);
+            this.tpBaoCao.Size = new System.Drawing.Size(1107, 514);
             this.tpBaoCao.TabIndex = 0;
             this.tpBaoCao.Text = "Báo Cáo";
             this.tpBaoCao.UseVisualStyleBackColor = true;
-  
             // 
             // panel1
             // 
@@ -103,6 +102,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(265, 294);
             this.panel1.TabIndex = 7;
+            // 
+            // ckbsanphambanchaynhat
+            // 
+            this.ckbsanphambanchaynhat.AutoSize = true;
+            this.ckbsanphambanchaynhat.Location = new System.Drawing.Point(5, 224);
+            this.ckbsanphambanchaynhat.Name = "ckbsanphambanchaynhat";
+            this.ckbsanphambanchaynhat.Size = new System.Drawing.Size(139, 19);
+            this.ckbsanphambanchaynhat.TabIndex = 2;
+            this.ckbsanphambanchaynhat.Text = "Sản Phẩm Bán Chạy ";
+            this.ckbsanphambanchaynhat.UseVisualStyleBackColor = true;
+            // 
+            // ckbSanPhamSapHetHang
+            // 
+            this.ckbSanPhamSapHetHang.AutoSize = true;
+            this.ckbSanPhamSapHetHang.Location = new System.Drawing.Point(5, 190);
+            this.ckbSanPhamSapHetHang.Name = "ckbSanPhamSapHetHang";
+            this.ckbSanPhamSapHetHang.Size = new System.Drawing.Size(159, 19);
+            this.ckbSanPhamSapHetHang.TabIndex = 2;
+            this.ckbSanPhamSapHetHang.Text = "Sản Phẩm Sắp Hết Hàng";
+            this.ckbSanPhamSapHetHang.UseVisualStyleBackColor = true;
             // 
             // ckbLoiNhuan
             // 
@@ -264,26 +283,6 @@
             // 
             this.guna2Elipse1.TargetControl = this.btnTaoBaoCao;
             // 
-            // ckbSanPhamSapHetHang
-            // 
-            this.ckbSanPhamSapHetHang.AutoSize = true;
-            this.ckbSanPhamSapHetHang.Location = new System.Drawing.Point(5, 190);
-            this.ckbSanPhamSapHetHang.Name = "ckbSanPhamSapHetHang";
-            this.ckbSanPhamSapHetHang.Size = new System.Drawing.Size(159, 19);
-            this.ckbSanPhamSapHetHang.TabIndex = 2;
-            this.ckbSanPhamSapHetHang.Text = "Sản Phẩm Sắp Hết Hàng";
-            this.ckbSanPhamSapHetHang.UseVisualStyleBackColor = true;
-            // 
-            // ckbsanphambanchaynhat
-            // 
-            this.ckbsanphambanchaynhat.AutoSize = true;
-            this.ckbsanphambanchaynhat.Location = new System.Drawing.Point(5, 224);
-            this.ckbsanphambanchaynhat.Name = "ckbsanphambanchaynhat";
-            this.ckbsanphambanchaynhat.Size = new System.Drawing.Size(139, 19);
-            this.ckbsanphambanchaynhat.TabIndex = 2;
-            this.ckbsanphambanchaynhat.Text = "Sản Phẩm Bán Chạy ";
-            this.ckbsanphambanchaynhat.UseVisualStyleBackColor = true;
-            // 
             // UserControlReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -293,6 +292,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UserControlReport";
             this.Size = new System.Drawing.Size(1117, 548);
+            this.Load += new System.EventHandler(this.UserControlReport_Load);
             this.tabControl1.ResumeLayout(false);
             this.tpBaoCao.ResumeLayout(false);
             this.tpBaoCao.PerformLayout();
