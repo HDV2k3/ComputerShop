@@ -16,6 +16,8 @@ namespace Computer_Shop_Management_System.View
 {
     public partial class UserControlCategory : UserControl
     {
+        private const string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay thế bằng chuỗi kết nối của bạn
+
         public UserControlCategory()
         {
             InitializeComponent();
@@ -36,14 +38,58 @@ namespace Computer_Shop_Management_System.View
             cmbTrangThai1.SelectedIndex = 0;
             
         }
-        #endregion
+        private void SearchCategory(string searchName)
+        {
+            string query = "SELECT Category_Name,Category_Id,Category_Status FROM Category WHERE Category_Name LIKE @SearchName;";
 
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@SearchName", "%" + searchName + "%");
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        dgvLoai.DataSource = dataTable;
+
+                        lblTotal.Text = dataTable.Rows.Count.ToString();
+                    }
+                }
+            }
+        }
+        public DataTable GetDataFromDatabase()
+        {
+            string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay đổi chuỗi kết nối cho phù hợp
+
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT * FROM Category";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        adapter.Fill(dataTable);
+                    }
+                }
+            }
+
+            return dataTable;
+        }
+        #endregion
+        #region Event
         private void picTimKiem_MouseHover(object sender, EventArgs e)
         {
             toolTip1.SetToolTip(picTimKiem, "Search");
-        }
-
-     
+        }    
         private void UserControlCategory_Load(object sender, EventArgs e)
         {
             txtMaLoai.Text = "L" + DateTime.Now.ToString("yyMMddhhmmss");
@@ -80,9 +126,6 @@ namespace Computer_Shop_Management_System.View
             }
             lblTotal.Text = dgvLoai.Rows.Count.ToString();
         }
-
-
-
         private void tpQuanLyLoai_Click(object sender, EventArgs e)
         {
             txtTimKiemLoai.Clear();
@@ -114,32 +157,7 @@ namespace Computer_Shop_Management_System.View
 
             }
             lblTotal.Text = dgvLoai.Rows.Count.ToString();
-        }
-
-       
-        public DataTable GetDataFromDatabase()
-        {
-            string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay đổi chuỗi kết nối cho phù hợp
-
-            DataTable dataTable = new DataTable();
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                string query = "SELECT * FROM Category";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                    {
-                        adapter.Fill(dataTable);
-                    }
-                }
-            }
-
-            return dataTable;
-        }
+        }   
         private void dgvLoai_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.RowIndex < dgvLoai.RowCount)
@@ -340,30 +358,7 @@ namespace Computer_Shop_Management_System.View
                 }
             }
         }
-        private const string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay thế bằng chuỗi kết nối của bạn
-        private void SearchCategory(string searchName)
-        {
-            string query = "SELECT Category_Name,Category_Id,Category_Status FROM Category WHERE Category_Name LIKE @SearchName;";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@SearchName", "%" + searchName + "%");
-
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                    {
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-                        dgvLoai.DataSource = dataTable;
-
-                        lblTotal.Text = dataTable.Rows.Count.ToString();
-                    }
-                }
-            }
-        }
         private void txtTimKiemLoai_TextChanged(object sender, EventArgs e)
         {
             string searchName = txtTimKiemLoai.Text;
@@ -457,7 +452,8 @@ namespace Computer_Shop_Management_System.View
             }
             lblTotal.Text = dgvLoai.Rows.Count.ToString();
         }
-
+        #endregion
+        #region constraint
         private void txtTenLoai_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.C)
@@ -469,6 +465,7 @@ namespace Computer_Shop_Management_System.View
                 e.Handled = true; // Vô hiệu hóa sự kiện Paste
             }
         }
+
         // Phương thức kiểm tra ký tự đặc biệt
         private bool IsSpecialCharacter(char c)
         {
@@ -527,5 +524,6 @@ namespace Computer_Shop_Management_System.View
                 e.Handled = true; // Vô hiệu hóa sự kiện Paste
             }
         }
+        #endregion
     }
 }

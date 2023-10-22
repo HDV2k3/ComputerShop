@@ -20,7 +20,7 @@ namespace Computer_Shop_Management_System.PAL
         {
             InitializeComponent();
         }
-
+        #region Event
         private void FormLogin_Load(object sender, EventArgs e)
         {
             DataBase db = new DataBase();
@@ -54,11 +54,7 @@ namespace Computer_Shop_Management_System.PAL
                 }    
             }
         }
-        private void Clear()
-        {
-            txtUsername.Clear();
-            txtUserpassword.Clear();
-        }
+     
         private void picClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -91,8 +87,15 @@ namespace Computer_Shop_Management_System.PAL
             formForgotPass.ShowDialog();
             this.Show();
         }
-
-
+        #endregion
+        #region Method
+        private void Clear()
+        {
+            txtUsername.Clear();
+            txtUserpassword.Clear();
+        }
+        #endregion
+        #region constraint
         private void txtUserpassword_KeyPress(object sender, KeyPressEventArgs e)
         {
 
@@ -103,5 +106,6 @@ namespace Computer_Shop_Management_System.PAL
                 btnLogin.PerformClick(); // Kích hoạt sự kiện Click của nút Button đăng nhập
             }
         }
+        #endregion
     }
 }

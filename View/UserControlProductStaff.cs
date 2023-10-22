@@ -18,11 +18,9 @@ namespace Computer_Shop_Management_System.View
             InitializeComponent();
         }
 
-        private void dgvSanPhamStaff_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+   
         private string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+        #region Method
         private void LoadProductData()
         {
             try
@@ -79,6 +77,8 @@ namespace Computer_Shop_Management_System.View
                 }
             }
         }
+        #endregion
+        #region Event
         private void UserControlProductStaff_Load(object sender, EventArgs e)
         {
             LoadProductData();
@@ -88,5 +88,6 @@ namespace Computer_Shop_Management_System.View
         {
             SearchProduct(txtTimKiemSanPhamStaff.Text.Trim());
         }
+        #endregion
     }
 }

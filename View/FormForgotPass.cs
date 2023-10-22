@@ -18,7 +18,7 @@ namespace Computer_Shop_Management_System.View
         {
             InitializeComponent();
         }
-
+        #region Event
         private void picClose_Click(object sender, EventArgs e)
         {
             Close();
@@ -69,5 +69,6 @@ namespace Computer_Shop_Management_System.View
         {
 
         }
+        #endregion
     }
 }

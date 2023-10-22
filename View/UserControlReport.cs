@@ -20,7 +20,7 @@ namespace Computer_Shop_Management_System.View
             InitializeComponent();
         }
 
-       
+        #region Method
         private void HienThiSanPhamBanChay()
         {
           
@@ -85,6 +85,8 @@ namespace Computer_Shop_Management_System.View
                 MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
             }
         }
+        #endregion
+        #region Event
         private void btnThem_Click(object sender, EventArgs e)
         {
             if (ckbSanPhamSapHetHang.Checked)
@@ -176,5 +178,6 @@ namespace Computer_Shop_Management_System.View
             dtpEndDate.Value = DateTime.Now;
             dtpEndDate.Value = DateTime.Now;
         }
+        #endregion
     }
 }

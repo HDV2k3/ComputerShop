@@ -17,6 +17,7 @@ namespace Computer_Shop_Management_System.View
         {
             InitializeComponent();
         }
+        #region Method
         private string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
         private void LoadCategoryData()
         {
@@ -69,14 +70,16 @@ namespace Computer_Shop_Management_System.View
                 }
             }
         }
+        #endregion
+        #region Event
         private void UserControlCategoryStaff_Load(object sender, EventArgs e)
         {
             LoadCategoryData();
         }
-
         private void txtTimKiemLoaiStaff_TextChanged(object sender, EventArgs e)
         {
             SearchCategory(txtTimKiemLoaiStaff.Text.Trim());
         }
+        #endregion
     }
 }

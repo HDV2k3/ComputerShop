@@ -20,7 +20,7 @@ namespace Computer_Shop_Management_System.View
             InitializeComponent();
         }
 
- 
+        #region Method
         private void LoadProductCount()
         {
             string query = "SELECT COUNT(*) FROM Product WHERE Product_Quantity < 10";
@@ -41,7 +41,8 @@ namespace Computer_Shop_Management_System.View
                 MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
             }
         }
-
+        #endregion
+        #region Event
         private void UserControlDashboard_Load(object sender, EventArgs e)
         {
             lblTongSanPham.Text = Computer.CountProducts("SELECT Count (*) FROM Product;").ToString();
@@ -50,7 +51,7 @@ namespace Computer_Shop_Management_System.View
             LoadProductCount();
 
         }
+        #endregion
 
-        
     }
 }

@@ -27,6 +27,7 @@ namespace Computer_Shop_Management_System.View
             imageConverter = new ImageConverter();
 
         }
+        #region Method
         void GetFile()
         {
             System.Windows.Forms.OpenFileDialog openImage = new OpenFileDialog();
@@ -93,7 +94,6 @@ namespace Computer_Shop_Management_System.View
             cmbLoai.SelectedIndex = 0;
             cmbTrangThai.SelectedIndex = 0;
         }
-
         private void EmptyBox1()
         {
             txtTenSanPham1.Clear();
@@ -115,36 +115,6 @@ namespace Computer_Shop_Management_System.View
             ProductController.BrandCategoryProduct("SELECT Category_Name FROM Category WHERE Category_Status = N'Có Sẵn' ORDER BY Category_Name;", cmbLoai1);
             cmbLoai1.SelectedIndex = 0;
         }
-
-        private void btnDuyetSanPham_Click(object sender, EventArgs e)
-        {
-            //mageUpLoad(picPhoto);
-            GetFile();
-        }
-
-        private void btnDuyetSanPham1_Click(object sender, EventArgs e)
-        {
-            ImageUpLoad(picPhoto1);
-      /*      GetFile();*/
-        }
-
-      
-        private void UserControlProduct_Load(object sender, EventArgs e)
-        {
-            txttProductName.Clear();
-            picPhoto.Image = null;
-            txtGiaTien.Text = "0";
-            nudSoLuong.Text = "0";
-            cmbThuongHieu.Items.Clear();
-            cmbThuongHieu.Items.Add("-- Chọn --");
-            ProductController.BrandCategoryProduct("SELECT Brand_Name FROM Brand WHERE Brand_Status = N'Có Sẵn' ORDER BY Brand_Name;", cmbThuongHieu);
-            cmbThuongHieu.SelectedIndex = 0;
-            cmbLoai.Items.Clear();
-            cmbLoai.Items.Add("-- Chọn --");
-            ProductController.BrandCategoryProduct("SELECT Category_Name FROM Category WHERE Category_Status = N'Có Sẵn' ORDER BY Category_Name;", cmbLoai);
-            cmbLoai.SelectedIndex = 0;
-            cmbTrangThai.SelectedIndex = 0;
-        }
         public bool CheckTen(string Ten)
         {
             using (DataBase db = new DataBase())
@@ -156,8 +126,7 @@ namespace Computer_Shop_Management_System.View
                 }
                 return false;
             }
-        }
-       
+        }      
         private void LoadProductsToComboBoxThuongHieu()
         {
             using (var context = new DataBase())
@@ -186,6 +155,94 @@ namespace Computer_Shop_Management_System.View
 
               
             }
+        }     
+        private const string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay thế bằng chuỗi kết nối của bạn
+        private void SearchProduct(string searchName)
+        {
+            string query = "SELECT Product_Name,Product_Image,Product_Rate,Product_Quantity,Product_Brand,Product_Category,Product_Stastus FROM Product WHERE Product_Name LIKE @SearchName;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@SearchName", "%" + searchName + "%");
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        dgvSanPham.DataSource = dataTable;
+
+                        lblTotal.Text = dataTable.Rows.Count.ToString();
+                    }
+                }
+            }
+        }
+        public void LoadDgvSanPham()
+        {
+            txtTimKiemSanPham.Clear();
+            /**//*dgvLoai.Columns[0].Visible = true;*/
+            // Kết nối đến cơ sở dữ liệu
+            using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
+            {
+                // Mở kết nối
+                connection.Open();
+
+                // Câu truy vấn SELECT để lấy dữ liệu từ bảng Category
+                string query = "SELECT * FROM Product";
+
+                // Thực hiện truy vấn
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataReader reader = command.ExecuteReader();
+
+
+                // Lấy dữ liệu từ cơ sở dữ liệu và lưu vào datatable
+                DataTable dataTable = GetDataFromDatabase();
+
+                // Gán datatable làm nguồn dữ liệu cho DataGridView
+
+                dgvSanPham.DataSource = dataTable;
+                dgvSanPham.Columns["Product_Id"].HeaderText = "Mã Sản Phẩm";
+                dgvSanPham.Columns["Product_Name"].HeaderText = "Tên Sản Phẩm";
+                dgvSanPham.Columns["Product_Image"].HeaderText = "Ảnh Sản Phẩm";
+                dgvSanPham.Columns["Product_Rate"].HeaderText = "Giá Tiền";
+                dgvSanPham.Columns["Product_Quantity"].HeaderText = "Số Lượng";
+                dgvSanPham.Columns["Product_Brand"].HeaderText = "Thương Hiệu";
+                dgvSanPham.Columns["Product_Category"].HeaderText = "Loại";
+                dgvSanPham.Columns["Product_Stastus"].HeaderText = "Trạng Thái";
+            }
+            lblTotal.Text = dgvSanPham.Rows.Count.ToString();
+
+        }
+        #endregion
+        #region Event
+        private void btnDuyetSanPham_Click(object sender, EventArgs e)
+        {
+            //mageUpLoad(picPhoto);
+            GetFile();
+        }
+        private void btnDuyetSanPham1_Click(object sender, EventArgs e)
+        {
+            ImageUpLoad(picPhoto1);
+            /*      GetFile();*/
+        }
+        private void UserControlProduct_Load(object sender, EventArgs e)
+        {
+            txttProductName.Clear();
+            picPhoto.Image = null;
+            txtGiaTien.Text = "0";
+            nudSoLuong.Text = "0";
+            cmbThuongHieu.Items.Clear();
+            cmbThuongHieu.Items.Add("-- Chọn --");
+            ProductController.BrandCategoryProduct("SELECT Brand_Name FROM Brand WHERE Brand_Status = N'Có Sẵn' ORDER BY Brand_Name;", cmbThuongHieu);
+            cmbThuongHieu.SelectedIndex = 0;
+            cmbLoai.Items.Clear();
+            cmbLoai.Items.Add("-- Chọn --");
+            ProductController.BrandCategoryProduct("SELECT Category_Name FROM Category WHERE Category_Status = N'Có Sẵn' ORDER BY Category_Name;", cmbLoai);
+            cmbLoai.SelectedIndex = 0;
+            cmbTrangThai.SelectedIndex = 0;
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
@@ -237,49 +294,20 @@ namespace Computer_Shop_Management_System.View
                     Product product = new Product(txttProductName.Text.Trim(), (byte[])imageConverter.ConvertTo(picPhoto.Image, typeof(byte[])), Convert.ToInt32(txtGiaTien.Text), Convert.ToInt32(nudSoLuong.Text), cmbThuongHieu.SelectedItem.ToString(), cmbLoai.SelectedItem.ToString(), cmbTrangThai.SelectedItem.ToString());
                     ProductController.AddProduct(product);
                     EmptyBox();
-                    MessageBox.Show("Thêm Sản Phẩm "+txttProductName.Text+" thành công", "Thông báo");
+                    MessageBox.Show("Thêm Sản Phẩm " + txttProductName.Text + " thành công", "Thông báo");
                     LoadDgvSanPham();
                 }
             }
         }
-
-     
-
         private void picTimKiem_Click(object sender, EventArgs e)
         {
             toolTip1.SetToolTip(picTimKiem, "Tim Kiem");
-        }
-        private const string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay thế bằng chuỗi kết nối của bạn
-        private void SearchProduct(string searchName)
-        {
-            string query = "SELECT Product_Name,Product_Image,Product_Rate,Product_Quantity,Product_Brand,Product_Category,Product_Stastus FROM Product WHERE Product_Name LIKE @SearchName;";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@SearchName", "%" + searchName + "%");
-
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                    {
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-                        dgvSanPham.DataSource = dataTable;
-
-                        lblTotal.Text = dataTable.Rows.Count.ToString();
-                    }
-                }
-            }
         }
         private void txtTimKiemSanPham_TextChanged(object sender, EventArgs e)
         {
             string searchName = txtTimKiemSanPham.Text;
             SearchProduct(searchName);
         }
-
-       
         private void btnXoa_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtTenSanPham1.Text))
@@ -308,7 +336,7 @@ namespace Computer_Shop_Management_System.View
             }
             else
             {
-                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn Sản Phẩm "+txtTenSanPham1.Text+"!", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn Sản Phẩm " + txtTenSanPham1.Text + "!", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
                     ProductController.RemoveProduct1(txtTenSanPham1.Text);
@@ -319,44 +347,6 @@ namespace Computer_Shop_Management_System.View
 
                 }
             }
-        }
-
-     
-        public void LoadDgvSanPham()
-        {
-            txtTimKiemSanPham.Clear();
-            /**//*dgvLoai.Columns[0].Visible = true;*/
-            // Kết nối đến cơ sở dữ liệu
-            using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
-            {
-                // Mở kết nối
-                connection.Open();
-
-                // Câu truy vấn SELECT để lấy dữ liệu từ bảng Category
-                string query = "SELECT * FROM Product";
-
-                // Thực hiện truy vấn
-                SqlCommand command = new SqlCommand(query, connection);
-                SqlDataReader reader = command.ExecuteReader();
-
-
-                // Lấy dữ liệu từ cơ sở dữ liệu và lưu vào datatable
-                DataTable dataTable = GetDataFromDatabase();
-
-                // Gán datatable làm nguồn dữ liệu cho DataGridView
-
-                dgvSanPham.DataSource = dataTable;
-                dgvSanPham.Columns["Product_Id"].HeaderText = "Mã Sản Phẩm";
-                dgvSanPham.Columns["Product_Name"].HeaderText = "Tên Sản Phẩm";
-                dgvSanPham.Columns["Product_Image"].HeaderText = "Ảnh Sản Phẩm";
-                dgvSanPham.Columns["Product_Rate"].HeaderText = "Giá Tiền";
-                dgvSanPham.Columns["Product_Quantity"].HeaderText = "Số Lượng";
-                dgvSanPham.Columns["Product_Brand"].HeaderText = "Thương Hiệu";
-                dgvSanPham.Columns["Product_Category"].HeaderText = "Loại";
-                dgvSanPham.Columns["Product_Stastus"].HeaderText = "Trạng Thái";
-            }
-            lblTotal.Text = dgvSanPham.Rows.Count.ToString();
-        
         }
         private void btnThayDoi_Click(object sender, EventArgs e)
         {
@@ -423,10 +413,6 @@ namespace Computer_Shop_Management_System.View
                
             }
         }
-    
-
-       
-
         private void txtTenSanPham1_TextChanged(object sender, EventArgs e)
         {
             LoadProductsToComboBoxLoai();
@@ -463,9 +449,6 @@ namespace Computer_Shop_Management_System.View
                 }
             }    
         }
-
-      
-
         private void tpProduct_Leave(object sender, EventArgs e)
         {
             EmptyBox1();
@@ -602,6 +585,8 @@ namespace Computer_Shop_Management_System.View
             }
 
         }
+        #endregion
+        #region constraint
         // cho phép nhập chữ và dấu không cho phép nhập ký tự đặc biệt và số
         private void txttProductName_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -649,5 +634,6 @@ namespace Computer_Shop_Management_System.View
         {
             e.Handled = true;
         }
+        #endregion
     }
 }

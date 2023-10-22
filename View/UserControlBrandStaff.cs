@@ -20,6 +20,7 @@ namespace Computer_Shop_Management_System.View
 
   
         private string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+        #region Method
         private void LoadBrandData()
         {
             try
@@ -71,6 +72,8 @@ namespace Computer_Shop_Management_System.View
                 }
             }
         }
+        #endregion
+        #region Event
         private void UserControlBrandStaff_Load(object sender, EventArgs e)
         {
             LoadBrandData();
@@ -81,5 +84,6 @@ namespace Computer_Shop_Management_System.View
             string searchName = txtTimkiemStaffBrand.Text;
             SearchBrand(searchName);
         }
+        #endregion
     }
 }

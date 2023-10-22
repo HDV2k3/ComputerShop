@@ -22,12 +22,50 @@ namespace Computer_Shop_Management_System.View
         {
             InitializeComponent();
         }
+        #region MEthod
+        private List<User> GetUserList()
+        {
+            List<User> users = new List<User>();
+
+            string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+
+            string query = "SELECT Users_Category_Id FROM dbo.[User]"; // Câu truy vấn SQL để lấy danh sách người dùng
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+
+                            string userCategoryId = reader["Users_Category_Id"].ToString();
+
+                            User user = new User
+                            {
+
+                                Users_Category_Id = userCategoryId
+                            };
+
+                            users.Add(user);
+                        }
+                    }
+                }
+            }
+
+            return users;
+        }
 
         public MainForm(User u)
         {
             User = u;
             InitializeComponent();
         }
+        #endregion
+        #region Event
         private void MovePanel(Control btn)
         {
            pnlDiChuyen.Top = btn.Top;
@@ -50,41 +88,7 @@ namespace Computer_Shop_Management_System.View
             }
         }
 
-        private List<User> GetUserList()
-        {
-            List<User> users = new List<User>();
 
-            string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
-
-            string query = "SELECT Users_Category_Id FROM dbo.[User]"; // Câu truy vấn SQL để lấy danh sách người dùng
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                          
-                            string userCategoryId = reader["Users_Category_Id"].ToString();
-
-                            User user = new User
-                            {
-                               
-                                Users_Category_Id = userCategoryId
-                            };
-
-                            users.Add(user);
-                        }
-                    }
-                }
-            }
-
-            return users;
-        }
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             
@@ -303,7 +307,7 @@ namespace Computer_Shop_Management_System.View
         {
             lblNgayVaGio.Text = DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss tt");
         }
+        #endregion
 
-        
     }
 }

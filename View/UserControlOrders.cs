@@ -47,26 +47,7 @@ namespace Computer_Shop_Management_System.View
             }
         }
 
-
-      
-        private void btninhoadon_Click(object sender, EventArgs e)
-        {
-            Receipt();
-            printPreviewDialog1.Document = printDocument1;
-            printDocument2.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("pprnm", 285, 600);
-            printPreviewDialog1.ShowDialog();
-        }
-
-        private void tpthemhoadon_Click(object sender, EventArgs e)
-        {
-            LoadOrdersData();
-        }
-
-      
-        private void tpluachon_Click(object sender, EventArgs e)
-        {
-            LoadOrdersData();
-        }
+        #region Method
         private void LoadOrdersData()
         {
             try
@@ -104,33 +85,11 @@ namespace Computer_Shop_Management_System.View
             }
 
         }
-
-        private void UserControlOrders_Load(object sender, EventArgs e)
-        {
-            txtmakhachhang.Text = "KH" + DateTime.Now.ToString("yyMMddhhmmss");
-            txtMaHoaDon.Text = "BILL" + DateTime.Now.ToString("yyMMddhhmmss");
-            dtpDate.Value = DateTime.Now;
-            cmbsanpham.Items.Clear();
-            cmbsanpham.Items.Add("---Chọn---");
-            cmbsanpham.SelectedIndex = 0;
-            LoadProductsToComboBox();
-            cmbtttt.Items.Clear();
-            cmbtttt.Items.Add("--Chọn--");
-            cmbtttt.SelectedIndex = 0;
-            LoadOrdersData();
-          
-           
-
-
-
-
-        }
-       
         private void LoadProductsToComboBox()
         {
             using (var context = new DataBase())
             {
-               
+
                 var products = context.Product.ToList();
 
                 // Lấy danh sách tên sản phẩm
@@ -140,8 +99,6 @@ namespace Computer_Shop_Management_System.View
                 cmbsanpham.Items.AddRange(productNames);
             }
         }
-
-   
         private DateTime GetDateTimeValue(object value)
         {
             if (value != null && value != DBNull.Value)
@@ -177,7 +134,7 @@ namespace Computer_Shop_Management_System.View
                 return 0; // Giá trị mặc định khi giá trị là DBNull hoặc null
             }
         }
-     
+
         private void ClearData()
         {
             dtgvOrder.Rows.Clear();
@@ -198,7 +155,7 @@ namespace Computer_Shop_Management_System.View
             txtGiamGia.Text = "";
             txttongcong.Text = "";
             txtTienThua.Text = "";
-        
+
 
         }
         private void AddClear()
@@ -215,7 +172,7 @@ namespace Computer_Shop_Management_System.View
             txtSoDienThoai.Text = string.Empty;
             txttenkhachhang.Text = string.Empty;
             dtpDate.Value = DateTime.Now;
-           
+
             cmbsanpham.SelectedItem = 0;
             cmbtttt.SelectedItem = "--Chọn--";
             txtGiaTien.Text = "";
@@ -252,7 +209,199 @@ namespace Computer_Shop_Management_System.View
 
             return availableQuantity;
         }
+        private decimal CalculateTotal()
+        {
+            int Total = 0;
+            foreach (DataGridViewRow rows in dtgvOrder.Rows)
+            {
+                Total += Convert.ToInt32(rows.Cells[3].Value);
+            }
+            txttongtien.Text = Total.ToString();
 
+            return Total;
+        }
+
+        private bool ValidateCategoryName(string CategoryName)
+        {
+            // Biểu thức chính quy để kiểm tra chuỗi không chứa ký tự đặc biệt và số
+            string pattern = @"^[\p{L}\s]+$";
+
+            Regex regex = new Regex(pattern);
+
+            return regex.IsMatch(CategoryName);
+        }
+        public void EmtyBox()
+        {
+            dtpDate.Value = DateTime.Now;
+            txttenkhachhang.Clear();
+            txtmakhachhang.Clear();
+            AddClear();
+            dtgvOrder.Rows.Clear();
+            txttongtien.Text = "0";
+            txttienphaitra.Text = "0";
+            txtTienThua.Text = "0";
+            txtGiamGia.Text = "0";
+            txttongcong.Text = "0";
+            cmbtttt.SelectedIndex = 0;
+            txtMaNhanVien.Text = string.Empty;
+
+        }
+        // trả về các box rỗng bên Quản Lý
+        public void EmtyBox1()
+        {
+            dtp2.Value = DateTime.Now;
+            txttenkhachhangop.Clear();
+            txttenkhachhangop.Clear();
+            txttongtienop.Text = "0";
+            txtTienThuaLC.Text = "0";
+            txttiennhankhachhang.Text = "0";
+            txtGiamGiaLC.Text = "0";
+            txttongcongop.Text = "0";
+            txtMaHoaDon1.Text = "";
+            txtMaKH.Text = "0";
+            cmbtrangthaiop.SelectedIndex = 0;
+            txtMaNhanVien1.Text = string.Empty;
+        }
+        RichTextBox richTextBox = new RichTextBox();
+        // Chức năng xuất hóa đơn
+        private void Receipt()
+        {
+            richTextBox.Clear();
+            richTextBox.Text += "\t              Computer Shop Management System\n";
+            richTextBox.Text += "**********************************************************************************************\n\n";
+            richTextBox.Text += "   Ngày Mua:" + dtpDate.Text + "\n";
+            richTextBox.Text += "   Mã Hóa Đơn:" + txtMaHoaDon.Text.Trim() + "\n";
+            richTextBox.Text += "   Tên Khách Hàng:" + txttenkhachhang.Text.Trim() + "\n";
+            richTextBox.Text += "   Mã Nhân Viên:" + txtMaNhanVien.Text.Trim() + "\n";
+            richTextBox.Text += "   Mã Khách Hàng:" + txtmakhachhang.Text.Trim() + "\n\n";
+            richTextBox.Text += "***********************************************************************************************\n\n";
+            richTextBox.Text += "Tên Sản Phẩm\t\tGiá\t\t      Số Lượng\t\t\tTổng Tiền\n";
+            for (int i = 0; i < dtgvOrder.Rows.Count; i++)
+            {
+                for (int j = 0; j < dtgvOrder.Columns.Count; j++)
+                {
+                    var cellValue = dtgvOrder.Rows[i].Cells[j].Value;
+                    if (cellValue != null)
+                    {
+                        richTextBox.Text += cellValue.ToString() + "    \t\t\t";
+                    }
+                    else
+                    {
+                        richTextBox.Text += "\t\t"; // Ô trống
+                    }
+
+                }
+                richTextBox.Text += "\n";
+            }
+
+            richTextBox.Text += "***********************************************************************************************\n\n ";
+            richTextBox.Text += "\t\t\t\t\t\t\t\tTổng Cộng: $ " + txttongtien.Text + "\n\n";
+            richTextBox.Text += "\t\t\t\t\t\t\t\tSố Tiền Đã Nhận: $" + txttienphaitra.Text + "\n\n";
+            richTextBox.Text += "\t\t\t\t\t\t\t\tGiảm Giá: $ " + txtGiamGia.Text + "\n\n";
+            richTextBox.Text += "\t\t\t\t\t\t\t\tTiền Thừa: $ " + txtTienThua.Text + "\n\n";
+            richTextBox.Text += "\t\t\t\t\t\t\t\t*********************\n\n ";
+            richTextBox.Text += "\t\t\t\t\t\t\t\tTổng Cộng: $ " + txttongcong.Text + "\n\n";
+        }
+        public void XoaHoaDon(string maHoaDon)
+        {
+            string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Xóa các bản ghi liên quan trong bảng OrderDetails trước
+                string deleteOrderDetailsQuery = "DELETE FROM OrderDetails WHERE Orders_Id = @MaHoaDon";
+                using (SqlCommand deleteOrderDetailsCommand = new SqlCommand(deleteOrderDetailsQuery, connection))
+                {
+                    deleteOrderDetailsCommand.Parameters.AddWithValue("@MaHoaDon", maHoaDon);
+                    deleteOrderDetailsCommand.ExecuteNonQuery();
+                }
+
+                // Tiếp tục xóa hóa đơn
+                string deleteOrderQuery = "DELETE FROM Orders WHERE Orders_Id = @MaHoaDon";
+                using (SqlCommand deleteOrderCommand = new SqlCommand(deleteOrderQuery, connection))
+                {
+                    deleteOrderCommand.Parameters.AddWithValue("@MaHoaDon", maHoaDon);
+                    int rowsAffected = deleteOrderCommand.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Hóa đơn " + txtMaHoaDon1.Text + " đã được xóa thành công.");
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy hóa đơn có mã: " + maHoaDon);
+                    }
+                    EmtyBox1();
+                }
+            }
+        }
+        private void SearchCustomer(string searchName)
+        {
+            string query = "SELECT Orders_Id,Users_Id, Order_Date, Customer_Name, Customer_Number, Total_Amout, Paid_Amout, Due_Amout, Discount, Grand_Total, StatusPayment FROM Orders WHERE Customer_Name LIKE @SearchName;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@SearchName", "%" + searchName + "%");
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        dtgvQL.DataSource = dataTable;
+
+                        lbltongsotien.Text = dataTable.Rows.Count.ToString();
+                    }
+                }
+            }
+        }
+        #endregion
+        #region Event
+        private void btninhoadon_Click(object sender, EventArgs e)
+        {
+            Receipt();
+            printPreviewDialog1.Document = printDocument1;
+            printDocument2.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("pprnm", 285, 600);
+            printPreviewDialog1.ShowDialog();
+        }
+
+        private void tpthemhoadon_Click(object sender, EventArgs e)
+        {
+            LoadOrdersData();
+        }
+
+      
+        private void tpluachon_Click(object sender, EventArgs e)
+        {
+            LoadOrdersData();
+        }
+       
+
+        private void UserControlOrders_Load(object sender, EventArgs e)
+        {
+            txtmakhachhang.Text = "KH" + DateTime.Now.ToString("yyMMddhhmmss");
+            txtMaHoaDon.Text = "BILL" + DateTime.Now.ToString("yyMMddhhmmss");
+            dtpDate.Value = DateTime.Now;
+            cmbsanpham.Items.Clear();
+            cmbsanpham.Items.Add("---Chọn---");
+            cmbsanpham.SelectedIndex = 0;
+            LoadProductsToComboBox();
+            cmbtttt.Items.Clear();
+            cmbtttt.Items.Add("--Chọn--");
+            cmbtttt.SelectedIndex = 0;
+            LoadOrdersData();
+          
+           
+
+
+
+
+        }
+             
         private void btnThem_Click(object sender, EventArgs e)
         {
 
@@ -311,31 +460,11 @@ namespace Computer_Shop_Management_System.View
             CalculateTotal();
            
         }
-        private decimal CalculateTotal()
-        {
-            int Total = 0;
-            foreach (DataGridViewRow rows in dtgvOrder.Rows)
-            {
-                Total += Convert.ToInt32(rows.Cells[3].Value);
-            }
-            txttongtien.Text = Total.ToString();
-
-            return Total;
-        }
-
-        
-        private bool ValidateCategoryName(string CategoryName)
-        {
-            // Biểu thức chính quy để kiểm tra chuỗi không chứa ký tự đặc biệt và số
-            string pattern = @"^[\p{L}\s]+$";
-
-            Regex regex = new Regex(pattern);
-
-            return regex.IsMatch(CategoryName);
-        }
-
+     
+      
         private void btnLuu_Click(object sender, EventArgs e)
         {
+            
             // Kiểm tra các điều kiện nhập liệu trước khi lưu
             if (!ValidateCategoryName(txttenkhachhang.Text.Trim()))
             {
@@ -355,6 +484,11 @@ namespace Computer_Shop_Management_System.View
             else if (txttienphaitra.Text.Trim() == string.Empty)
             {
                 MessageBox.Show("Vui lòng nhập số tiền nhận được từ khách hàng", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (dtpDate.Value > DateTime.Now || dtpDate.Value < DateTime.Now)
+            {
+                MessageBox.Show("Ngày Lập Không phù hợp", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -484,78 +618,7 @@ namespace Computer_Shop_Management_System.View
                 cmbsanpham.Text = "---Chọn---";
             }
         }
-        public void EmtyBox()
-        {
-            dtpDate.Value = DateTime.Now;
-            txttenkhachhang.Clear();
-            txtmakhachhang.Clear();
-            AddClear();
-            dtgvOrder.Rows.Clear();
-            txttongtien.Text = "0";
-            txttienphaitra.Text = "0";
-            txtTienThua.Text = "0";
-            txtGiamGia.Text = "0";
-            txttongcong.Text = "0";
-            cmbtttt.SelectedIndex = 0;
-            txtMaNhanVien.Text = string.Empty;
-
-        }
-        // trả về các box rỗng bên Quản Lý
-        public void EmtyBox1()
-        {
-            dtp2.Value = DateTime.Now;
-            txttenkhachhangop.Clear();
-            txttenkhachhangop.Clear();
-            txttongtienop.Text = "0";
-            txtTienThuaLC.Text = "0";
-            txttiennhankhachhang.Text = "0";
-            txtGiamGiaLC.Text = "0";
-            txttongcongop.Text = "0";
-            cmbtrangthaiop.SelectedIndex = 0;
-            txtMaNhanVien1.Text = string.Empty;
-
-        }
-        RichTextBox richTextBox = new RichTextBox();
-        // Chức năng xuất hóa đơn
-        private void Receipt()
-        {
-            richTextBox.Clear();
-            richTextBox.Text += "\t              Computer Shop Management System\n";
-            richTextBox.Text += "**********************************************************************************************\n\n";
-            richTextBox.Text += "   Ngày Mua:" + dtpDate.Text + "\n";
-            richTextBox.Text += "   Mã Hóa Đơn:" + txtMaHoaDon.Text.Trim() + "\n";
-            richTextBox.Text += "   Tên Khách Hàng:" + txttenkhachhang.Text.Trim() + "\n";
-            richTextBox.Text += "   Mã Nhân Viên:" + txtMaNhanVien.Text.Trim() + "\n";
-            richTextBox.Text += "   Mã Khách Hàng:" + txtmakhachhang.Text.Trim() + "\n\n";
-            richTextBox.Text += "***********************************************************************************************\n\n";
-            richTextBox.Text += "Tên Sản Phẩm\t\tGiá\t\t      Số Lượng\t\t\tTổng Tiền\n";
-            for (int i = 0; i < dtgvOrder.Rows.Count; i++)
-            {
-                for (int j = 0; j < dtgvOrder.Columns.Count; j++)
-                {
-                    var cellValue = dtgvOrder.Rows[i].Cells[j].Value;
-                    if (cellValue != null)
-                    {
-                        richTextBox.Text += cellValue.ToString() + "    \t\t\t";
-                    }
-                    else
-                    {
-                        richTextBox.Text += "\t\t"; // Ô trống
-                    }
-
-                }
-                richTextBox.Text += "\n";
-            }
-
-            richTextBox.Text += "***********************************************************************************************\n\n ";
-            richTextBox.Text += "\t\t\t\t\t\t\t\tTổng Cộng: $ " + txttongtien.Text + "\n\n";
-            richTextBox.Text += "\t\t\t\t\t\t\t\tSố Tiền Đã Nhận: $" + txttienphaitra.Text + "\n\n";
-            richTextBox.Text += "\t\t\t\t\t\t\t\tGiảm Giá: $ " + txtGiamGia.Text + "\n\n";
-            richTextBox.Text += "\t\t\t\t\t\t\t\tTiền Thừa: $ " + txtTienThua.Text + "\n\n";
-            richTextBox.Text += "\t\t\t\t\t\t\t\t*********************\n\n ";
-            richTextBox.Text += "\t\t\t\t\t\t\t\tTổng Cộng: $ " + txttongcong.Text + "\n\n";
-        }
-       
+ 
         private void txtTienThua_KeyPress(object sender, KeyPressEventArgs e)
         {
             // chặn ký tự nhập vào
@@ -671,39 +734,7 @@ namespace Computer_Shop_Management_System.View
             e.Graphics.DrawString(richTextBox.Text, new Font("Segoe UI", 6, FontStyle.Regular), Brushes.Black, new Point(10, 10));
         }
 
-        public void XoaHoaDon(string maHoaDon)
-        {
-            string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
 
-                // Xóa các bản ghi liên quan trong bảng OrderDetails trước
-                string deleteOrderDetailsQuery = "DELETE FROM OrderDetails WHERE Orders_Id = @MaHoaDon";
-                using (SqlCommand deleteOrderDetailsCommand = new SqlCommand(deleteOrderDetailsQuery, connection))
-                {
-                    deleteOrderDetailsCommand.Parameters.AddWithValue("@MaHoaDon", maHoaDon);
-                    deleteOrderDetailsCommand.ExecuteNonQuery();
-                }
-
-                // Tiếp tục xóa hóa đơn
-                string deleteOrderQuery = "DELETE FROM Orders WHERE Orders_Id = @MaHoaDon";
-                using (SqlCommand deleteOrderCommand = new SqlCommand(deleteOrderQuery, connection))
-                {
-                    deleteOrderCommand.Parameters.AddWithValue("@MaHoaDon", maHoaDon);
-                    int rowsAffected = deleteOrderCommand.ExecuteNonQuery();
-                    if (rowsAffected > 0)
-                    {
-                        MessageBox.Show("Hóa đơn "+txtMaHoaDon1.Text+" đã được xóa thành công.");
-                        EmtyBox1();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Không tìm thấy hóa đơn có mã: " + maHoaDon);
-                    }
-                }
-            }
-        }
         private void btnxoa_Click(object sender, EventArgs e)
         {
             XoaHoaDon(txtMaHoaDon1.Text.Trim());
@@ -723,7 +754,7 @@ namespace Computer_Shop_Management_System.View
                     {
                         object cellValue = row.Cells[columnIndex].Value;
 
-                        if (cellValue != DBNull.Value)
+                        if (cellValue != null)
                         {
                             if (columnIndex == 0)
                                 txtMaHoaDon1.Text = cellValue.ToString();
@@ -774,29 +805,7 @@ namespace Computer_Shop_Management_System.View
             // chặn ký tự nhập vào
             e.Handled = true;
         }
-        private void SearchCustomer(string searchName)
-        {
-            string query = "SELECT Orders_Id,Users_Id, Order_Date, Customer_Name, Customer_Number, Total_Amout, Paid_Amout, Due_Amout, Discount, Grand_Total, StatusPayment FROM Orders WHERE Customer_Name LIKE @SearchName;";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@SearchName", "%" + searchName + "%");
-
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                    {
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-                        dtgvQL.DataSource = dataTable;
-
-                        lbltongsotien.Text = dataTable.Rows.Count.ToString();
-                    }
-                }
-            }
-        }
 
 
 
@@ -919,7 +928,8 @@ namespace Computer_Shop_Management_System.View
 
 
         }
-
+        #endregion
+        #region constraint
         private void txtSoDienThoai_TextChanged(object sender, EventArgs e)
         {
             if (txtSoDienThoai.Text.Length == 10)
@@ -986,10 +996,6 @@ namespace Computer_Shop_Management_System.View
                 e.Handled = true; // Vô hiệu hóa sự kiện Paste
             }
         }
-
-        
-     
-      
 
         private void txtmakhachhang_KeyDown(object sender, KeyEventArgs e)
         {
@@ -1091,5 +1097,6 @@ namespace Computer_Shop_Management_System.View
 
             cmbtttt.SelectedIndex = 0;
         }
+        #endregion
     }
 }

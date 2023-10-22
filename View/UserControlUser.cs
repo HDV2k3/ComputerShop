@@ -23,15 +23,7 @@ namespace Computer_Shop_Management_System.View
         {
             InitializeComponent();
         }
-
-       
-
-        private void tpQuanLyNguoiDung_Click(object sender, EventArgs e)
-        {
-            LoadDataUser();
-        }
-
-       
+        #region Method
         private void LoadComboBoxLoaiTK()
         {
          
@@ -132,6 +124,20 @@ namespace Computer_Shop_Management_System.View
             txtEmail.Text = string.Empty;
             cmbLoaiTK.SelectedIndex = 0;
         }
+        private void EmptyBox1()
+        {
+            txtMatKhau1.Text = string.Empty;
+            txtEmail1.Text = string.Empty;
+            txtTenNguoiDung1.Text = string.Empty;
+            cmbLoaiTKlc.SelectedIndex = -1;
+        }
+        #endregion
+        #region Event
+        private void tpQuanLyNguoiDung_Click(object sender, EventArgs e)
+        {
+            LoadDataUser();
+        }
+
         private void btnThem_Click(object sender, EventArgs e)
         {
             if (!ValidateUserName(txtTenNguoiDung.Text.Trim()))
@@ -184,13 +190,7 @@ namespace Computer_Shop_Management_System.View
                 }
             }
         }
-        private void EmptyBox1()
-        {
-            txtMatKhau1.Text = string.Empty;
-            txtEmail1.Text = string.Empty;
-            txtTenNguoiDung1.Text = string.Empty;
-            cmbLoaiTKlc.SelectedIndex = -1;
-        }
+  
         private void btnThayDoi_Click(object sender, EventArgs e)
         {
             if (txtTenNguoiDung1.Text.Trim() == string.Empty)
@@ -350,5 +350,6 @@ namespace Computer_Shop_Management_System.View
         {
             e.Handled = true;
         }
+        #endregion
     }
 }
