@@ -48,10 +48,11 @@ namespace Computer_Shop_Management_System.View
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
+                MessageBox.Show("Alo Coder:việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
 
         }
         private void SearchProduct(string searchName)
@@ -86,8 +87,18 @@ namespace Computer_Shop_Management_System.View
 
         private void txtTimKiemSanPhamStaff_TextChanged(object sender, EventArgs e)
         {
-            SearchProduct(txtTimKiemSanPhamStaff.Text.Trim());
+            try
+            {
+                SearchProduct(txtTimKiemSanPhamStaff.Text.Trim());
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Alo Coder:việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
         #endregion
+
+
     }
 }

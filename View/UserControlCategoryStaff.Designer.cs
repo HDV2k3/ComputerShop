@@ -78,7 +78,7 @@
             this.dgvLoaiStaff.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLoaiStaff.Size = new System.Drawing.Size(857, 268);
             this.dgvLoaiStaff.TabIndex = 2;
-            // 
+          
             // txtTimKiemLoaiStaff
             // 
             this.txtTimKiemLoaiStaff.Anchor = System.Windows.Forms.AnchorStyles.None;

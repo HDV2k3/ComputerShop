@@ -38,9 +38,9 @@ namespace Computer_Shop_Management_System.View
                     lblTongNhanVienStaff.Text = dgvUsersStaff.Rows.Count.ToString();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
+                MessageBox.Show("Alo coder Việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void SearchUser(string searchName)
@@ -75,7 +75,14 @@ namespace Computer_Shop_Management_System.View
 
         private void txtTimKiemThuongHieuStaff_TextChanged(object sender, EventArgs e)
         {
-            SearchUser(txtTimKiemThuongHieuStaff.Text.Trim());
+            try
+            {
+                SearchUser(txtTimKiemThuongHieuStaff.Text.Trim());
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Alo coder Việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         #endregion
     }

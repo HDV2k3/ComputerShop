@@ -30,31 +30,39 @@ namespace Computer_Shop_Management_System.View
         #region Method
         void GetFile()
         {
-            System.Windows.Forms.OpenFileDialog openImage = new OpenFileDialog();
-            openImage.Title = "Select your image";
-            openImage.InitialDirectory = "C:";
-            openFileDialog.Filter = "Image Only (.jpg; *.jpeg; *.gif; *.bmp; *.png)|.jpg; *.jpeg; *.gif; *.bmp; *.png|All Files (*.*)|*.*";
-            openImage.AutoUpgradeEnabled = true;
-            if (openImage.ShowDialog() == DialogResult.OK)
+            try
             {
-                string Chosen_File = openImage.FileName;
+                System.Windows.Forms.OpenFileDialog openImage = new OpenFileDialog();
+                openImage.Title = "Select your image";
+                openImage.InitialDirectory = "C:\\Users\\DELL\\Desktop\\backupFile20\\Computer Shop Management System\\Images";
+                openFileDialog.Filter = "Image Only (.jpg; *.jpeg; *.gif; *.bmp; *.png)|.jpg; *.jpeg; *.gif; *.bmp; *.png|All Files (*.*)|*.*";
+                openImage.AutoUpgradeEnabled = true;
+                if (openImage.ShowDialog() == DialogResult.OK)
+                {
+                    string Chosen_File = openImage.FileName;
 
-                string filename = System.IO.Path.GetFileName(Chosen_File);
-                string inputExt = (Path.GetExtension(filename).ToLower());
-                try
-                {
-                    System.IO.File.Copy(Chosen_File, @"..\..Computer Shop Management System\Images" + filename);
-                }
-                catch
-                {
-                }
-                Invoke((MethodInvoker)delegate
-                {
+                    string filename = System.IO.Path.GetFileName(Chosen_File);
+                    string inputExt = (Path.GetExtension(filename).ToLower());
+                    try
+                    {
+                        System.IO.File.Copy(Chosen_File, @"..\..Computer Shop Management System\Images" + filename);
+                    }
+                    catch
+                    {
+                    }
+                    Invoke((MethodInvoker)delegate
+                    {
 
-                    picPhoto.Image = new Bitmap(Chosen_File);
-                    picPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
-                });
+                        picPhoto.Image = new Bitmap(Chosen_File);
+                        picPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
+                    });
+                }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Alo Coder:việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
         private void ImageUpLoad(PictureBox picture)
         {
@@ -220,8 +228,16 @@ namespace Computer_Shop_Management_System.View
         #region Event
         private void btnDuyetSanPham_Click(object sender, EventArgs e)
         {
-            //mageUpLoad(picPhoto);
-            GetFile();
+            try
+            {
+                //mageUpLoad(picPhoto);
+                GetFile();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Alo Coder:việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
         private void btnDuyetSanPham1_Click(object sender, EventArgs e)
         {
@@ -246,58 +262,66 @@ namespace Computer_Shop_Management_System.View
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (txttProductName.Text.Trim() == string.Empty)
+            try
             {
-                MessageBox.Show("Hãy nhập tên sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (picPhoto.Image == null) // Kiểm tra hình ảnh
-            {
-                MessageBox.Show("Hãy chọn hình ảnh sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (txtGiaTien.Text.Trim() == string.Empty || Convert.ToInt32(txtGiaTien.Text) == 0)
-            {
-                MessageBox.Show("Hãy nhập giá sản phẩm(Giá sản phẩm không thể bằng 0!).", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (nudSoLuong.Text.Trim() == string.Empty || nudSoLuong.Value == 0)
-            {
-                MessageBox.Show("Hãy nhập số lượng sản phẩm(Số lượng sản phẩm không thể bằng 0!).", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (cmbThuongHieu.SelectedIndex == 0)
-            {
-                MessageBox.Show("Hãy nhập thương hiệu sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (cmbLoai.SelectedIndex == 0)
-            {
-                MessageBox.Show("Hãy nhập loại sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (cmbTrangThai.SelectedIndex == 0)
-            {
-                MessageBox.Show("Hãy nhập trạng thái sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else
-            {
-                if (CheckTen(txttProductName.Text))
+                if (txttProductName.Text.Trim() == string.Empty)
                 {
-                    MessageBox.Show("Tên đã trùng, vui lòng nhập tên khác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txttProductName.Text = string.Empty;
+                    MessageBox.Show("Hãy nhập tên sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (picPhoto.Image == null) // Kiểm tra hình ảnh
+                {
+                    MessageBox.Show("Hãy chọn hình ảnh sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (txtGiaTien.Text.Trim() == string.Empty || Convert.ToInt32(txtGiaTien.Text) == 0)
+                {
+                    MessageBox.Show("Hãy nhập giá sản phẩm(Giá sản phẩm không thể bằng 0!).", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (nudSoLuong.Text.Trim() == string.Empty || nudSoLuong.Value == 0)
+                {
+                    MessageBox.Show("Hãy nhập số lượng sản phẩm(Số lượng sản phẩm không thể bằng 0!).", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (cmbThuongHieu.SelectedIndex == 0)
+                {
+                    MessageBox.Show("Hãy nhập thương hiệu sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (cmbLoai.SelectedIndex == 0)
+                {
+                    MessageBox.Show("Hãy nhập loại sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (cmbTrangThai.SelectedIndex == 0)
+                {
+                    MessageBox.Show("Hãy nhập trạng thái sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
                 else
                 {
-                    Product product = new Product(txttProductName.Text.Trim(), (byte[])imageConverter.ConvertTo(picPhoto.Image, typeof(byte[])), Convert.ToInt32(txtGiaTien.Text), Convert.ToInt32(nudSoLuong.Text), cmbThuongHieu.SelectedItem.ToString(), cmbLoai.SelectedItem.ToString(), cmbTrangThai.SelectedItem.ToString());
-                    ProductController.AddProduct(product);
-                    EmptyBox();
-                    MessageBox.Show("Thêm Sản Phẩm " + txttProductName.Text + " thành công", "Thông báo");
-                    LoadDgvSanPham();
+                    if (CheckTen(txttProductName.Text))
+                    {
+                        MessageBox.Show("Tên đã trùng, vui lòng nhập tên khác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txttProductName.Text = string.Empty;
+                        return;
+                    }
+                    else
+                    {
+                        Product product = new Product(txttProductName.Text.Trim(), (byte[])imageConverter.ConvertTo(picPhoto.Image, typeof(byte[])), Convert.ToInt32(txtGiaTien.Text), Convert.ToInt32(nudSoLuong.Text), cmbThuongHieu.SelectedItem.ToString(), cmbLoai.SelectedItem.ToString(), cmbTrangThai.SelectedItem.ToString());
+                        ProductController.AddProduct(product);
+                        EmptyBox();
+                        MessageBox.Show("Thêm Sản Phẩm " + txttProductName.Text + " thành công", "Thông báo");
+                        LoadDgvSanPham();
+                    }
                 }
             }
+            catch(Exception)
+            {
+                MessageBox.Show("Alo Coder:việt 0329615309 để update","sorry",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+           
         }
         private void picTimKiem_Click(object sender, EventArgs e)
         {
@@ -305,113 +329,137 @@ namespace Computer_Shop_Management_System.View
         }
         private void txtTimKiemSanPham_TextChanged(object sender, EventArgs e)
         {
-            string searchName = txtTimKiemSanPham.Text;
-            SearchProduct(searchName);
+            try
+            {
+                string searchName = txtTimKiemSanPham.Text;
+                SearchProduct(searchName);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Alo Coder:việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtTenSanPham1.Text))
+            try
             {
-                MessageBox.Show("Hãy nhập tên sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (string.IsNullOrWhiteSpace(txtGiaTien1.Text))
-            {
-                MessageBox.Show("Hãy nhập giá tiền sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (string.IsNullOrWhiteSpace(nudSoLuong1.Text))
-            {
-                MessageBox.Show("Hãy nhập số lượng sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (cmbThuongHieu1.SelectedIndex <= 0)
-            {
-                MessageBox.Show("Hãy nhập thương hiệu sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (cmbLoai1.SelectedIndex <= 0)
-            {
-                MessageBox.Show("Hãy nhập loại sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (cmbTrangThai1.SelectedIndex <= 0)
-            {
-                MessageBox.Show("Hãy nhập trạng thái sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn Sản Phẩm " + txtTenSanPham1.Text + "!", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dialogResult == DialogResult.Yes)
+                if (string.IsNullOrWhiteSpace(txtTenSanPham1.Text))
                 {
-                    ProductController.RemoveProduct1(txtTenSanPham1.Text);
-                    MessageBox.Show("Xóa Sản Phẩm " + txtTenSanPham1.Text + " Thành Công ");
-                    EmptyBox1(); // Đặt các controls về giá trị mặc định
-                    tpProduct.SelectedTab = tpQuanLySanPham;
-                    LoadDgvSanPham();
+                    MessageBox.Show("Hãy nhập tên sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (string.IsNullOrWhiteSpace(txtGiaTien1.Text))
+                {
+                    MessageBox.Show("Hãy nhập giá tiền sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (string.IsNullOrWhiteSpace(nudSoLuong1.Text))
+                {
+                    MessageBox.Show("Hãy nhập số lượng sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (cmbThuongHieu1.SelectedIndex <= 0)
+                {
+                    MessageBox.Show("Hãy nhập thương hiệu sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (cmbLoai1.SelectedIndex <= 0)
+                {
+                    MessageBox.Show("Hãy nhập loại sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (cmbTrangThai1.SelectedIndex <= 0)
+                {
+                    MessageBox.Show("Hãy nhập trạng thái sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn Sản Phẩm " + txtTenSanPham1.Text + "!", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        ProductController.RemoveProduct1(txtTenSanPham1.Text);
+                        MessageBox.Show("Xóa Sản Phẩm " + txtTenSanPham1.Text + " Thành Công ");
+                        EmptyBox1(); // Đặt các controls về giá trị mặc định
+                        tpProduct.SelectedTab = tpQuanLySanPham;
+                        LoadDgvSanPham();
 
+                    }
                 }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Alo Coder:việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
         private void btnThayDoi_Click(object sender, EventArgs e)
         {
-            if (txtTenSanPham1.Text.Trim() == string.Empty)
+            try
             {
-                MessageBox.Show("Hãy nhập tên sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (txtGiaTien.Text.Trim() == string.Empty || Convert.ToInt32(txtGiaTien1.Text) == 0)
-            {
-                MessageBox.Show("Hãy nhập giá sản phẩm(Giá sản phẩm không thể bằng 0!).", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (nudSoLuong.Text.Trim() == string.Empty || nudSoLuong1.Value == 0)
-            {
-                MessageBox.Show("Hãy nhập số lượng sản phẩm(Số lượng sản phẩm không thể bằng 0!).", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (cmbThuongHieu1.SelectedIndex == 0)
-            {
-                MessageBox.Show("Hãy nhập thương hiệu sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (cmbLoai1.SelectedIndex == 0)
-            {
-                MessageBox.Show("Hãy nhập loại sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (cmbTrangThai1.SelectedIndex == 0)
-            {
-                MessageBox.Show("Hãy nhập trạng thái sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else
-            {
-                using (var context = new DataBase())
+                if (txtTenSanPham1.Text.Trim() == string.Empty)
                 {
-                    var productToUpdate = context.Product.FirstOrDefault(p => p.Product_Name.Equals(txtTenSanPham1.Text)); // Thay id bằng giá trị tương ứng
-
-
-                    if (CheckTen(productToUpdate.Product_Name) == true)
-                    {
-                        // Cập nhật các thuộc tính của đối tượng với giá trị từ controls
-                        productToUpdate.Product_Name = txtTenSanPham1.Text;
-                        productToUpdate.Product_Rate = int.Parse(txtGiaTien1.Text);
-                        productToUpdate.Product_Quantity = int.Parse(nudSoLuong1.Value.ToString());
-                        productToUpdate.Product_Brand = cmbThuongHieu1.SelectedItem.ToString();
-                        productToUpdate.Product_Category = cmbLoai1.SelectedItem.ToString();
-                        productToUpdate.Product_Stastus = cmbTrangThai1.SelectedItem.ToString();
-
-                        // Lưu các thay đổi vào cơ sở dữ liệu
-                        context.SaveChanges();
-                        txtTenSanPham1.Enabled = true;
-                        EmptyBox1();
-                        MessageBox.Show("Cập nhật sản phẩm thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadDgvSanPham();
-                        tpProduct.SelectedTab = tpQuanLySanPham;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Không tìm thấy sản phẩm trong dữ liệu .", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    MessageBox.Show("Hãy nhập tên sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
-               
+                else if (txtGiaTien.Text.Trim() == string.Empty || Convert.ToInt32(txtGiaTien1.Text) == 0)
+                {
+                    MessageBox.Show("Hãy nhập giá sản phẩm(Giá sản phẩm không thể bằng 0!).", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (nudSoLuong.Text.Trim() == string.Empty || nudSoLuong1.Value == 0)
+                {
+                    MessageBox.Show("Hãy nhập số lượng sản phẩm(Số lượng sản phẩm không thể bằng 0!).", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (cmbThuongHieu1.SelectedIndex == 0)
+                {
+                    MessageBox.Show("Hãy nhập thương hiệu sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (cmbLoai1.SelectedIndex == 0)
+                {
+                    MessageBox.Show("Hãy nhập loại sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (cmbTrangThai1.SelectedIndex == 0)
+                {
+                    MessageBox.Show("Hãy nhập trạng thái sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    using (var context = new DataBase())
+                    {
+                        var productToUpdate = context.Product.FirstOrDefault(p => p.Product_Name.Equals(txtTenSanPham1.Text)); // Thay id bằng giá trị tương ứng
+
+
+                        if (CheckTen(productToUpdate.Product_Name) == true)
+                        {
+                            // Cập nhật các thuộc tính của đối tượng với giá trị từ controls
+                            productToUpdate.Product_Name = txtTenSanPham1.Text;
+                            productToUpdate.Product_Rate = int.Parse(txtGiaTien1.Text);
+                            productToUpdate.Product_Quantity = int.Parse(nudSoLuong1.Value.ToString());
+                            productToUpdate.Product_Brand = cmbThuongHieu1.SelectedItem.ToString();
+                            productToUpdate.Product_Category = cmbLoai1.SelectedItem.ToString();
+                            productToUpdate.Product_Stastus = cmbTrangThai1.SelectedItem.ToString();
+
+                            // Lưu các thay đổi vào cơ sở dữ liệu
+                            context.SaveChanges();
+                            txtTenSanPham1.Enabled = true;
+                            EmptyBox1();
+                            MessageBox.Show("Cập nhật sản phẩm thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadDgvSanPham();
+                            tpProduct.SelectedTab = tpQuanLySanPham;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không tìm thấy sản phẩm trong dữ liệu .", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+
+                }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Alo Coder:việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
         private void txtTenSanPham1_TextChanged(object sender, EventArgs e)
         {
@@ -535,55 +583,60 @@ namespace Computer_Shop_Management_System.View
 
         private void dgvSanPham_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            if (e.RowIndex >= 0 && e.RowIndex < dgvSanPham.Rows.Count)
+            try
             {
-                tpProduct.SelectedTab = tpLuaChon;
-                DataGridViewRow row = dgvSanPham.Rows[e.RowIndex];
+                if (e.RowIndex >= 0 && e.RowIndex < dgvSanPham.Rows.Count)
+                {
+                    tpProduct.SelectedTab = tpLuaChon;
+                    DataGridViewRow row = dgvSanPham.Rows[e.RowIndex];
 
-                // Đảm bảo chỉ số cột hợp lệ
-                if (row.Cells.Count > 1)
-                {
-                    // Đổ dữ liệu vào các controls
-                    txtTenSanPham1.Text = row.Cells[1].Value?.ToString();
-                }
-                if (row.Cells.Count > 3)
-                {
-                    txtGiaTien1.Text = row.Cells[3].Value?.ToString();
-                }
-                if (row.Cells.Count > 4)
-                {
-                    nudSoLuong1.Value = Convert.ToDecimal(row.Cells[4].Value);
-                }
-                if (row.Cells.Count > 5)
-                {
-                    cmbThuongHieu1.SelectedItem = row.Cells[5].Value?.ToString();
-                }
-                if (row.Cells.Count > 6)
-                {
-                    cmbLoai1.SelectedItem = row.Cells[6].Value?.ToString();
-                }
-                if (row.Cells.Count > 7)
-                {
-                    cmbTrangThai1.SelectedItem = row.Cells[7].Value?.ToString();
-                }
-
-                // Kiểm tra và hiển thị hình ảnh từ cột "2"
-                if (row.Cells.Count > 2 && row.Cells[2].Value != DBNull.Value)
-                {
-                    byte[] imageData = (byte[])row.Cells[2].Value;
-                    using (MemoryStream memoryStream = new MemoryStream(imageData))
+                    // Đảm bảo chỉ số cột hợp lệ
+                    if (row.Cells.Count > 1)
                     {
-                        picPhoto1.Image = Image.FromStream(memoryStream);
+                        // Đổ dữ liệu vào các controls
+                        txtTenSanPham1.Text = row.Cells[1].Value?.ToString();
+                    }
+                    if (row.Cells.Count > 3)
+                    {
+                        txtGiaTien1.Text = row.Cells[3].Value?.ToString();
+                    }
+                    if (row.Cells.Count > 4)
+                    {
+                        nudSoLuong1.Value = Convert.ToDecimal(row.Cells[4].Value);
+                    }
+                    if (row.Cells.Count > 5)
+                    {
+                        cmbThuongHieu1.SelectedItem = row.Cells[5].Value?.ToString();
+                    }
+                    if (row.Cells.Count > 6)
+                    {
+                        cmbLoai1.SelectedItem = row.Cells[6].Value?.ToString();
+                    }
+                    if (row.Cells.Count > 7)
+                    {
+                        cmbTrangThai1.SelectedItem = row.Cells[7].Value?.ToString();
+                    }
+
+                    // Kiểm tra và hiển thị hình ảnh từ cột "2"
+                    if (row.Cells.Count > 2 && row.Cells[2].Value != DBNull.Value)
+                    {
+                        byte[] imageData = (byte[])row.Cells[2].Value;
+                        using (MemoryStream memoryStream = new MemoryStream(imageData))
+                        {
+                            picPhoto1.Image = Image.FromStream(memoryStream);
+                        }
+                    }
+                    else
+                    {
+                        // Nếu cột 2 không có giá trị, hiển thị hình ảnh mặc định
+                        picPhoto1.Image = Properties.Resources.plus;
                     }
                 }
-                else
-                {
-                    // Nếu cột 2 không có giá trị, hiển thị hình ảnh mặc định
-                    picPhoto1.Image = Properties.Resources.plus;
-                }
             }
-
+            catch (Exception)
+            {
+                MessageBox.Show("Alo Coder:việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         #endregion
         #region constraint

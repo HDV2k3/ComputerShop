@@ -154,7 +154,6 @@ C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\obj\Debug\Com
 C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.FormForgotPass.resources
 C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.PAL.FormLogin.resources
 C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.Properties.Resources.resources
-C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.Report.resources
 C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.MainForm.resources
 C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlBrand.resources
 C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlCategory.resources
@@ -181,3 +180,4 @@ C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\obj\Debug\Com
 C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlCategoryStaff.resources
 C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlProductStaff.resources
 C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlUserStaff.resources
+C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\bin\Debug\ConsoleTables.dll

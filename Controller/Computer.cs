@@ -77,11 +77,10 @@ namespace Computer_Shop_Management_System.Controller
             return string.Empty;
         }
 
-
-
         // lưu vào cơ sở dữ liệu 
         public static void SaveOrder(Orders orders)
         {
+            
             using (var context = new DataBase())
             {
 
@@ -95,14 +94,11 @@ namespace Computer_Shop_Management_System.Controller
                 }
                 catch (Exception)
                 {
-                    throw;
-                    // Xử lý ngoại lệ hoặc ghi nhật ký lỗi tùy theo yêu cầu của bạn
+                    MessageBox.Show("Alo coder Việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                  
                 }
             }
         }
-
-
-
 
         // query đếm sản phẩm
         public static int CountProducts(string query)

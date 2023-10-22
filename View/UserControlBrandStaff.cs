@@ -81,8 +81,17 @@ namespace Computer_Shop_Management_System.View
 
         private void txtTimkiemStaffBrand_TextChanged(object sender, EventArgs e)
         {
-            string searchName = txtTimkiemStaffBrand.Text;
-            SearchBrand(searchName);
+            try
+            {
+                string searchName = txtTimkiemStaffBrand.Text;
+                SearchBrand(searchName);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi Hệ Thống Cần Được Bảo Dưỡng Sửa Chữa Để Tiếp Tục Thực Hiện Chứ Năng Này!", "Xin Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+          
         }
         #endregion
     }

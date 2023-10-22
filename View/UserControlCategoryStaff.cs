@@ -38,37 +38,45 @@ namespace Computer_Shop_Management_System.View
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
+                MessageBox.Show("Alo Coder:0329615309 để được update hệ thống","Sorry",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
 
         }
         private void SearchCategory(string searchName)
         {
-            string query = "SELECT Category_Id,Category_Name,Category_Status FROM Category WHERE Category_Name LIKE @SearchName;";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                connection.Open();
+                string query = "SELECT Category_Id,Category_Name,Category_Status FROM Category WHERE Category_Name LIKE @SearchName;";
 
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    command.Parameters.AddWithValue("@SearchName", "%" + searchName + "%");
+                    connection.Open();
 
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-                        dgvLoaiStaff.DataSource = dataTable;
-                        dgvLoaiStaff.Columns["Category_Id"].HeaderText = "Mã Loại";
-                        dgvLoaiStaff.Columns["Category_Name"].HeaderText = "Tên Loại";
-                        dgvLoaiStaff.Columns["Category_Status"].HeaderText = "Trạng Thái";
+                        command.Parameters.AddWithValue("@SearchName", "%" + searchName + "%");
 
-                        lblTongSoLoaiStaff.Text = dgvLoaiStaff.Rows.Count.ToString();
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            DataTable dataTable = new DataTable();
+                            adapter.Fill(dataTable);
+                            dgvLoaiStaff.DataSource = dataTable;
+                            dgvLoaiStaff.Columns["Category_Id"].HeaderText = "Mã Loại";
+                            dgvLoaiStaff.Columns["Category_Name"].HeaderText = "Tên Loại";
+                            dgvLoaiStaff.Columns["Category_Status"].HeaderText = "Trạng Thái";
+
+                            lblTongSoLoaiStaff.Text = dgvLoaiStaff.Rows.Count.ToString();
+                        }
                     }
                 }
             }
+            catch (Exception )
+            {
+                MessageBox.Show("Alo Coder:0329615309 để được update hệ thống", "Sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
         #endregion
         #region Event
@@ -81,5 +89,7 @@ namespace Computer_Shop_Management_System.View
             SearchCategory(txtTimKiemLoaiStaff.Text.Trim());
         }
         #endregion
+
+        
     }
 }

@@ -40,46 +40,62 @@ namespace Computer_Shop_Management_System.Controller
 
         public static void DisplayAndSearch(string query, DataGridView dgv)
         {
-            // Thay đổi chuỗi kết nối của bạn tới cơ sở dữ liệu của bạn
-            string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                connection.Open();
+                // Thay đổi chuỗi kết nối của bạn tới cơ sở dữ liệu của bạn
+                string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
 
-                using (SqlCommand cmd = new SqlCommand(query, connection))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
-                    {
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
+                    connection.Open();
 
-                        // Đặt dữ liệu vào DataGridView
-                        dgv.DataSource = dataTable;
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                        {
+                            DataTable dataTable = new DataTable();
+                            adapter.Fill(dataTable);
+
+                            // Đặt dữ liệu vào DataGridView
+                            dgv.DataSource = dataTable;
+                        }
                     }
                 }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Alo coder Việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
             }
         }
 
         public static void RemoveProduct1(string productName)
         {
-            using (var context = new DataBase()) // Thay YourDbContext bằng tên DbContext của bạn
+            try
             {
-                // Tìm sản phẩm theo tên sản phẩm
-                var productToRemove = context.Product.FirstOrDefault(p => p.Product_Name == productName);
-
-                if (productToRemove != null)
+                using (var context = new DataBase()) // Thay YourDbContext bằng tên DbContext của bạn
                 {
-                    // Xóa sản phẩm nếu tồn tại
-                    context.Product.Remove(productToRemove);
+                    // Tìm sản phẩm theo tên sản phẩm
+                    var productToRemove = context.Product.FirstOrDefault(p => p.Product_Name == productName);
 
-                    // Lưu các thay đổi vào cơ sở dữ liệu
-                    context.SaveChanges();
+                    if (productToRemove != null)
+                    {
+                        // Xóa sản phẩm nếu tồn tại
+                        context.Product.Remove(productToRemove);
+
+                        // Lưu các thay đổi vào cơ sở dữ liệu
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Không tìm thấy sản phẩm với tên '{productName}' trong cơ sở dữ liệu.");
+                    }
                 }
-                else
-                {
-                    Console.WriteLine($"Không tìm thấy sản phẩm với tên '{productName}' trong cơ sở dữ liệu.");
-                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Alo coder Việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               
             }
         }
 
@@ -87,23 +103,31 @@ namespace Computer_Shop_Management_System.Controller
 
         public static void RemoveProduct(string id)
         {
-            using (var context = new DataBase()) // Thay YourDbContext bằng tên DbContext của bạn
+            try
             {
-                // Tìm sản phẩm theo ID
-                var productToRemove = context.Product.FirstOrDefault(p => p.Product_Name == id);
-
-                if (productToRemove != null)
+                using (var context = new DataBase()) // Thay YourDbContext bằng tên DbContext của bạn
                 {
-                    // Xóa sản phẩm nếu tồn tại
-                    context.Product.Remove(productToRemove);
+                    // Tìm sản phẩm theo ID
+                    var productToRemove = context.Product.FirstOrDefault(p => p.Product_Name == id);
 
-                    // Lưu các thay đổi vào cơ sở dữ liệu
-                    context.SaveChanges();
+                    if (productToRemove != null)
+                    {
+                        // Xóa sản phẩm nếu tồn tại
+                        context.Product.Remove(productToRemove);
+
+                        // Lưu các thay đổi vào cơ sở dữ liệu
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Không tìm thấy sản phẩm với ID '{id}' trong cơ sở dữ liệu.");
+                    }
                 }
-                else
-                {
-                    Console.WriteLine($"Không tìm thấy sản phẩm với ID '{id}' trong cơ sở dữ liệu.");
-                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Alo coder Việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
             }
         }
 
@@ -130,17 +154,13 @@ namespace Computer_Shop_Management_System.Controller
                     }
                 }
             }
-            catch (DbEntityValidationException ex)
+            catch (Exception)
             {
-                foreach (var validationErrors in ex.EntityValidationErrors)
-                {
-                    foreach (var validationError in validationErrors.ValidationErrors)
-                    {
-                        Console.WriteLine($"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
-                    }
-                }
+                MessageBox.Show("Alo coder Việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               
             }
         }
+    
         /*internal static void UpdateProduct(Product product)
         {
             string connectionString = @"data source=.\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay thế bằng chuỗi kết nối đến cơ sở dữ liệu của bạn

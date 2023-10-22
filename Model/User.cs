@@ -40,11 +40,12 @@ namespace Computer_Shop_Management_System.Model
 
         public virtual UsersCategory UsersCategory { get; set; }
        
-        public User(string Usercategoryid, string Username, string password, string email)
+        public User(string maloainguoidung, string loainguoidung, string tennguoidung, string matkhau, string email)
         {
-            this.Users_Category_Id = Usercategoryid;
-            this.Users_Name = Username;
-            this.users_Password = password;
+            this.Users_Id = maloainguoidung;
+            this.Users_Category_Id = loainguoidung;
+            this.Users_Name = tennguoidung;
+            this.users_Password = matkhau;
             this.Users_Email = email;
 
         }

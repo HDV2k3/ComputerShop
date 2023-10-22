@@ -78,7 +78,7 @@
             this.dgvSanPhamStaff.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSanPhamStaff.Size = new System.Drawing.Size(849, 295);
             this.dgvSanPhamStaff.TabIndex = 2;
-            this.dgvSanPhamStaff.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSanPhamStaff_CellContentClick);
+  
             // 
             // txtTimKiemSanPhamStaff
             // 

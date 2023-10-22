@@ -40,34 +40,43 @@ namespace Computer_Shop_Management_System.Controller
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Alo coder Việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
         public static void SearchOrders(string query, DataGridView dgv)
         {
-            // Thay đổi chuỗi kết nối của bạn tới cơ sở dữ liệu của bạn
-            string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                connection.Open();
+                // Thay đổi chuỗi kết nối của bạn tới cơ sở dữ liệu của bạn
+                string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
 
-                using (SqlCommand cmd = new SqlCommand(query, connection))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
-                    {
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
+                    connection.Open();
 
-                        // Đặt dữ liệu vào DataGridView
-                        dgv.DataSource = dataTable;
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                        {
+                            DataTable dataTable = new DataTable();
+                            adapter.Fill(dataTable);
+
+                            // Đặt dữ liệu vào DataGridView
+                            dgv.DataSource = dataTable;
+                        }
                     }
                 }
             }
-        }
+            catch (Exception)
+            {
+                MessageBox.Show("Alo coder Việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+       }    }
+        
+
 
     }
 }

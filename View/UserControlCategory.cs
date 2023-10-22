@@ -241,128 +241,160 @@ namespace Computer_Shop_Management_System.View
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (txtMaLoai.Text.Trim() == string.Empty)
+            try
             {
-                MessageBox.Show("Vui lòng nhập mã Loại.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (txtTenLoai.Text.Trim() == string.Empty)
-            {
-                MessageBox.Show("Vui lòng nhập tên Loại.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (!ValidateCategoryName(txtTenLoai.Text.Trim()))
-            {
-                MessageBox.Show("Tên Loại không được chứa ký tự đặc biệt và số.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            else if (cmbTrangThai.SelectedIndex == -1)
-            {
-                MessageBox.Show("Vui lòng chọn trạng thái.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else
-            {
-                string CategoryId = txtMaLoai.Text;
-                string CategoryName = txtTenLoai.Text;
-                string CategoryStatus = cmbTrangThai.SelectedItem.ToString();
-
-                // Kiểm tra trùng lặp mã Loại hoặc tên Loại
-                if (IsDuplicateCategory(CategoryId, CategoryName))
+                if (txtMaLoai.Text.Trim() == string.Empty)
                 {
-                    MessageBox.Show("Mã Loại hoặc tên Loại đã tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Vui lòng nhập mã Loại.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-
-                // Tiếp tục thêm Loại mới
-                CategoryController CategoryController = new CategoryController();
-                bool result = CategoryController.AddCategory(CategoryId, CategoryName, CategoryStatus);
-
-                if (result)
+                else if (txtTenLoai.Text.Trim() == string.Empty)
                 {
-                    MessageBox.Show("Thêm Loại "+ txtTenLoai.Text +" Thành Công.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Vui lòng nhập tên Loại.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (!ValidateCategoryName(txtTenLoai.Text.Trim()))
+                {
+                    MessageBox.Show("Tên Loại không được chứa ký tự đặc biệt và số.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else if (cmbTrangThai.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Vui lòng chọn trạng thái.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    string CategoryId = txtMaLoai.Text;
+                    string CategoryName = txtTenLoai.Text;
+                    string CategoryStatus = cmbTrangThai.SelectedItem.ToString();
+
+                    // Kiểm tra trùng lặp mã Loại hoặc tên Loại
+                    if (IsDuplicateCategory(CategoryId, CategoryName))
+                    {
+                        MessageBox.Show("Mã Loại hoặc tên Loại đã tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Tiếp tục thêm Loại mới
+                    CategoryController CategoryController = new CategoryController();
+                    bool result = CategoryController.AddCategory(CategoryId, CategoryName, CategoryStatus);
+
+                    if (result)
+                    {
+                        MessageBox.Show("Thêm Loại " + txtTenLoai.Text + " Thành Công.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
-                    dgvLoai.DataSource = CategoryController;
+                        dgvLoai.DataSource = CategoryController;
 
-                    dgvLoai.Refresh();
-                    EmtyBox();
+                        dgvLoai.Refresh();
+                        EmtyBox();
+                    }
                 }
             }
+            catch(Exception)
+            {
+                MessageBox.Show("Bạn Cần Liên Hệ bộ phận IT để Bào Trì chức năng này!", "Chúng tôi sẽ sớm quay lại!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void btnThayDoi_Click(object sender, EventArgs e)
         {
-            if (txtMaLoai.Text.Trim() == string.Empty)
+            try
             {
-                MessageBox.Show("Loại gần đây.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                if (txtMaLoai.Text.Trim() == string.Empty)
+                {
+                    MessageBox.Show("Loại gần đây.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (txtTenLoai1.Text.Trim() == string.Empty)
+                {
+                    MessageBox.Show("Vui Lòng Nhập Tên Loại .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (cmbTrangThai1.SelectedIndex == 0)
+                {
+                    MessageBox.Show(" Vui lòng chọn trạng thái .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    Category category = new Category(txtMaLoai1.Text, txtTenLoai1.Text, cmbTrangThai1.SelectedItem.ToString());
+                    CategoryController.ChangedCategory(category);
+                    MessageBox.Show("Thay Đổi Thành Công");
+                    EmtyBox1();
+                }
             }
-            else if (txtTenLoai1.Text.Trim() == string.Empty)
+            catch (Exception)
             {
-                MessageBox.Show("Vui Lòng Nhập Tên Loại .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                MessageBox.Show("Bạn Cần Liên Hệ bộ phận IT để Bào Trì chức năng này!", "Chúng tôi sẽ sớm quay lại!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (cmbTrangThai1.SelectedIndex == 0)
-            {
-                MessageBox.Show(" Vui lòng chọn trạng thái .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else
-            {
-                Category category = new Category(txtMaLoai1.Text,txtTenLoai1.Text, cmbTrangThai1.SelectedItem.ToString());
-                CategoryController.ChangedCategory(category);
-                MessageBox.Show("Thay Đổi Thành Công");
-                EmtyBox1();
-            }
+
         }
        
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (txtMaLoai.Text.Trim() == string.Empty)
+            try
             {
-                MessageBox.Show("Loai gần đây.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (txtTenLoai1.Text.Trim() == string.Empty)
-            {
-                MessageBox.Show("Vui Lòng Nhập Tên Loại .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (cmbTrangThai1.SelectedIndex == 0)
-            {
-                MessageBox.Show(" Vui lòng chọn trạng thái .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else
-            {
-                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa Loại "+ txtTenLoai1.Text.Trim() + " ?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dialogResult == DialogResult.Yes)
+                if (txtMaLoai.Text.Trim() == string.Empty)
                 {
-                    string CategoryName = txtTenLoai1.Text;
-
-                    CategoryController CategoryController = new CategoryController();
-                    bool result = CategoryController.DeleteCategory(CategoryName);
-
-                    if (result)
+                    MessageBox.Show("Loai gần đây.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (txtTenLoai1.Text.Trim() == string.Empty)
+                {
+                    MessageBox.Show("Vui Lòng Nhập Tên Loại .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (cmbTrangThai1.SelectedIndex == 0)
+                {
+                    MessageBox.Show(" Vui lòng chọn trạng thái .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa Loại " + txtTenLoai1.Text.Trim() + " ?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult == DialogResult.Yes)
                     {
-                        MessageBox.Show("Xóa Loại "+ txtTenLoai1.Text.Trim() + "  thành công.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        string CategoryName = txtTenLoai1.Text;
 
-                        dgvLoai.Refresh();
-                        EmtyBox1();
+                        CategoryController CategoryController = new CategoryController();
+                        bool result = CategoryController.DeleteCategory(CategoryName);
+
+                        if (result)
+                        {
+                            MessageBox.Show("Xóa Loại " + txtTenLoai1.Text.Trim() + "  thành công.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            dgvLoai.Refresh();
+                            EmtyBox1();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Lỗi");
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("Lỗi");
-                    }    
                 }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Bạn Cần Liên Hệ bộ phận IT để Bào Trì chức năng này!", "Chúng tôi sẽ sớm quay lại!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void txtTimKiemLoai_TextChanged(object sender, EventArgs e)
         {
-            string searchName = txtTimKiemLoai.Text;
-            SearchCategory(searchName);
+            try
+            {
+                string searchName = txtTimKiemLoai.Text;
+                SearchCategory(searchName);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bạn Cần Liên Hệ bộ phận IT để Bào Trì chức năng này!", "Chúng tôi sẽ sớm quay lại!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void tpLuaChon_Enter(object sender, EventArgs e)
@@ -409,19 +441,27 @@ namespace Computer_Shop_Management_System.View
 
         private void dgvLoai_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.RowIndex < dgvLoai.RowCount)
+            try
             {
-                DataGridViewRow row = dgvLoai.Rows[e.RowIndex];
-
-                if (row.Cells.Count > 2) // Kiểm tra có đủ cột dữ liệu trong dòng hay không
+                if (e.RowIndex >= 0 && e.RowIndex < dgvLoai.RowCount)
                 {
-                    // Đổ dữ liệu vào các controls
-                    txtMaLoai1.Text = row.Cells[0].Value.ToString();
-                    txtTenLoai1.Text = row.Cells[1].Value.ToString();
-                    cmbTrangThai1.SelectedItem = row.Cells[2].Value.ToString();
-                    tpThemLoai.SelectedTab = tpLuaChon;
+                    DataGridViewRow row = dgvLoai.Rows[e.RowIndex];
+
+                    if (row.Cells.Count > 2) // Kiểm tra có đủ cột dữ liệu trong dòng hay không
+                    {
+                        // Đổ dữ liệu vào các controls
+                        txtMaLoai1.Text = row.Cells[0].Value.ToString();
+                        txtTenLoai1.Text = row.Cells[1].Value.ToString();
+                        cmbTrangThai1.SelectedItem = row.Cells[2].Value.ToString();
+                        tpThemLoai.SelectedTab = tpLuaChon;
+                    }
                 }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Bạn Cần Liên Hệ bộ phận IT để Bào Trì chức năng này!", "Chúng tôi sẽ sớm quay lại!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void tpThemLoai_Click(object sender, EventArgs e)

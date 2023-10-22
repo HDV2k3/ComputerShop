@@ -93,144 +93,178 @@ namespace Computer_Shop_Management_System.View
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (txtMaThuongHieu.Text.Trim() == string.Empty)
+            try
             {
-                MessageBox.Show("Vui lòng nhập mã thương hiệu.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (txtTenThuongHieu.Text.Trim() == string.Empty)
-            {
-                MessageBox.Show("Vui lòng nhập tên thương hiệu.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (!ValidateBrandName(txtTenThuongHieu.Text.Trim()))
-            {
-                MessageBox.Show("Tên thương hiệu không được chứa ký tự đặc biệt và số.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            else if (cmbTrangThai.SelectedIndex == -1)
-            {
-                MessageBox.Show("Vui lòng chọn trạng thái.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else
-            {
-                string brandId = txtMaThuongHieu.Text;
-                string brandName = txtTenThuongHieu.Text;
-                string brandStatus = cmbTrangThai.SelectedItem.ToString();
-
-                // Kiểm tra trùng lặp mã thương hiệu hoặc tên thương hiệu
-                if (IsDuplicateBrand(brandId, brandName))
+                if (txtMaThuongHieu.Text.Trim() == string.Empty)
                 {
-                    MessageBox.Show("Mã thương hiệu hoặc tên thương hiệu đã tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Vui lòng nhập mã thương hiệu.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-
-                // Tiếp tục thêm thương hiệu mới
-                BrandController brandController = new BrandController();
-                bool result = brandController.AddBrand(brandId, brandName, brandStatus);
-
-                if (result)
+                else if (txtTenThuongHieu.Text.Trim() == string.Empty)
                 {
-                    MessageBox.Show("Thêm Thương Hiệu" + txtTenThuongHieu.Text + "Thành Công.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
-                    dgvThuongHieu.DataSource = brandController;
-
-                    dgvThuongHieu.Refresh();
-                    EmptyBox();
+                    MessageBox.Show("Vui lòng nhập tên thương hiệu.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
-            }
-        }
-        private void btnThayDoi_Click(object sender, EventArgs e)
-        {
-            if (txtMaThuongHieu.Text.Trim() == string.Empty)
-            {
-                MessageBox.Show("Thương hiệu gần đây.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (txtTenThuongHieu1.Text.Trim() == string.Empty)
-            {
-                MessageBox.Show("Vui Lòng Nhập Tên Thương Hiệu .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (cmbTRangThai1.SelectedIndex == 0)
-            {
-                MessageBox.Show(" Vui lòng chọn trạng thái .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else
-            {
-                Brand brand = new Brand(txtMaThuongHieu1.Text, txtTenThuongHieu1.Text.Trim(), cmbTRangThai1.SelectedItem.ToString());
-                BrandController.ChangedBrand(brand);
-                MessageBox.Show("Thay Đổi Thành Công", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                EmptyBox1();
-            }
-        }
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            if (txtMaThuongHieu.Text.Trim() == string.Empty)
-            {
-                MessageBox.Show("Thương hiệu gần đây.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (txtTenThuongHieu1.Text.Trim() == string.Empty)
-            {
-                MessageBox.Show("Vui Lòng Nhập Tên Thương Hiệu .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (cmbTRangThai1.SelectedIndex == 0)
-            {
-                MessageBox.Show(" Vui lòng chọn trạng thái .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else
-            {
-                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa thương hiệu" + txtTenThuongHieu1.Text + "?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dialogResult == DialogResult.Yes)
+                else if (!ValidateBrandName(txtTenThuongHieu.Text.Trim()))
                 {
-                    string brandName = txtTenThuongHieu1.Text;
+                    MessageBox.Show("Tên thương hiệu không được chứa ký tự đặc biệt và số.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else if (cmbTrangThai.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Vui lòng chọn trạng thái.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    string brandId = txtMaThuongHieu.Text;
+                    string brandName = txtTenThuongHieu.Text;
+                    string brandStatus = cmbTrangThai.SelectedItem.ToString();
 
+                    // Kiểm tra trùng lặp mã thương hiệu hoặc tên thương hiệu
+                    if (IsDuplicateBrand(brandId, brandName))
+                    {
+                        MessageBox.Show("Mã thương hiệu hoặc tên thương hiệu đã tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Tiếp tục thêm thương hiệu mới
                     BrandController brandController = new BrandController();
-                    bool result = brandController.DeleteBrand(brandName);
+                    bool result = brandController.AddBrand(brandId, brandName, brandStatus);
 
                     if (result)
                     {
-                        MessageBox.Show("Xóa thương hiệu " + txtTenThuongHieu1.Text + " thành công.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Thêm Thương Hiệu" + txtTenThuongHieu.Text + "Thành Công.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                        dgvThuongHieu.DataSource = brandController;
 
                         dgvThuongHieu.Refresh();
-                        EmtyBox1();
+                        EmptyBox();
                     }
                 }
             }
+            catch(Exception)
+            {
+                MessageBox.Show("Lỗi Hệ Thống Cần Được Bảo Dưỡng Sửa Chữa Để Tiếp Tục Thực Hiện Chứ Năng Này!","Xin Lỗi",MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+          
+        }
+        private void btnThayDoi_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtMaThuongHieu.Text.Trim() == string.Empty)
+                {
+                    MessageBox.Show("Thương hiệu gần đây.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (txtTenThuongHieu1.Text.Trim() == string.Empty)
+                {
+                    MessageBox.Show("Vui Lòng Nhập Tên Thương Hiệu .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (cmbTRangThai1.SelectedIndex == 0)
+                {
+                    MessageBox.Show(" Vui lòng chọn trạng thái .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    Brand brand = new Brand(txtMaThuongHieu1.Text, txtTenThuongHieu1.Text.Trim(), cmbTRangThai1.SelectedItem.ToString());
+                    BrandController.ChangedBrand(brand);
+                    MessageBox.Show("Thay Đổi Thành Công", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    EmptyBox1();
+                }
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Lỗi Hệ Thống Cần Được Bảo Dưỡng Sửa Chữa Để Tiếp Tục Thực Hiện Chứ Năng Này!", "Xin Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
+        }
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtMaThuongHieu.Text.Trim() == string.Empty)
+                {
+                    MessageBox.Show("Thương hiệu gần đây.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (txtTenThuongHieu1.Text.Trim() == string.Empty)
+                {
+                    MessageBox.Show("Vui Lòng Nhập Tên Thương Hiệu .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (cmbTRangThai1.SelectedIndex == 0)
+                {
+                    MessageBox.Show(" Vui lòng chọn trạng thái .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa thương hiệu" + txtTenThuongHieu1.Text + "?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        string brandName = txtTenThuongHieu1.Text;
+
+                        BrandController brandController = new BrandController();
+                        bool result = brandController.DeleteBrand(brandName);
+
+                        if (result)
+                        {
+                            MessageBox.Show("Xóa thương hiệu " + txtTenThuongHieu1.Text + " thành công.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            dgvThuongHieu.Refresh();
+                            EmtyBox1();
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi Hệ Thống Cần Được Bảo Dưỡng Sửa Chữa Để Tiếp Tục Thực Hiện Chứ Năng Này!", "Xin Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
         }
         private void txtLoadData_Click(object sender, EventArgs e)
         {
 
-            /**//*dgvThuongHieu.Columns[0].Visible = true;*/
-            // Kết nối đến cơ sở dữ liệu
-            using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
+            try
             {
-                // Mở kết nối
-                connection.Open();
+                /**//*dgvThuongHieu.Columns[0].Visible = true;*/
+                // Kết nối đến cơ sở dữ liệu
+                using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
+                {
+                    // Mở kết nối
+                    connection.Open();
 
-                // Câu truy vấn SELECT để lấy dữ liệu từ bảng Brand
-                string query = "SELECT * FROM Brand";
+                    // Câu truy vấn SELECT để lấy dữ liệu từ bảng Brand
+                    string query = "SELECT * FROM Brand";
 
-                // Thực hiện truy vấn
-                SqlCommand command = new SqlCommand(query, connection);
-                SqlDataReader reader = command.ExecuteReader();
+                    // Thực hiện truy vấn
+                    SqlCommand command = new SqlCommand(query, connection);
+                    SqlDataReader reader = command.ExecuteReader();
 
 
-                // Lấy dữ liệu từ cơ sở dữ liệu và lưu vào datatable
-                DataTable dataTable = GetDataFromDatabase();
+                    // Lấy dữ liệu từ cơ sở dữ liệu và lưu vào datatable
+                    DataTable dataTable = GetDataFromDatabase();
 
-                // Gán datatable làm nguồn dữ liệu cho DataGridView
+                    // Gán datatable làm nguồn dữ liệu cho DataGridView
 
-                dgvThuongHieu.DataSource = dataTable;
+                    dgvThuongHieu.DataSource = dataTable;
+
+                }
+                lblTotal.Text = dgvThuongHieu.Rows.Count.ToString();
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Lỗi Hệ Thống Cần Được Bảo Dưỡng Sửa Chữa Để Tiếp Tục Thực Hiện Chứ Năng Này!", "Xin Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-            lblTotal.Text = dgvThuongHieu.Rows.Count.ToString();
         }
         private void picTimKiem_MouseHover(object sender, EventArgs e)
         {
@@ -239,8 +273,16 @@ namespace Computer_Shop_Management_System.View
         private const string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay thế bằng chuỗi kết nối của bạn
         private void txtTimKiemThuongThieu_TextChanged(object sender, EventArgs e)
         {
-            string searchName = txtTimKiemThuongThieu.Text;
-            SearchBrand(searchName);
+            try
+            {
+                string searchName = txtTimKiemThuongThieu.Text;
+                SearchBrand(searchName);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi Hệ Thống Cần Được Bảo Dưỡng Sửa Chữa Để Tiếp Tục Thực Hiện Chứ Năng Này!", "Xin Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
 
 
         }
@@ -285,19 +327,28 @@ namespace Computer_Shop_Management_System.View
         }
         private void dgvThuongHieu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.RowIndex < dgvThuongHieu.RowCount)
+            try
             {
-                DataGridViewRow row = dgvThuongHieu.Rows[e.RowIndex];
-
-                if (row.Cells.Count > 2) // Kiểm tra có đủ cột dữ liệu trong dòng hay không
+                if (e.RowIndex >= 0 && e.RowIndex < dgvThuongHieu.RowCount)
                 {
-                    // Đổ dữ liệu vào các controls
-                    txtMaThuongHieu1.Text = row.Cells[0].Value.ToString();
-                    txtTenThuongHieu1.Text = row.Cells[1].Value.ToString();
-                    cmbTRangThai1.SelectedItem = row.Cells[2].Value.ToString();
-                    tpThuongHieu.SelectedTab = tpLuaChon;
+                    DataGridViewRow row = dgvThuongHieu.Rows[e.RowIndex];
+
+                    if (row.Cells.Count > 2) // Kiểm tra có đủ cột dữ liệu trong dòng hay không
+                    {
+                        // Đổ dữ liệu vào các controls
+                        txtMaThuongHieu1.Text = row.Cells[0].Value.ToString();
+                        txtTenThuongHieu1.Text = row.Cells[1].Value.ToString();
+                        cmbTRangThai1.SelectedItem = row.Cells[2].Value.ToString();
+                        tpThuongHieu.SelectedTab = tpLuaChon;
+                    }
                 }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi Hệ Thống Cần Được Bảo Dưỡng Sửa Chữa Để Tiếp Tục Thực Hiện Chứ Năng Này!", "Xin Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
         }
         #endregion
         #region Method

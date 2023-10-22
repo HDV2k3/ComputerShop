@@ -29,7 +29,7 @@ namespace Computer_Shop_Management_System.View
          
             using(var context = new DataBase())
             {
-                var Usercategory = context.User.ToList();
+                var Usercategory = context.UsersCategory.ToList();
 
                 // Lấy danh sách tên sản phẩm
                 var productNames = Usercategory.Select(u => u.Users_Category_Id).ToArray();
@@ -68,7 +68,7 @@ namespace Computer_Shop_Management_System.View
 
                     dgvUsers.DataSource = dataTable;
                     dgvUsers.Columns["Users_Id"].HeaderText = "Mã Người Dùng";
-                    dgvUsers.Columns["Users_Category_Id"].HeaderText = "Mã Loại Người Dùng";
+                    dgvUsers.Columns["Users_Category_Id"].HeaderText = " Loại Người Dùng";
                     dgvUsers.Columns["Users_Name"].HeaderText = "Tên Đăng Nhập";
                     dgvUsers.Columns["Users_Password"].HeaderText = "Mật Khẩu";
                     dgvUsers.Columns["Users_Email"].HeaderText = "Email";
@@ -108,6 +108,7 @@ namespace Computer_Shop_Management_System.View
 
             return false; 
         }
+  
         private bool ValidateUserName(string brandName)
         {
             // Biểu thức chính quy để kiểm tra chuỗi không chứa ký tự đặc biệt và số
@@ -119,6 +120,7 @@ namespace Computer_Shop_Management_System.View
         }
         private void EmptyBox()
         {
+            txtUsers_Id.Text = "NV" + DateTime.Now.ToString("yyMMddhhmmss");
             txtTenNguoiDung.Text = string.Empty;
             txtMatKhau.Text = string.Empty;
             txtEmail.Text = string.Empty;
@@ -140,167 +142,203 @@ namespace Computer_Shop_Management_System.View
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (!ValidateUserName(txtTenNguoiDung.Text.Trim()))
+            try
             {
-                MessageBox.Show("tên người dùng không được phép.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (txtMatKhau.Text.Trim() == string.Empty)
-            {
-                MessageBox.Show("Vui lòng nhập mật khẩu.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if(txtEmail.Text.Trim() == string.Empty)
-            {
-                MessageBox.Show("Vui lòng nhập email.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }    
-            else if (cmbLoaiTK.SelectedIndex == -1)
-            {
-                MessageBox.Show("Vui lòng chọn loại tài khoảng.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else
-            {
-                string tennguoidung = txtTenNguoiDung.Text;
-                string matkhau = txtMatKhau.Text;
-                string email = txtEmail.Text;
-                string loaitk = cmbLoaiTK.SelectedIndex.ToString();
-
-                // Kiểm tra trùng lặp mã thương hiệu hoặc tên thương hiệu
-                if (IsDuplicateUsers(tennguoidung))
+                if ((txtUsers_Id.Text.Trim() == string.Empty))
                 {
-                    MessageBox.Show("tên người dùng đã tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Mã người dùng không được phép trống.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-
-                // Tiếp tục thêm thương hiệu mới
-                UserController UserController = new UserController();
-                bool result = UserController.AddUsers(tennguoidung, matkhau, email, loaitk);
-
-                if (result)
+                else if (!ValidateUserName(txtTenNguoiDung.Text.Trim()))
                 {
-                    MessageBox.Show("Thêm Thương Hiệu Thành Công.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("tên người dùng không được phép.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (txtMatKhau.Text.Trim() == string.Empty)
+                {
+                    MessageBox.Show("Vui lòng nhập mật khẩu.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (txtEmail.Text.Trim() == string.Empty)
+                {
+                    MessageBox.Show("Vui lòng nhập email.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (cmbLoaiTK.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Vui lòng chọn loại tài khoảng.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    string maloainguoidung = txtUsers_Id.Text;
+                    string loainguoidung = cmbLoaiTK.SelectedItem.ToString();
+                    string tennguoidung = txtTenNguoiDung.Text;
+                    string matkhau = txtMatKhau.Text;
+                    string email = txtEmail.Text;
 
 
-                    dgvUsers.DataSource = UserController;
+                    // Kiểm tra trùng lặp mã thương hiệu hoặc tên thương hiệu
+                    if (IsDuplicateUsers(tennguoidung))
+                    {
+                        MessageBox.Show("tên người dùng đã tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
 
-                    dgvUsers.Refresh();
-                    EmptyBox();
+                    // Tiếp tục thêm thương hiệu mới
+                    UserController UserController = new UserController();
+                    bool result = UserController.AddUsers(maloainguoidung, loainguoidung, tennguoidung, matkhau, email);
+
+                    if (result)
+                    {
+                        MessageBox.Show("Thêm Nhân Viên Thành Công.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                        dgvUsers.DataSource = UserController;
+
+                        dgvUsers.Refresh();
+                        EmptyBox();
+                        txtUsers_Id.Text = "NV" + DateTime.Now.ToString("yyMMddhhmmss");
+
+                    }
                 }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Alo Coder:việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
-  
+
         private void btnThayDoi_Click(object sender, EventArgs e)
         {
-            if (txtTenNguoiDung1.Text.Trim() == string.Empty)
+            try
             {
-                MessageBox.Show("Vui lòng nhập tên người dùng.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                if (txtTenNguoiDung1.Text.Trim() == string.Empty)
+                {
+                    MessageBox.Show("Vui lòng nhập tên người dùng.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (txtMatKhau1.Text.Trim() == string.Empty)
+                {
+                    MessageBox.Show("Vui lòng nhập mật khẩu.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (cmbLoaiTKlc.SelectedIndex == 0)
+                {
+                    MessageBox.Show("Vui lòng chọn loại tài khoảng.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (txtEmail1.Text.Trim() == string.Empty)
+                {
+                    MessageBox.Show("Vui lòng nhập email.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    User User = new User(txtUsers_Id_Lc.Text.Trim(), cmbLoaiTKlc.SelectedItem.ToString(), txtTenNguoiDung1.Text, txtMatKhau1.Text.Trim(), txtEmail1.Text.Trim());
+                    UserController.ChangedUser(User);
+                    MessageBox.Show("Thay Đổi Thành Công");
+                    EmptyBox1();
+                }
             }
-            else if (txtMatKhau1.Text.Trim() == string.Empty)
+            catch (Exception)
             {
-                MessageBox.Show("Vui lòng nhập mật khẩu.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (cmbLoaiTKlc.SelectedIndex == 0)
-            {
-                MessageBox.Show("Vui lòng chọn loại tài khoảng.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if(txtEmail1.Text.Trim()==string.Empty)
-            {
-                MessageBox.Show("Vui lòng nhập email.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }    
-            else
-            {
-                User User = new User(txtTenNguoiDung1.Text, txtMatKhau1.Text.Trim(),txtEmail1.Text.Trim(), cmbLoaiTKlc.SelectedItem.ToString());
-                UserController.ChangedUser(User);
-                MessageBox.Show("Thay Đổi Thành Công");
-                EmptyBox1();
+                MessageBox.Show("Alo Coder:việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnXoa_Click_1(object sender, EventArgs e)
         {
-            if (txtTenNguoiDung1.Text.Trim() == string.Empty)
+            try
             {
-                MessageBox.Show("Vui lòng nhập tên người dùng.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (txtMatKhau1.Text.Trim() == string.Empty)
-            {
-                MessageBox.Show("Vui lòng nhập mật khẩu.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (cmbLoaiTKlc.SelectedIndex == 0)
-            {
-                MessageBox.Show("Vui lòng chọn loại tài khoảng.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (txtEmail1.Text.Trim() == string.Empty)
-            {
-                MessageBox.Show("Vui lòng nhập email.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else
-            {
-                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa tài khoảng này?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dialogResult == DialogResult.Yes)
+                if (txtTenNguoiDung1.Text.Trim() == string.Empty)
                 {
-                    string Username = txtTenNguoiDung1.Text;
-
-                    UserController UserController = new UserController();
-                    bool result = UserController.DeleteUsers(Username);
-
-                    if (result)
+                    MessageBox.Show("Vui lòng nhập tên người dùng.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (txtMatKhau1.Text.Trim() == string.Empty)
+                {
+                    MessageBox.Show("Vui lòng nhập mật khẩu.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (cmbLoaiTKlc.SelectedIndex == 0)
+                {
+                    MessageBox.Show("Vui lòng chọn loại tài khoảng.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else if (txtEmail1.Text.Trim() == string.Empty)
+                {
+                    MessageBox.Show("Vui lòng nhập email.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa tài khoảng này?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult == DialogResult.Yes)
                     {
-                        MessageBox.Show("Xóa thương hiệu thành công.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        string Username = txtTenNguoiDung1.Text;
 
-                        dgvUsers.Refresh();
-                        EmptyBox1();
+                        UserController UserController = new UserController();
+                        bool result = UserController.DeleteUsers(Username);
+
+                        if (result)
+                        {
+                            MessageBox.Show("Xóa thương hiệu thành công.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            dgvUsers.Refresh();
+                            EmptyBox1();
+                        }
                     }
                 }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Alo Coder:việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
        
         private void txtTenNguoiDung1_TextChanged(object sender, EventArgs e)
         {
-           
-            if (txtTenNguoiDung1.Text.Trim() != null)
+            try
             {
-                string tendangnhap = txtTenNguoiDung1.Text.Trim();
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                if (txtTenNguoiDung1.Text.Trim() != null)
                 {
-                    connection.Open();
-                    string checkcmbquery = "SELECT * FROM dbo.[User] WHERE Users_Name = @name";
-                    using (SqlCommand command = new SqlCommand(checkcmbquery, connection))
+                    string tendangnhap = txtTenNguoiDung1.Text.Trim();
+                    using (SqlConnection connection = new SqlConnection(connectionString))
                     {
-                        command.Parameters.AddWithValue("@name", tendangnhap);
-                        // Thực thi câu lệnh SQL
-                        using (SqlDataReader reader = command.ExecuteReader())
+                        connection.Open();
+                        string checkcmbquery = "SELECT * FROM dbo.[User] WHERE Users_Name = @name";
+                        using (SqlCommand command = new SqlCommand(checkcmbquery, connection))
                         {
-                            if (reader.Read())
+                            command.Parameters.AddWithValue("@name", tendangnhap);
+                            // Thực thi câu lệnh SQL
+                            using (SqlDataReader reader = command.ExecuteReader())
                             {
+                                if (reader.Read())
+                                {
+
+                                    string cmbloai = reader["Users_Category_Id"].ToString();
 
 
-                                string cmbloai = reader["Users_Category_Id"].ToString();
-                               
+                                    cmbLoaiTKlc.Text = cmbloai;
 
-                                cmbLoaiTKlc.Text = cmbloai;
-                               
-                            }
-                            else
-                            {
-                                
+                                }
+                                else
+                                {
+
+                                }
                             }
                         }
                     }
                 }
             }
-           
+            catch (Exception)
+            {
+                MessageBox.Show("Alo Coder:việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
        
@@ -310,23 +348,32 @@ namespace Computer_Shop_Management_System.View
             LoadDataUser();
             LoadComboBoxLoaiTK();
             cmbLoaiTK.SelectedIndex = 0;
-           
+            txtUsers_Id.Text = "NV" + DateTime.Now.ToString("yyMMddhhmmss");
+
         }
 
         private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.RowIndex < dgvUsers.RowCount)
+            try
             {
-                DataGridViewRow row = dgvUsers.Rows[e.RowIndex];
-
-                if (row.Cells.Count > 2) // Kiểm tra có đủ cột dữ liệu trong dòng hay không
+                if (e.RowIndex >= 0 && e.RowIndex < dgvUsers.RowCount)
                 {
-                    cmbLoaiTKlc.SelectedItem = row.Cells[1].Value.ToString();
-                    txtTenNguoiDung1.Text = row.Cells[2].Value.ToString();
-                    txtMatKhau1.Text = row.Cells[3].Value.ToString();
-                    txtEmail1.Text = row.Cells[4].Value.ToString();
-                    tcUser.SelectedTab = tpLuaChon;
+                    DataGridViewRow row = dgvUsers.Rows[e.RowIndex];
+
+                    if (row.Cells.Count > 1) // Kiểm tra có đủ cột dữ liệu trong dòng hay không
+                    {
+                        txtUsers_Id_Lc.Text = row.Cells[0].Value.ToString();
+                        cmbLoaiTKlc.SelectedItem = row.Cells[1].Value.ToString();
+                        txtTenNguoiDung1.Text = row.Cells[2].Value.ToString();
+                        txtMatKhau1.Text = row.Cells[3].Value.ToString();
+                        txtEmail1.Text = row.Cells[4].Value.ToString();
+                        tcUser.SelectedTab = tpLuaChon;
+                    }
                 }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Alo Coder:việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -351,5 +398,15 @@ namespace Computer_Shop_Management_System.View
             e.Handled = true;
         }
         #endregion
+
+        private void txtUsers_Id_Lc_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void txtUsers_Id_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled=true;
+        }
     }
 }
