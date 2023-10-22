@@ -26,7 +26,7 @@ namespace Computer_Shop_Management_System.View
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT Users_Id,Users_Category_Id,Users_Name,users_Email FROM dbo.[User]";
+                    string query = "SELECT Users_Id,Users_Category_Id,Users_Name FROM dbo.[User]";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
@@ -34,7 +34,6 @@ namespace Computer_Shop_Management_System.View
                     dgvUsersStaff.Columns["Users_Id"].HeaderText = "Mã Người Dùng";
                     dgvUsersStaff.Columns["Users_Category_Id"].HeaderText = "Mã Loại Người Dùng";
                     dgvUsersStaff.Columns["Users_Name"].HeaderText = "Tên Đăng Nhập";
-                    dgvUsersStaff.Columns["Users_Email"].HeaderText = "Email";
                     lblTongNhanVienStaff.Text = dgvUsersStaff.Rows.Count.ToString();
                 }
             }

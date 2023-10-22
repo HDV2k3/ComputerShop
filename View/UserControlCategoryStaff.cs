@@ -34,6 +34,9 @@ namespace Computer_Shop_Management_System.View
                     adapter.Fill(dataTable);
 
                     dgvLoaiStaff.DataSource = dataTable;
+                    dgvLoaiStaff.Columns["Category_Id"].HeaderText = "Mã Loại";
+                    dgvLoaiStaff.Columns["Category_Name"].HeaderText = "Tên loại";
+                    dgvLoaiStaff.Columns["Category_Status"].HeaderText = "Trạng Thái";
                     lblTongSoLoaiStaff.Text = dgvLoaiStaff.Rows.Count.ToString();
 
                 }
