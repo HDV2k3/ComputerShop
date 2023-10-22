@@ -133,6 +133,29 @@ namespace Computer_Shop_Management_System.View
             txtTenNguoiDung1.Text = string.Empty;
             cmbLoaiTKlc.SelectedIndex = -1;
         }
+        private void SearchUser(string searchName)
+        {
+            string query = "SELECT Users_Id,Users_Category_Id,Users_Name,users_Password FROM dbo.[User] WHERE Users_Name LIKE @SearchName;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@SearchName", "%" + searchName + "%");
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        dgvUsers.DataSource = dataTable;
+
+                        lblTotal.Text = dgvUsers.Rows.Count.ToString();
+                    }
+                }
+            }
+        }
         #endregion
         #region Event
         private void tpQuanLyNguoiDung_Click(object sender, EventArgs e)
@@ -407,6 +430,20 @@ namespace Computer_Shop_Management_System.View
         private void txtUsers_Id_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled=true;
+        }
+
+        private void txtTimKiemNguoiDung_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string searchName = txtTimKiemNguoiDung.Text;
+                SearchUser(searchName);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi Hệ Thống Cần Được Bảo Dưỡng Sửa Chữa Để Tiếp Tục Thực Hiện Chứ Năng Này!", "Xin Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
     }
 }

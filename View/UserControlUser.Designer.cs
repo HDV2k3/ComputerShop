@@ -33,6 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tcUser = new System.Windows.Forms.TabControl();
             this.tpThemNguoiDung = new System.Windows.Forms.TabPage();
+            this.txtUsers_Id = new System.Windows.Forms.TextBox();
+            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.cmbLoaiTK = new System.Windows.Forms.ComboBox();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btnThem = new System.Windows.Forms.Button();
@@ -44,6 +46,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.tpLuaChon = new System.Windows.Forms.TabPage();
+            this.txtUsers_Id_Lc = new System.Windows.Forms.TextBox();
+            this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.cmbLoaiTKlc = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.btnThayDoi = new System.Windows.Forms.Button();
@@ -58,7 +62,7 @@
             this.tpQuanLyNguoiDung = new System.Windows.Forms.TabPage();
             this.ptbTimKiem = new System.Windows.Forms.PictureBox();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
-            this.txtTimKiemThuongHieu = new System.Windows.Forms.TextBox();
+            this.txtTimKiemNguoiDung = new System.Windows.Forms.TextBox();
             this.lblTotal = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -67,10 +71,6 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.txtUsers_Id = new System.Windows.Forms.TextBox();
-            this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.txtUsers_Id_Lc = new System.Windows.Forms.TextBox();
             this.tcUser.SuspendLayout();
             this.tpThemNguoiDung.SuspendLayout();
             this.tpLuaChon.SuspendLayout();
@@ -118,6 +118,24 @@
             this.tpThemNguoiDung.TabIndex = 0;
             this.tpThemNguoiDung.Text = "Thêm Người Dùng";
             this.tpThemNguoiDung.UseVisualStyleBackColor = true;
+            // 
+            // txtUsers_Id
+            // 
+            this.txtUsers_Id.Location = new System.Drawing.Point(328, 101);
+            this.txtUsers_Id.Name = "txtUsers_Id";
+            this.txtUsers_Id.Size = new System.Drawing.Size(270, 25);
+            this.txtUsers_Id.TabIndex = 8;
+            this.txtUsers_Id.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsers_Id_KeyPress);
+            // 
+            // guna2HtmlLabel2
+            // 
+            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(328, 63);
+            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(107, 19);
+            this.guna2HtmlLabel2.TabIndex = 7;
+            this.guna2HtmlLabel2.Text = "Mã Người Dùng:";
             // 
             // cmbLoaiTK
             // 
@@ -268,6 +286,23 @@
             this.tpLuaChon.Text = "Lựa Chọn";
             this.tpLuaChon.UseVisualStyleBackColor = true;
             // 
+            // txtUsers_Id_Lc
+            // 
+            this.txtUsers_Id_Lc.Location = new System.Drawing.Point(351, 116);
+            this.txtUsers_Id_Lc.Name = "txtUsers_Id_Lc";
+            this.txtUsers_Id_Lc.Size = new System.Drawing.Size(271, 25);
+            this.txtUsers_Id_Lc.TabIndex = 9;
+            this.txtUsers_Id_Lc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsers_Id_Lc_KeyPress);
+            // 
+            // guna2HtmlLabel3
+            // 
+            this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(351, 83);
+            this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(44, 15);
+            this.guna2HtmlLabel3.TabIndex = 8;
+            this.guna2HtmlLabel3.Text = "Mã Loại:";
+            // 
             // cmbLoaiTKlc
             // 
             this.cmbLoaiTKlc.FormattingEnabled = true;
@@ -414,7 +449,7 @@
             // 
             this.tpQuanLyNguoiDung.Controls.Add(this.ptbTimKiem);
             this.tpQuanLyNguoiDung.Controls.Add(this.dgvUsers);
-            this.tpQuanLyNguoiDung.Controls.Add(this.txtTimKiemThuongHieu);
+            this.tpQuanLyNguoiDung.Controls.Add(this.txtTimKiemNguoiDung);
             this.tpQuanLyNguoiDung.Controls.Add(this.lblTotal);
             this.tpQuanLyNguoiDung.Controls.Add(this.label6);
             this.tpQuanLyNguoiDung.Controls.Add(this.label5);
@@ -432,7 +467,7 @@
             // ptbTimKiem
             // 
             this.ptbTimKiem.Image = global::Computer_Shop_Management_System.Properties.Resources.Search12;
-            this.ptbTimKiem.Location = new System.Drawing.Point(635, 137);
+            this.ptbTimKiem.Location = new System.Drawing.Point(666, 103);
             this.ptbTimKiem.Margin = new System.Windows.Forms.Padding(2);
             this.ptbTimKiem.Name = "ptbTimKiem";
             this.ptbTimKiem.Size = new System.Drawing.Size(41, 25);
@@ -481,14 +516,15 @@
             this.dgvUsers.TabIndex = 0;
             this.dgvUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellClick);
             // 
-            // txtTimKiemThuongHieu
+            // txtTimKiemNguoiDung
             // 
-            this.txtTimKiemThuongHieu.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtTimKiemThuongHieu.Location = new System.Drawing.Point(368, 91);
-            this.txtTimKiemThuongHieu.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTimKiemThuongHieu.Name = "txtTimKiemThuongHieu";
-            this.txtTimKiemThuongHieu.Size = new System.Drawing.Size(246, 25);
-            this.txtTimKiemThuongHieu.TabIndex = 1;
+            this.txtTimKiemNguoiDung.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtTimKiemNguoiDung.Location = new System.Drawing.Point(368, 91);
+            this.txtTimKiemNguoiDung.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTimKiemNguoiDung.Name = "txtTimKiemNguoiDung";
+            this.txtTimKiemNguoiDung.Size = new System.Drawing.Size(246, 25);
+            this.txtTimKiemNguoiDung.TabIndex = 1;
+            this.txtTimKiemNguoiDung.TextChanged += new System.EventHandler(this.txtTimKiemNguoiDung_TextChanged);
             // 
             // lblTotal
             // 
@@ -553,40 +589,6 @@
             // 
             this.guna2Elipse3.TargetControl = this.btnXoa;
             // 
-            // guna2HtmlLabel2
-            // 
-            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(328, 63);
-            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(107, 19);
-            this.guna2HtmlLabel2.TabIndex = 7;
-            this.guna2HtmlLabel2.Text = "Mã Người Dùng:";
-            // 
-            // txtUsers_Id
-            // 
-            this.txtUsers_Id.Location = new System.Drawing.Point(328, 101);
-            this.txtUsers_Id.Name = "txtUsers_Id";
-            this.txtUsers_Id.Size = new System.Drawing.Size(270, 25);
-            this.txtUsers_Id.TabIndex = 8;
-            this.txtUsers_Id.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsers_Id_KeyPress);
-            // 
-            // guna2HtmlLabel3
-            // 
-            this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(351, 83);
-            this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(56, 19);
-            this.guna2HtmlLabel3.TabIndex = 8;
-            this.guna2HtmlLabel3.Text = "Mã Loại:";
-            // 
-            // txtUsers_Id_Lc
-            // 
-            this.txtUsers_Id_Lc.Location = new System.Drawing.Point(351, 116);
-            this.txtUsers_Id_Lc.Name = "txtUsers_Id_Lc";
-            this.txtUsers_Id_Lc.Size = new System.Drawing.Size(271, 25);
-            this.txtUsers_Id_Lc.TabIndex = 9;
-            this.txtUsers_Id_Lc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsers_Id_Lc_KeyPress);
-            // 
             // UserControlUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -627,7 +629,7 @@
         private System.Windows.Forms.TabPage tpLuaChon;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dgvUsers;
-        private System.Windows.Forms.TextBox txtTimKiemThuongHieu;
+        private System.Windows.Forms.TextBox txtTimKiemNguoiDung;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;

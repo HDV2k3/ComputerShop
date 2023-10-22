@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.btnThem = new System.Windows.Forms.Button();
             this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
@@ -250,7 +250,7 @@
             this.tpThemThuongHieu.Name = "tpThemThuongHieu";
             this.tpThemThuongHieu.Padding = new System.Windows.Forms.Padding(2);
             this.tpThemThuongHieu.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tpThemThuongHieu.Size = new System.Drawing.Size(1120, 524);
+            this.tpThemThuongHieu.Size = new System.Drawing.Size(1120, 517);
             this.tpThemThuongHieu.TabIndex = 0;
             this.tpThemThuongHieu.Text = "Thêm Thương Hiệu";
             this.tpThemThuongHieu.UseVisualStyleBackColor = true;
@@ -301,10 +301,8 @@
             this.cmbTrangThai.Size = new System.Drawing.Size(288, 25);
             this.cmbTrangThai.TabIndex = 2;
             this.cmbTrangThai.DropDown += new System.EventHandler(this.cmbTrangThai_DropDown);
-            
             this.cmbTrangThai.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbTrangThai_KeyDown);
             this.cmbTrangThai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbTrangThai_KeyPress);
-         
             // 
             // txtTenThuongHieu
             // 
@@ -373,7 +371,7 @@
             this.tpThuongHieu.Margin = new System.Windows.Forms.Padding(2);
             this.tpThuongHieu.Name = "tpThuongHieu";
             this.tpThuongHieu.SelectedIndex = 0;
-            this.tpThuongHieu.Size = new System.Drawing.Size(1128, 554);
+            this.tpThuongHieu.Size = new System.Drawing.Size(1128, 547);
             this.tpThuongHieu.TabIndex = 0;
             this.tpThuongHieu.Click += new System.EventHandler(this.tpThemThuongThieu_Click);
             this.tpThuongHieu.Enter += new System.EventHandler(this.tpThemThuongThieu_Enter);
@@ -391,7 +389,7 @@
             this.tpQuanLyThuongHieu.Margin = new System.Windows.Forms.Padding(2);
             this.tpQuanLyThuongHieu.Name = "tpQuanLyThuongHieu";
             this.tpQuanLyThuongHieu.Padding = new System.Windows.Forms.Padding(2);
-            this.tpQuanLyThuongHieu.Size = new System.Drawing.Size(1120, 524);
+            this.tpQuanLyThuongHieu.Size = new System.Drawing.Size(1120, 517);
             this.tpQuanLyThuongHieu.TabIndex = 1;
             this.tpQuanLyThuongHieu.Text = "Quản Lý Thương Hiệu";
             this.tpQuanLyThuongHieu.UseVisualStyleBackColor = true;
@@ -432,26 +430,26 @@
             this.dgvThuongHieu.BackgroundColor = System.Drawing.Color.White;
             this.dgvThuongHieu.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvThuongHieu.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvThuongHieu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(67)))), ((int)(((byte)(108)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvThuongHieu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvThuongHieu.ColumnHeadersHeight = 34;
             this.dgvThuongHieu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(151)))), ((int)(((byte)(196)))));
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvThuongHieu.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(151)))), ((int)(((byte)(196)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvThuongHieu.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvThuongHieu.EnableHeadersVisualStyles = false;
-            this.dgvThuongHieu.Location = new System.Drawing.Point(73, 119);
+            this.dgvThuongHieu.Location = new System.Drawing.Point(73, 115);
             this.dgvThuongHieu.Margin = new System.Windows.Forms.Padding(2);
             this.dgvThuongHieu.Name = "dgvThuongHieu";
             this.dgvThuongHieu.ReadOnly = true;
@@ -469,7 +467,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(70, 460);
+            this.label5.Location = new System.Drawing.Point(70, 456);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(130, 17);
@@ -482,7 +480,7 @@
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblTotal.Location = new System.Drawing.Point(248, 460);
+            this.lblTotal.Location = new System.Drawing.Point(248, 456);
             this.lblTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(24, 17);
@@ -524,7 +522,7 @@
             this.Controls.Add(this.tpThuongHieu);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UserControlBrand";
-            this.Size = new System.Drawing.Size(1128, 558);
+            this.Size = new System.Drawing.Size(1128, 551);
             this.Load += new System.EventHandler(this.UserControlBrand_Load);
             this.tpLuaChon.ResumeLayout(false);
             this.tpLuaChon.PerformLayout();
