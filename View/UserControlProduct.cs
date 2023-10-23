@@ -688,5 +688,10 @@ namespace Computer_Shop_Management_System.View
             e.Handled = true;
         }
         #endregion
+
+        private void cmbTrangThai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
     }
 }
