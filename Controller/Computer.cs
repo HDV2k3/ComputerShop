@@ -127,10 +127,56 @@ namespace Computer_Shop_Management_System.Controller
                 return count;
             }
         }
+        
+
 
 
     }
 
 }
-    
 
+
+/*
+ *  foreach (DataGridViewRow row in dtgvOrder.Rows)
+                                    {
+                                        if (row.Cells[0].Value != null)
+                                        {
+                                            string productName1 = row.Cells[0].Value.ToString();
+                                            int productRate = Convert.ToInt32(row.Cells[1].Value.ToString());
+                                            int amount = Convert.ToInt32(row.Cells[2].Value.ToString());
+                                            int total = Convert.ToInt32(row.Cells[3].Value.ToString());
+
+                                            // Kiểm tra tên sản phẩm đã tồn tại trong Product hay không
+                                            string productQuery = "SELECT COUNT(*) FROM Product WHERE Product_Name = N'" + productName1 + "'";
+                                            int productCount = 0;
+
+                                            using (SqlConnection connection1 = new SqlConnection(connectionString))
+                                            {
+                                                connection.Open();
+
+                                                SqlCommand productCmd = new SqlCommand(productQuery, connection);
+                                                productCount = (int)productCmd.ExecuteScalar();
+
+                                                connection.Close();
+                                            }
+
+                                            if (productCount > 0)
+                                            {
+                                                // Lấy thông tin sản phẩm
+                                                string getProductQuery = "SELECT * FROM Product WHERE Product_Name = N'" + productName1 + "'";
+                                                DataTable productDt = new DataTable();
+                                                productDt = DataProvider.GetData(getProductQuery);
+                                                string billCode = txtMaHoaDon1.Text.Trim();
+                                                int productId = Convert.ToInt32(productDt.Rows[0][0].ToString());
+                                                string paymentmethods = cmbptthanhtoan.SelectedItem.ToString();
+                                                // Lưu chi tiết hóa đơn
+                                                string orderDetailQuery = "UPDATE OrderDetails SET Product_Id =@, Amout, Product_Rate, Total,Payment_Methods) VALUES ('" + billCode + "'," + productId + "," + amount + "," + productRate + "," + total + ",N'" + cmbptthanhtoan.SelectedItem.ToString() + "')";
+                                                DataProvider.ExecuteNonQuery(orderDetailQuery);
+                                                // Trừ số lượng sản phẩm từ cơ sở dữ liệu
+                                                string updateProductQuantityQuery = "UPDATE Product SET Product_Quantity = Product_Quantity - " + amount + " WHERE Product_Id = " + productId;
+                                                DataProvider.ExecuteNonQuery(updateProductQuantityQuery);
+
+                                            }
+                                        }
+                                    }
+ */

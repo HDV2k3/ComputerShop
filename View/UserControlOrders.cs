@@ -110,10 +110,9 @@ namespace Computer_Shop_Management_System.View
             cmbptthanhtoan.SelectedItem = "--Chọn--";
             txtGiaTien.Text = "";
             nudsoluong.Value = 0;
-            txtthanhtien.Text = "";
-            txttongtien.Text = "";
+            txtthanhtien.Text = "";        
             txttienphaitra.Text = "";
-            txtGiamGia.Text = "";
+            txtGiamGia.Text = "0";
             txttongcong.Text = "";
             txtTienThua.Text = "";
 
@@ -139,9 +138,9 @@ namespace Computer_Shop_Management_System.View
             txtGiaTien.Text = "";
             nudsoluong.Value = 0;
             txtthanhtien.Text = "";
-            txttongtien.Text = "";
+           
             txttienphaitra.Text = "";
-            txtGiamGia.Text = "";
+            txtGiamGia.Text = "0";
             txttongcong.Text = "";
             txtTienThua.Text = "";
             txtMaHoaDon.Text = "BILL" + DateTime.Now.ToString("yyMMddhhmmss");
@@ -458,18 +457,10 @@ namespace Computer_Shop_Management_System.View
             LoadProductsToComboBox();
             cmbtttt.Items.Clear();
             cmbtttt.Items.Add("--Chọn--");
-            cmbtttt.SelectedIndex = 0;
-         
+            cmbtttt.SelectedIndex = 0;     
             cmbptthanhtoan.Items.Add("--Chọn--");
             cmbptthanhtoan.SelectedIndex = 0;
-
             LoadOrdersData();
-          
-           
-
-
-
-
         }
              
         private void btnThem_Click(object sender, EventArgs e)
@@ -527,12 +518,12 @@ namespace Computer_Shop_Management_System.View
                 cmbsanpham.SelectedItem = 0;
                 CalculateTotal();
                 TinhTienThua();
+                LoadProductsToComboBox();
             }
             catch (Exception)
             {
                 MessageBox.Show("Alo Coder:0329615309 để được update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
 
         }
      
@@ -678,7 +669,7 @@ namespace Computer_Shop_Management_System.View
                                     string orderDetailQuery = "INSERT INTO OrderDetails(Orders_Id, Product_Id, Amout, Product_Rate, Total,Payment_Methods) VALUES ('" + billCode + "'," + productId + "," + amount + "," + productRate + "," + total + ",N'" + cmbptthanhtoan.SelectedItem.ToString() + "')";
                                     DataProvider.ExecuteNonQuery(orderDetailQuery);
                                     // Trừ số lượng sản phẩm từ cơ sở dữ liệu
-                                    string updateProductQuantityQuery = "UPDATE Product SET Product_Quantity = Product_Quantity - " + amount + " WHERE Product_Id = " + productId;
+                                    string updateProductQuantityQuery = "UPDATE Product SET Product_Quantity = Product_Quantity - " + 0 + " WHERE Product_Id = " + productId;
                                     DataProvider.ExecuteNonQuery(updateProductQuantityQuery);
 
                                 }
@@ -689,9 +680,11 @@ namespace Computer_Shop_Management_System.View
                                 }
                             }
                         }
-                        MessageBox.Show("Thanh Toán và Lưu Hóa Đơn " + txtMaHoaDon.Text + " Thành Công");
+                        MessageBox.Show("Thanh Toán Hóa Đơn   " + txtMaHoaDon.Text +  "  Thất Bại");
                         ClearData();
                         txtSoDienThoai.Text = string.Empty;
+                        cmbsanpham.Items.Add("--Chọn--");
+                        cmbsanpham.SelectedItem = 0;
 
                     }
                 }
@@ -851,6 +844,8 @@ namespace Computer_Shop_Management_System.View
                         MessageBox.Show("Thanh Toán và Lưu Hóa Đơn " + txtMaHoaDon.Text + " Thành Công");
                         ClearData();
                         txtSoDienThoai.Text = string.Empty;
+                        cmbsanpham.Items.Add("--Chọn--");
+                        cmbsanpham.SelectedItem = 0;
 
                     }
                 }    
@@ -907,8 +902,8 @@ namespace Computer_Shop_Management_System.View
         {
             /* 
                LoadProductsToComboBox();*/
-        
-                string gia = Computer.Gia(cmbsanpham.SelectedItem.ToString());
+          
+            string gia = Computer.Gia(cmbsanpham.SelectedItem.ToString());
                 if (gia != string.Empty)
                 {
                     txtGiaTien.Text = gia;
@@ -1240,6 +1235,7 @@ namespace Computer_Shop_Management_System.View
                             // Lấy dữ liệu từ các TextBox và ComboBox
                             string orderDateText = dtp2.Text;
                             DateTime orderDate;
+                      
                             if (DateTime.TryParseExact(orderDateText, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out orderDate))
                             {
                                 // Giá trị ngày tháng hợp lệ, tiếp tục xử lý
@@ -1252,11 +1248,14 @@ namespace Computer_Shop_Management_System.View
                                 decimal discount = decimal.Parse(txtGiamGiaLC.Text);
                                 decimal grandTotal = decimal.Parse(txttongcongop.Text);
                                 string statusPayment = cmbtrangthaiop.SelectedItem.ToString();
+                               
+
                                 // Tạo câu lệnh SQL để cập nhật thông tin hóa đơn
                                 string updateQuery = "UPDATE Orders SET Order_Date = @OrderDate, Users_Id = @usersid, Customer_Name = @CustomerName, Customer_Number = @CustomerNumber, " +
                                     "Total_Amout = @TotalAmount, Paid_Amout = @PaidAmount, Due_Amout = @DueAmount, Discount = @Discount, " +
                                     "Grand_Total = @GrandTotal, StatusPayment = @StatusPayment WHERE Orders_Id = @OrderId";
-
+                                // Trừ số lượng sản phẩm từ cơ sở dữ liệu
+                                
                                 using (SqlCommand updateCommand = new SqlCommand(updateQuery, connection))
                                 {
                                     // Thiết lập giá trị cho các tham số
@@ -1274,16 +1273,21 @@ namespace Computer_Shop_Management_System.View
 
                                     // Thực thi câu lệnh SQL
                                     int rowsAffected = updateCommand.ExecuteNonQuery();
+                                 
                                     if (rowsAffected > 0)
                                     {
                                         MessageBox.Show("Thông tin hóa đơn đã được cập nhật thành công.");
+                                     
+                                      
                                         EmtyBox1();
                                         LoadOrdersData();
+
                                     }
                                     else
                                     {
                                         MessageBox.Show("Cập nhật thông tin hóa đơn không thành công.");
                                         EmtyBox1();
+
                                     }
                                 }
                             }
@@ -1297,7 +1301,7 @@ namespace Computer_Shop_Management_System.View
                         else
                         {
                             // Trạng thái không phải "--Thanh Toán Thất Bại--", hiển thị thông báo lỗi
-                            MessageBox.Show("Không thể cập nhật hóa đơn vì trạng thái không phải là '--Thanh Toán Thất Bại--'.");
+                            MessageBox.Show("Không thể cập nhật hóa đơn vì trạng thái không phải là 'Thanh Toán Thất Bại--'.");
                             EmtyBox1();
                         }
                     }
@@ -1634,6 +1638,11 @@ namespace Computer_Shop_Management_System.View
         private void txtGiamGiaLC_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void cmbsanpham_MouseClick(object sender, MouseEventArgs e)
+        {
+            LoadProductsToComboBox();
         }
     }
 }

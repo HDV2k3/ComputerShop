@@ -259,6 +259,7 @@ namespace Computer_Shop_Management_System.View
             ProductController.BrandCategoryProduct("SELECT Category_Name FROM Category WHERE Category_Status = N'Có Sẵn' ORDER BY Category_Name;", cmbLoai);
             cmbLoai.SelectedIndex = 0;
             cmbTrangThai.SelectedIndex = 0;
+            GetDataFromDatabase();
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
@@ -435,9 +436,9 @@ namespace Computer_Shop_Management_System.View
                             productToUpdate.Product_Name = txtTenSanPham1.Text;
                             productToUpdate.Product_Rate = int.Parse(txtGiaTien1.Text);
                             productToUpdate.Product_Quantity = int.Parse(nudSoLuong1.Value.ToString());
-                            productToUpdate.Product_Brand = cmbThuongHieu1.SelectedItem.ToString();
-                            productToUpdate.Product_Category = cmbLoai1.SelectedItem.ToString();
-                            productToUpdate.Product_Stastus = cmbTrangThai1.SelectedItem.ToString();
+                            productToUpdate.Product_Brand = cmbThuongHieu1.Text;
+                            productToUpdate.Product_Category = cmbLoai1.Text;
+                            productToUpdate.Product_Stastus = cmbTrangThai1.Text;
 
                             // Lưu các thay đổi vào cơ sở dữ liệu
                             context.SaveChanges();
@@ -523,7 +524,7 @@ namespace Computer_Shop_Management_System.View
         }
         public DataTable GetDataFromDatabase()
         {
-            string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay đổi chuỗi kết nối cho phù hợp
+            string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay đổi chuỗi kết nối cho phù hợp
 
             DataTable dataTable = new DataTable();
 

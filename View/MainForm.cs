@@ -232,6 +232,7 @@ namespace Computer_Shop_Management_System.View
                 UserControlCategory1.Visible = false;
                 UserControlProduct1.Visible = false;
                 UserControlOrders1.Visible = true;
+             
                 UserControlOrders1.SetUser(User);
                 UserControlReport1.Visible = false;
                 UserControlUser1.Visible = false;
