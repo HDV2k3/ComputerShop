@@ -113,14 +113,12 @@ namespace Computer_Shop_Management_System.View
                 if (ckbSLSPDaBan.Checked)
                     storedProcedures.Add("CalculateSoldProductCount1");
                 storedProcedureColors.Add(Color.Blue); // Đổi màu thành màu xan
-                if (ckbSLSPDaBan.Checked)
+                if (ckbDoanhThuTheoSP.Checked)
                     storedProcedures.Add("CalculateRevenueByProduct");
                 storedProcedureColors.Add(Color.Purple); // Đổi màu thành màu tím
                 if (ckbDoanhThuTheoKH.Checked)
                     storedProcedures.Add("CalculateRevenueByCustomer");
                 storedProcedureColors.Add(Color.Yellow); // Đổi màu thành màu tím
-                if (ckbLoiNhuan.Checked)
-                    storedProcedures.Add("CalculateProfit");
                 storedProcedureColors.Add(Color.Green);
                 if (ckbSLDonHang.Checked)
                     storedProcedures.Add("CalculateOrderCount");

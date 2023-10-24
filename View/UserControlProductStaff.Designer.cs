@@ -69,16 +69,15 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvSanPhamStaff.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvSanPhamStaff.EnableHeadersVisualStyles = false;
-            this.dgvSanPhamStaff.Location = new System.Drawing.Point(94, 121);
+            this.dgvSanPhamStaff.Location = new System.Drawing.Point(0, 106);
             this.dgvSanPhamStaff.Margin = new System.Windows.Forms.Padding(2);
             this.dgvSanPhamStaff.Name = "dgvSanPhamStaff";
             this.dgvSanPhamStaff.ReadOnly = true;
             this.dgvSanPhamStaff.RowHeadersWidth = 62;
             this.dgvSanPhamStaff.RowTemplate.Height = 28;
             this.dgvSanPhamStaff.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSanPhamStaff.Size = new System.Drawing.Size(849, 295);
+            this.dgvSanPhamStaff.Size = new System.Drawing.Size(1055, 403);
             this.dgvSanPhamStaff.TabIndex = 2;
-  
             // 
             // txtTimKiemSanPhamStaff
             // 
@@ -96,7 +95,7 @@
             this.lblTongSanPhamStaff.AutoSize = true;
             this.lblTongSanPhamStaff.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTongSanPhamStaff.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblTongSanPhamStaff.Location = new System.Drawing.Point(261, 454);
+            this.lblTongSanPhamStaff.Location = new System.Drawing.Point(170, 511);
             this.lblTongSanPhamStaff.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTongSanPhamStaff.Name = "lblTongSanPhamStaff";
             this.lblTongSanPhamStaff.Size = new System.Drawing.Size(25, 19);
@@ -109,7 +108,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label8.Location = new System.Drawing.Point(90, 454);
+            this.label8.Location = new System.Drawing.Point(19, 511);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(117, 19);

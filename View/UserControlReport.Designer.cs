@@ -34,7 +34,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.ckbsanphambanchaynhat = new System.Windows.Forms.CheckBox();
             this.ckbSanPhamSapHetHang = new System.Windows.Forms.CheckBox();
-            this.ckbLoiNhuan = new System.Windows.Forms.CheckBox();
             this.ckbDoanhThuTheoKH = new System.Windows.Forms.CheckBox();
             this.ckbDoanhThuTheoSP = new System.Windows.Forms.CheckBox();
             this.ckbSLSPDaBan = new System.Windows.Forms.CheckBox();
@@ -91,7 +90,6 @@
             // 
             this.panel1.Controls.Add(this.ckbsanphambanchaynhat);
             this.panel1.Controls.Add(this.ckbSanPhamSapHetHang);
-            this.panel1.Controls.Add(this.ckbLoiNhuan);
             this.panel1.Controls.Add(this.ckbDoanhThuTheoKH);
             this.panel1.Controls.Add(this.ckbDoanhThuTheoSP);
             this.panel1.Controls.Add(this.ckbSLSPDaBan);
@@ -106,7 +104,7 @@
             // ckbsanphambanchaynhat
             // 
             this.ckbsanphambanchaynhat.AutoSize = true;
-            this.ckbsanphambanchaynhat.Location = new System.Drawing.Point(5, 224);
+            this.ckbsanphambanchaynhat.Location = new System.Drawing.Point(5, 190);
             this.ckbsanphambanchaynhat.Name = "ckbsanphambanchaynhat";
             this.ckbsanphambanchaynhat.Size = new System.Drawing.Size(139, 19);
             this.ckbsanphambanchaynhat.TabIndex = 2;
@@ -116,22 +114,12 @@
             // ckbSanPhamSapHetHang
             // 
             this.ckbSanPhamSapHetHang.AutoSize = true;
-            this.ckbSanPhamSapHetHang.Location = new System.Drawing.Point(5, 190);
+            this.ckbSanPhamSapHetHang.Location = new System.Drawing.Point(5, 165);
             this.ckbSanPhamSapHetHang.Name = "ckbSanPhamSapHetHang";
             this.ckbSanPhamSapHetHang.Size = new System.Drawing.Size(159, 19);
             this.ckbSanPhamSapHetHang.TabIndex = 2;
             this.ckbSanPhamSapHetHang.Text = "Sản Phẩm Sắp Hết Hàng";
             this.ckbSanPhamSapHetHang.UseVisualStyleBackColor = true;
-            // 
-            // ckbLoiNhuan
-            // 
-            this.ckbLoiNhuan.AutoSize = true;
-            this.ckbLoiNhuan.Location = new System.Drawing.Point(5, 140);
-            this.ckbLoiNhuan.Name = "ckbLoiNhuan";
-            this.ckbLoiNhuan.Size = new System.Drawing.Size(82, 19);
-            this.ckbLoiNhuan.TabIndex = 1;
-            this.ckbLoiNhuan.Text = "Lợi Nhuận";
-            this.ckbLoiNhuan.UseVisualStyleBackColor = true;
             // 
             // ckbDoanhThuTheoKH
             // 
@@ -166,7 +154,7 @@
             // ckbSLDonHang
             // 
             this.ckbSLDonHang.AutoSize = true;
-            this.ckbSLDonHang.Location = new System.Drawing.Point(5, 165);
+            this.ckbSLDonHang.Location = new System.Drawing.Point(5, 140);
             this.ckbSLDonHang.Name = "ckbSLDonHang";
             this.ckbSLDonHang.Size = new System.Drawing.Size(135, 19);
             this.ckbSLDonHang.TabIndex = 0;
@@ -316,7 +304,6 @@
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private System.Windows.Forms.DataGridView dgvAnalys;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.CheckBox ckbLoiNhuan;
         private System.Windows.Forms.CheckBox ckbDoanhThuTheoKH;
         private System.Windows.Forms.CheckBox ckbDoanhThuTheoSP;
         private System.Windows.Forms.CheckBox ckbSLSPDaBan;

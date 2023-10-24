@@ -119,14 +119,14 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvThuongHieuStaff.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvThuongHieuStaff.EnableHeadersVisualStyles = false;
-            this.dgvThuongHieuStaff.Location = new System.Drawing.Point(100, 148);
+            this.dgvThuongHieuStaff.Location = new System.Drawing.Point(2, 148);
             this.dgvThuongHieuStaff.Margin = new System.Windows.Forms.Padding(2);
             this.dgvThuongHieuStaff.Name = "dgvThuongHieuStaff";
             this.dgvThuongHieuStaff.ReadOnly = true;
             this.dgvThuongHieuStaff.RowHeadersWidth = 62;
             this.dgvThuongHieuStaff.RowTemplate.Height = 28;
             this.dgvThuongHieuStaff.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvThuongHieuStaff.Size = new System.Drawing.Size(857, 268);
+            this.dgvThuongHieuStaff.Size = new System.Drawing.Size(1053, 268);
             this.dgvThuongHieuStaff.TabIndex = 6;
             // 
             // UserControlBrandStaff

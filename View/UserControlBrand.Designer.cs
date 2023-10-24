@@ -127,7 +127,7 @@
             this.tpLuaChon.Margin = new System.Windows.Forms.Padding(2);
             this.tpLuaChon.Name = "tpLuaChon";
             this.tpLuaChon.Padding = new System.Windows.Forms.Padding(2);
-            this.tpLuaChon.Size = new System.Drawing.Size(1120, 524);
+            this.tpLuaChon.Size = new System.Drawing.Size(1120, 517);
             this.tpLuaChon.TabIndex = 2;
             this.tpLuaChon.Text = "Lựa Chọn";
             this.tpLuaChon.UseVisualStyleBackColor = true;
@@ -449,14 +449,14 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvThuongHieu.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvThuongHieu.EnableHeadersVisualStyles = false;
-            this.dgvThuongHieu.Location = new System.Drawing.Point(73, 115);
+            this.dgvThuongHieu.Location = new System.Drawing.Point(2, 115);
             this.dgvThuongHieu.Margin = new System.Windows.Forms.Padding(2);
             this.dgvThuongHieu.Name = "dgvThuongHieu";
             this.dgvThuongHieu.ReadOnly = true;
             this.dgvThuongHieu.RowHeadersWidth = 62;
             this.dgvThuongHieu.RowTemplate.Height = 28;
             this.dgvThuongHieu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvThuongHieu.Size = new System.Drawing.Size(880, 266);
+            this.dgvThuongHieu.Size = new System.Drawing.Size(1114, 304);
             this.dgvThuongHieu.TabIndex = 0;
             this.dgvThuongHieu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvThuongHieu_CellClick);
             this.dgvThuongHieu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvThuongHieu_CellContentClick);

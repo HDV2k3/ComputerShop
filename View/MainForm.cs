@@ -129,7 +129,6 @@ namespace Computer_Shop_Management_System.View
                     else 
                     {
                         MovePanel(btnThuongHieu);
-                        MessageBox.Show("Bạn Cần Cấp Quyền Cao Hơn Để Truy Cập Các Chức Năng Khác");
                         UserControlBrandStaff1.Visible = true;
                         UserControlDashboard1.Visible = false;
                         UserControlCategory1.Visible = false;
@@ -167,7 +166,7 @@ namespace Computer_Shop_Management_System.View
                     else 
                     {
                         MovePanel(btnLoai);
-                        MessageBox.Show("Bạn Cần Cấp Quyền Cao Hơn Để Truy Cập Các Chức Năng Khác");
+                    
                         
                         UserControlDashboard1.Visible = false;
                         UserControlCategory1.Visible = false;
@@ -207,7 +206,7 @@ namespace Computer_Shop_Management_System.View
                     else 
                     {
                         MovePanel(btnSanPham);
-                        MessageBox.Show("Bạn Cần Cấp Quyền Cao Hơn Để Truy Cập Các Chức Năng Khác");
+                   
 
                         UserControlDashboard1.Visible = false;
                         UserControlCategory1.Visible = false;
@@ -285,8 +284,7 @@ namespace Computer_Shop_Management_System.View
                     else 
                     {
                         MovePanel(btnNguoiDung);
-                        MessageBox.Show("Bạn Cần Cấp Quyền Cao Hơn Để Truy Cập Các Chức Năng Khác");
-
+                      
                         UserControlDashboard1.Visible = false;
                         UserControlCategory1.Visible = false;
                         UserControlProduct1.Visible = false;

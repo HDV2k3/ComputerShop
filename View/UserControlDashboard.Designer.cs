@@ -72,7 +72,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(266, 105);
             this.panel1.TabIndex = 0;
-           
             // 
             // lblTongSanPham
             // 
@@ -128,7 +127,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(266, 105);
             this.panel2.TabIndex = 0;
-        
             // 
             // lblTongSoDonDH
             // 
@@ -180,7 +178,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(266, 105);
             this.panel3.TabIndex = 0;
-            
             // 
             // lblLowStock
             // 
@@ -233,7 +230,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(266, 105);
             this.panel4.TabIndex = 0;
-
             // 
             // label2
             // 
@@ -286,6 +282,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);

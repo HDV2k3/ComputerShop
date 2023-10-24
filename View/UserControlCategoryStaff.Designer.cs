@@ -69,16 +69,16 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvLoaiStaff.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvLoaiStaff.EnableHeadersVisualStyles = false;
-            this.dgvLoaiStaff.Location = new System.Drawing.Point(89, 126);
+            this.dgvLoaiStaff.Location = new System.Drawing.Point(2, 122);
             this.dgvLoaiStaff.Margin = new System.Windows.Forms.Padding(2);
             this.dgvLoaiStaff.Name = "dgvLoaiStaff";
             this.dgvLoaiStaff.ReadOnly = true;
             this.dgvLoaiStaff.RowHeadersWidth = 62;
             this.dgvLoaiStaff.RowTemplate.Height = 28;
             this.dgvLoaiStaff.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLoaiStaff.Size = new System.Drawing.Size(857, 268);
+            this.dgvLoaiStaff.Size = new System.Drawing.Size(1053, 268);
             this.dgvLoaiStaff.TabIndex = 2;
-          
+            // 
             // txtTimKiemLoaiStaff
             // 
             this.txtTimKiemLoaiStaff.Anchor = System.Windows.Forms.AnchorStyles.None;
