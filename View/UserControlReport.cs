@@ -1,14 +1,18 @@
 ﻿using Computer_Shop_Management_System.Controller;
+using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LicenseContext = OfficeOpenXml.LicenseContext;
 
 namespace Computer_Shop_Management_System.View
 {
@@ -185,5 +189,75 @@ namespace Computer_Shop_Management_System.View
             dtpEndDate.Value = DateTime.Now;
         }
         #endregion
+    
+        private void btnXuatEcel_Click(object sender, EventArgs e)
+        {
+            string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+            string selectedProc = GetSelectedProc(); // Hàm này sẽ trả về tên proc được chọn
+
+            if (!string.IsNullOrEmpty(selectedProc))
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(selectedProc, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        // Thêm các tham số và giá trị tương ứng
+                        command.Parameters.AddWithValue("@StartDate", dtpStartDate.Value);
+                        command.Parameters.AddWithValue("@EndDate", dtpEndDate.Value);
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            DataTable dataTable = new DataTable();
+                            adapter.Fill(dataTable);
+                            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+                            SaveFileDialog saveFileDialog = new SaveFileDialog();
+                            saveFileDialog.Filter = "Excel Files|*.xlsx";
+                            saveFileDialog.Title = "Chọn nơi lưu tập tin Excel";
+                            saveFileDialog.FileName = "Report.xlsx"; // Tên mặc định cho tập tin Excel
+
+                            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                            {
+                                string filePath = saveFileDialog.FileName;
+                                FileInfo excelFile = new FileInfo(filePath);
+
+                                using (ExcelPackage package = new ExcelPackage())
+                                {
+                                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Sheet1");
+                                    worksheet.Cells["A1"].LoadFromDataTable(dataTable, true);
+
+                                    package.SaveAs(excelFile);
+                                }
+
+                                MessageBox.Show("Xuất Excel thành công!");
+                            }
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một thống kê cụ thể!");
+            }
+        }
+        private string GetSelectedProc()
+        {
+            if (ckbDoanhThuTheoKH.Checked)
+            {
+                return "CalculateRevenueByCustomer"; // Thay thế "proc1" bằng tên stored procedure thực tế
+            }
+            else if (ckbSLKhachHangMoi.Checked)
+            {
+                return "CalculateNewCustomerCount"; // Thay thế "proc2" bằng tên stored procedure thực tế
+            }
+           
+
+            return string.Empty;
+        }
     }
 }

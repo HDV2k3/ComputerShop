@@ -122,7 +122,6 @@ namespace Computer_Shop_Management_System.Controller
                     {
                         command.Parameters.AddWithValue("@BrandName", brandName);
                         int rowsAffected = command.ExecuteNonQuery();
-
                         if (rowsAffected > 0)
                         {
                             return true;

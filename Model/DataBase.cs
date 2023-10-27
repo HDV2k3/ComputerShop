@@ -20,6 +20,7 @@ namespace Computer_Shop_Management_System.Model
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<UsersCategory> UsersCategory { get; set; }
         public virtual DbSet<OrderDetails> OrderDetails { get; set; }
+       
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

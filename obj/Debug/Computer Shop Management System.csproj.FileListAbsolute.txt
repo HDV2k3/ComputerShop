@@ -181,3 +181,9 @@ C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\obj\Debug\Com
 C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlProductStaff.resources
 C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlUserStaff.resources
 C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\bin\Debug\ConsoleTables.dll
+C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\bin\Debug\EPPlus.dll
+C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\bin\Debug\EPPlus.Interfaces.dll
+C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\bin\Debug\EPPlus.System.Drawing.dll
+C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\bin\Debug\EPPlus.xml
+C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml

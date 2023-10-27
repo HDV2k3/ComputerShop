@@ -20,21 +20,30 @@ namespace Computer_Shop_Management_System.Controller
 
         public static User IsvalidNamePass(string Username, string password)
         {
-            using (var dbContext = new DataBase())
+            try
             {
-                // Kiểm tra tính hợp lệ của tên người dùng và mật khẩu
-                var User = dbContext.User.FirstOrDefault(u => u.Users_Name == Username && u.users_Password == password);
-                if (User != null)
+                using (var dbContext = new DataBase())
                 {
-                   
-                    return User; // Tên người dùng và mật khẩu hợp lệ
-                }
-                else
-                {
-                    
-                    return null; // Tên người dùng hoặc mật khẩu không hợp lệ
+                    // Kiểm tra tính hợp lệ của tên người dùng và mật khẩu
+                    var User = dbContext.User.FirstOrDefault(u => u.Users_Name == Username && u.users_Password == password);
+                    if (User != null)
+                    {
+
+                        return User; // Tên người dùng và mật khẩu hợp lệ
+                    }
+                    else
+                    {
+
+                        return null; // Tên người dùng hoặc mật khẩu không hợp lệ
+                    }
                 }
             }
+            catch(Exception)
+            {
+                MessageBox.Show("Khởi động lại SQL");
+                return null;
+            }
+            
         }
         // query sản phẩm
 
@@ -65,14 +74,22 @@ namespace Computer_Shop_Management_System.Controller
         // query giá của sản phẩm
         public static string Gia(string productName)
         {
-            using (var dbContext = new DataBase())
+            try
             {
-                var product = dbContext.Product.FirstOrDefault(p => p.Product_Name == productName);
-                if (product != null)
+                using (var dbContext = new DataBase())
                 {
-                    return product.Product_Rate.ToString();
+                    var product = dbContext.Product.FirstOrDefault(p => p.Product_Name == productName);
+                    if (product != null)
+                    {
+                        return product.Product_Rate.ToString();
+                    }
                 }
             }
+            catch(Exception ) 
+            {
+                MessageBox.Show("Tôi sẽ sớm quay lại!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
 
             return string.Empty;
         }

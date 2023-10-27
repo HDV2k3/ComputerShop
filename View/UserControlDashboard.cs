@@ -24,7 +24,6 @@ namespace Computer_Shop_Management_System.View
         private void LoadProductCount()
         {
             string query = "SELECT COUNT(*) FROM Product WHERE Product_Quantity < 10";
-
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -49,7 +48,6 @@ namespace Computer_Shop_Management_System.View
             lblTongDoanhThu.Text = Computer.CountTotal_Amout().ToString();
             lblTongSoDonDH.Text = Computer.CountTotal_Order().ToString();
             LoadProductCount();
-
         }
         #endregion
 

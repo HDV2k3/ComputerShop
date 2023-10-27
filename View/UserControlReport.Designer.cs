@@ -48,6 +48,9 @@
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel28 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.btnXuatEcel = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.tabControl1.SuspendLayout();
             this.tpBaoCao.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -68,6 +71,7 @@
             // 
             // tpBaoCao
             // 
+            this.tpBaoCao.Controls.Add(this.btnXuatEcel);
             this.tpBaoCao.Controls.Add(this.panel1);
             this.tpBaoCao.Controls.Add(this.dgvAnalys);
             this.tpBaoCao.Controls.Add(this.btnTaoBaoCao);
@@ -198,7 +202,7 @@
             this.btnTaoBaoCao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTaoBaoCao.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTaoBaoCao.ForeColor = System.Drawing.Color.White;
-            this.btnTaoBaoCao.Location = new System.Drawing.Point(493, 426);
+            this.btnTaoBaoCao.Location = new System.Drawing.Point(323, 424);
             this.btnTaoBaoCao.Margin = new System.Windows.Forms.Padding(2);
             this.btnTaoBaoCao.Name = "btnTaoBaoCao";
             this.btnTaoBaoCao.Size = new System.Drawing.Size(143, 39);
@@ -271,6 +275,25 @@
             // 
             this.guna2Elipse1.TargetControl = this.btnTaoBaoCao;
             // 
+            // btnXuatEcel
+            // 
+            this.btnXuatEcel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnXuatEcel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnXuatEcel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnXuatEcel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnXuatEcel.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnXuatEcel.ForeColor = System.Drawing.Color.White;
+            this.btnXuatEcel.Location = new System.Drawing.Point(557, 424);
+            this.btnXuatEcel.Name = "btnXuatEcel";
+            this.btnXuatEcel.Size = new System.Drawing.Size(137, 39);
+            this.btnXuatEcel.TabIndex = 8;
+            this.btnXuatEcel.Text = "Xuất Excel";
+            this.btnXuatEcel.Click += new System.EventHandler(this.btnXuatEcel_Click);
+            // 
+            // guna2Elipse2
+            // 
+            this.guna2Elipse2.TargetControl = this.btnXuatEcel;
+            // 
             // UserControlReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -312,5 +335,8 @@
         private System.Windows.Forms.CheckBox ckbTongDoanhThu;
         private System.Windows.Forms.CheckBox ckbSanPhamSapHetHang;
         private System.Windows.Forms.CheckBox ckbsanphambanchaynhat;
+        private Guna.UI2.WinForms.Guna2Button btnXuatEcel;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse3;
     }
 }

@@ -51,7 +51,7 @@ namespace Computer_Shop_Management_System.View
         }
         private void UserControlBrand_Load(object sender, EventArgs e)
         {
-            txtMaThuongHieu.Text = "TH" + DateTime.Now.ToString("yyMMddhhmmss");
+            txtMaThuongHieu.Text = "TH" + DateTime.Now.ToString("ddhhmmss");
             lblTotal.Text = dgvThuongHieu.Rows.Count.ToString();
             cmbTrangThai.SelectedIndex = 0;
             txtMaThuongHieu.ReadOnly = true;
@@ -88,6 +88,18 @@ namespace Computer_Shop_Management_System.View
                 dgvThuongHieu.Columns["Brand_Name"].HeaderText = "Tên Thương Hiệu";
                 dgvThuongHieu.Columns["Brand_Status"].HeaderText = "Trạng Thái";
 
+                dgvThuongHieu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                // Đặt kích thước cố định cho các cột không tự điều chỉnh
+                dgvThuongHieu.Columns["Brand_Id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                dgvThuongHieu.Columns["Brand_Id"].Width = 150;
+
+                dgvThuongHieu.Columns["Brand_Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                dgvThuongHieu.Columns["Brand_Name"].Width = 250;
+                dgvThuongHieu.Columns["Brand_Status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                dgvThuongHieu.Columns["Brand_Status"].Width = 250;
+
+
             }
             lblTotal.Text = dgvThuongHieu.Rows.Count.ToString();
         }
@@ -120,14 +132,12 @@ namespace Computer_Shop_Management_System.View
                     string brandId = txtMaThuongHieu.Text;
                     string brandName = txtTenThuongHieu.Text;
                     string brandStatus = cmbTrangThai.SelectedItem.ToString();
-
                     // Kiểm tra trùng lặp mã thương hiệu hoặc tên thương hiệu
                     if (IsDuplicateBrand(brandId, brandName))
                     {
                         MessageBox.Show("Mã thương hiệu hoặc tên thương hiệu đã tồn tại.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-
                     // Tiếp tục thêm thương hiệu mới
                     BrandController brandController = new BrandController();
                     bool result = brandController.AddBrand(brandId, brandName, brandStatus);
@@ -135,10 +145,7 @@ namespace Computer_Shop_Management_System.View
                     if (result)
                     {
                         MessageBox.Show("Thêm Thương Hiệu" + txtTenThuongHieu.Text + "Thành Công.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
                         dgvThuongHieu.DataSource = brandController;
-
                         dgvThuongHieu.Refresh();
                         EmptyBox();
                     }
@@ -209,10 +216,8 @@ namespace Computer_Shop_Management_System.View
                     if (dialogResult == DialogResult.Yes)
                     {
                         string brandName = txtTenThuongHieu1.Text;
-
                         BrandController brandController = new BrandController();
                         bool result = brandController.DeleteBrand(brandName);
-
                         if (result)
                         {
                             MessageBox.Show("Xóa thương hiệu " + txtTenThuongHieu1.Text + " thành công.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
