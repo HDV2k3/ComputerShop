@@ -87,17 +87,15 @@ namespace Computer_Shop_Management_System.View
                 dgvThuongHieu.Columns["Brand_Id"].HeaderText = "Mã Thương Hiệu";
                 dgvThuongHieu.Columns["Brand_Name"].HeaderText = "Tên Thương Hiệu";
                 dgvThuongHieu.Columns["Brand_Status"].HeaderText = "Trạng Thái";
-
                 dgvThuongHieu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-                // Đặt kích thước cố định cho các cột không tự điều chỉnh
+               /* // Đặt kích thước cố định cho các cột không tự điều chỉnh
                 dgvThuongHieu.Columns["Brand_Id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                dgvThuongHieu.Columns["Brand_Id"].Width = 150;
+                dgvThuongHieu.Columns["Brand_Id"].Width = 400;
 
                 dgvThuongHieu.Columns["Brand_Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                dgvThuongHieu.Columns["Brand_Name"].Width = 250;
+                dgvThuongHieu.Columns["Brand_Name"].Width = 400;
                 dgvThuongHieu.Columns["Brand_Status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                dgvThuongHieu.Columns["Brand_Status"].Width = 250;
+                dgvThuongHieu.Columns["Brand_Status"].Width = 400;*/
 
 
             }
@@ -122,7 +120,7 @@ namespace Computer_Shop_Management_System.View
                     MessageBox.Show("Tên thương hiệu không được chứa ký tự đặc biệt và số.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                else if (cmbTrangThai.SelectedIndex == -1)
+                else if (cmbTrangThai.SelectedIndex == -1||cmbTrangThai.Text == "--Chọn--")
                 {
                     MessageBox.Show("Vui lòng chọn trạng thái.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
@@ -215,9 +213,9 @@ namespace Computer_Shop_Management_System.View
                     DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa thương hiệu" + txtTenThuongHieu1.Text + "?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        string brandName = txtTenThuongHieu1.Text;
+                        string brandId = txtMaThuongHieu1.Text.Trim();
                         BrandController brandController = new BrandController();
-                        bool result = brandController.DeleteBrand(brandName);
+                        bool result = brandController.DeleteBrand(brandId);
                         if (result)
                         {
                             MessageBox.Show("Xóa thương hiệu " + txtTenThuongHieu1.Text + " thành công.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

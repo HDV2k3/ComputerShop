@@ -116,11 +116,11 @@ namespace Computer_Shop_Management_System.Controller
                 {
                     connection.Open();
 
-                    string query = "DELETE FROM Brand WHERE Brand_Name = @BrandName";
+                    string query = "DELETE FROM Brand WHERE Brand_Id = @BrandId";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@BrandName", brandName);
+                        command.Parameters.AddWithValue("@BrandId", brandName);
                         int rowsAffected = command.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {

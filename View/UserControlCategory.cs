@@ -92,7 +92,7 @@ namespace Computer_Shop_Management_System.View
         }    
         private void UserControlCategory_Load(object sender, EventArgs e)
         {
-            txtMaLoai.Text = "L" + DateTime.Now.ToString("yyMMddhhmmss");
+            txtMaLoai.Text = "L" + DateTime.Now.ToString("ddhhmmss");
         
             txtMaLoai.ReadOnly = true;
             txtMaLoai.Enabled = false;
@@ -258,7 +258,7 @@ namespace Computer_Shop_Management_System.View
                     MessageBox.Show("Tên Loại không được chứa ký tự đặc biệt và số.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                else if (cmbTrangThai.SelectedIndex == -1)
+                else if (cmbTrangThai.SelectedIndex == -1 || cmbTrangThai.Text == "--Chọn--")
                 {
                     MessageBox.Show("Vui lòng chọn trạng thái.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
@@ -357,10 +357,10 @@ namespace Computer_Shop_Management_System.View
                     DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa Loại " + txtTenLoai1.Text.Trim() + " ?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        string CategoryName = txtTenLoai1.Text;
+                        string CategoryId = txtMaLoai1.Text.Trim();
 
                         CategoryController CategoryController = new CategoryController();
-                        bool result = CategoryController.DeleteCategory(CategoryName);
+                        bool result = CategoryController.DeleteCategory(CategoryId);
 
                         if (result)
                         {

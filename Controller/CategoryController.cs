@@ -105,7 +105,7 @@ namespace Computer_Shop_Management_System.Controller
             }
         }
         // xóa
-        public bool DeleteCategory(string CategoryName)
+        public bool DeleteCategory(string CategoryId)
         {
             try
             {
@@ -115,11 +115,11 @@ namespace Computer_Shop_Management_System.Controller
                 {
                     connection.Open();
 
-                    string query = "DELETE FROM Category WHERE Category_Name = @CategoryName";
+                    string query = "DELETE FROM Category WHERE Category_Id = @CategoryId";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@CategoryName", CategoryName);
+                        command.Parameters.AddWithValue("@CategoryId", CategoryId);
                         int rowsAffected = command.ExecuteNonQuery();
 
                         if (rowsAffected > 0)

@@ -76,7 +76,28 @@ namespace Computer_Shop_Management_System.View
                     dtgvQL.Columns["Discount"].HeaderText = "Chiết Khấu";
                     dtgvQL.Columns["Grand_Total"].HeaderText = "Tổng Tiền Sau Khi Chiết Khấu";
                     dtgvQL.Columns["StatusPayment"].HeaderText = "Trạng Thái Thanh Toán";
-
+                    dtgvQL.Columns["Orders_Id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                    dtgvQL.Columns["Orders_Id"].Width = 100;
+                    dtgvQL.Columns["Users_Id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                    dtgvQL.Columns["Users_Id"].Width = 100;
+                    dtgvQL.Columns["Order_Date"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                    dtgvQL.Columns["Order_Date"].Width = 100;
+                    dtgvQL.Columns["Customer_Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                    dtgvQL.Columns["Customer_Name"].Width = 150;
+                    dtgvQL.Columns["Customer_Number"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                    dtgvQL.Columns["Customer_Number"].Width = 100;
+                    dtgvQL.Columns["Total_Amout"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                    dtgvQL.Columns["Total_Amout"].Width = 70;
+                    dtgvQL.Columns["Paid_Amout"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                    dtgvQL.Columns["Paid_Amout"].Width = 70;
+                    dtgvQL.Columns["Due_Amout"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                    dtgvQL.Columns["Due_Amout"].Width = 70;
+                    dtgvQL.Columns["Discount"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                    dtgvQL.Columns["Discount"].Width = 70;
+                    dtgvQL.Columns["Grand_Total"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                    dtgvQL.Columns["Grand_Total"].Width = 70;
+                    dtgvQL.Columns["StatusPayment"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                    dtgvQL.Columns["StatusPayment"].Width =210;
                     lbltongsotien.Text = dtgvQL.Rows.Count.ToString();
 
                 }

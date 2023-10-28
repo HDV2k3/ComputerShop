@@ -220,6 +220,28 @@ namespace Computer_Shop_Management_System.View
                 dgvSanPham.Columns["Product_Brand"].HeaderText = "Thương Hiệu";
                 dgvSanPham.Columns["Product_Category"].HeaderText = "Loại";
                 dgvSanPham.Columns["Product_Stastus"].HeaderText = "Trạng Thái";
+                dgvSanPham.Columns["Product_Id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                dgvSanPham.Columns["Product_Id"].Width = 100;
+                dgvSanPham.Columns["Product_Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                dgvSanPham.Columns["Product_Name"].Width = 200;
+                dgvSanPham.Columns["Product_Image"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                dgvSanPham.Columns["Product_Image"].Width = 400;
+                dgvSanPham.Columns["Product_Rate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                dgvSanPham.Columns["Product_Rate"].Width = 100;
+                dgvSanPham.Columns["Product_Quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                dgvSanPham.Columns["Product_Quantity"].Width = 50;
+                dgvSanPham.Columns["Product_Brand"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                dgvSanPham.Columns["Product_Brand"].Width = 120;
+                dgvSanPham.Columns["Product_Category"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                dgvSanPham.Columns["Product_Category"].Width = 120;
+                dgvSanPham.Columns["Product_Stastus"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                dgvSanPham.Columns["Product_Stastus"].Width = 150;
+
+
+
+
+
+
             }
             lblTotal.Text = dgvSanPham.Rows.Count.ToString();
 
@@ -260,6 +282,9 @@ namespace Computer_Shop_Management_System.View
             cmbLoai.SelectedIndex = 0;
             cmbTrangThai.SelectedIndex = 0;
             GetDataFromDatabase();
+            dgvSanPham.ColumnHeadersDefaultCellStyle.BackColor = Color.Blue;
+            dgvSanPham.EnableHeadersVisualStyles = false;
+
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
@@ -285,17 +310,17 @@ namespace Computer_Shop_Management_System.View
                     MessageBox.Show("Hãy nhập số lượng sản phẩm(Số lượng sản phẩm không thể bằng 0!).", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                else if (cmbThuongHieu.SelectedIndex == 0)
+                else if (cmbThuongHieu.SelectedIndex == 0 || cmbThuongHieu.Text =="--Chọn--")
                 {
                     MessageBox.Show("Hãy nhập thương hiệu sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                else if (cmbLoai.SelectedIndex == 0)
+                else if (cmbLoai.SelectedIndex == 0 || cmbLoai.Text == "--Chọn--")
                 {
                     MessageBox.Show("Hãy nhập loại sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                else if (cmbTrangThai.SelectedIndex == 0)
+                else if (cmbTrangThai.SelectedIndex == 0 || cmbTrangThai.Text == "--Chọn--")
                 {
                     MessageBox.Show("Hãy nhập trạng thái sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
@@ -523,27 +548,30 @@ namespace Computer_Shop_Management_System.View
             EmptyBox();
         }
         public DataTable GetDataFromDatabase()
+
         {
-            string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay đổi chuỗi kết nối cho phù hợp
+           
+                string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay đổi chuỗi kết nối cho phù hợp
 
-            DataTable dataTable = new DataTable();
+                DataTable dataTable = new DataTable();
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                string query = "SELECT * FROM Product";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    connection.Open();
+
+                    string query = "SELECT * FROM Product";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        adapter.Fill(dataTable);
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            adapter.Fill(dataTable);
+                        }
                     }
                 }
-            }
 
-            return dataTable;
+                return dataTable;
+           
         }
         private void tpProduct_Click(object sender, EventArgs e)
         {
@@ -577,6 +605,24 @@ namespace Computer_Shop_Management_System.View
                 dgvSanPham.Columns["Product_Brand"].HeaderText = "Thương Hiệu";
                 dgvSanPham.Columns["Product_Category"].HeaderText = "Loại";
                 dgvSanPham.Columns["Product_Stastus"].HeaderText = "Trạng Thái";
+                dgvSanPham.Columns["Product_Id"].HeaderText = "Mã Sản Phẩm";
+                /*   dgvSanPham.Columns["Product_Id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                   dgvSanPham.Columns["Product_Id"].Width = 50;
+                   dgvSanPham.Columns["Product_Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                   dgvSanPham.Columns["Product_Name"].Width = 120;
+                   dgvSanPham.Columns["Product_Image"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                   dgvSanPham.Columns["Product_Image"].Width = 300;
+                   dgvSanPham.Columns["Product_Rate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                   dgvSanPham.Columns["Product_Rate"].Width = 70;
+                   dgvSanPham.Columns["Product_Quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                   dgvSanPham.Columns["Product_Quantity"].Width = 50;
+                   dgvSanPham.Columns["Product_Brand"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                   dgvSanPham.Columns["Product_Brand"].Width = 100;
+                   dgvSanPham.Columns["Product_Category"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                   dgvSanPham.Columns["Product_Category"].Width = 100;
+                   dgvSanPham.Columns["Product_Stastus"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                   dgvSanPham.Columns["Product_Stastus"].Width = 150;*/
+
 
             }
             lblTotal.Text = dgvSanPham.Rows.Count.ToString();
@@ -693,6 +739,25 @@ namespace Computer_Shop_Management_System.View
         private void cmbTrangThai_SelectedIndexChanged(object sender, EventArgs e)
         {
            
+        }
+
+        private void dgvSanPham_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            string targetValue = "Value";
+            if (dgvSanPham.Rows[e.RowIndex].Cells["Product_Id"].Value != null &&
+                dgvSanPham.Rows[e.RowIndex].Cells["Product_Id"].Value.ToString() == targetValue)
+            {
+                // Thay đổi màu nền của dòng
+                dgvSanPham.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
+                // Thay đổi màu chữ của dòng
+                dgvSanPham.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
+            }
+            else
+            {
+                // Đặt màu mặc định cho nền và chữ của dòng
+                dgvSanPham.Rows[e.RowIndex].DefaultCellStyle.BackColor = dgvSanPham.DefaultCellStyle.BackColor;
+                dgvSanPham.Rows[e.RowIndex].DefaultCellStyle.ForeColor = dgvSanPham.DefaultCellStyle.ForeColor;
+            }
         }
     }
 }

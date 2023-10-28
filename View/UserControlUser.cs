@@ -187,7 +187,7 @@ namespace Computer_Shop_Management_System.View
                     MessageBox.Show("Vui lòng nhập email.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                else if (cmbLoaiTK.SelectedIndex == -1)
+                else if (cmbLoaiTK.SelectedIndex == -1 || cmbLoaiTK.Text == "--Chọn--")
                 {
                     MessageBox.Show("Vui lòng chọn loại tài khoảng.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
