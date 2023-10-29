@@ -69,7 +69,7 @@ namespace Computer_Shop_Management_System.View
             try
             {
                 System.Windows.Forms.OpenFileDialog openImage = new OpenFileDialog();
-               //openImage.Filter = "Image Only(.jpg; *.jpeg; *.gif; *.bmp; *.png)|.jpg; *.jpeg; *.gif; *.bmp; *.png";
+                //openImage.Filter = "Image Only(.jpg; *.jpeg; *.gif; *.bmp; *.png)|.jpg; *.jpeg; *.gif; *.bmp; *.png";
                 openImage.AutoUpgradeEnabled = true;
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
@@ -81,7 +81,7 @@ namespace Computer_Shop_Management_System.View
 
                 }
             }
-            catch (Exception )
+            catch (Exception)
             {
                 MessageBox.Show("Image upload error!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -134,7 +134,7 @@ namespace Computer_Shop_Management_System.View
                 }
                 return false;
             }
-        }      
+        }
         private void LoadProductsToComboBoxThuongHieu()
         {
             using (var context = new DataBase())
@@ -145,7 +145,7 @@ namespace Computer_Shop_Management_System.View
                 var productNames = products.Select(product => product.Product_Name).ToArray();
 
                 // Thêm danh sách sản phẩm vào combobox
-                
+
                 cmbThuongHieu1.Items.AddRange(productNames);
             }
         }
@@ -161,9 +161,9 @@ namespace Computer_Shop_Management_System.View
                 // Thêm danh sách sản phẩm vào combobox
                 cmbLoai1.Items.AddRange(productNames);
 
-              
+
             }
-        }     
+        }
         private const string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay thế bằng chuỗi kết nối của bạn
         private void SearchProduct(string searchName)
         {
@@ -250,7 +250,7 @@ namespace Computer_Shop_Management_System.View
         #region Event
         private void dgvSanPham_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
-            string targetValue = "Value";
+            /*string targetValue = "Value";
             if (dgvSanPham.Rows[e.RowIndex].Cells["Product_Id"].Value != null &&
                 dgvSanPham.Rows[e.RowIndex].Cells["Product_Id"].Value.ToString() == targetValue)
             {
@@ -264,7 +264,7 @@ namespace Computer_Shop_Management_System.View
                 // Đặt màu mặc định cho nền và chữ của dòng
                 dgvSanPham.Rows[e.RowIndex].DefaultCellStyle.BackColor = dgvSanPham.DefaultCellStyle.BackColor;
                 dgvSanPham.Rows[e.RowIndex].DefaultCellStyle.ForeColor = dgvSanPham.DefaultCellStyle.ForeColor;
-            }
+            }*/
         }
         private void btnDuyetSanPham_Click(object sender, EventArgs e)
         {
@@ -299,7 +299,7 @@ namespace Computer_Shop_Management_System.View
             ProductController.BrandCategoryProduct("SELECT Category_Name FROM Category WHERE Category_Status = N'Có Sẵn' ORDER BY Category_Name;", cmbLoai);
             cmbLoai.SelectedIndex = 0;
             cmbTrangThai.SelectedIndex = 0;
-            GetDataFromDatabase();
+          /*  GetDataFromDatabase();*/
             dgvSanPham.ColumnHeadersDefaultCellStyle.BackColor = Color.Blue;
             dgvSanPham.EnableHeadersVisualStyles = false;
 
@@ -328,7 +328,7 @@ namespace Computer_Shop_Management_System.View
                     MessageBox.Show("Hãy nhập số lượng sản phẩm(Số lượng sản phẩm không thể bằng 0!).", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                else if (cmbThuongHieu.SelectedIndex == 0 || cmbThuongHieu.Text =="--Chọn--")
+                else if (cmbThuongHieu.SelectedIndex == 0 || cmbThuongHieu.Text == "--Chọn--")
                 {
                     MessageBox.Show("Hãy nhập thương hiệu sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
@@ -361,11 +361,11 @@ namespace Computer_Shop_Management_System.View
                     }
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
-                MessageBox.Show("Alo Coder:việt 0329615309 để update","sorry",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Alo Coder:việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           
+
         }
         private void picTimKiem_Click(object sender, EventArgs e)
         {
@@ -507,8 +507,7 @@ namespace Computer_Shop_Management_System.View
         }
         private void txtTenSanPham1_TextChanged(object sender, EventArgs e)
         {
-            LoadProductsToComboBoxLoai();
-            LoadProductsToComboBoxThuongHieu();
+            ComboBoxAutoFill();
             if (txtTenSanPham1.Text.Trim() != null)
             {
                 string tensanpham = txtTenSanPham1.Text.Trim();
@@ -524,7 +523,7 @@ namespace Computer_Shop_Management_System.View
                         {
                             if (reader.Read())
                             {
-                                
+
 
                                 string cmbloai = reader["Product_Category"].ToString();
                                 string cmbthuonghieu = reader["Product_Brand"].ToString();
@@ -534,12 +533,12 @@ namespace Computer_Shop_Management_System.View
                             }
                             else
                             {
-                                
+
                             }
                         }
                     }
                 }
-            }    
+            }
         }
         private void tpProduct_Leave(object sender, EventArgs e)
         {
@@ -547,10 +546,10 @@ namespace Computer_Shop_Management_System.View
         }
         private void tpProduct_Enter(object sender, EventArgs e)
         {
-           /* if (id == "")
-            {
-                tpProduct.SelectedTab = tpQuanLySanPham;
-            }*/
+            /* if (id == "")
+             {
+                 tpProduct.SelectedTab = tpQuanLySanPham;
+             }*/
         }
         private void tpQuanLySanPham_Enter(object sender, EventArgs e)
         {
@@ -565,28 +564,28 @@ namespace Computer_Shop_Management_System.View
         public DataTable GetDataFromDatabase()
 
         {
-           
-                string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay đổi chuỗi kết nối cho phù hợp
 
-                DataTable dataTable = new DataTable();
+            string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay đổi chuỗi kết nối cho phù hợp
 
-                using (SqlConnection connection = new SqlConnection(connectionString))
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT * FROM Product";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    connection.Open();
-
-                    string query = "SELECT * FROM Product";
-
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                     {
-                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                        {
-                            adapter.Fill(dataTable);
-                        }
+                        adapter.Fill(dataTable);
                     }
                 }
+            }
 
-                return dataTable;
-           
+            return dataTable;
+
         }
         private void tpProduct_Click(object sender, EventArgs e)
         {
@@ -610,7 +609,7 @@ namespace Computer_Shop_Management_System.View
                 DataTable dataTable = GetDataFromDatabase();
 
                 // Gán datatable làm nguồn dữ liệu cho DataGridView
-               
+
                 dgvSanPham.DataSource = dataTable;
                 dgvSanPham.Columns["Product_Id"].HeaderText = "Mã Sản Phẩm";
                 dgvSanPham.Columns["Product_Name"].HeaderText = "Tên Sản Phẩm";
@@ -699,12 +698,69 @@ namespace Computer_Shop_Management_System.View
                 MessageBox.Show("Alo Coder:việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void dgvSanPham_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0 && e.RowIndex < dgvSanPham.Rows.Count)
+                {
+                    tpProduct.SelectedTab = tpLuaChon;
+                    DataGridViewRow row = dgvSanPham.Rows[e.RowIndex];
+
+                    // Đảm bảo chỉ số cột hợp lệ
+                    if (row.Cells.Count > 1)
+                    {
+                        // Đổ dữ liệu vào các controls
+                        txtTenSanPham1.Text = row.Cells[1].Value?.ToString();
+                    }
+                    if (row.Cells.Count > 3)
+                    {
+                        txtGiaTien1.Text = row.Cells[3].Value?.ToString();
+                    }
+                    if (row.Cells.Count > 4)
+                    {
+                        nudSoLuong1.Value = Convert.ToDecimal(row.Cells[4].Value);
+                    }
+                    if (row.Cells.Count > 5)
+                    {
+                        cmbThuongHieu1.SelectedItem = row.Cells[5].Value?.ToString();
+                    }
+                    if (row.Cells.Count > 6)
+                    {
+                        cmbLoai1.SelectedItem = row.Cells[6].Value?.ToString();
+                    }
+                    if (row.Cells.Count > 7)
+                    {
+                        cmbTrangThai1.SelectedItem = row.Cells[7].Value?.ToString();
+                    }
+
+                    // Kiểm tra và hiển thị hình ảnh từ cột "2"
+                    if (row.Cells.Count > 2 && row.Cells[2].Value != DBNull.Value)
+                    {
+                        byte[] imageData = (byte[])row.Cells[2].Value;
+                        using (MemoryStream memoryStream = new MemoryStream(imageData))
+                        {
+                            picPhoto1.Image = Image.FromStream(memoryStream);
+                        }
+                    }
+                    else
+                    {
+                        // Nếu cột 2 không có giá trị, hiển thị hình ảnh mặc định
+                        picPhoto1.Image = Properties.Resources.plus;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Alo Coder:việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         #endregion
         #region constraint
-        // cho phép nhập chữ và dấu không cho phép nhập ký tự đặc biệt và số
+
         private void txttProductName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetter(e.KeyChar) && e.KeyChar != ' '  && e.KeyChar != '\b' && e.KeyChar != '̣' && e.KeyChar != '́' && e.KeyChar != '̀')
+            if (!char.IsLetter(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ' ' && e.KeyChar != '\b' && e.KeyChar != '̣' && e.KeyChar != '́' && e.KeyChar != '̀')
             {
                 e.Handled = true; // Vô hiệu hóa ký tự số và ký tự đặc biệt không cho phép
             }
@@ -748,6 +804,7 @@ namespace Computer_Shop_Management_System.View
         {
             e.Handled = true;
         }
-        #endregion      
+        #endregion
+    
     }
 }

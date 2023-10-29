@@ -144,10 +144,6 @@ namespace Computer_Shop_Management_System.Controller
                 return count;
             }
         }
-        
-
-
-
     }
 
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tpProduct = new System.Windows.Forms.TabControl();
             this.tpThemSanPham = new System.Windows.Forms.TabPage();
             this.txttProductName = new System.Windows.Forms.TextBox();
@@ -49,6 +49,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.tpQuanLySanPham = new System.Windows.Forms.TabPage();
+            this.dgvSanPham = new System.Windows.Forms.DataGridView();
             this.picTimKiem = new System.Windows.Forms.PictureBox();
             this.txtTimKiemSanPham = new System.Windows.Forms.TextBox();
             this.lblTotal = new System.Windows.Forms.Label();
@@ -81,17 +82,16 @@
             this.guna2Elipse5 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
-            this.dgvSanPham = new System.Windows.Forms.DataGridView();
             this.tpProduct.SuspendLayout();
             this.tpThemSanPham.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSoLuong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPhoto)).BeginInit();
             this.tpQuanLySanPham.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSanPham)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTimKiem)).BeginInit();
             this.tpLuaChon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSoLuong1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPhoto1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSanPham)).BeginInit();
             this.SuspendLayout();
             // 
             // tpProduct
@@ -367,6 +367,28 @@
             this.tpQuanLySanPham.Text = "Quản Lý Sản Phẩm";
             this.tpQuanLySanPham.UseVisualStyleBackColor = true;
             this.tpQuanLySanPham.Enter += new System.EventHandler(this.tpQuanLySanPham_Enter);
+            // 
+            // dgvSanPham
+            // 
+            this.dgvSanPham.AllowUserToAddRows = false;
+            this.dgvSanPham.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvSanPham.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvSanPham.BackgroundColor = System.Drawing.Color.White;
+            this.dgvSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSanPham.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvSanPham.Location = new System.Drawing.Point(3, 95);
+            this.dgvSanPham.Name = "dgvSanPham";
+            this.dgvSanPham.Size = new System.Drawing.Size(969, 378);
+            this.dgvSanPham.TabIndex = 11;
+            this.dgvSanPham.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSanPham_CellClick_1);
+            this.dgvSanPham.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgvSanPham_RowPrePaint);
             // 
             // picTimKiem
             // 
@@ -715,27 +737,6 @@
             this.openFileDialog.FileName = "Upload Image";
             this.openFileDialog.Filter = "JPG|*.ipg|JPEG|*.jpeg|PNG|*.png";
             // 
-            // dgvSanPham
-            // 
-            this.dgvSanPham.AllowUserToAddRows = false;
-            this.dgvSanPham.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvSanPham.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvSanPham.BackgroundColor = System.Drawing.Color.White;
-            this.dgvSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSanPham.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvSanPham.Location = new System.Drawing.Point(3, 95);
-            this.dgvSanPham.Name = "dgvSanPham";
-            this.dgvSanPham.Size = new System.Drawing.Size(969, 378);
-            this.dgvSanPham.TabIndex = 11;
-            this.dgvSanPham.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgvSanPham_RowPrePaint);
-            // 
             // UserControlProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -753,12 +754,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.picPhoto)).EndInit();
             this.tpQuanLySanPham.ResumeLayout(false);
             this.tpQuanLySanPham.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSanPham)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTimKiem)).EndInit();
             this.tpLuaChon.ResumeLayout(false);
             this.tpLuaChon.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSoLuong1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPhoto1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSanPham)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -229,6 +229,30 @@ namespace Computer_Shop_Management_System.View
             decimal tienThua = tienKhachTra - tongTien + tienGiamGia;
             txtTienThua.Text = tienThua.ToString();
         }
+        private void CalculateAndDisplayValues()
+        {
+            if ((!string.IsNullOrEmpty(txttongtien.Text) && int.TryParse(txttongtien.Text, out int total)) &&
+                (!string.IsNullOrEmpty(txttienphaitra.Text) && int.TryParse(txttienphaitra.Text, out int customerPayment)))
+            {
+                if (!string.IsNullOrEmpty(txtGiamGia.Text) && int.TryParse(txtGiamGia.Text, out int discountAmount))
+                {
+                    int subtotal = total - discountAmount;
+                    int change = customerPayment - subtotal;
+
+                    txttongcong.Text = subtotal.ToString();
+                    txtTienThua.Text = change.ToString();
+                }
+                else if (int.TryParse(txtGiamGia.Text, out int discountAmount1) && discountAmount1 < 0)
+                {
+                    MessageBox.Show("Số tiền nhập không chính xác!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtGiamGia.Text = "0";
+                }
+            }
+            else
+            {
+                txtGiamGia.Text = "0";
+            }
+        }
         private bool ValidateCategoryName(string CategoryName)
         {
             // Biểu thức chính quy để kiểm tra chuỗi không chứa ký tự đặc biệt và số
@@ -433,6 +457,11 @@ namespace Computer_Shop_Management_System.View
                     }
                 }
             }
+        }
+        private void RefreshTabPage()
+        {
+            // Xóa nội dung hiện tại của TabPage
+            tpOders.Controls.Clear();       
         }
         #endregion
         #region Event
@@ -685,6 +714,8 @@ namespace Computer_Shop_Management_System.View
                         txtSoDienThoai.Text = string.Empty;
                         cmbsanpham.Items.Add("--Chọn--");
                         cmbsanpham.SelectedItem = 0;
+                        txttongtien.Text = "0";
+                      
                     }
                 }                              
             }           
@@ -692,6 +723,10 @@ namespace Computer_Shop_Management_System.View
             {
                 MessageBox.Show("Alo Coder:0329615309 để được update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void txttongtien_TextChanged(object sender, EventArgs e)
+        {
+            TinhTienThua();
         }
         private void txtTienThua_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -726,7 +761,9 @@ namespace Computer_Shop_Management_System.View
             // Tính toán số tiền thừa
             int tienThua = tienKhachTra - tongTien + tienGiamGia;
             txtTienThua.Text = tienThua.ToString();
-          
+            CalculateAndDisplayValues();
+
+
         }
         private void cmbsanpham_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1227,7 +1264,7 @@ namespace Computer_Shop_Management_System.View
                 // Lấy số điện thoại hiện tại trong TextBox
                 string phoneNumber = txtSoDienThoai.Text;
                 // Kiểm tra nếu có ký tự không phải số hoặc độ dài vượt quá 10
-                if (!IsNumeric(txtSoDienThoai.Text) || txtSoDienThoai.Text.Length > 10 || phoneNumber.StartsWith("0") && phoneNumber.Length == 0 && e.KeyChar != '\b')
+                if (!IsNumeric(txtSoDienThoai.Text) || txtSoDienThoai.Text.Length > 9 || phoneNumber.StartsWith("0") && phoneNumber.Length == 0 && e.KeyChar != '\b')
                 {
                     // Xóa ký tự cuối cùng
                     txtSoDienThoai.Text = txtSoDienThoai.Text.Remove(txtSoDienThoai.Text.Length - 1);
@@ -1548,7 +1585,7 @@ namespace Computer_Shop_Management_System.View
                 // Lấy số điện thoại hiện tại trong TextBox
                 string phoneNumber = txtSDT.Text;
                 // Kiểm tra nếu có ký tự không phải số hoặc độ dài vượt quá 10
-                if (!IsNumeric(txtSDT.Text) || txtSDT.Text.Length > 10 || phoneNumber.StartsWith("0") && phoneNumber.Length == 0 && e.KeyChar != '\b')
+                if (!IsNumeric(txtSDT.Text) || txtSDT.Text.Length > 9 || phoneNumber.StartsWith("0") && phoneNumber.Length == 0 && e.KeyChar != '\b')
                 {
                     // Xóa ký tự cuối cùng
                     txtSDT.Text = txtSDT.Text.Remove(txtSDT.Text.Length - 1);
@@ -1676,7 +1713,9 @@ namespace Computer_Shop_Management_System.View
                 dtpDoiTra.Value = initialDateTime;
             }
         }
-        #endregion  
+        #endregion
+
+      
     }
 }
  
