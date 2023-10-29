@@ -71,7 +71,6 @@ namespace Computer_Shop_Management_System.View
         {
             LoadUserData();
         }
-
         private void txtTimKiemThuongHieuStaff_TextChanged(object sender, EventArgs e)
         {
             try

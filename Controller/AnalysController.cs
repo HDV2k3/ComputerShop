@@ -12,7 +12,7 @@ namespace Computer_Shop_Management_System.Controller
 {
     public class AnalysController
     {
-
+        // tìm kiếm
         public static void SearchUsers(string query, DataGridView dgv)
         {
             try

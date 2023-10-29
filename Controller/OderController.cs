@@ -11,6 +11,7 @@ namespace Computer_Shop_Management_System.Controller
 {
     public class OderController
     {
+        // xóa
         public bool DeleteOrder(string orderid)
         {
             try
@@ -46,6 +47,7 @@ namespace Computer_Shop_Management_System.Controller
                 return false;
             }
         }
+        // tìm kiếm
         public static void SearchOrders(string query, DataGridView dgv)
         {
             try
@@ -74,9 +76,7 @@ namespace Computer_Shop_Management_System.Controller
             {
                 MessageBox.Show("Alo coder Việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-       }    }
-        
-
+       }    }        
 
     }
 }

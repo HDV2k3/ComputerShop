@@ -248,6 +248,24 @@ namespace Computer_Shop_Management_System.View
         }
         #endregion
         #region Event
+        private void dgvSanPham_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            string targetValue = "Value";
+            if (dgvSanPham.Rows[e.RowIndex].Cells["Product_Id"].Value != null &&
+                dgvSanPham.Rows[e.RowIndex].Cells["Product_Id"].Value.ToString() == targetValue)
+            {
+                // Thay đổi màu nền của dòng
+                dgvSanPham.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
+                // Thay đổi màu chữ của dòng
+                dgvSanPham.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
+            }
+            else
+            {
+                // Đặt màu mặc định cho nền và chữ của dòng
+                dgvSanPham.Rows[e.RowIndex].DefaultCellStyle.BackColor = dgvSanPham.DefaultCellStyle.BackColor;
+                dgvSanPham.Rows[e.RowIndex].DefaultCellStyle.ForeColor = dgvSanPham.DefaultCellStyle.ForeColor;
+            }
+        }
         private void btnDuyetSanPham_Click(object sender, EventArgs e)
         {
             try
@@ -527,7 +545,6 @@ namespace Computer_Shop_Management_System.View
         {
             EmptyBox1();
         }
-
         private void tpProduct_Enter(object sender, EventArgs e)
         {
            /* if (id == "")
@@ -535,14 +552,12 @@ namespace Computer_Shop_Management_System.View
                 tpProduct.SelectedTab = tpQuanLySanPham;
             }*/
         }
-
         private void tpQuanLySanPham_Enter(object sender, EventArgs e)
         {
             txttProductName.Clear();
             ProductController.DisplayAndSearch("SELECT * FROM Product;", dgvSanPham);
             lblTotal.Text = dgvSanPham.Rows.Count.ToString();
         }
-
         private void tpThemSanPham_Enter(object sender, EventArgs e)
         {
             EmptyBox();
@@ -627,7 +642,6 @@ namespace Computer_Shop_Management_System.View
             }
             lblTotal.Text = dgvSanPham.Rows.Count.ToString();
         }
-
         private void dgvSanPham_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -734,30 +748,6 @@ namespace Computer_Shop_Management_System.View
         {
             e.Handled = true;
         }
-        #endregion
-
-        private void cmbTrangThai_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void dgvSanPham_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
-        {
-            string targetValue = "Value";
-            if (dgvSanPham.Rows[e.RowIndex].Cells["Product_Id"].Value != null &&
-                dgvSanPham.Rows[e.RowIndex].Cells["Product_Id"].Value.ToString() == targetValue)
-            {
-                // Thay đổi màu nền của dòng
-                dgvSanPham.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
-                // Thay đổi màu chữ của dòng
-                dgvSanPham.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
-            }
-            else
-            {
-                // Đặt màu mặc định cho nền và chữ của dòng
-                dgvSanPham.Rows[e.RowIndex].DefaultCellStyle.BackColor = dgvSanPham.DefaultCellStyle.BackColor;
-                dgvSanPham.Rows[e.RowIndex].DefaultCellStyle.ForeColor = dgvSanPham.DefaultCellStyle.ForeColor;
-            }
-        }
+        #endregion      
     }
 }

@@ -238,7 +238,6 @@ namespace Computer_Shop_Management_System.View
 
             return regex.IsMatch(CategoryName);
         }
-
         private void btnThem_Click(object sender, EventArgs e)
         {
             try
@@ -298,7 +297,6 @@ namespace Computer_Shop_Management_System.View
             }
             
         }
-
         private void btnThayDoi_Click(object sender, EventArgs e)
         {
             try
@@ -313,7 +311,7 @@ namespace Computer_Shop_Management_System.View
                     MessageBox.Show("Vui Lòng Nhập Tên Loại .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                else if (cmbTrangThai1.SelectedIndex == 0)
+                else if (cmbTrangThai1.SelectedIndex == 0 || cmbTrangThai1.Text == "--Chọn--")
                 {
                     MessageBox.Show(" Vui lòng chọn trạng thái .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
@@ -331,8 +329,7 @@ namespace Computer_Shop_Management_System.View
                 MessageBox.Show("Bạn Cần Liên Hệ bộ phận IT để Bào Trì chức năng này!", "Chúng tôi sẽ sớm quay lại!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-        }
-       
+        }       
         private void btnXoa_Click(object sender, EventArgs e)
         {
             try
@@ -347,7 +344,7 @@ namespace Computer_Shop_Management_System.View
                     MessageBox.Show("Vui Lòng Nhập Tên Loại .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                else if (cmbTrangThai1.SelectedIndex == 0)
+                else if (cmbTrangThai1.SelectedIndex == 0 || cmbTrangThai1.Text =="--Chọn--")
                 {
                     MessageBox.Show(" Vui lòng chọn trạng thái .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
@@ -382,7 +379,6 @@ namespace Computer_Shop_Management_System.View
             }
 
         }
-
         private void txtTimKiemLoai_TextChanged(object sender, EventArgs e)
         {
             try
@@ -396,7 +392,6 @@ namespace Computer_Shop_Management_System.View
             }
 
         }
-
         private void tpLuaChon_Enter(object sender, EventArgs e)
         {
             if (txtMaLoai.Text.Trim() == string.Empty)
@@ -404,12 +399,10 @@ namespace Computer_Shop_Management_System.View
                 tpThemLoai.SelectedTab = tpQuanLyLoai;
             }
         }
-
         private void tpLuaChon_Leave(object sender, EventArgs e)
         {
             EmtyBox1();
         }
-
         private void btnResetData_Click(object sender, EventArgs e)
         {
 
@@ -438,7 +431,6 @@ namespace Computer_Shop_Management_System.View
             }
             lblTotal.Text = dgvLoai.Rows.Count.ToString();
         }
-
         private void dgvLoai_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -463,7 +455,6 @@ namespace Computer_Shop_Management_System.View
             }
 
         }
-
         private void tpThemLoai_Click(object sender, EventArgs e)
         {
             txtTimKiemLoai.Clear();
@@ -505,13 +496,11 @@ namespace Computer_Shop_Management_System.View
                 e.Handled = true; // Vô hiệu hóa sự kiện Paste
             }
         }
-
         // Phương thức kiểm tra ký tự đặc biệt
         private bool IsSpecialCharacter(char c)
         {
             return !char.IsLetterOrDigit(c) && !char.IsWhiteSpace(c);
         }
-
         private void txtTenLoai_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (char.IsDigit(e.KeyChar) || IsSpecialCharacter(e.KeyChar))
@@ -535,24 +524,20 @@ namespace Computer_Shop_Management_System.View
             }
             return sb.ToString();
         }
-
         private void txtTenLoai_TextChanged(object sender, EventArgs e)
         {
             string input = txtTenLoai.Text;
             string sanitizedInput = RemoveInvalidCharacters(input);
             txtTenLoai.Text = sanitizedInput;
         }
-
         private void cmbTrangThai_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true; // Vô hiệu hóa ký tự không hợp lệ
         }
-
         private void cmbTrangThai_DropDown(object sender, EventArgs e)
         {
             cmbTrangThai.DropDownStyle = ComboBoxStyle.DropDownList; // Chỉ cho phép chọn từ danh sách
         }
-
         private void cmbTrangThai_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.C)

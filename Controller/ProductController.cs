@@ -14,6 +14,7 @@ namespace Computer_Shop_Management_System.Controller
 {
     public class ProductController
     {
+        // hiển thị sản phẩm theo "--Có sắn hoặc không--"
         public static void BrandCategoryProduct(string query, ComboBox cb)
         {
             string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
@@ -37,7 +38,6 @@ namespace Computer_Shop_Management_System.Controller
                 }
             }
         }
-
         public static void DisplayAndSearch(string query, DataGridView dgv)
         {
             try
@@ -68,7 +68,7 @@ namespace Computer_Shop_Management_System.Controller
                 
             }
         }
-
+        // xóa
         public static void RemoveProduct1(string productName)
         {
             try
@@ -98,9 +98,6 @@ namespace Computer_Shop_Management_System.Controller
                
             }
         }
-
-
-
         public static void RemoveProduct(string id)
         {
             try
@@ -130,7 +127,7 @@ namespace Computer_Shop_Management_System.Controller
                 
             }
         }
-
+        // thêm
         internal static void AddProduct(Product product)
         {
             try
@@ -159,31 +156,6 @@ namespace Computer_Shop_Management_System.Controller
                 MessageBox.Show("Alo coder Việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
                
             }
-        }
-    
-        /*internal static void UpdateProduct(Product product)
-        {
-            string connectionString = @"data source=.\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay thế bằng chuỗi kết nối đến cơ sở dữ liệu của bạn
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                string query = "UPDATE Product SET Product_Name = @Name, Product_Image = @Image, Product_Rate = @Price, Product_Quantity = @Quantity, Product_Brand = @Brand, Product_Category = @Category, Product_Status = @Status WHERE Id = @Id";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@Name", product.Product_Name);
-                    command.Parameters.AddWithValue("@Image", product.Product_Image);
-                    command.Parameters.AddWithValue("@Price", product.Product_Rate);
-                    command.Parameters.AddWithValue("@Quantity", product.Product_Quantity);
-                    command.Parameters.AddWithValue("@Brand", product.Product_Brand);
-                    command.Parameters.AddWithValue("@Category", product.Product_Category);
-                    command.Parameters.AddWithValue("@Status", product.Product_Stastus);
-                    command.Parameters.AddWithValue("@Id", product.Product_Id); // Thay thế bằng tham số định danh sản phẩm của bạn
-                    command.ExecuteNonQuery();
-                }
-            }
-        }*/
+        }    
     }
 }

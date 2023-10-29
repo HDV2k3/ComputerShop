@@ -23,7 +23,6 @@ namespace Computer_Shop_Management_System.View
         {
             InitializeComponent();
         }
-
         #region Method
         private void HienThiSanPhamBanChay()
         {
@@ -88,6 +87,20 @@ namespace Computer_Shop_Management_System.View
                 // Xử lý các lỗi kết nối và truy vấn
                 MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
             }
+        }
+        private string GetSelectedProc()
+        {
+            if (ckbDoanhThuTheoKH.Checked)
+            {
+                return "CalculateRevenueByCustomer"; // Thay thế "proc1" bằng tên stored procedure thực tế
+            }
+            else if (ckbSLKhachHangMoi.Checked)
+            {
+                return "CalculateNewCustomerCount"; // Thay thế "proc2" bằng tên stored procedure thực tế
+            }
+
+
+            return string.Empty;
         }
         #endregion
         #region Event
@@ -182,14 +195,11 @@ namespace Computer_Shop_Management_System.View
 
 
         }
-
         private void UserControlReport_Load(object sender, EventArgs e)
         {
             dtpEndDate.Value = DateTime.Now;
             dtpEndDate.Value = DateTime.Now;
         }
-        #endregion
-    
         private void btnXuatEcel_Click(object sender, EventArgs e)
         {
             string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
@@ -245,19 +255,6 @@ namespace Computer_Shop_Management_System.View
                 MessageBox.Show("Vui lòng chọn một thống kê cụ thể!");
             }
         }
-        private string GetSelectedProc()
-        {
-            if (ckbDoanhThuTheoKH.Checked)
-            {
-                return "CalculateRevenueByCustomer"; // Thay thế "proc1" bằng tên stored procedure thực tế
-            }
-            else if (ckbSLKhachHangMoi.Checked)
-            {
-                return "CalculateNewCustomerCount"; // Thay thế "proc2" bằng tên stored procedure thực tế
-            }
-           
-
-            return string.Empty;
-        }
+        #endregion
     }
 }

@@ -25,7 +25,6 @@ namespace Computer_Shop_Management_System.PAL
         {
             DataBase db = new DataBase();
         }
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if( txtUsername.Text.Trim() == string .Empty)
@@ -53,13 +52,11 @@ namespace Computer_Shop_Management_System.PAL
                     MessageBox.Show("Username or password is incorrect", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }    
             }
-        }
-     
+        }     
         private void picClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
         private void picShowPass_Click(object sender, EventArgs e)
         {
             if(picShowPass.Visible==true)
@@ -69,7 +66,6 @@ namespace Computer_Shop_Management_System.PAL
                 picHidePass.Visible = true;
             }
         }
-
         private void picHidePass_Click(object sender, EventArgs e)
         {
             if (picHidePass.Visible == true)
@@ -79,7 +75,6 @@ namespace Computer_Shop_Management_System.PAL
                 picHidePass.Visible = false;
             }
         }
-
         private void label4_Click(object sender, EventArgs e)
         {
             FormForgotPass formForgotPass = new FormForgotPass();

@@ -11,7 +11,7 @@ namespace Computer_Shop_Management_System.Controller
 {
     public class UserController
     {
-        
+        // thêm
         public bool AddUsers(string maloainguoidung,string loainguoidung, string tennguoidung, string matkhau,string email)
         {
             /* try
@@ -85,7 +85,7 @@ namespace Computer_Shop_Management_System.Controller
                 return false;
             }
         }
-
+        // sửa
         internal static void ChangedUser(User User)
         {
             try
@@ -115,7 +115,7 @@ namespace Computer_Shop_Management_System.Controller
 
             }
         }
-
+        // xóa
         public bool DeleteUsers(string Username)
         {
             try

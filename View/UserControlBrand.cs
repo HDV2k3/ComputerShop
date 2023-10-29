@@ -88,15 +88,7 @@ namespace Computer_Shop_Management_System.View
                 dgvThuongHieu.Columns["Brand_Name"].HeaderText = "Tên Thương Hiệu";
                 dgvThuongHieu.Columns["Brand_Status"].HeaderText = "Trạng Thái";
                 dgvThuongHieu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-               /* // Đặt kích thước cố định cho các cột không tự điều chỉnh
-                dgvThuongHieu.Columns["Brand_Id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                dgvThuongHieu.Columns["Brand_Id"].Width = 400;
-
-                dgvThuongHieu.Columns["Brand_Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                dgvThuongHieu.Columns["Brand_Name"].Width = 400;
-                dgvThuongHieu.Columns["Brand_Status"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                dgvThuongHieu.Columns["Brand_Status"].Width = 400;*/
-
+            
 
             }
             lblTotal.Text = dgvThuongHieu.Rows.Count.ToString();

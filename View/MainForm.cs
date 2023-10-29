@@ -76,7 +76,6 @@ namespace Computer_Shop_Management_System.View
             lblUserName .Text = name;
             NgayVaGio.Start();
         }
-
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             DialogResult dia = MessageBox.Show("Bạn Có Muốn Đăng Xuất?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -87,8 +86,6 @@ namespace Computer_Shop_Management_System.View
                 Close();
             }
         }
-
-
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             
@@ -184,7 +181,6 @@ namespace Computer_Shop_Management_System.View
 
             //jhihi
         }
-
         private void btnSanPham_Click(object sender, EventArgs e)
         {
            
@@ -222,7 +218,6 @@ namespace Computer_Shop_Management_System.View
                     }
            
         }
-
         private void btnDatHang_Click(object sender, EventArgs e)
         {
             
@@ -243,7 +238,6 @@ namespace Computer_Shop_Management_System.View
 
 
         }
-
         private void btnBaoCao_Click(object sender, EventArgs e)
         {
             
@@ -263,7 +257,6 @@ namespace Computer_Shop_Management_System.View
 
 
         }
-
         private void btnNguoiDung_Click(object sender, EventArgs e)
         {
            
@@ -301,7 +294,6 @@ namespace Computer_Shop_Management_System.View
            
 
         }
-
         private void NgayVaGio_Tick(object sender, EventArgs e)
         {
             lblNgayVaGio.Text = DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss tt");

@@ -107,8 +107,7 @@ namespace Computer_Shop_Management_System.View
             }
 
             return false; 
-        }
-  
+        } 
         private bool ValidateUserName(string brandName)
         {
             // Biểu thức chính quy để kiểm tra chuỗi không chứa ký tự đặc biệt và số
@@ -162,7 +161,6 @@ namespace Computer_Shop_Management_System.View
         {
             LoadDataUser();
         }
-
         private void btnThem_Click(object sender, EventArgs e)
         {
             try
@@ -232,7 +230,6 @@ namespace Computer_Shop_Management_System.View
             }
 
         }
-
         private void btnThayDoi_Click(object sender, EventArgs e)
         {
             try
@@ -270,7 +267,6 @@ namespace Computer_Shop_Management_System.View
                 MessageBox.Show("Alo Coder:việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btnXoa_Click_1(object sender, EventArgs e)
         {
             try
@@ -319,9 +315,7 @@ namespace Computer_Shop_Management_System.View
             {
                 MessageBox.Show("Alo Coder:việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-       
+        }      
         private void txtTenNguoiDung1_TextChanged(object sender, EventArgs e)
         {
             try
@@ -362,9 +356,7 @@ namespace Computer_Shop_Management_System.View
                 MessageBox.Show("Alo Coder:việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-        }
-
-       
+        }       
         private void UserControlUser_Load(object sender, EventArgs e)
         {
             lblTotal.Text =dgvUsers.Rows.Count.ToString();
@@ -374,7 +366,6 @@ namespace Computer_Shop_Management_System.View
             txtUsers_Id.Text = "NV" + DateTime.Now.ToString("yyMMddhhmmss");
 
         }
-
         private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -399,7 +390,6 @@ namespace Computer_Shop_Management_System.View
                 MessageBox.Show("Alo Coder:việt 0329615309 để update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void txtTenNguoiDung_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && e.KeyChar != ' ' && e.KeyChar != '\b' && e.KeyChar != '̣' && e.KeyChar != '́' && e.KeyChar != '̀')
@@ -407,7 +397,6 @@ namespace Computer_Shop_Management_System.View
                 e.Handled = true; // Vô hiệu hóa ký tự số và ký tự đặc biệt không cho phép
             }
         }
-
         private void txtTenNguoiDung_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && (e.KeyCode == Keys.C || e.KeyCode == Keys.V))
@@ -415,23 +404,20 @@ namespace Computer_Shop_Management_System.View
                 e.Handled = true; // Vô hiệu hóa phím tắt copy và paste
             }
         }
-
         private void cmbLoaiTK_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
         #endregion
-
+        #region RangBuoc
         private void txtUsers_Id_Lc_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
-
         private void txtUsers_Id_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled=true;
         }
-
         private void txtTimKiemNguoiDung_TextChanged(object sender, EventArgs e)
         {
             try
@@ -445,5 +431,6 @@ namespace Computer_Shop_Management_System.View
 
             }
         }
+        #endregion
     }
 }

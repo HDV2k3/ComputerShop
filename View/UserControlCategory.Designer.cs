@@ -386,7 +386,7 @@
             this.cmbTrangThai1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cmbTrangThai1.FormattingEnabled = true;
             this.cmbTrangThai1.Items.AddRange(new object[] {
-            "--SELECT--",
+            "--Chọn--",
             "Có sẵn",
             "Không có sẵn"});
             this.cmbTrangThai1.Location = new System.Drawing.Point(662, 135);

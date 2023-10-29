@@ -181,7 +181,6 @@
             this.cmbTrangThai.Name = "cmbTrangThai";
             this.cmbTrangThai.Size = new System.Drawing.Size(279, 25);
             this.cmbTrangThai.TabIndex = 6;
-            this.cmbTrangThai.SelectedIndexChanged += new System.EventHandler(this.cmbTrangThai_SelectedIndexChanged);
             this.cmbTrangThai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbTrangThai_KeyPress);
             // 
             // cmbLoai

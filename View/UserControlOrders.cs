@@ -28,17 +28,19 @@ namespace Computer_Shop_Management_System.View
         int otong = 0;
         decimal tongSoTien = 0;
         public static User User = new User();
-
+        private DateTime initialDateTime;
         public UserControlOrders()
         {
             InitializeComponent();
+            initialDateTime = dtpDate.Value;
         }
         public UserControlOrders(User u)
         {
             User = u;
             InitializeComponent();
+            // Gán giá trị ban đầu cho biến initialDateTime
+            initialDateTime = dtpDate.Value;
         }
-
         public void SetUser(User u)
         {
             User = u;
@@ -48,12 +50,12 @@ namespace Computer_Shop_Management_System.View
                 txtNhanVienTiepNhan.Text = User.Users_Id;
             }
         }
-
         #region Method
         private void LoadOrdersData()
         {
             try
             {
+                dtpDate.Value = DateTime.Now;
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
@@ -111,12 +113,15 @@ namespace Computer_Shop_Management_System.View
         private void LoadProductsToComboBox()
         {
             cmbsanpham.Items.Clear();
-            // Thực hiện truy vấn SQL để lấy sản phẩm có số lượng lớn hơn 1
+            
+           
+            cmbsanpham.Items.Add("--Chọn--");
+            cmbsanpham.SelectedIndex = 0;
             string query = "SELECT Product_Name FROM Product WHERE Product_Stastus = N'Có Sẵn' AND Product_Quantity > 0 ORDER BY Product_Name;";
             ProductController.BrandCategoryProduct(query, cmbsanpham);
-            cmbsanpham.SelectedIndex = 0;
-        }
 
+
+        }
         private void ClearData()
         {
             dtgvOrder.Rows.Clear();
@@ -265,21 +270,20 @@ namespace Computer_Shop_Management_System.View
             cmbtrangthaiop.SelectedIndex = 0;
             txtMaNhanVien1.Text = string.Empty;
         }
-
         RichTextBox richTextBox = new RichTextBox();
         RichTextBox richTextBox1 = new RichTextBox();
         private void Receipt1()
         {
             richTextBox1.Clear();
-            richTextBox1.Text += "\t                                         Computer Shop Management System\n";
-            richTextBox1.Text += "************************************************************************************************************************************************\n\n";
+            richTextBox1.Text += "\t   Computer Shop Management System\n";
+            richTextBox1.Text += "*******************************************************\n\n";
             richTextBox1.Text += "   Ngày Đổi/Trả:" + dtpDoiTra.Text + "\n";
             richTextBox1.Text += "   Mã Nhân Viên:" + txtNhanVienTiepNhan.Text.Trim() + "\n";
             richTextBox1.Text += "   Tên Khách Hàng:" + txtTenKhachHangDoiTra.Text.Trim() + "\n";
             richTextBox1.Text += "   Mã Phiếu:" + txtMaPhieu.Text.Trim() + "\n";
-            richTextBox1.Text += "   Tên Sản Phẩm Đổi Trả:" + cmbSanPhamDoiTra.Items.ToString() + "\n";
+            richTextBox1.Text += "   Tên Sản Phẩm Đổi Trả:" + cmbSanPhamDoiTra.Text.Trim() + "\n";
             richTextBox1.Text += "   Lý Do Đổi/Trả:" + txtLyDo.Text.Trim() + "\n\n";
-            richTextBox1.Text += "************************************************************************************************************************************************\n\n\n";
+            richTextBox1.Text += "*******************************************************\n\n\n";
             richTextBox1.Text += "\t\t\t\t\t\t\t\t\t\t Hân Hạnh Phục Vụ Quý Khách";
 
 
@@ -363,7 +367,6 @@ namespace Computer_Shop_Management_System.View
                 MessageBox.Show("Hãy Nhập số tiền hợp lệ!.");
             }
         }
-
         public void XoaHoaDon(string maHoaDon)
         {
             string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
@@ -408,7 +411,6 @@ namespace Computer_Shop_Management_System.View
                 }
             }
         }
-
         private void SearchCustomer(string searchName)
         {
             string query = "SELECT Orders_Id,Users_Id, Order_Date, Customer_Name, Customer_Number, Total_Amout, Paid_Amout, Due_Amout, Discount, Grand_Total, StatusPayment FROM Orders WHERE Customer_Name LIKE @SearchName;";
@@ -437,21 +439,17 @@ namespace Computer_Shop_Management_System.View
         private void tpthemhoadon_Click(object sender, EventArgs e)
         {
             LoadOrdersData();
-        }
-
-      
+        }    
         private void tpluachon_Click(object sender, EventArgs e)
         {
             LoadOrdersData();
-        }
-       
-
+        }       
         private void UserControlOrders_Load(object sender, EventArgs e)
         {
+            dtpDate.Value = DateTime.Now;
             txtmakhachhang.Text = "KH" + DateTime.Now.ToString("ddhhmmss");
             txtMaHoaDon.Text = "BILL" + DateTime.Now.ToString("ddhhmmss");
-            txtMaPhieu.Text = "DT" + DateTime.Now.ToString("ddhhmmss");
-            dtpDate.Value = DateTime.Now;
+            txtMaPhieu.Text = "DT" + DateTime.Now.ToString("ddhhmmss");          
             dtpDoiTra.Value = DateTime.Now;
             cmbsanpham.Items.Clear();
             cmbsanpham.Items.Add("--Chọn--");
@@ -460,14 +458,13 @@ namespace Computer_Shop_Management_System.View
             cmbtttt.Items.Clear();
             cmbtttt.Items.Add("--Chọn--");
             cmbtttt.SelectedIndex = 0;     
-            cmbptthanhtoan.Items.Add("--Chọn--");
+          /*  cmbptthanhtoan.Items.Add("--Chọn--");*/
             cmbptthanhtoan.SelectedIndex = 0;
             cmbSanPhamDoiTra.Items.Clear();
             cmbSanPhamDoiTra.Items.Add("--Chọn--");
             cmbSanPhamDoiTra.SelectedIndex = 0;
             LoadOrdersData();
-        }
-             
+        }            
         private void btnThem_Click(object sender, EventArgs e)
         {
             try
@@ -531,8 +528,6 @@ namespace Computer_Shop_Management_System.View
             }
 
         }
-
-
         private void btnLuu_Click(object sender, EventArgs e)
         {
             try
@@ -698,20 +693,18 @@ namespace Computer_Shop_Management_System.View
                 MessageBox.Show("Alo Coder:0329615309 để được update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
- 
         private void txtTienThua_KeyPress(object sender, KeyPressEventArgs e)
         {
             // chặn ký tự nhập vào
             e.Handled = true;
         }
-
         private void txttongcong_KeyPress(object sender, KeyPressEventArgs e)
         {
             // chặn ký tự nhập vào
             e.Handled = true;
         }
         private int tongTien = 0;
-        private int tienGiamGia = 0;
+        private int tienGiamGia = 0;     
         private void txttienphaitra_TextChanged(object sender, EventArgs e)
         {
 
@@ -735,7 +728,6 @@ namespace Computer_Shop_Management_System.View
             txtTienThua.Text = tienThua.ToString();
           
         }
-
         private void cmbsanpham_SelectedIndexChanged(object sender, EventArgs e)
         {
             /* 
@@ -751,7 +743,6 @@ namespace Computer_Shop_Management_System.View
            
          
         }
-
         private void nudsoluong_ValueChanged(object sender, EventArgs e)
         {
 
@@ -766,12 +757,10 @@ namespace Computer_Shop_Management_System.View
                 txtthanhtien.Text = tongtien.ToString();
             }
         }
-
         private void txtthanhtien_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
-
         private void txtGiamGia_TextChanged(object sender, EventArgs e)
         {
 
@@ -813,7 +802,6 @@ namespace Computer_Shop_Management_System.View
                 txtTienThua.Text = "";*/
             }
         }
-
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             string text = richTextBox.Text;
@@ -821,8 +809,6 @@ namespace Computer_Shop_Management_System.View
 
             e.Graphics.DrawString(text, new Font("Segoe UI", 6, FontStyle.Regular), Brushes.Black, new Point(10, 10));
         }
-
-
         private void btnxoa_Click(object sender, EventArgs e)
         {
             try
@@ -842,7 +828,6 @@ namespace Computer_Shop_Management_System.View
                 MessageBox.Show("Alo Coder:0329615309 để được update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void dtgvQL_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -895,7 +880,6 @@ namespace Computer_Shop_Management_System.View
             }
 
         }
-
         private void tabControl1_Click(object sender, EventArgs e)
         {
 
@@ -903,20 +887,16 @@ namespace Computer_Shop_Management_System.View
 
 
         }
-
         private void tpquanlyhoadon_Click(object sender, EventArgs e)
         {
             LoadOrdersData();
 
-        }
-      
-
+        }      
         private void txtTienThua_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             // chặn ký tự nhập vào
             e.Handled = true;
         }
-
         private void txttimtenkhachhang_TextChanged(object sender, EventArgs e)
         {
             try
@@ -930,14 +910,10 @@ namespace Computer_Shop_Management_System.View
                 MessageBox.Show("Alo Coder:0329615309 để được update", "sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btntimtenkhachhang_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
-        }
-
-       
-
+        }      
         private void dtgvOrder_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
@@ -962,18 +938,14 @@ namespace Computer_Shop_Management_System.View
                 }
             }
         }
-
         private void txtMaHoaDon_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
-
         private void txtmakhachhang_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
-        }
-
-       
+        }      
         private void btnthaydoi_Click(object sender, EventArgs e)
         {
             /*try
@@ -1198,7 +1170,6 @@ namespace Computer_Shop_Management_System.View
                 txtmakhachhang.Text = "KH" + DateTime.Now.ToString("yyMMddhhmmss");
             }
         }
-
         private void txtMaNhanVien_KeyPress(object sender, KeyPressEventArgs e)
         {
 
@@ -1207,8 +1178,6 @@ namespace Computer_Shop_Management_System.View
                 
             
         }
-   
-
         private void txtMaNhanVien_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.C)
@@ -1220,7 +1189,6 @@ namespace Computer_Shop_Management_System.View
                 e.Handled = true; // Vô hiệu hóa sự kiện Paste
             }
         }
-
         private void txtmakhachhang_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.C)
@@ -1232,17 +1200,14 @@ namespace Computer_Shop_Management_System.View
                 e.Handled = true; // Vô hiệu hóa sự kiện Paste
             }
         }
-
         private void cmbsanpham_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true; // Vô hiệu hóa ký tự không hợp lệ
         }
-
         private void cmbsanpham_DropDown(object sender, EventArgs e)
         {
             cmbsanpham.DropDownStyle = ComboBoxStyle.DropDownList; // Chỉ cho phép chọn từ danh sách
         }
-
         private void cmbsanpham_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.C)
@@ -1254,7 +1219,6 @@ namespace Computer_Shop_Management_System.View
                 e.Handled = true; // Vô hiệu hóa sự kiện Paste
             }
         }
-  
         private void txtSoDienThoai_KeyPress(object sender, KeyPressEventArgs e)
         {
 
@@ -1288,7 +1252,6 @@ namespace Computer_Shop_Management_System.View
                 e.Handled = true; // Vô hiệu hóa sự kiện Paste
             }
         }
-
         private void txttenkhachhang_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && e.KeyChar != ' ' && e.KeyChar != '\b' && e.KeyChar != '̣' && e.KeyChar != '́' && e.KeyChar != '̀')
@@ -1296,17 +1259,14 @@ namespace Computer_Shop_Management_System.View
                 e.Handled = true; // Vô hiệu hóa ký tự số và ký tự đặc biệt không cho phép
             }
         }
-
         private void txtGiaTien_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled= true;
         }
-
         private void txttongtien_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
-
         private void cmbtttt_Click(object sender, EventArgs e)
         {
             string successItem = "Thanh Toán Thành Công";
@@ -1322,48 +1282,31 @@ namespace Computer_Shop_Management_System.View
             }
 
             cmbtttt.SelectedIndex = 0;
-        }
-        #endregion
-
-        private void txttongtien_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
+        }         
         private void txtMaNhanVien1_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
-
         private void txtMaKH_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
-
         private void txttenkhachhangop_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
-
         private void txtMaHoaDon1_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
-
         private void txttongtienop_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
-        }
-
-        private void txttenkhachhangop_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        } 
         private void txttongcongop_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled= true;
-        }
-       
+        }     
         private void txttiennhankhachhang_TextChanged(object sender, EventArgs e)
         {
             if (!int.TryParse(txttiennhankhachhang.Text, out int result))
@@ -1397,12 +1340,10 @@ namespace Computer_Shop_Management_System.View
            
 
         }
-
         private void cmbtrangthaiop_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
-
         private void txtGiamGiaLC_TextChanged(object sender, EventArgs e)
         {
             if (!int.TryParse(txtGiamGiaLC.Text, out int result))
@@ -1448,347 +1389,29 @@ namespace Computer_Shop_Management_System.View
                 txtTienThuaLC.Text = "";
             }
         }
-
         private void txtTienThuaLC_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
-
         private void dtp2_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled= true;
-        }
-
-        private void guna2HtmlLabel23_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cmbtttt_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        }   
         private void txtGiamGiaLC_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
-
         private void cmbsanpham_MouseClick(object sender, MouseEventArgs e)
         {
             LoadProductsToComboBox();
         }
-
-        private void cmbsanpham_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tpOders_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dtgvOrder_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void cmbptthanhtoan_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtMaNhanVien_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel31_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel30_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel14_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtMaHoaDon_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtthanhtien_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtGiaTien_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtmakhachhang_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txttenkhachhang_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void dtpDate_ValueChanged(object sender, EventArgs e)
         {
-
+            if (dtpDate.Value.Date != initialDateTime.Date)
+            {
+                dtpDate.Value = initialDateTime;
+            }
         }
-
-        private void guna2HtmlLabel24_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel25_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel26_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel27_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txttongcong_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel17_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel18_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel19_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel33_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel20_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel21_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel22_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel28_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel16_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel15_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dtgvQL_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbltongsotien_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btntimtenkhachhang_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cmbtrangthaiop_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtMaHoaDon1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtMaNhanVien1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtMaKH_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtTienThuaLC_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txttongcongop_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txttongtienop_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dtp2_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel13_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel32_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel29_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2ContextMenuStrip1_Opening(object sender, CancelEventArgs e)
-        {
-
-        }
-
-        private void printDocument2_PrintPage(object sender, PrintPageEventArgs e)
-        {
-
-        }
-
-        private void printPreviewDialog1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel34_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TpDoiTra_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void clearPhieu()
         {
             txtMaPhieu.Text = "DT" + DateTime.Now.ToString("ddhhmmss");
@@ -1858,7 +1481,6 @@ namespace Computer_Shop_Management_System.View
                 clearPhieu();
             }       
         }
-
         private void txtSDT_TextChanged(object sender, EventArgs e)
         {
          
@@ -1903,22 +1525,18 @@ namespace Computer_Shop_Management_System.View
                
             }
         }
-
         private void txtMaPhieu_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
-
         private void txtTenKhachHangDoiTra_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
-
         private void dtpDoiTra_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
-
         private void txtNhanVienTiepNhan_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
@@ -1950,7 +1568,6 @@ namespace Computer_Shop_Management_System.View
                 e.Handled = true; // Vô hiệu hóa sự kiện Paste
             }
         }
-
         private void printDocument3_PrintPage(object sender, PrintPageEventArgs e)
         {
             string text = richTextBox1.Text;
@@ -1958,7 +1575,6 @@ namespace Computer_Shop_Management_System.View
 
             e.Graphics.DrawString(text, new Font("Segoe UI", 6, FontStyle.Regular), Brushes.Black, new Point(10, 10));
         }
-
         private void txtTenKhachHangDoiTra_TextChanged(object sender, EventArgs e)
         {
            
@@ -2037,6 +1653,30 @@ namespace Computer_Shop_Management_System.View
         {
             e.Handled = true;
         }
+        private void dtpDate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+        private void dtpDate_ValueChanged_1(object sender, EventArgs e)
+        {
+            // Kiểm tra nếu ngày tháng thay đổi, đặt lại giá trị ban đầu
+            if (dtpDate.Value.Date != initialDateTime.Date)
+            {
+                dtpDate.Value = initialDateTime;
+            }
+        }
+        private void dtpDate_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+        private void dtpDoiTra_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtpDoiTra.Value.Date != initialDateTime.Date)
+            {
+                dtpDoiTra.Value = initialDateTime;
+            }
+        }
+        #endregion  
     }
 }
  
