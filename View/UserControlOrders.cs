@@ -80,6 +80,7 @@ namespace Computer_Shop_Management_System.View
                     dtgvQL.Columns["Discounts_Id"].HeaderText = "Mã Chiết Khấu";
                     dtgvQL.Columns["Grand_Total"].HeaderText = "Tổng Tiền Sau Khi Chiết Khấu";
                     dtgvQL.Columns["StatusPayment"].HeaderText = "Trạng Thái Thanh Toán";
+                    dtgvQL.Columns["Payment_Methods"].HeaderText = "Phương Thức Thanh Toán";
                     dtgvQL.Columns["Orders_Id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
                     dtgvQL.Columns["Orders_Id"].Width = 100;
                     dtgvQL.Columns["Users_Id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
@@ -101,7 +102,9 @@ namespace Computer_Shop_Management_System.View
                     dtgvQL.Columns["Grand_Total"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
                     dtgvQL.Columns["Grand_Total"].Width = 70;
                     dtgvQL.Columns["StatusPayment"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                    dtgvQL.Columns["StatusPayment"].Width =210;
+                    dtgvQL.Columns["StatusPayment"].Width =180;
+                    dtgvQL.Columns["Payment_Methods"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                    dtgvQL.Columns["Payment_Methods"].Width = 180;
                     lbltongsotien.Text = dtgvQL.Rows.Count.ToString();
 
                 }
@@ -295,7 +298,8 @@ namespace Computer_Shop_Management_System.View
             txttongtienop.Text = "0";
             txtTienThuaLC.Text = "0";
             txttiennhankhachhang.Text = "0";
-            txtGiamGiaLC.Text = "0";
+            txtMaChietKhauLC.Text = string.Empty;
+            cmbPTTTLC.SelectedIndex = 0;
             txttongcongop.Text = "0";
             txtMaHoaDon1.Text = "";
             txtMaKH.Text = "0";
@@ -672,7 +676,7 @@ namespace Computer_Shop_Management_System.View
                         }
                      
                         // Tiếp tục lưu hóa đơn và chi tiết hóa đơn 
-                        string sql = "INSERT INTO Orders(Orders_Id, Users_Id, Order_Date, Customer_Name, Customer_Number, Total_Amout, Paid_Amout, Due_Amout, Discounts_Id, Grand_Total, StatusPayment) VALUES (@BillCode, @UserId, @OrderDate, @CustomerName, @CustomerNumber, @TotalAmount, @PaidAmount, @DueAmount, @DiscountsId, @GrandTotal, @StatusPayment)";
+                        string sql = "INSERT INTO Orders(Orders_Id, Users_Id, Order_Date, Customer_Name, Customer_Number, Total_Amout, Paid_Amout, Due_Amout, Discounts_Id, Grand_Total, StatusPayment,Payment_Methods) VALUES (@BillCode, @UserId, @OrderDate, @CustomerName, @CustomerNumber, @TotalAmount, @PaidAmount, @DueAmount, @DiscountsId, @GrandTotal, @StatusPayment,@paymentmethods)";
 
                         using (SqlConnection connection = new SqlConnection(connectionString))
                         {
@@ -689,6 +693,7 @@ namespace Computer_Shop_Management_System.View
                             cmd.Parameters.AddWithValue("@DiscountsId", txtMaGiamGia.Text);
                             cmd.Parameters.AddWithValue("@GrandTotal", Convert.ToInt32(txttongcong.Text.Trim()));
                             cmd.Parameters.AddWithValue("@StatusPayment", cmbtttt.SelectedItem.ToString());
+                            cmd.Parameters.AddWithValue("@paymentmethods", cmbptthanhtoan.SelectedItem.ToString());
 
                             cmd.ExecuteNonQuery();
                         }
@@ -954,13 +959,15 @@ namespace Computer_Shop_Management_System.View
                                 else if (columnIndex == 6)
                                     txttiennhankhachhang.Text = cellValue.ToString();
                                 else if (columnIndex == 7)
-                                    txtGiamGiaLC.Text = cellValue.ToString();
-                                else if (columnIndex == 8)
                                     txtTienThuaLC.Text = cellValue.ToString();
+                                else if (columnIndex == 8)
+                                    txtMaChietKhauLC.Text = cellValue.ToString();
                                 else if (columnIndex == 9)
                                     txttongcongop.Text = cellValue.ToString();
                                 else if (columnIndex == 10)
                                     cmbtrangthaiop.Text = cellValue.ToString();
+                                else if(columnIndex == 11)
+                                    cmbPTTTLC.Text = cellValue.ToString();
 
                             }
                         }
@@ -1117,9 +1124,9 @@ namespace Computer_Shop_Management_System.View
             {
                 // Lấy mã hóa đơn từ DataGridView hoặc TextBox (tùy vào cách bạn truyền dữ liệu)
                 string orderId = txtMaHoaDon1.Text;
+                         string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay thế bằng chuỗi kết nối của bạn
 
                 // Kiểm tra trạng thái thanh toán của hóa đơn trong cơ sở dữ liệu
-                string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
@@ -1132,7 +1139,7 @@ namespace Computer_Shop_Management_System.View
                         checkStatusCommand.Parameters.AddWithValue("@OrderId", orderId);
                         string currentStatus = checkStatusCommand.ExecuteScalar() as string;
 
-                        if (currentStatus == "Thanh Toán Thất Bại")
+                        if (currentStatus == "Thanh Toán Thành Công")
                         {
                             // Lấy dữ liệu từ các TextBox và ComboBox
                             string orderDateText = dtp2.Text;
@@ -1144,34 +1151,37 @@ namespace Computer_Shop_Management_System.View
                                 string customerName = txttenkhachhangop.Text;
                                 string customerNumber = txtMaKH.Text;
                                 string usersid = txtMaNhanVien1.Text;
-                                decimal totalAmount = decimal.Parse(txttongtienop.Text);
-                                decimal paidAmount = decimal.Parse(txttiennhankhachhang.Text);
-                                decimal dueAmount = decimal.Parse(txtTienThuaLC.Text);
-                                decimal discount = decimal.Parse(txtGiamGiaLC.Text);
-                                decimal grandTotal = decimal.Parse(txttongcongop.Text);
-                                string statusPayment = cmbtrangthaiop.SelectedItem.ToString();
-                               
+                                int totalAmount = int.Parse(txttongtienop.Text);
+                                int paidAmount = int.Parse(txttiennhankhachhang.Text);
+                                int dueAmount = int.Parse(txtTienThuaLC.Text);
+                                string discountid = txtMaChietKhauLC.Text.Trim();
+                             
+                                int grandTotal = int.Parse(txttongcongop.Text);
+                                string statusPayment = cmbtrangthaiop.Text;
+                                string paymentmethods = cmbPTTTLC.Text;
 
                                 // Tạo câu lệnh SQL để cập nhật thông tin hóa đơn
                                 string updateQuery = "UPDATE Orders SET Order_Date = @OrderDate, Users_Id = @usersid, Customer_Name = @CustomerName, Customer_Number = @CustomerNumber, " +
-                                    "Total_Amout = @TotalAmount, Paid_Amout = @PaidAmount, Due_Amout = @DueAmount, Discount = @Discount, " +
-                                    "Grand_Total = @GrandTotal, StatusPayment = @StatusPayment WHERE Orders_Id = @OrderId";
+                                    "Total_Amout = @TotalAmount, Paid_Amout = @PaidAmount, Due_Amout = @DueAmount, Discounts_Id = @Discountid, " +
+                                    "Grand_Total = @GrandTotal, StatusPayment = @StatusPayment, Payment_Methods = @paymentmethod WHERE Orders_Id = @OrderId";
                                 // Trừ số lượng sản phẩm từ cơ sở dữ liệu
                                 
                                 using (SqlCommand updateCommand = new SqlCommand(updateQuery, connection))
                                 {
                                     // Thiết lập giá trị cho các tham số
                                     updateCommand.Parameters.AddWithValue("@OrderDate", orderDate);
-                                    updateCommand.Parameters.AddWithValue("@usersid", usersid);
+                                    updateCommand.Parameters.AddWithValue("@usersid", usersid);                                  
                                     updateCommand.Parameters.AddWithValue("@CustomerName", customerName);
                                     updateCommand.Parameters.AddWithValue("@CustomerNumber", customerNumber);
                                     updateCommand.Parameters.AddWithValue("@TotalAmount", totalAmount);
                                     updateCommand.Parameters.AddWithValue("@PaidAmount", paidAmount);
                                     updateCommand.Parameters.AddWithValue("@DueAmount", dueAmount);
-                                    updateCommand.Parameters.AddWithValue("@Discount", discount);
+                                    updateCommand.Parameters.AddWithValue("@Discountid", discountid);
                                     updateCommand.Parameters.AddWithValue("@GrandTotal", grandTotal);
-                                    updateCommand.Parameters.AddWithValue("@StatusPayment", statusPayment);
+                                    updateCommand.Parameters.AddWithValue("@StatusPayment", statusPayment);                             
+                                    updateCommand.Parameters.AddWithValue("@paymentmethod", paymentmethods);
                                     updateCommand.Parameters.AddWithValue("@OrderId", orderId);
+
 
                                     // Thực thi câu lệnh SQL
                                     int rowsAffected = updateCommand.ExecuteNonQuery();
@@ -1402,7 +1412,7 @@ namespace Computer_Shop_Management_System.View
         }     
         private void txttiennhankhachhang_TextChanged(object sender, EventArgs e)
         {
-            if (!int.TryParse(txttiennhankhachhang.Text, out int result))
+           /* if (!int.TryParse(txttiennhankhachhang.Text, out int result))
             {
                 txttiennhankhachhang.Text = ""; // Xóa nội dung TextBox nếu không phải số
             }
@@ -1429,7 +1439,7 @@ namespace Computer_Shop_Management_System.View
                     MessageBox.Show("Số tiền nhập không chính xác!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                   
                 }
-            }
+            }*/
            
 
         }
@@ -1439,7 +1449,7 @@ namespace Computer_Shop_Management_System.View
         }
         private void txtGiamGiaLC_TextChanged(object sender, EventArgs e)
         {
-            if (!int.TryParse(txtGiamGiaLC.Text, out int result))
+          /*  if (!int.TryParse(txtGiamGiaLC.Text, out int result))
             {
                 txtGiamGiaLC.Text = ""; // Xóa nội dung TextBox nếu không phải số
             }
@@ -1480,7 +1490,7 @@ namespace Computer_Shop_Management_System.View
                 txtGiamGiaLC.Text = "";
                 txttongcongop.Text = "";
                 txtTienThuaLC.Text = "";
-            }
+            }*/
         }
         private void txtTienThuaLC_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -1793,6 +1803,16 @@ namespace Computer_Shop_Management_System.View
             }    
         }
         private void txtGiamGia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMaChietKhauLC_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }

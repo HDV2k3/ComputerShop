@@ -23,7 +23,6 @@ namespace Computer_Shop_Management_System.Controller
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-
                     string query = "INSERT INTO Brand (Brand_Id, Brand_Name, Brand_Status) VALUES (@BrandId, @BrandName, @BrandStatus)";
 
                     using (SqlCommand command = new SqlCommand(query, connection))

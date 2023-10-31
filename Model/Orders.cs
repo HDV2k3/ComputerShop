@@ -43,6 +43,7 @@ namespace Computer_Shop_Management_System.Model
         public string Discounts_Id { get; set; }
 
         public int Grand_Total { get; set; }
+        public string Payment_Methods { get; set; }
 
         [StringLength(128)]
         public string StatusPayment { get; set; }
@@ -50,6 +51,7 @@ namespace Computer_Shop_Management_System.Model
         public virtual Customer Customer { get; set; }
 
         public virtual DisCount DisCount { get; set; }
+ 
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetails> OrderDetails { get; set; }
