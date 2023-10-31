@@ -187,3 +187,9 @@ C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\bin\Debug\EPP
 C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
 C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\bin\Debug\EPPlus.xml
 C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
+C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\obj\Debug\Computer_Shop_Management_System.View.UserControlDiscount.resources
+C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\bin\Debug\Log4net.Appender.Serilog.dll
+C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\bin\Debug\log4net.dll
+C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\bin\Debug\Serilog.dll
+C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\bin\Debug\log4net.xml
+C:\Users\DELL\Desktop\backupFile20\Computer Shop Management System\bin\Debug\Serilog.xml

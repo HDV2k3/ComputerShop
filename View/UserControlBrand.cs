@@ -64,7 +64,7 @@ namespace Computer_Shop_Management_System.View
             txtTimKiemThuongThieu.Clear();
             /**//*dgvThuongHieu.Columns[0].Visible = true;*/
             // Kết nối đến cơ sở dữ liệu
-            using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
+            using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
             {
                 // Mở kết nối
                 connection.Open();
@@ -232,7 +232,7 @@ namespace Computer_Shop_Management_System.View
             {
                 /**//*dgvThuongHieu.Columns[0].Visible = true;*/
                 // Kết nối đến cơ sở dữ liệu
-                using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
+                using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
                 {
                     // Mở kết nối
                     connection.Open();
@@ -265,7 +265,7 @@ namespace Computer_Shop_Management_System.View
         {
             toolTip1.SetToolTip(pictureBox1, "Search");
         }
-        private const string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay thế bằng chuỗi kết nối của bạn
+        private const string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay thế bằng chuỗi kết nối của bạn
         private void txtTimKiemThuongThieu_TextChanged(object sender, EventArgs e)
         {
             try
@@ -297,7 +297,7 @@ namespace Computer_Shop_Management_System.View
             txtTimKiemThuongThieu.Clear();
             /**//*dgvThuongHieu.Columns[0].Visible = true;*/
             // Kết nối đến cơ sở dữ liệu
-            using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
+            using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
             {
                 // Mở kết nối
                 connection.Open();
@@ -369,7 +369,7 @@ namespace Computer_Shop_Management_System.View
         }
         public DataTable GetDataFromDatabase()
         {
-            string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay đổi chuỗi kết nối cho phù hợp
+            string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay đổi chuỗi kết nối cho phù hợp
 
             DataTable dataTable = new DataTable();
 
@@ -417,7 +417,7 @@ namespace Computer_Shop_Management_System.View
         }
         private bool IsDuplicateBrand(string brandId, string brandName)
         {
-            string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+            string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

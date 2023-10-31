@@ -16,7 +16,7 @@ namespace Computer_Shop_Management_System.Controller
         {
             try
             {
-                string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+                string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -53,7 +53,7 @@ namespace Computer_Shop_Management_System.Controller
             try
             {
                 // Thay đổi chuỗi kết nối của bạn tới cơ sở dữ liệu của bạn
-                string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+                string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {

@@ -5,17 +5,20 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using log4net;
+using System.IO;
+using System.Data.OleDb;
 
 namespace Computer_Shop_Management_System.Model
 {
     public class DataProvider
     {
-        public static string GetConnectionString()
+      /*  public static string GetConnectionString()
         {
             SqlConnectionStringBuilder stringBuilder = new SqlConnectionStringBuilder()
             {
-                InitialCatalog = "HutechDBase",
-                DataSource = @"DESKTOP-3JE3S4U\SQLEXPRESS",
+                InitialCatalog = @"ComputerShopSystem",
+                DataSource = @"DESKTOP-3JE3S4U\\SQLEXPRESS",
                 IntegratedSecurity = true,
                 MultipleActiveResultSets = true,
                 ConnectTimeout = 0,
@@ -23,11 +26,12 @@ namespace Computer_Shop_Management_System.Model
                 TrustServerCertificate = true
             };
             return stringBuilder.ConnectionString;
-        }
+        }*/
+        public const string GetConnectionString  = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
         public static DataTable GetData(string sql)
         {
             DataTable dt = new DataTable();
-            string conn_string = GetConnectionString();
+            string conn_string = GetConnectionString;
             SqlConnection sqlConnect = new SqlConnection(conn_string);
             sqlConnect.Open();
             SqlCommand cmd = new SqlCommand(sql, sqlConnect);
@@ -38,7 +42,7 @@ namespace Computer_Shop_Management_System.Model
         }
         public static bool ExecuteNonQuery(string sql)
         {
-            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
+            using (SqlConnection connection = new SqlConnection(GetConnectionString))
             {
                 try
                 {
@@ -55,6 +59,32 @@ namespace Computer_Shop_Management_System.Model
             }
 
         }
+        /*  public static bool ExecuteNonQuery(string sql)
+          {
+              using (SqlConnection connection = new SqlConnection(GetConnectionString()))
+              {
+                  try
+                  {
+                      connection.Open();
+                      SqlCommand cmd = new SqlCommand(sql, connection);
+                      cmd.ExecuteNonQuery();
+                      connection.Close();
+                      return true;
+                  }
+                  catch (Exception ex)
+                  {
+                      // Ghi log thông tin lỗi vào tệp tin
+                      using (StreamWriter writer = new StreamWriter("error.log", true))
+                      {
+                          writer.WriteLine($"Exception occurred: {ex.Message}");
+                          writer.WriteLine($"Stack trace: {ex.StackTrace}");
+                          writer.WriteLine();
+                      }
+                      throw; // Ném lại ngoại lệ để nó có thể được xử lý ở nơi gọi
+                  }
+              }
+          }*/
+
 
     }
 }

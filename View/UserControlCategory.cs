@@ -16,7 +16,7 @@ namespace Computer_Shop_Management_System.View
 {
     public partial class UserControlCategory : UserControl
     {
-        private const string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay thế bằng chuỗi kết nối của bạn
+        private const string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay thế bằng chuỗi kết nối của bạn
 
         public UserControlCategory()
         {
@@ -63,7 +63,7 @@ namespace Computer_Shop_Management_System.View
         }
         public DataTable GetDataFromDatabase()
         {
-            string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay đổi chuỗi kết nối cho phù hợp
+            string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay đổi chuỗi kết nối cho phù hợp
 
             DataTable dataTable = new DataTable();
 
@@ -99,7 +99,7 @@ namespace Computer_Shop_Management_System.View
             txtMaLoai1.ReadOnly = true;
             txtMaLoai1.Enabled = false;
             cmbTrangThai.SelectedIndex = 0;
-            using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
+            using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
             {
                 // Mở kết nối
                 connection.Open();
@@ -131,7 +131,7 @@ namespace Computer_Shop_Management_System.View
             txtTimKiemLoai.Clear();
             /**//*dgvLoai.Columns[0].Visible = true;*/
             // Kết nối đến cơ sở dữ liệu
-            using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
+            using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
             {
                 // Mở kết nối
                 connection.Open();
@@ -179,7 +179,7 @@ namespace Computer_Shop_Management_System.View
             txtTimKiemLoai.Clear();
             /**//*dgvLoai.Columns[0].Visible = true;*/
             // Kết nối đến cơ sở dữ liệu
-            using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
+            using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
             {
                 // Mở kết nối
                 connection.Open();
@@ -204,7 +204,7 @@ namespace Computer_Shop_Management_System.View
         }
         private bool IsDuplicateCategory(string CategoryId, string CategoryName)
         {
-            string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+            string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -408,7 +408,7 @@ namespace Computer_Shop_Management_System.View
 
           
             // Kết nối đến cơ sở dữ liệu
-            using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
+            using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
             {
                 // Mở kết nối
                 connection.Open();
@@ -460,7 +460,7 @@ namespace Computer_Shop_Management_System.View
             txtTimKiemLoai.Clear();
             /**//*dgvLoai.Columns[0].Visible = true;*/
             // Kết nối đến cơ sở dữ liệu
-            using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
+            using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
             {
                 // Mở kết nối
                 connection.Open();

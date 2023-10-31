@@ -164,7 +164,7 @@ namespace Computer_Shop_Management_System.View
 
             }
         }
-        private const string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay thế bằng chuỗi kết nối của bạn
+        private const string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay thế bằng chuỗi kết nối của bạn
         private void SearchProduct(string searchName)
         {
             string query = "SELECT Product_Name,Product_Image,Product_Rate,Product_Quantity,Product_Brand,Product_Category,Product_Stastus FROM Product WHERE Product_Name LIKE @SearchName;";
@@ -193,7 +193,7 @@ namespace Computer_Shop_Management_System.View
             txtTimKiemSanPham.Clear();
             /**//*dgvLoai.Columns[0].Visible = true;*/
             // Kết nối đến cơ sở dữ liệu
-            using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
+            using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
             {
                 // Mở kết nối
                 connection.Open();
@@ -565,7 +565,7 @@ namespace Computer_Shop_Management_System.View
 
         {
 
-            string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay đổi chuỗi kết nối cho phù hợp
+            string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"; // Thay đổi chuỗi kết nối cho phù hợp
 
             DataTable dataTable = new DataTable();
 
@@ -592,7 +592,7 @@ namespace Computer_Shop_Management_System.View
             txtTimKiemSanPham.Clear();
             /**//*dgvLoai.Columns[0].Visible = true;*/
             // Kết nối đến cơ sở dữ liệu
-            using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
+            using (SqlConnection connection = new SqlConnection(@"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
             {
                 // Mở kết nối
                 connection.Open();

@@ -13,6 +13,7 @@ namespace Computer_Shop_Management_System.Model
         public User()
         {
             Orders = new HashSet<Orders>();
+            ReturnProduct = new HashSet<ReturnProduct>();
         }
 
         [Key]
@@ -29,7 +30,7 @@ namespace Computer_Shop_Management_System.Model
 
         [Required]
         [StringLength(50)]
-        public string users_Password { get; set; }
+        public string Users_Password { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -38,17 +39,18 @@ namespace Computer_Shop_Management_System.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Orders> Orders { get; set; }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ReturnProduct> ReturnProduct { get; set; }
+
         public virtual UsersCategory UsersCategory { get; set; }
-       
         public User(string maloainguoidung, string loainguoidung, string tennguoidung, string matkhau, string email)
         {
             this.Users_Id = maloainguoidung;
             this.Users_Category_Id = loainguoidung;
             this.Users_Name = tennguoidung;
-            this.users_Password = matkhau;
+            this.Users_Password = matkhau;
             this.Users_Email = email;
 
         }
-
     }
 }

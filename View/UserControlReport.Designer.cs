@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpBaoCao = new System.Windows.Forms.TabPage();
+            this.btnXuatEcel = new Guna.UI2.WinForms.Guna2Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ckbsanphambanchaynhat = new System.Windows.Forms.CheckBox();
             this.ckbSanPhamSapHetHang = new System.Windows.Forms.CheckBox();
@@ -48,9 +49,9 @@
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel28 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.btnXuatEcel = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.ckbLoiNhuan = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tpBaoCao.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -90,8 +91,24 @@
             this.tpBaoCao.Text = "Báo Cáo";
             this.tpBaoCao.UseVisualStyleBackColor = true;
             // 
+            // btnXuatEcel
+            // 
+            this.btnXuatEcel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnXuatEcel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnXuatEcel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnXuatEcel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnXuatEcel.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnXuatEcel.ForeColor = System.Drawing.Color.White;
+            this.btnXuatEcel.Location = new System.Drawing.Point(557, 424);
+            this.btnXuatEcel.Name = "btnXuatEcel";
+            this.btnXuatEcel.Size = new System.Drawing.Size(137, 39);
+            this.btnXuatEcel.TabIndex = 8;
+            this.btnXuatEcel.Text = "Xuất Excel";
+            this.btnXuatEcel.Click += new System.EventHandler(this.btnXuatEcel_Click);
+            // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.ckbLoiNhuan);
             this.panel1.Controls.Add(this.ckbsanphambanchaynhat);
             this.panel1.Controls.Add(this.ckbSanPhamSapHetHang);
             this.panel1.Controls.Add(this.ckbDoanhThuTheoKH);
@@ -275,24 +292,20 @@
             // 
             this.guna2Elipse1.TargetControl = this.btnTaoBaoCao;
             // 
-            // btnXuatEcel
-            // 
-            this.btnXuatEcel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnXuatEcel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnXuatEcel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnXuatEcel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnXuatEcel.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnXuatEcel.ForeColor = System.Drawing.Color.White;
-            this.btnXuatEcel.Location = new System.Drawing.Point(557, 424);
-            this.btnXuatEcel.Name = "btnXuatEcel";
-            this.btnXuatEcel.Size = new System.Drawing.Size(137, 39);
-            this.btnXuatEcel.TabIndex = 8;
-            this.btnXuatEcel.Text = "Xuất Excel";
-            this.btnXuatEcel.Click += new System.EventHandler(this.btnXuatEcel_Click);
-            // 
             // guna2Elipse2
             // 
             this.guna2Elipse2.TargetControl = this.btnXuatEcel;
+            // 
+            // ckbLoiNhuan
+            // 
+            this.ckbLoiNhuan.AutoSize = true;
+            this.ckbLoiNhuan.Location = new System.Drawing.Point(5, 215);
+            this.ckbLoiNhuan.Name = "ckbLoiNhuan";
+            this.ckbLoiNhuan.Size = new System.Drawing.Size(82, 19);
+            this.ckbLoiNhuan.TabIndex = 3;
+            this.ckbLoiNhuan.Text = "Lợi Nhuận";
+            this.ckbLoiNhuan.UseVisualStyleBackColor = true;
+            this.ckbLoiNhuan.CheckedChanged += new System.EventHandler(this.ckbLoiNhuan_CheckedChanged);
             // 
             // UserControlReport
             // 
@@ -338,5 +351,6 @@
         private Guna.UI2.WinForms.Guna2Button btnXuatEcel;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse3;
+        private System.Windows.Forms.CheckBox ckbLoiNhuan;
     }
 }

@@ -33,6 +33,12 @@ namespace Computer_Shop_Management_System.Model
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Total { get; set; }
 
+        [Key]
+        [Column(Order = 5)]
+        [StringLength(100)]
+        public string Payment_Methods { get; set; }
+
+        public int Discounts_Percent { get; set; }
         public virtual Orders Orders { get; set; }
 
         public virtual Product Product { get; set; }

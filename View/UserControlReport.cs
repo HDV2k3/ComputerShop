@@ -18,7 +18,7 @@ namespace Computer_Shop_Management_System.View
 {
     public partial class UserControlReport : UserControl
     {
-        private const string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+        private const string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
         public UserControlReport()
         {
             InitializeComponent();
@@ -98,7 +98,10 @@ namespace Computer_Shop_Management_System.View
             {
                 return "CalculateNewCustomerCount"; // Thay thế "proc2" bằng tên stored procedure thực tế
             }
-
+            else if (ckbLoiNhuan.Checked)
+            {
+                return "CalculateProfitVip1"; // Thay thế "proc2" bằng tên stored procedure thực tế
+            }
 
             return string.Empty;
         }
@@ -142,8 +145,9 @@ namespace Computer_Shop_Management_System.View
                 storedProcedureColors.Add(Color.Orange);
                 if (ckbSLKhachHangMoi.Checked)
                     storedProcedures.Add("CalculateNewCustomerCount");
-
-
+                if (ckbLoiNhuan.Checked)
+                    storedProcedures.Add("CalculateProfitVip1");
+           
                 // Kiểm tra xem có ít nhất một stored procedure được chọn hay không
                 if (storedProcedures.Count > 0)
                 {
@@ -151,7 +155,7 @@ namespace Computer_Shop_Management_System.View
                     DataTable resultDataTable = new DataTable();
 
                     // Tạo kết nối đến cơ sở dữ liệu
-                    string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+                    string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
                     using (SqlConnection connection = new SqlConnection(connectionString))
                     {
                         connection.Open();
@@ -202,7 +206,7 @@ namespace Computer_Shop_Management_System.View
         }
         private void btnXuatEcel_Click(object sender, EventArgs e)
         {
-            string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+            string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
             string selectedProc = GetSelectedProc(); // Hàm này sẽ trả về tên proc được chọn
 
             if (!string.IsNullOrEmpty(selectedProc))
@@ -256,5 +260,10 @@ namespace Computer_Shop_Management_System.View
             }
         }
         #endregion
+
+        private void ckbLoiNhuan_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

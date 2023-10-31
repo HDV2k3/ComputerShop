@@ -18,7 +18,7 @@ namespace Computer_Shop_Management_System.View
             InitializeComponent();
         }
         #region Method
-        private string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+        private string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
         private void LoadCategoryData()
         {
             try

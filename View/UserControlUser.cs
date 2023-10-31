@@ -18,7 +18,7 @@ namespace Computer_Shop_Management_System.View
 {
     public partial class UserControlUser : UserControl
     {
-        private static string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+        private static string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
         public UserControlUser()
         {
             InitializeComponent();
@@ -83,7 +83,7 @@ namespace Computer_Shop_Management_System.View
         }
         private bool IsDuplicateUsers( string UserName)
         {
-            string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+            string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

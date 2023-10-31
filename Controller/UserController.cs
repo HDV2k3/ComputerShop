@@ -44,7 +44,7 @@ namespace Computer_Shop_Management_System.Controller
              }*/
             try
             {
-                string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+                string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -90,7 +90,7 @@ namespace Computer_Shop_Management_System.Controller
         {
             try
             {
-                string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+                string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -103,7 +103,7 @@ namespace Computer_Shop_Management_System.Controller
                         command.Parameters.AddWithValue("@usersid", User.Users_Id);
                         command.Parameters.AddWithValue("@userscategoryid", User.Users_Category_Id);
                         command.Parameters.AddWithValue("@Username", User.Users_Name);
-                        command.Parameters.AddWithValue("@password", User.users_Password);  
+                        command.Parameters.AddWithValue("@password", User.Users_Password);  
                         command.Parameters.AddWithValue("@Useremial", User.Users_Email);
                         command.ExecuteNonQuery();
                     }
@@ -120,7 +120,7 @@ namespace Computer_Shop_Management_System.Controller
         {
             try
             {
-                string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+                string connectionString = "data source=DESKTOP-3JE3S4U\\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {

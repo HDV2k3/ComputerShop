@@ -14,7 +14,7 @@ namespace Computer_Shop_Management_System.View
 {
     public partial class UserControlDashboard : UserControl
     {
-        private const string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+        private const string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
         public UserControlDashboard()
         {
             InitializeComponent();

@@ -54,6 +54,12 @@
     <Reference Include="Guna.UI2, Version=2.0.4.5, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.5\lib\net472\Guna.UI2.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.15\lib\net45\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Log4net.Appender.Serilog, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Log4net.Appender.Serilog.2.0.0\lib\netstandard2.0\Log4net.Appender.Serilog.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
     </Reference>
@@ -61,6 +67,9 @@
       <HintPath>..\packages\Mvc2Futures.2.0.50217.0\lib\Microsoft.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.2.11.0\lib\net46\Serilog.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -86,6 +95,7 @@
     <Compile Include="Controller\BrandController.cs" />
     <Compile Include="Controller\CategoryController.cs" />
     <Compile Include="Controller\Computer.cs" />
+    <Compile Include="Controller\DiscountController.cs" />
     <Compile Include="Controller\OderController.cs" />
     <Compile Include="Controller\ProductController.cs" />
     <Compile Include="Controller\UserController.cs" />
@@ -94,9 +104,12 @@
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\DataBase.cs" />
     <Compile Include="Model\DataProvider.cs" />
+    <Compile Include="Model\DisCount.cs" />
     <Compile Include="Model\OrderDetails.cs" />
     <Compile Include="Model\Orders.cs" />
     <Compile Include="Model\Product.cs" />
+    <Compile Include="Model\ReturnProduct.cs" />
+    <Compile Include="Model\sysdiagrams.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UsersCategory.cs" />
     <Compile Include="View\FormForgotPass.cs">
@@ -148,6 +161,12 @@
     </Compile>
     <Compile Include="View\UserControlDashboard.Designer.cs">
       <DependentUpon>UserControlDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControlDiscount.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UserControlDiscount.Designer.cs">
+      <DependentUpon>UserControlDiscount.cs</DependentUpon>
     </Compile>
     <Compile Include="View\UserControlOrders.cs">
       <SubType>UserControl</SubType>
@@ -218,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\UserControlDashboard.resx">
       <DependentUpon>UserControlDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserControlDiscount.resx">
+      <DependentUpon>UserControlDiscount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UserControlOrders.resx">
       <DependentUpon>UserControlOrders.cs</DependentUpon>
@@ -304,6 +326,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Images\stock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\price-tag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\gg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\shopping-bag.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

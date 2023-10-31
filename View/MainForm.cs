@@ -27,7 +27,7 @@ namespace Computer_Shop_Management_System.View
         {
             List<User> users = new List<User>();
 
-            string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=HutechDBase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+            string connectionString = @"data source=DESKTOP-3JE3S4U\SQLEXPRESS;initial catalog=ComputerShopSystem;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
 
             string query = "SELECT Users_Category_Id FROM dbo.[User]"; // Câu truy vấn SQL để lấy danh sách người dùng
 
@@ -122,6 +122,7 @@ namespace Computer_Shop_Management_System.View
                         userControlUserStaff1.Visible = false;
                         userControlProductStaff1.Visible = false;
                         userControlCategoryStaff1.Visible = false;
+                        userControlDiscount1.Visible = false;
                     }
                     else 
                     {
@@ -137,7 +138,8 @@ namespace Computer_Shop_Management_System.View
                         userControlUserStaff1.Visible = false;
                         userControlProductStaff1.Visible = false;
                         userControlCategoryStaff1.Visible = false;
-                    }
+                userControlDiscount1.Visible = false;
+            }
                 
             
 
@@ -159,7 +161,8 @@ namespace Computer_Shop_Management_System.View
                         userControlUserStaff1.Visible = false;
                         userControlProductStaff1.Visible = false;
                         userControlCategoryStaff1.Visible = false;
-                    }
+                userControlDiscount1.Visible = false;
+            }
                     else 
                     {
                         MovePanel(btnLoai);
@@ -176,7 +179,8 @@ namespace Computer_Shop_Management_System.View
                         userControlUserStaff1.Visible= false;
                         userControlProductStaff1.Visible= false;
                         userControlCategoryStaff1.Visible = true;
-                    }
+                userControlDiscount1.Visible = false;
+            }
            
 
             //jhihi
@@ -198,7 +202,8 @@ namespace Computer_Shop_Management_System.View
                         userControlUserStaff1.Visible = false;
                         userControlProductStaff1.Visible = false;
                         userControlCategoryStaff1.Visible = false;
-                    }
+                userControlDiscount1.Visible = false;
+            }
                     else 
                     {
                         MovePanel(btnSanPham);
@@ -215,7 +220,8 @@ namespace Computer_Shop_Management_System.View
                         userControlUserStaff1.Visible = false;
                         userControlProductStaff1.Visible = true;
                         userControlCategoryStaff1.Visible = false;
-                    }
+                userControlDiscount1.Visible = false;
+            }
            
         }
         private void btnDatHang_Click(object sender, EventArgs e)
@@ -235,7 +241,7 @@ namespace Computer_Shop_Management_System.View
                 userControlUserStaff1.Visible = false;
                 userControlProductStaff1.Visible = false;
                 userControlCategoryStaff1.Visible = false;
-
+            userControlDiscount1.Visible = false;
 
         }
         private void btnBaoCao_Click(object sender, EventArgs e)
@@ -253,7 +259,7 @@ namespace Computer_Shop_Management_System.View
                 userControlUserStaff1.Visible = false;
                 userControlProductStaff1.Visible = false;
                 userControlCategoryStaff1.Visible = false;
-
+            userControlDiscount1.Visible = false;
 
 
         }
@@ -274,7 +280,8 @@ namespace Computer_Shop_Management_System.View
                         userControlUserStaff1.Visible = false;
                         userControlProductStaff1.Visible = false;
                         userControlCategoryStaff1.Visible = false;
-                    }
+                userControlDiscount1.Visible = false;
+            }
                     else 
                     {
                         MovePanel(btnNguoiDung);
@@ -290,7 +297,8 @@ namespace Computer_Shop_Management_System.View
                         userControlUserStaff1.Visible = true;
                         userControlProductStaff1.Visible = false;
                         userControlCategoryStaff1.Visible = false;
-                    }
+                userControlDiscount1.Visible = false;
+            }
            
 
         }
@@ -300,5 +308,43 @@ namespace Computer_Shop_Management_System.View
         }
         #endregion
 
+        private void btnDiscount_Click(object sender, EventArgs e)
+        {
+
+            if (User.Users_Category_Id == "Admin")
+            {
+                MovePanel(btnDiscount);
+                UserControlDashboard1.Visible = false;
+                UserControlCategory1.Visible = false;
+                UserControlProduct1.Visible = false;
+                UserControlOrders1.Visible = false;
+                UserControlReport1.Visible = false;
+                UserControlUser1.Visible = false;
+                UserControlBrand1.Visible = false;
+                UserControlBrandStaff1.Visible = false;
+                userControlUserStaff1.Visible = false;
+                userControlProductStaff1.Visible = false;
+                userControlCategoryStaff1.Visible = false;
+                userControlDiscount1.Visible = true;
+            }
+            else
+            {
+                MovePanel(btnDiscount);
+
+                UserControlDashboard1.Visible = false;
+                UserControlCategory1.Visible = false;
+                UserControlProduct1.Visible = false;
+                UserControlOrders1.Visible = false;
+                UserControlReport1.Visible = false;
+                UserControlUser1.Visible = false;
+                UserControlBrand1.Visible = false;
+                UserControlBrandStaff1.Visible = false;
+                userControlUserStaff1.Visible = true;
+                userControlProductStaff1.Visible = false;
+                userControlCategoryStaff1.Visible = false;
+                userControlDiscount1.Visible = false;
+            }
+
+        }
     }
 }
