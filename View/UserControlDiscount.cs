@@ -49,7 +49,7 @@ namespace Computer_Shop_Management_System.View
         }
         private void EmptyBox()
         {
-            txtmagiamgia.Text = "GG" + DateTime.Now.ToString();
+            txtmagiamgia.Text = "GG" + DateTime.Now.ToString("ddhhmmss");
             txtmota.Text = string.Empty;
             txtsotiengiamgia.Text = string.Empty;
             cmbTrangThai.SelectedIndex = 0;
@@ -176,26 +176,12 @@ namespace Computer_Shop_Management_System.View
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
                         dgvGiamGia.DataSource = dataTable;
-
                         lblGiamGia.Text = dataTable.Rows.Count.ToString();
                     }
                 }
             }
         }
-        private void txtTimKiem_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                string searchName = txtmota.Text;
-                SearchDiscount(searchName);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Lỗi Hệ Thống Cần Được Bảo Dưỡng Sửa Chữa Để Tiếp Tục Thực Hiện Chứ Năng Này!", "Xin Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-        }
-
+   
         private void dgvGiamGia_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -222,9 +208,11 @@ namespace Computer_Shop_Management_System.View
         }
         private void EmptyBox1()
         {
+            txtMaGiamGiaLC.Text = string.Empty;
             txtMoTaLC.Text = string.Empty;
             txtSoTienGiamGiaLC.Text = string.Empty;
             cmbTrangThaiLC.SelectedIndex = 0;
+            LoadDisCountData();
         }
         private void btnSua_Click(object sender, EventArgs e)
         {
@@ -360,6 +348,36 @@ namespace Computer_Shop_Management_System.View
         private void txtSoTienGiamGiaLC_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+  
+
+        private void txtTimKiem_TextChanged_1(object sender, EventArgs e)
+        {
+            try
+            {
+                string searchName = txtmota.Text;
+                SearchDiscount(searchName);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi Hệ Thống Cần Được Bảo Dưỡng Sửa Chữa Để Tiếp Tục Thực Hiện Chứ Năng Này!", "Xin Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void txtTimKiem_Validated(object sender, EventArgs e)
+        {
+            try
+            {
+                string searchName = txtmota.Text;
+                SearchDiscount(searchName);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi Hệ Thống Cần Được Bảo Dưỡng Sửa Chữa Để Tiếp Tục Thực Hiện Chứ Năng Này!", "Xin Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
     }
 }

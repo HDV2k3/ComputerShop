@@ -132,6 +132,10 @@ namespace Computer_Shop_Management_System.View
             cmbKhuyenMai.SelectedIndex = 0;
             string query = "SELECT Discounts_Name FROM DisCount WHERE Discounts_Status = N'Có Sẵn' ORDER BY Discounts_Name;";
             DiscountController.Discount(query, cmbKhuyenMai);
+            if(cmbKhuyenMai.Text == "--Chọn--")
+            {
+                txtGiamGia.Text = "0";
+            }    
         }
         private void ClearData()
         {
@@ -146,13 +150,13 @@ namespace Computer_Shop_Management_System.View
             cmbsanpham.SelectedItem = "--Chọn--";
             cmbtttt.SelectedItem = "--Chọn--";
             cmbptthanhtoan.SelectedItem = "--Chọn--";
-            txtGiaTien.Text = "";
+            txtGiaTien.Text = "0";
             nudsoluong.Value = 0;
-            txtthanhtien.Text = "";        
-            txttienphaitra.Text = "";
+            txtthanhtien.Text = "0";        
+            txttienphaitra.Text = "0";
             txtGiamGia.Text = "0";
-            txttongcong.Text = "";
-            txtTienThua.Text = "";
+            txttongcong.Text = "0";
+            txtTienThua.Text = "0";
 
 
         }
@@ -173,14 +177,14 @@ namespace Computer_Shop_Management_System.View
 
             cmbsanpham.SelectedItem = 0;
             cmbtttt.SelectedItem = "--Chọn--";
-            txtGiaTien.Text = "";
+            txtGiaTien.Text = "0";
             nudsoluong.Value = 0;
             txtthanhtien.Text = "";
            
             txttienphaitra.Text = "";
             txtGiamGia.Text = "0";
-            txttongcong.Text = "";
-            txtTienThua.Text = "";
+            txttongcong.Text = "0";
+            txtTienThua.Text = "0";
             txtMaHoaDon.Text = "BILL" + DateTime.Now.ToString("ddhhmmss");
             txtmakhachhang.Text = "KH " + DateTime.Now.ToString("ddhhmmss");
 
@@ -475,10 +479,12 @@ namespace Computer_Shop_Management_System.View
         private void tpthemhoadon_Click(object sender, EventArgs e)
         {
             LoadOrdersData();
+            LoadDiscountCombobox();
         }    
         private void tpluachon_Click(object sender, EventArgs e)
         {
             LoadOrdersData();
+            LoadDiscountCombobox();
         }       
         private void UserControlOrders_Load(object sender, EventArgs e)
         {
@@ -568,12 +574,33 @@ namespace Computer_Shop_Management_System.View
             }
 
         }
-       
+        private string GetDefaultPromotionCodeFromDatabase()
+        {
+            string discountName = "No Discount";
+            string defaultPromotionCode = string.Empty;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT Discounts_Name FROM DisCount WHERE Discounts_Name = @DiscountName";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@DiscountName", discountName);
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    defaultPromotionCode = reader["Discounts_Name"].ToString();
+                }
+
+                reader.Close();
+            }
+            return defaultPromotionCode;
+        }
         private void btnLuu_Click(object sender, EventArgs e)
         {
             try
             {
-                if (cmbtttt.Text == "Thanh Toán Thất Bại" || cmbtttt.Text == "--Chọn--" || cmbptthanhtoan.Text == "--Chọn--" /*|| dtpDate.Value > DateTime.Now || dtpDate.Value < DateTime.Now*/)
+                if (cmbtttt.Text == "Thanh Toán Thất Bại" || cmbtttt.Text == "--Chọn--" || cmbptthanhtoan.Text == "--Chọn--" || cmbKhuyenMai.Text == "--Chọn--")
                 {
                     MessageBox.Show("Thanh Toán Hóa Đơn   " + txtMaHoaDon.Text + "  Thất Bại");
                     cmbsanpham.Items.Add("--Chọn--");
@@ -581,16 +608,18 @@ namespace Computer_Shop_Management_System.View
                     ClearData();
                     txttongtien.Text = "0";
                     txtSoDienThoai.Text = string.Empty;                
+
                 }                   
                 else
                 {
+                  
                     Receipt();
                     printPreviewDialog1.Document = printDocument1;
                     printDocument2.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("pprnm", 285, 600);
                     printPreviewDialog1.ShowDialog();
                     CompareTextBoxValues();
                     // Kiểm tra các điều kiện nhập liệu trước khi lưu
-                    if (!ValidateCategoryName(txttenkhachhang.Text.Trim()))
+                     if (!ValidateCategoryName(txttenkhachhang.Text.Trim()))
                     {
                         MessageBox.Show("Tên Không phù hợp", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
@@ -761,6 +790,7 @@ namespace Computer_Shop_Management_System.View
                         cmbsanpham.Items.Add("--Chọn--");
                         cmbsanpham.SelectedItem = 0;
                         txttongtien.Text = "0";
+                        cmbKhuyenMai.SelectedIndex = 0;
                       
                     }
                 }                              
@@ -1800,7 +1830,12 @@ namespace Computer_Shop_Management_System.View
             if(id != string.Empty)
             {
                 txtMaGiamGia.Text = id;
+            }
+            if(cmbKhuyenMai.SelectedItem.ToString() == "--Chọn--")
+            {
+                cmbKhuyenMai.Text = GetDefaultPromotionCodeFromDatabase();
             }    
+          
         }
         private void txtGiamGia_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -1815,6 +1850,11 @@ namespace Computer_Shop_Management_System.View
         private void txtMaChietKhauLC_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void cmbKhuyenMai_MouseClick(object sender, MouseEventArgs e)
+        {
+            LoadDiscountCombobox();
         }
     }
 }
