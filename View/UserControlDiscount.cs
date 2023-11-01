@@ -269,9 +269,9 @@ namespace Computer_Shop_Management_System.View
                     MessageBox.Show(" gần đây.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                else if (txtMoTaLC.Text.Trim() == string.Empty)
+                else if (txtMoTaLC.Text.Trim() == string.Empty || txtMoTaLC.Text.Trim() == "No Discount")
                 {
-                    MessageBox.Show("Vui Lòng Nhập mô tả chương trình .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Mã Mặc Định không thể xóa  .", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
                 else if (txtSoTienGiamGiaLC.Text.Trim() == string.Empty)

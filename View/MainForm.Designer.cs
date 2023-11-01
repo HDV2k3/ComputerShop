@@ -97,7 +97,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::Computer_Shop_Management_System.Properties.Resources.gg1;
+            this.pictureBox2.Image = global::Computer_Shop_Management_System.Properties.Resources.shopping_bag1;
             this.pictureBox2.Location = new System.Drawing.Point(12, 504);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(55, 41);
