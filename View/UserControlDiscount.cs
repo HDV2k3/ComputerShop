@@ -161,25 +161,30 @@ namespace Computer_Shop_Management_System.View
         }
         private void SearchDiscount(string searchName)
         {
-            string query = "SELECT Discounts_Id,Discounts_Name,Discounts_Percent,Discounts_Status FROM DisCount WHERE Discounts_Name LIKE @SearchName;";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                connection.Open();
+                string query = "SELECT Discounts_Id,Discounts_Name,Discounts_Percent,Discounts_Status FROM DisCount WHERE Discounts_Name LIKE @SearchName;";
 
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    command.Parameters.AddWithValue("@SearchName", "%" + searchName + "%");
+                    connection.Open();
 
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-                        dgvGiamGia.DataSource = dataTable;
-                        lblGiamGia.Text = dataTable.Rows.Count.ToString();
+                        command.Parameters.AddWithValue("@SearchName", "%" + searchName + "%");
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            DataTable dataTable = new DataTable();
+                            adapter.Fill(dataTable);
+                            dgvGiamGia.DataSource = dataTable;
+                            lblGiamGia.Text = dataTable.Rows.Count.ToString();
+                        }
                     }
                 }
             }
+           catch(Exception) 
+            { return; }
         }
    
         private void dgvGiamGia_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -302,12 +307,12 @@ namespace Computer_Shop_Management_System.View
 
         private void TpQuanLyGiamGia_Click(object sender, EventArgs e)
         {
-            LoadDisCountData();
+           /* LoadDisCountData();*/
         }
 
         private void dgvGiamGia_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.RowIndex < dgvGiamGia.RowCount)
+            /*if (e.RowIndex >= 0 && e.RowIndex < dgvGiamGia.RowCount)
             {
                 DataGridViewRow row = dgvGiamGia.Rows[e.RowIndex];
 
@@ -327,7 +332,7 @@ namespace Computer_Shop_Management_System.View
                     // Hide the row if it doesn't have any data
                     row.Visible = hasData;
                 }
-            }
+            }*/
         }
 
         private void TpLuaChon_Click(object sender, EventArgs e)
@@ -356,7 +361,7 @@ namespace Computer_Shop_Management_System.View
         {
             try
             {
-                string searchName = txtmota.Text;
+                string searchName = txtTimKiem.Text;
                 SearchDiscount(searchName);
             }
             catch (Exception)
