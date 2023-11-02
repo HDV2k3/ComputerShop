@@ -130,8 +130,10 @@ namespace Computer_Shop_Management_System.View
             cmbKhuyenMai.Items.Clear();
             cmbKhuyenMai.Items.Add("--Chọn--");
             cmbKhuyenMai.SelectedIndex = 0;
+            txtMaGiamGia.Text = "GG01092047";
             string query = "SELECT Discounts_Name FROM DisCount WHERE Discounts_Status = N'Có Sẵn' ORDER BY Discounts_Name;";
             DiscountController.Discount(query, cmbKhuyenMai);
+
             if(cmbKhuyenMai.Text == "--Chọn--")
             {
                 txtGiamGia.Text = "0";
@@ -453,7 +455,7 @@ namespace Computer_Shop_Management_System.View
         }
         private void SearchCustomer(string searchName)
         {
-            string query = "SELECT Orders_Id,Users_Id, Order_Date, Customer_Name, Customer_Number, Total_Amout, Paid_Amout, Due_Amout, Discount, Grand_Total, StatusPayment FROM Orders WHERE Customer_Name LIKE @SearchName;";
+            string query = "SELECT Orders_Id,Users_Id, Order_Date, Customer_Name, Customer_Number, Total_Amout, Paid_Amout, Due_Amout, Discounts_Id, Grand_Total, StatusPayment,Payment_Methods FROM Orders WHERE Customer_Name LIKE @SearchName;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -479,7 +481,8 @@ namespace Computer_Shop_Management_System.View
         private void tpthemhoadon_Click(object sender, EventArgs e)
         {
             LoadOrdersData();
-            LoadDiscountCombobox();
+         /*   txtGiamGia.Text = "0";
+            LoadDiscountCombobox();*/
         }    
         private void tpluachon_Click(object sender, EventArgs e)
         {
@@ -728,13 +731,14 @@ namespace Computer_Shop_Management_System.View
                         }
                         foreach (DataGridViewRow row in dtgvOrder.Rows)
                         {
+                            int gia = 0;
                             if (row.Cells[0].Value != null)
                             {
                                 string productName1 = row.Cells[0].Value.ToString();
                                 int productRate = Convert.ToInt32(row.Cells[1].Value.ToString());
                                 int amount = Convert.ToInt32(row.Cells[2].Value.ToString());
                                 int total = Convert.ToInt32(row.Cells[3].Value.ToString());
-
+                                 gia= int.Parse(Computer.Gia(productName1).ToString());
                                 // Kiểm tra tên sản phẩm đã tồn tại trong Product hay không
                                 string productQuery = "SELECT COUNT(*) FROM Product WHERE Product_Name = N'" + productName1 + "'";
                                 int productCount = 0;
@@ -755,10 +759,9 @@ namespace Computer_Shop_Management_System.View
                                     productDt = DataProvider.GetData(getProductQuery);
                                     int productId = Convert.ToInt32(productDt.Rows[0][0].ToString());
                                     string paymentmethods = cmbptthanhtoan.SelectedItem.ToString();
-
-                                    // Lưu chi tiết hóa đơn
-
-                                    string orderDetailQuery = "INSERT INTO OrderDetails(Orders_Id, Product_Id, Amout, Product_Rate, Total, Payment_Methods, Discounts_Percent) VALUES (@BillCode, @ProductId, @Amount, @ProductRate, @Total, @PaymentMethods, @DiscountsPercent)";
+                                    // Lưu chi tiết hóa đơn                                   
+                               
+                                    string orderDetailQuery = "INSERT INTO OrderDetails(Orders_Id, Product_Id, Amout, Product_Rate, Total, Payment_Methods, Discounts_Percent,Produtc_Rate_Ori) VALUES (@BillCode, @ProductId, @Amount, @ProductRate, @Total, @PaymentMethods, @DiscountsPercent,@productrateori)";
 
                                     using (SqlConnection connection = new SqlConnection(connectionString))
                                     {
@@ -771,6 +774,7 @@ namespace Computer_Shop_Management_System.View
                                         cmd.Parameters.AddWithValue("@Total", total);
                                         cmd.Parameters.AddWithValue("@PaymentMethods", cmbptthanhtoan.SelectedItem.ToString());
                                         cmd.Parameters.AddWithValue("@DiscountsPercent", Convert.ToInt32(txtGiamGia.Text.Trim()));
+                                        cmd.Parameters.AddWithValue("@productrateori", gia);
                                         cmd.ExecuteNonQuery();
                                     }
                                     // Trừ số lượng sản phẩm từ cơ sở dữ liệu

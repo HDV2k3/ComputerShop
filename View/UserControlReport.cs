@@ -146,7 +146,7 @@ namespace Computer_Shop_Management_System.View
                 if (ckbSLKhachHangMoi.Checked)
                     storedProcedures.Add("CalculateNewCustomerCount");
                 if (ckbLoiNhuan.Checked)
-                    storedProcedures.Add("CalculateProfitVip1");
+                    storedProcedures.Add("CalculateProfitVVip");
            
                 // Kiểm tra xem có ít nhất một stored procedure được chọn hay không
                 if (storedProcedures.Count > 0)

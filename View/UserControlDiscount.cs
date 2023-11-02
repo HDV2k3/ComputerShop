@@ -113,7 +113,7 @@ namespace Computer_Shop_Management_System.View
 
         private void TpThemGiamGia_Click(object sender, EventArgs e)
         {
-
+            LoadDisCountData();
         }
       
         private void UserControlDiscount_Load(object sender, EventArgs e)
@@ -307,12 +307,12 @@ namespace Computer_Shop_Management_System.View
 
         private void TpQuanLyGiamGia_Click(object sender, EventArgs e)
         {
-           /* LoadDisCountData();*/
+            LoadDisCountData();
         }
 
         private void dgvGiamGia_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
-            /*if (e.RowIndex >= 0 && e.RowIndex < dgvGiamGia.RowCount)
+            if (e.RowIndex >= 0 && e.RowIndex < dgvGiamGia.RowCount)
             {
                 DataGridViewRow row = dgvGiamGia.Rows[e.RowIndex];
 
@@ -332,7 +332,7 @@ namespace Computer_Shop_Management_System.View
                     // Hide the row if it doesn't have any data
                     row.Visible = hasData;
                 }
-            }*/
+            }
         }
 
         private void TpLuaChon_Click(object sender, EventArgs e)
